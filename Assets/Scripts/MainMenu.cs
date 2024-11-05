@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+
     public GameObject settingsPanel;
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level 01");
+        SceneManager.LoadScene("Level01");
     }
     public void OpenSettings()
     {
