@@ -248,23 +248,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
+      name: idle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 112
         y: 176
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57dc1e80a1d070f4fbb65d922dfec1c5
-      internalID: 678193346
+      spriteID: 503785ae7de463f4d96423869439fb5e
+      internalID: -1544913810
       vertices: []
       indices: 
       edges: []
@@ -291,6 +291,7 @@ TextureImporter:
       Player0_13: -1637909213
       Player0_14: 535555491
       Player0_15: 493798948
+      Player0_16: 306079882
       Player0_17: -1876726467
       Player0_18: -1043156843
       Player0_19: 643758118
@@ -298,7 +299,6 @@ TextureImporter:
       Player0_20: 617573364
       Player0_21: -198873668
       Player0_22: -73344557
-      Player0_23: 1758186708
       Player0_24: 1789747151
       Player0_25: -846639408
       Player0_26: 1092027226
@@ -359,7 +359,7 @@ TextureImporter:
       Player0_76: 872808285
       Player0_8: 451255465
       Player0_9: 1465431120
-      Player_0: 678193346
+      idle_0: 1758186708
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
