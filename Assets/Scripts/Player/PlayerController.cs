@@ -38,18 +38,28 @@ public class PlayerController : MonoBehaviour
         FlipPlayer();
         AnimationHandler();
        }
-
-    void AnimationHandler()
+   void AnimationHandler()
     {
-        if(_movementInput != Vector2.zero)
+
+        if(_movementInput.x == 0 && _movementInput.y == 0)
         {
-            _playerAnimator.SetBool("isWalking", true);
+            _playerAnimator.SetInteger("walkingState", 0); // Idle
         }
-        else
+        else if(_movementInput.x != 0)
         {
-            _playerAnimator.SetBool("isWalking", false);
+            _playerAnimator.SetInteger("walkingState", 1); // Walk right or left
         }
+        else if(_movementInput.y > 0 && _movementInput.x == 0)
+        {
+            _playerAnimator.SetInteger("walkingState", 2); // Walk up
+        }
+        else if(_movementInput.y < 0 && _movementInput.x == 0)
+        {
+            _playerAnimator.SetInteger("walkingState", 3); // Walk down
+        }
+
     }
+
     void FlipPlayer()
     {
 
