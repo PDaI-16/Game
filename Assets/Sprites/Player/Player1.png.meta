@@ -320,10 +320,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_1
+      name: idle_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 112
         y: 176
         width: 16
         height: 16
@@ -333,10 +333,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7918535e9be061970800000000000000
-      internalID: 8725177519654142359
+      spriteID: 71ff74eecd596f348936d426c49c0509
+      internalID: -1064968133
       vertices: []
       indices: 
       edges: []
@@ -363,6 +363,7 @@ TextureImporter:
       Player1_13: 4128015319226088091
       Player1_14: -8664325134266391892
       Player1_15: -705103762676426879
+      Player1_16: 106712451
       Player1_17: 6881961456107711280
       Player1_18: -7339845007335134818
       Player1_19: 6481155269724704978
@@ -370,7 +371,6 @@ TextureImporter:
       Player1_20: -4086266030071380702
       Player1_21: 5940468231574860170
       Player1_22: -8363061833584640228
-      Player1_23: -477298989785855165
       Player1_24: -2974622071678217721
       Player1_25: -7256392221325934225
       Player1_26: -6666019974401373245
@@ -431,7 +431,7 @@ TextureImporter:
       Player1_76: -1095347105
       Player1_8: 4154599387894098555
       Player1_9: -2454302864015985212
-      Player_1: 8725177519654142359
+      idle_1: -477298989785855165
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
