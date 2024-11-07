@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
     public GameObject settingsPanel;
+    public GameObject selectPanel;
 
     public void StartGame()
     {
@@ -22,4 +24,17 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quitting Game...");
         Application.Quit();
     }
+    public void OpenSelect()
+    {
+        selectPanel.SetActive(true);
+    }
+    public void CloseSelect()
+    {
+        selectPanel.SetActive(false);
+    }
+
+    public void SelectImage()
+     {
+        StartGame(); 
+     }
 }
