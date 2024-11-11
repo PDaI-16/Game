@@ -4,7 +4,6 @@ public class SkillTreeUI : MonoBehaviour
 {
 
     public GameObject SkillTreePanel;
-    public bool toggle;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))

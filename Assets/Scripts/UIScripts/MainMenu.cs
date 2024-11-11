@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour
 
     public GameObject settingsPanel;
     public GameObject selectPanel;
-    public PlayerStats playerStats;
     public static string selectedClass;
 
 

@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
     public float health;
     public float maxHealth;
     public string playerClass;
+    private BottomBar bottomBar;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class PlayerStats : MonoBehaviour
         if (string.IsNullOrEmpty(playerClass) && !string.IsNullOrEmpty(MainMenu.selectedClass))
         {
             InitializeStats();
+            bottomBar = Object.FindFirstObjectByType<BottomBar>();  // Use FindFirstObjectByType for BottomBar
         }
     }
 
