@@ -4,12 +4,16 @@ using UnityEngine.UI;
 public class BottomBar : MonoBehaviour
 {
     public Sprite HearthFull;
+    public Sprite HearthThreeQuarters;
     public Sprite HearthHalf;
+    public Sprite HearthQuarter;
+    public Sprite HearthEmpty;
+
     public Image heartImage;  // Reference to the Image component in HealthUI
 
     private PlayerStats playerStats;
 
-    void FixeUpdate()
+    void FixedUpdate()
     {
         // Use FindFirstObjectByType to find the PlayerStats component
         playerStats = Object.FindFirstObjectByType<PlayerStats>();
@@ -20,14 +24,26 @@ public class BottomBar : MonoBehaviour
 
     public void UpdateHealthImage()
     {
-        // Check if health is above or below half
-        if (playerStats.health >= playerStats.maxHealth / 2)
+        // Check the player's health and update the heart image accordingly
+        if (playerStats.health >= (playerStats.maxHealth * 76) / 100)
         {
-            heartImage.sprite = HearthFull;  // Show full heart if health is 50% or more
+            heartImage.sprite = HearthFull;
+        }
+        else if (playerStats.health >= (playerStats.maxHealth * 51) / 100)
+        {
+            heartImage.sprite = HearthThreeQuarters;
+        }
+        else if (playerStats.health >= (playerStats.maxHealth * 26) / 100)
+        {
+            heartImage.sprite = HearthHalf;
+        }
+        else if (playerStats.health >= (playerStats.maxHealth * 1) / 100)
+        {
+            heartImage.sprite = HearthQuarter;
         }
         else
         {
-            heartImage.sprite = HearthHalf;  // Show half heart if health is below 50%
+            heartImage.sprite = HearthEmpty;  
         }
     }
 }
