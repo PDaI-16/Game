@@ -1104,7 +1104,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2105970133}
           m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-          m_MethodName: StartGame
+          m_MethodName: SelectRanged
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1480,7 +1480,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2105970133}
           m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-          m_MethodName: StartGame
+          m_MethodName: SelectMelee
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2418,7 +2418,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2105970133}
           m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-          m_MethodName: StartGame
+          m_MethodName: SelectMagic
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
