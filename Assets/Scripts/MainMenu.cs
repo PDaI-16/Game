@@ -6,6 +6,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject settingsPanel;
     public GameObject selectPanel;
+    public PlayerStats playerStats;
+    public static string selectedClass;
+
 
     public void StartGame()
     {
@@ -32,9 +35,21 @@ public class MainMenu : MonoBehaviour
     {
         selectPanel.SetActive(false);
     }
+    public void SelectMelee()
+    {
+        selectedClass = "Melee";
+        StartGame();
+    }
 
-    public void SelectImage()
-     {
-        StartGame(); 
-     }
+    public void SelectRanged()
+    {
+        selectedClass = "Ranged";
+        StartGame();
+    }
+
+    public void SelectMagic()
+    {
+        selectedClass = "Magic";
+        StartGame();
+    }
 }
