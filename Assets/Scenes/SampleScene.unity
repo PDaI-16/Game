@@ -436,6 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1149321037}
+  - component: {fileID: 1149321038}
   m_Layer: 0
   m_Name: WeaponSpawner
   m_TagString: Untagged
@@ -458,6 +459,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1149321038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149321036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c15ac4ac3dfaca45b925ef56189d9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSprites:
+  - {fileID: -821610248, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1641298915, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2004021625, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -758129973, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1160843012, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -168130433, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2088792048, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1126870494, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1760885134, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1528549045, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  weapon: {fileID: 0}
+  chosenSprite: {fileID: 0}
 --- !u!1001 &2683329362811795667
 PrefabInstance:
   m_ObjectHideFlags: 0
