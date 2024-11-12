@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -99619573
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1126870494, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  m_Sprite: {fileID: 2088792048, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,6 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6650466961264447942}
+  - component: {fileID: 1818495235630909391}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -119,3 +120,20 @@ Transform:
   - {fileID: 8721601699263338959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818495235630909391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550832497689544042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f284a79f2febec742805c537020498ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  sprite: {fileID: 0}
+  attackSpeed: 0
+  weaponScore: 0
+  levelMultiplier: 0
