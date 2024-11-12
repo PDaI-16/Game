@@ -242,6 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 625600496261253312}
+  - component: {fileID: 285020575558140277}
   m_Layer: 0
   m_Name: Weapon Frame
   m_TagString: Untagged
@@ -265,6 +266,21 @@ Transform:
   - {fileID: 6797865712334257691}
   m_Father: {fileID: 372409239872217965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -22.905}
+--- !u!114 &285020575558140277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161243686675801620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45aa3c4959390b94eb97deb4febc2411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRenderer: {fileID: 5523477561491027954}
+  swordSprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  axeSprite: {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
 --- !u!1 &8272852979777204991
 GameObject:
   m_ObjectHideFlags: 0
