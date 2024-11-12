@@ -1,5 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+/*https://docs.unity3d.com/6000.0/Documentation/Manual/instantiating-prefabs-intro.html
+https://discussions.unity.com/t/best-way-to-reference-a-prefab-game-object/935673/7
+https://discussions.unity.com/t/instantiating-gameobjects-at-random-screen-positions/633835 */
 
 public class WeaponSpawner : MonoBehaviour
 {
@@ -12,22 +16,44 @@ public class WeaponSpawner : MonoBehaviour
 
     [SerializeField] Sprite chosenSprite;
 
+    [SerializeField] GameObject background;
+
+    private float _randomX;
+    private float _randomY;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         //weapon = GameObject.Find("Weapon");
 
         int randomWeaponIndex = Random.Range(0, weaponSprites.Length);
         chosenSprite = weaponSprites[randomWeaponIndex];
-
         print(weaponSprites[randomWeaponIndex]);
+
+
 
         weaponSpriteRenderer = weapon.GetComponentInChildren<SpriteRenderer>();
         weaponSpriteRenderer.sprite = weaponSprites[randomWeaponIndex];
 
-        Instantiate(weapon, new Vector3(0, 0, 0), Quaternion.identity);
+        Renderer renderer = background.GetComponent<SpriteRenderer>();
+
+        _randomX = Random.Range(renderer.bounds.min.x, renderer.bounds.max.x);
+        _randomY = Random.Range(renderer.bounds.min.y, renderer.bounds.max.y);
+        Debug.Log(_randomX);
+        Debug.Log(_randomY);
+        Instantiate(weapon, new Vector3(_randomX, _randomY, 0), Quaternion.identity);
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        {
+            // Draw a yellow sphere at the transform's position
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, 3);
+        }
     }
 
     // Update is called once per frame
