@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2690568097932980754}
   - component: {fileID: 2767041653773481971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1441634743815130511}
   - component: {fileID: 2753480610576612696}
   - component: {fileID: 4681880649504773632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,8 +243,8 @@ GameObject:
   m_Component:
   - component: {fileID: 625600496261253312}
   - component: {fileID: 285020575558140277}
-  m_Layer: 0
-  m_Name: Weapon Frame
+  m_Layer: 9
+  m_Name: Weapon Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,14 +258,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5161243686675801620}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.19855298, w: 0.98009014}
-  m_LocalPosition: {x: 0.35982, y: 0.10857, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
+  m_LocalPosition: {x: 0.333, y: 0.125, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6797865712334257691}
   m_Father: {fileID: 372409239872217965}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -22.905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
 --- !u!114 &285020575558140277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6797865712334257691}
   - component: {fileID: 5523477561491027954}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8272852979777204991}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.34128204, w: 0.93996096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
