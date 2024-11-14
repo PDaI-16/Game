@@ -8,7 +8,7 @@ public class WeaponPickup : MonoBehaviour
         Debug.Log("Weapon Pickup start");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Player is on weapon");
     }
