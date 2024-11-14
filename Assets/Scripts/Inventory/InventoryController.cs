@@ -8,10 +8,11 @@ public class InventoryController : MonoBehaviour
     public List<GameObject> hatsInInventory = new List<GameObject>(); // todo hats
 
 
-    public void AddWeapon()
+    public void AddWeapon(GameObject pickedUpWeapon)
     {
         /*        weaponsInInventory.Add(pickedUpWeapon);*/
-        Debug.Log("In function: addWeapon"); 
+        Debug.Log("In function: addWeapon");
+        weaponsInInventory.Add(pickedUpWeapon);
     }
 
     public void RemoveWeapon(GameObject droppedWeapon)

@@ -6,9 +6,11 @@ public class WeaponPickup : MonoBehaviour
 {
     public GameObject Inventory;
     public InventoryController InventoryScript;
+    public GameObject copyOfSelf;
 
     private void Start()
     {
+        copyOfSelf = this.gameObject;
 
         Inventory = GameObject.FindWithTag("Inventory");
 
@@ -34,13 +36,14 @@ public class WeaponPickup : MonoBehaviour
 
             if (InventoryScript != null)
             {
-                InventoryScript.AddWeapon();
+
+                InventoryScript.AddWeapon(copyOfSelf);
+                Weapon.Destroy(this.gameObject);
             }
             else
             {
                 Debug.LogWarning("InventoryScript is not assigned or doesn't have AddWeapon.");
             }
-
 
         }
     }

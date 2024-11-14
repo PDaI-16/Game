@@ -25,4 +25,6 @@ public class Weapon : MonoBehaviour
 
         weaponScore = damage * attackSpeed;
     }
+
+
 }
