@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 4001579112281035674, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+      propertyPath: Inventory
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83444566
@@ -306,10 +310,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6985159486982324820, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -560,9 +560,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2064573352}
+  - component: {fileID: 2064573353}
   m_Layer: 0
   m_Name: Inventory
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -576,12 +577,26 @@ Transform:
   m_GameObject: {fileID: 2064573351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35691306, y: -0.2842069, z: -0.020924417}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2064573353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064573351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da5fb7d78e51aa46a1720956d45719d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsInInventory: []
+  hatsInInventory: []
 --- !u!1001 &2683329362811795667
 PrefabInstance:
   m_ObjectHideFlags: 0

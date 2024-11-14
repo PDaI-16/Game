@@ -1,22 +1,21 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "InventoryController", menuName = "Scriptable Objects/InventoryController")]
-public class InventoryController : ScriptableObject
+public class InventoryController : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public List<GameObject> weaponsInInventory = new List<GameObject>();
     public List<GameObject> hatsInInventory = new List<GameObject>(); // todo hats
-    
-   
-    void addWeapon(GameObject pickedUpWeapon) {
-        weaponsInInventory.Add(pickedUpWeapon);
+
+
+    public void AddWeapon()
+    {
+        /*        weaponsInInventory.Add(pickedUpWeapon);*/
+        Debug.Log("In function: addWeapon"); 
     }
- 
-    void removeWeapon(GameObject droppedWeapon)
+
+    public void RemoveWeapon(GameObject droppedWeapon)
     {
         weaponsInInventory.Remove(droppedWeapon);
     }
-
 }
