@@ -2,28 +2,21 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public int damage;
-    private Sprite sprite;
-    public float attackSpeed;
-    public float weaponScore;
+    public Sprite _sprite;
+    public float _damage;
+    public float _attackSpeed;
+    public float _weaponScore;
 
-    private int maxPossibleDamage;
-    private int maxPossibleAttackSpeed;
-    private int baseDamage = 3;
-    private int baseAttackSpeed = 3;
 
-    public void Initialize(Sprite weaponSprite, int multiplier)
+    public void SetValues(Sprite sprite, float damage, float attackspeed, float weaponscore)
     {
+        _sprite = sprite;
+        _damage = damage;
+        _attackSpeed = attackspeed;
+        _weaponScore = weaponscore;
 
-        GetComponentInChildren<SpriteRenderer>().sprite = weaponSprite;
-
-        maxPossibleDamage = baseDamage * multiplier;
-        maxPossibleAttackSpeed = baseAttackSpeed * multiplier;
-
-        damage = Random.Range(1, maxPossibleDamage);
-        attackSpeed = Random.Range(1, maxPossibleAttackSpeed);
-
-        weaponScore = damage * attackSpeed;
+        SpriteRenderer spriterenderer = GetComponentInChildren<SpriteRenderer>();
+        spriterenderer.sprite = _sprite;
     }
 
 

@@ -10,22 +10,18 @@ https://gamedevbeginner.com/how-to-make-an-inventory-system-in-unity/
 
 public class WeaponSpawner : MonoBehaviour
 {
-    [SerializeField] private Sprite[] weaponSprites; // Array of weapon sprites
-    [SerializeField] private GameObject weaponPrefab; // Prefab for the weapon to spawn
-    [SerializeField] private GameObject background; // Background object to get bounds
+    [SerializeField] private WeaponSO weaponSO;
+    [SerializeField] private GameObject weaponPrefab;
+    [SerializeField] private GameObject background;
 
-    [SerializeField] private int multiplier = 2; // Multiplier for weapon stats
-
-    private void Start()
+    public void Start()
     {
-        SpawnWeapon();
+        SpawnWeapon(5);
     }
 
-    private void SpawnWeapon()
+    public void SpawnWeapon(int multiplier)
     {
-        // Choose a random sprite from the weapon sprites array
-        int randomWeaponIndex = Random.Range(0, weaponSprites.Length);
-        Sprite chosenSprite = weaponSprites[randomWeaponIndex];
+        Sprite randomSprite = weaponSO.PossibleSprites[Random.Range(0, weaponSO.PossibleSprites.Length)];
 
         // Generate a random position within the background bounds
         Renderer renderer = background.GetComponent<Renderer>();
@@ -33,11 +29,28 @@ public class WeaponSpawner : MonoBehaviour
         float randomY = Random.Range(renderer.bounds.min.y, renderer.bounds.max.y);
         Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
 
-        // Instantiate the weapon prefab at the random position
+
+
+        float damage = Random.Range(1.0f, weaponSO.BaseDamage*multiplier);
+        float attackSpeed = Random.Range(1.0f, weaponSO.BaseAttackSpeed*multiplier);
+        float weaponScore = damage * attackSpeed;
+
+
+
         GameObject weaponInstance = Instantiate(weaponPrefab, spawnPosition, Quaternion.identity);
 
-        // Initialize the weapon with the chosen sprite and stat multiplier
-        Weapon weaponComponent = weaponInstance.GetComponent<Weapon>();
-        weaponComponent.Initialize(chosenSprite, multiplier);
+        Weapon weaponScript = weaponInstance.GetComponent<Weapon>();
+
+        if (weaponScript != null)
+        {
+            weaponScript.SetValues(randomSprite, damage, attackSpeed, weaponScore);
+        }
+        else
+        {
+            Debug.LogError("Weapon script not found on the weapon prefab.");
+        }
+
+
     }
+
 }

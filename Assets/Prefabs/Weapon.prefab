@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 0}
+  InventoryScript: {fileID: 0}
+  copyOfSelf: {fileID: 0}
 --- !u!61 &7573175521086044557
 BoxCollider2D:
   m_ObjectHideFlags: 0
