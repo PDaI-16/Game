@@ -21,24 +21,14 @@ public class WeaponSpawner : MonoBehaviour
 
     public void SpawnWeapon(int multiplier)
     {
-        Sprite randomSprite = weaponSO.PossibleSprites[Random.Range(0, weaponSO.PossibleSprites.Length)];
+        // Get all random stats from WeaponSO
+        var (randomSprite, damage, attackSpeed, weaponScore) = weaponSO.GetRandomWeaponStats(multiplier);
 
-        // Generate a random position within the background bounds
-        Renderer renderer = background.GetComponent<Renderer>();
-        float randomX = Random.Range(renderer.bounds.min.x, renderer.bounds.max.x);
-        float randomY = Random.Range(renderer.bounds.min.y, renderer.bounds.max.y);
-        Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+        // Generate position
+        Vector3 spawnPosition = GetRandomSpawnPosition();
 
-
-
-        float damage = Random.Range(1.0f, weaponSO.BaseDamage*multiplier);
-        float attackSpeed = Random.Range(1.0f, weaponSO.BaseAttackSpeed*multiplier);
-        float weaponScore = damage * attackSpeed;
-
-
-
+        // Instantiate the weapon and set its values
         GameObject weaponInstance = Instantiate(weaponPrefab, spawnPosition, Quaternion.identity);
-
         Weapon weaponScript = weaponInstance.GetComponent<Weapon>();
 
         if (weaponScript != null)
@@ -49,8 +39,13 @@ public class WeaponSpawner : MonoBehaviour
         {
             Debug.LogError("Weapon script not found on the weapon prefab.");
         }
-
-
     }
 
+    private Vector3 GetRandomSpawnPosition()
+    {
+        Renderer renderer = background.GetComponent<Renderer>();
+        float randomX = Random.Range(renderer.bounds.min.x, renderer.bounds.max.x);
+        float randomY = Random.Range(renderer.bounds.min.y, renderer.bounds.max.y);
+        return new Vector3(randomX, randomY, 0);
+    }
 }
