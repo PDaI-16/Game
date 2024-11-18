@@ -135,12 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f284a79f2febec742805c537020498ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponData:
-    Sprite: {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-    Damage: 1
-    AttackSpeed: 1
-    WeaponScore: 1
-  isEquipped: 0
+  _weaponData:
+    Sprite: {fileID: 195837492, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+    Damage: 2
+    AttackSpeed: 2
+    WeaponScore: 4
+  _isEquipped: 0
 --- !u!114 &4001579112281035674
 MonoBehaviour:
   m_ObjectHideFlags: 0

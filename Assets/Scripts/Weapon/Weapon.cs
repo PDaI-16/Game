@@ -2,24 +2,45 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] public WeaponData WeaponData;
-    [SerializeField] public bool isEquipped = false;
+    [SerializeField] private WeaponData _weaponData;
+    [SerializeField] private bool _isEquipped = false;
+
+    private void Start()
+    {
+        UpdateWeaponSprite();
+    }
 
     public void SetValues(Sprite sprite, float damage, float attackSpeed, float weaponScore, bool boolEquip)
     {
-        WeaponData = new WeaponData(sprite, damage, attackSpeed, weaponScore);
-        isEquipped = boolEquip;
+        _weaponData = new WeaponData(sprite, damage, attackSpeed, weaponScore);
+        _isEquipped = boolEquip;
 
+        UpdateWeaponSprite();
+    }
+
+    // A helper method to set the sprite for the weapon
+    private void UpdateWeaponSprite()
+    {
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (spriteRenderer != null)
         {
-            print("Settings the weapons sprite");
-            spriteRenderer.sprite = WeaponData.Sprite;
+            print("Setting the weapon's sprite");
+            spriteRenderer.sprite = _weaponData.Sprite;
+        }
+        else
+        {
+            Debug.LogError("Weapon: Sprite Renderer is null");
         }
     }
 
-    public WeaponData GetValues()
+    // Public getter methods
+    public WeaponData GetWeaponData()
     {
-        return WeaponData;
+        return _weaponData;
+    }
+
+    public bool GetIsEquipped()
+    {
+        return _isEquipped;
     }
 }
