@@ -6,13 +6,13 @@ public class WeaponPickup : MonoBehaviour
 {
     public GameObject Inventory;
     public InventoryController InventoryScript;
-    public GameObject copyOfSelf;
+    public Weapon selfWeaponObject;
 
     private void Start()
     {
-        copyOfSelf = this.gameObject;
 
         Inventory = GameObject.FindWithTag("Inventory");
+        selfWeaponObject = this.GetComponent<Weapon>();
 
         if (Inventory != null)
         {
@@ -36,9 +36,10 @@ public class WeaponPickup : MonoBehaviour
 
             if (InventoryScript != null)
             {
-
-                InventoryScript.AddWeapon(copyOfSelf);
-                Weapon.Destroy(this.gameObject);
+                if (!InventoryScript.weaponsInInventory.Contains(selfWeaponObject))
+                {
+                    InventoryScript.AddWeapon(selfWeaponObject);
+                }
             }
             else
             {
