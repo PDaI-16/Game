@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372409239872217965}
   - component: {fileID: 3142304944509865204}
+  - component: {fileID: 7412304943352921202}
   - component: {fileID: 1441634743815130511}
   - component: {fileID: 2753480610576612696}
   - component: {fileID: 4681880649504773632}
@@ -143,6 +144,23 @@ MonoBehaviour:
   movementSpeed: 1
   WeaponArm: {fileID: 5161243686675801620}
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+--- !u!114 &7412304943352921202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180048407753474886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7359ab5ae24293b43b89c0b9fde46ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponData:
+    Sprite: {fileID: 0}
+    Damage: 0
+    AttackSpeed: 0
+    WeaponScore: 0
 --- !u!95 &1441634743815130511
 Animator:
   serializedVersion: 7
@@ -247,7 +265,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 625600496261253312}
-  - component: {fileID: 285020575558140277}
   m_Layer: 9
   m_Name: Weapon Arm
   m_TagString: Untagged
@@ -271,21 +288,6 @@ Transform:
   - {fileID: 6797865712334257691}
   m_Father: {fileID: 372409239872217965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
---- !u!114 &285020575558140277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5161243686675801620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45aa3c4959390b94eb97deb4febc2411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponRenderer: {fileID: 5523477561491027954}
-  swordSprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  axeSprite: {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
 --- !u!1 &8272852979777204991
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6797865712334257691
 Transform:
   m_ObjectHideFlags: 0
@@ -311,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8272852979777204991}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0

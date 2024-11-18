@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject WeaponArm;
     [SerializeField] GameObject WeaponPrefab;
-    private WeaponData weaponData;
+   
 
 
     private Vector2 _movementInput;

@@ -268,10 +268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 6231308741313867433, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83444566
@@ -488,6 +484,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &975924279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+  m_PrefabInstance: {fileID: 2683329362811795667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149321036
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +549,9 @@ MonoBehaviour:
     Damage: 2
     AttackSpeed: 2
     WeaponScore: 4
-  inventoryController: {fileID: 0}
+  Player: {fileID: 975924279}
+  playerController: {fileID: 2683329362811795668}
+  inventoryController: {fileID: 2064573353}
 --- !u!1 &1455848081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5161243686675801620, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
@@ -660,6 +663,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+--- !u!114 &2683329362811795668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7412304943352921202, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+  m_PrefabInstance: {fileID: 2683329362811795667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975924279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7359ab5ae24293b43b89c0b9fde46ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -19,12 +19,15 @@ public class WeaponSpawner : MonoBehaviour
     [SerializeField] public GameObject WeaponArm;
     [SerializeField] private WeaponData weaponData;
 
+    [SerializeField] public GameObject Player;
+    [SerializeField] private PlayerWeaponController playerWeaponController;
+
     [SerializeField] public InventoryController inventoryController;
 
     public void Start()
     {
         StoreDefaultWeapon();
-        EquipDefaultWeapon();
+/*        EquipDefaultWeapon();*/
         SpawnWeapon(5);
         SpawnWeapon(5);
     }
@@ -56,23 +59,21 @@ public class WeaponSpawner : MonoBehaviour
     {
         /*        defaultWeaponData = new WeaponData();*/
         print("Create default weapon to inventory");
+
+        Player = GameObject.FindWithTag("Player");
+        playerWeaponController = Player.GetComponent<PlayerWeaponController>();
+
         inventoryController = Inventory.GetComponent<InventoryController>();
         if (inventoryController != null)
         {
             inventoryController.AddWeapon(defaultWeaponData);
         }
+
+        playerWeaponController.SetPlayerWeapon(inventoryController.weaponsInInventory[0]);
        
 
     }
 
-    private void EquipDefaultWeapon()
-    {
-        GameObject newWeapon = Instantiate(WeaponPrefab, WeaponArm.transform.position, Quaternion.identity);
-        Weapon weaponScript = newWeapon.GetComponent<Weapon>();
-        weaponScript.SetValues(weaponData.Sprite, weaponData.Damage, weaponData.AttackSpeed, weaponData.WeaponScore, true);
-        newWeapon.transform.SetParent(WeaponArm.transform);
-        newWeapon.transform.position = Vector3.zero;  // Adjust position relative to the weapon arm
-    }
 
     private Vector3 GetRandomSpawnPosition()
     {
