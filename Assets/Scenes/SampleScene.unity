@@ -535,6 +535,13 @@ MonoBehaviour:
   weaponSO: {fileID: 11400000, guid: 438c4c4a7bbdd4542a51b2b5428c26de, type: 2}
   weaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   background: {fileID: 935371815}
+  defaultWeaponData:
+    Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+    Damage: 2
+    AttackSpeed: 2
+    WeaponScore: 4
+  Inventory: {fileID: 2064573351}
+  inventoryController: {fileID: 0}
 --- !u!1 &2064573351
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +596,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 372409239872217965, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 372409239872217965, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -628,6 +639,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: Inventory
+      value: 
+      objectReference: {fileID: 2064573351}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
       value: Player

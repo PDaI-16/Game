@@ -13,9 +13,13 @@ public class WeaponSpawner : MonoBehaviour
     [SerializeField] private WeaponSO weaponSO;
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private GameObject background;
+    [SerializeField] public WeaponData defaultWeaponData;
+    [SerializeField] public GameObject Inventory;
+    [SerializeField] private InventoryController inventoryController;
 
     public void Start()
     {
+        StoreDefaultWeapon();
         SpawnWeapon(5);
         SpawnWeapon(5);
     }
@@ -40,6 +44,15 @@ public class WeaponSpawner : MonoBehaviour
         {
             Debug.LogError("Weapon script not found on the weapon prefab.");
         }
+    }
+
+    private void StoreDefaultWeapon()
+    {
+        /*        defaultWeaponData = new WeaponData();*/
+        print("Create default weapon to inventory");
+        inventoryController = Inventory.GetComponent<InventoryController>();
+        inventoryController.AddWeapon(defaultWeaponData);
+
     }
 
     private Vector3 GetRandomSpawnPosition()
