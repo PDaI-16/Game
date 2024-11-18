@@ -2,33 +2,30 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-
     [SerializeField] private WeaponData _weaponData;
     private SpriteRenderer _weaponSpriteRenderer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-
-    void Start()
+    private void Start()
     {
+        // Initialize the weapon sprite renderer from child components
         _weaponSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
+        if (_weaponSpriteRenderer == null)
+        {
+            Debug.LogError("SpriteRenderer not found in child objects.");
+        }
     }
 
-    public void SetPlayerWeapon(WeaponData weapondata)
+    public void SetPlayerWeapon(WeaponData weaponData)
     {
-        _weaponData = weapondata;
+        _weaponData = weaponData;
 
         if (_weaponSpriteRenderer != null)
         {
-            _weaponSpriteRenderer.sprite = weapondata.Sprite;
+            _weaponSpriteRenderer.sprite = weaponData.Sprite;
         }
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        else
+        {
+            Debug.LogWarning("Cannot set weapon sprite. SpriteRenderer is not assigned.");
+        }
     }
 }

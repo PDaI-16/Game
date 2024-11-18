@@ -256,6 +256,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &521167173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+  m_PrefabInstance: {fileID: 581651687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &581651687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,11 +489,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &975924279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149321036
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,30 +533,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c15ac4ac3dfaca45b925ef56189d9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSO: {fileID: 11400000, guid: 438c4c4a7bbdd4542a51b2b5428c26de, type: 2}
-  weaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-  background: {fileID: 935371815}
-  defaultWeaponData:
+  _weaponSO: {fileID: 11400000, guid: 438c4c4a7bbdd4542a51b2b5428c26de, type: 2}
+  _weaponPrefab: {fileID: 521167173}
+  _background: {fileID: 935371815}
+  _defaultWeaponData:
     Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
     Damage: 2
     AttackSpeed: 2
     WeaponScore: 4
-  Inventory: {fileID: 2064573351}
-  WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-  WeaponArm: {fileID: 1455848081}
-  weaponData:
-    Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-    Damage: 2
-    AttackSpeed: 2
-    WeaponScore: 4
-  Player: {fileID: 975924279}
-  playerController: {fileID: 2683329362811795668}
-  inventoryController: {fileID: 2064573353}
---- !u!1 &1455848081 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5161243686675801620, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
+  _inventory: {fileID: 2064573351}
 --- !u!1 &2064573351
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,17 +648,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
---- !u!114 &2683329362811795668 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7412304943352921202, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975924279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7359ab5ae24293b43b89c0b9fde46ba9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
