@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth;
     public string playerClass;
     private BottomBar bottomBar;
+    public int availableSkillPoints = 5; // Default value for available skill points
+
 
     void Awake()
     {
@@ -51,5 +53,15 @@ public class PlayerStats : MonoBehaviour
 
     
         health = maxHealth;
+    }
+      public int GetAvailableSkillPoints()
+    {
+        return availableSkillPoints;
+    }
+
+    // Setter for available skill points (if you want to modify the points elsewhere)
+    public void SpendSkillPoints(int cost)
+    {
+        availableSkillPoints -= cost;
     }
 }
