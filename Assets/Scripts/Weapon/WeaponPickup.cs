@@ -33,7 +33,7 @@ public class WeaponPickup : MonoBehaviour
             if (InventoryController != null)
             {
                 // Make sure the weapon is not already equipped before adding it to the inventory
-                if (selfWeaponScript != null)
+                if (selfWeaponScript != null && selfWeaponScript.isEquipped == false)
                 {
                     // Add weapon to the inventory
                     InventoryController.AddWeapon(selfWeaponScript.WeaponData);

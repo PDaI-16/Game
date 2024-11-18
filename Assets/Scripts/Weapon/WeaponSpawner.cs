@@ -19,7 +19,7 @@ public class WeaponSpawner : MonoBehaviour
     [SerializeField] public GameObject WeaponArm;
     [SerializeField] private WeaponData weaponData;
 
-    private InventoryController inventoryController;
+    [SerializeField] public InventoryController inventoryController;
 
     public void Start()
     {

@@ -268,10 +268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 4001579112281035674, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-      propertyPath: Inventory
+    - target: {fileID: 6231308741313867433, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2064573351}
+      objectReference: {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83444566
@@ -541,7 +541,19 @@ MonoBehaviour:
     AttackSpeed: 2
     WeaponScore: 4
   Inventory: {fileID: 2064573351}
+  WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+  WeaponArm: {fileID: 1455848081}
+  weaponData:
+    Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+    Damage: 2
+    AttackSpeed: 2
+    WeaponScore: 4
   inventoryController: {fileID: 0}
+--- !u!1 &1455848081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5161243686675801620, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+  m_PrefabInstance: {fileID: 2683329362811795667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2064573351
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,10 +607,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 372409239872217965, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 372409239872217965, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

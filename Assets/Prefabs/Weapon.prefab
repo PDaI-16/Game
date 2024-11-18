@@ -136,10 +136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponData:
-    Sprite: {fileID: 0}
+    Sprite: {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
     Damage: 1
     AttackSpeed: 1
-    WeaponScore: 2
+    WeaponScore: 1
   isEquipped: 0
 --- !u!114 &4001579112281035674
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inventory: {fileID: 0}
   InventoryController: {fileID: 0}
-  selfWeaponObject: {fileID: 0}
+  selfWeaponScript: {fileID: 0}
 --- !u!61 &7573175521086044557
 BoxCollider2D:
   m_ObjectHideFlags: 0
