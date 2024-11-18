@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     public float _attackSpeed;
     public float _weaponScore;
 
+    [SerializeField] public WeaponData WeaponData;
 
     public void SetValues(Sprite sprite, float damage, float attackspeed, float weaponscore)
     {
@@ -17,7 +18,14 @@ public class Weapon : MonoBehaviour
 
         SpriteRenderer spriterenderer = GetComponentInChildren<SpriteRenderer>();
         spriterenderer.sprite = _sprite;
+
+        WeaponData = new WeaponData(_sprite, _damage, _attackSpeed, _weaponScore);
     }
 
+    public (Sprite, float, float, float) GetValues()
+    {
+        
+        return (_sprite, _damage, _attackSpeed, _weaponScore);
+    }
 
 }

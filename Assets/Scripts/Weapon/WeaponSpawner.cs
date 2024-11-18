@@ -17,6 +17,7 @@ public class WeaponSpawner : MonoBehaviour
     public void Start()
     {
         SpawnWeapon(5);
+        SpawnWeapon(5);
     }
 
     public void SpawnWeapon(int multiplier)

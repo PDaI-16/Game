@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 4001579112281035674, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+      propertyPath: Inventory
+      value: 
+      objectReference: {fileID: 2064573351}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83444566
@@ -576,7 +580,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsInInventory: []
-  hatsInInventory: []
 --- !u!1001 &2683329362811795667
 PrefabInstance:
   m_ObjectHideFlags: 0

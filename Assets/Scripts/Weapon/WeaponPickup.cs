@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class WeaponPickup : MonoBehaviour
 
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -36,10 +38,11 @@ public class WeaponPickup : MonoBehaviour
 
             if (InventoryScript != null)
             {
-                if (!InventoryScript.weaponsInInventory.Contains(selfWeaponObject))
-                {
-                    InventoryScript.AddWeapon(selfWeaponObject);
-                }
+
+                InventoryScript.AddWeapon(selfWeaponObject.WeaponData);
+                Destroy(this.gameObject);
+
+
             }
             else
             {
