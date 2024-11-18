@@ -5,50 +5,50 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public GameObject Inventory;
-    public InventoryController InventoryScript;
-    public Weapon selfWeaponObject;
+    [SerializeField] public GameObject Inventory;
+    [SerializeField] public InventoryController InventoryController;
+    [SerializeField] public Weapon selfWeaponScript;
 
     private void Start()
     {
-
+        // Find Inventory GameObject by tag
         Inventory = GameObject.FindWithTag("Inventory");
-        selfWeaponObject = this.GetComponent<Weapon>();
+        InventoryController = Inventory.GetComponent<InventoryController>();
 
-        if (Inventory != null)
-        {
-            InventoryScript = Inventory.GetComponent<InventoryController>();
-        }
-        else
-        {
-            Debug.LogWarning("Inventory with tag 'Inventory' not found.");
-        }
+        // Try to get the Weapon component attached to this GameObject
+        selfWeaponScript = GetComponent<Weapon>();
+
 
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         Debug.Log("Collision happened with the weapon");
+
+        // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
 
-            Debug.Log("Player is on weapon");
-
-            if (InventoryScript != null)
+            // Check if InventoryScript is properly assigned
+            if (InventoryController != null)
             {
-
-                InventoryScript.AddWeapon(selfWeaponObject.WeaponData);
-                Destroy(this.gameObject);
-
-
+                // Make sure the weapon is not already equipped before adding it to the inventory
+                if (selfWeaponScript != null)
+                {
+                    // Add weapon to the inventory
+                    InventoryController.AddWeapon(selfWeaponScript.WeaponData);
+                    // Destroy the weapon pickup object after adding to inventory
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning("Weapon is already equipped or selfWeaponObject is null.");
+                }
             }
             else
             {
                 Debug.LogWarning("InventoryScript is not assigned or doesn't have AddWeapon.");
             }
-
         }
     }
 }

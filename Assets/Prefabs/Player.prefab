@@ -117,7 +117,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 625600496261253312}
@@ -137,7 +137,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 4681880649504773632}
+  Inventory: {fileID: 0}
+  InventoryController: {fileID: 0}
+  InventoryWeapons: []
   movementSpeed: 1
+  WeaponArm: {fileID: 5161243686675801620}
+  WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
 --- !u!95 &1441634743815130511
 Animator:
   serializedVersion: 7
@@ -297,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6797865712334257691
 Transform:
   m_ObjectHideFlags: 0

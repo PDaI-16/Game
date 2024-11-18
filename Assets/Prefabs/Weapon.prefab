@@ -140,6 +140,7 @@ MonoBehaviour:
     Damage: 1
     AttackSpeed: 1
     WeaponScore: 2
+  isEquipped: 0
 --- !u!114 &4001579112281035674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 0}
-  InventoryScript: {fileID: 0}
+  InventoryController: {fileID: 0}
   selfWeaponObject: {fileID: 0}
 --- !u!61 &7573175521086044557
 BoxCollider2D:
