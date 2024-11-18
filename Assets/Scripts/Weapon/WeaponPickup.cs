@@ -1,54 +1,69 @@
-
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    [SerializeField] public GameObject Inventory;
-    [SerializeField] public InventoryController InventoryController;
-    [SerializeField] public Weapon selfWeaponScript;
+    [SerializeField] private GameObject _inventory;
+    [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private Weapon _selfWeaponScript;
 
     private void Start()
     {
+        InitializeInventory();
+        InitializeWeaponScript();
+    }
+
+    private void InitializeInventory()
+    {
         // Find Inventory GameObject by tag
-        Inventory = GameObject.FindWithTag("Inventory");
-        InventoryController = Inventory.GetComponent<InventoryController>();
+        _inventory = GameObject.FindWithTag("Inventory");
 
+        if (_inventory != null)
+        {
+            _inventoryController = _inventory.GetComponent<InventoryController>();
+        }
+        else
+        {
+            Debug.LogError("Inventory GameObject not found.");
+        }
+    }
+
+    private void InitializeWeaponScript()
+    {
         // Try to get the Weapon component attached to this GameObject
-        selfWeaponScript = GetComponent<Weapon>();
+        _selfWeaponScript = GetComponent<Weapon>();
 
-
+        if (_selfWeaponScript == null)
+        {
+            Debug.LogError("Weapon component is missing on this GameObject.");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision happened with the weapon");
-
-        // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
-
-            // Check if InventoryScript is properly assigned
-            if (InventoryController != null)
-            {
-                // Make sure the weapon is not already equipped before adding it to the inventory
-                if (selfWeaponScript != null && selfWeaponScript.GetIsEquipped() == false)
-                {
-                    // Add weapon to the inventory
-                    InventoryController.AddWeapon(selfWeaponScript.GetWeaponData());
-                    // Destroy the weapon pickup object after adding to inventory
-                    Destroy(this.gameObject);
-                }
-                else
-                {
-                    Debug.LogWarning("Weapon is already equipped or selfWeaponObject is null.");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("InventoryScript is not assigned or doesn't have AddWeapon.");
-            }
+            HandleWeaponPickup();
         }
+    }
+
+    private void HandleWeaponPickup()
+    {
+        if (_inventoryController == null)
+        {
+            Debug.LogWarning("InventoryController is not assigned or invalid.");
+            return;
+        }
+
+        if (_selfWeaponScript == null || _selfWeaponScript.GetIsEquipped())
+        {
+            Debug.LogWarning("Weapon is already equipped or selfWeaponScript is missing.");
+            return;
+        }
+
+        // Add weapon to the inventory
+        _inventoryController.AddWeapon(_selfWeaponScript.GetWeaponData());
+
+        // Destroy the weapon pickup object after adding to inventory
+        Destroy(gameObject);
     }
 }
