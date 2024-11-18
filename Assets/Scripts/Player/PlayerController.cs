@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody2D playerRigidbody;
+    [SerializeField] GameObject Inventory;
+    [SerializeField] InventoryController InventoryController;
     [SerializeField] int movementSpeed;
     
     
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        InventoryController = Inventory.GetComponent<InventoryController>();
         _mainCamera = Camera.main;
         movementSpeed = 2;
         _playerAnimator = GetComponent<Animator>();
