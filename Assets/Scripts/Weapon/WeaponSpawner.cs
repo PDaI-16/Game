@@ -74,6 +74,17 @@ public class WeaponSpawner : MonoBehaviour
 
     }
 
+    private void Update()
+    {  
+        // Just for testing, changes to latest picked weapon automatically...
+        if (inventoryController.weaponsInInventory.Count > 0) // Check if there is at least one weapon
+        {
+            playerWeaponController.SetPlayerWeapon(
+                inventoryController.weaponsInInventory[inventoryController.weaponsInInventory.Count - 1]
+            );
+        }
+    }
+
 
     private Vector3 GetRandomSpawnPosition()
     {
