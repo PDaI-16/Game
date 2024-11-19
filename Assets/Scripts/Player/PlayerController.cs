@@ -121,14 +121,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void UpdateAnimationState()
+    private void UpdateAnimationState()
     {
-        Animator animator = GetComponent<Animator>();
-        if (animator != null)
+        if (_playerAnimator != null)
         {
-            animator.SetInteger("AnimationState", (int)currentAnimationState);
+            // Reset all triggers
+            _playerAnimator.SetInteger("AnimatorState", (int)currentAnimationState);
+
+            _playerAnimator.ResetTrigger("TriggerIdleUp");
+            _playerAnimator.ResetTrigger("TriggerIdleRight");
+            _playerAnimator.ResetTrigger("TriggerIdleDown");
+            _playerAnimator.ResetTrigger("TriggerIdleLeft");
+            _playerAnimator.ResetTrigger("TriggerWalkUp");
+            _playerAnimator.ResetTrigger("TriggerWalkRight");
+            _playerAnimator.ResetTrigger("TriggerWalkDown");
+            _playerAnimator.ResetTrigger("TriggerWalkLeft");
+
+            // Set the trigger for the current animation state
+            switch (currentAnimationState)
+            {
+                case AnimationState.IdleUp:
+                    _playerAnimator.SetTrigger("TriggerIdleUp");
+                    
+                    break;
+                case AnimationState.IdleRight:
+                    _playerAnimator.SetTrigger("TriggerIdleRight");
+                    break;
+                case AnimationState.IdleDown:
+                    _playerAnimator.SetTrigger("TriggerIdleDown");
+                    break;
+                case AnimationState.IdleLeft:
+                    _playerAnimator.SetTrigger("TriggerIdleLeft");
+                    break;
+                case AnimationState.WalkUp:
+                    _playerAnimator.SetTrigger("TriggerWalkUp");
+                    break;
+                case AnimationState.WalkRight:
+                    _playerAnimator.SetTrigger("TriggerWalkRight");
+                    break;
+                case AnimationState.WalkDown:
+                    _playerAnimator.SetTrigger("TriggerWalkDown");
+                    break;
+                case AnimationState.WalkLeft:
+                    _playerAnimator.SetTrigger("TriggerWalkLeft");
+                    break;
+            }
         }
     }
+
 
     void AnimationHandler()
     {
