@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7b9b8e62eae234dbe4600aefff0d13, type: 3}
+  m_Name: WeaponSO
+  m_EditorClassIdentifier: 
+  possibleSprites:
+  - {fileID: -821610248, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1641298915, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2004021625, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -758129973, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1160843012, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -168130433, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2088792048, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1126870494, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1760885134, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1528549045, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  weaponType: 0
+  damage: 1
+  attackSpeed: 1

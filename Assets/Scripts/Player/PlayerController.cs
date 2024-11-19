@@ -1,12 +1,21 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody2D playerRigidbody;
+    [SerializeField] GameObject Inventory;
+    [SerializeField] InventoryController InventoryController;
+    [SerializeField] List<WeaponData> InventoryWeapons;
     [SerializeField] int movementSpeed;
-    
-    
+
+    [SerializeField] GameObject WeaponArm;
+    [SerializeField] GameObject WeaponPrefab;
+   
+
+
     private Vector2 _movementInput;
     private Animator _playerAnimator;
     private Camera _mainCamera;
@@ -18,6 +27,8 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        InventoryController = Inventory.GetComponent<InventoryController>();
+        InventoryWeapons = InventoryController.weaponsInInventory;
         _mainCamera = Camera.main;
         movementSpeed = 2;
         _playerAnimator = GetComponent<Animator>();
@@ -38,6 +49,9 @@ public class PlayerController : MonoBehaviour
         FlipPlayer();
         AnimationHandler();
        }
+
+
+
    void AnimationHandler()
     {
 
