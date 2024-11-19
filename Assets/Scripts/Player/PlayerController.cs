@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             print("LEFT");
             currentAnimationState = _isMoving ? AnimationState.WalkLeft : AnimationState.IdleLeft;
         }
-        else
+        else if(angleInDegrees > 135 || angleInDegrees < -135)
         {
             print("DOWN");
             currentAnimationState = _isMoving ? AnimationState.WalkDown : AnimationState.IdleDown;
