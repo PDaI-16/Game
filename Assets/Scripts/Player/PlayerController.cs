@@ -126,7 +126,8 @@ public class PlayerController : MonoBehaviour
         if (_playerAnimator != null)
         {
             // Reset all triggers
-            _playerAnimator.SetInteger("AnimatorState", (int)currentAnimationState);
+            _playerAnimator.SetInteger("AnimationState", (int)currentAnimationState);
+            print("Current Animation state: " + currentAnimationState);
 
             _playerAnimator.ResetTrigger("TriggerIdleUp");
             _playerAnimator.ResetTrigger("TriggerIdleRight");
