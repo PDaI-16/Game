@@ -68,9 +68,6 @@ public class PlayerController : MonoBehaviour
         _mousePosition = Input.mousePosition;
         _screenPoint = _mainCamera.WorldToScreenPoint(transform.localPosition);
 
-        /*        FlipPlayer();*/
-
-        /*        AnimationHandler();*/
 
         UpdateIsMoving();
         UpdateLookDirection();
@@ -135,18 +132,7 @@ public class PlayerController : MonoBehaviour
         currentAnimationState = newState;
     }
 
-    void FlipPlayer()
-    {
 
-        if (_mousePosition.x < _screenPoint.x)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }            
-    }
 }
 
 
