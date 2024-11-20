@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
@@ -7,14 +9,14 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public enum AnimationState
 {
-    IdleUp, // 0 , AnimationState integer 
-    IdleRight, // 1
-    IdleDown, // 2
-    IdleLeft, // 3
-    WalkUp, // 4
-    WalkRight, // 5
-    WalkDown, // 6
-    WalkLeft // 7
+    player_idle_up, 
+    player_idle_right, 
+    player_idle_down,  
+    player_idle_left, 
+    player_walk_up, 
+    player_walk_right, 
+    player_walk_down, 
+    player_walk_left 
 }
 
 
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMoving;
     private AnimationState currentAnimationState;
+    private AnimationState newAnimationState;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         UpdateIsMoving();
         UpdateLookDirection();
-        UpdateAnimationState();
+        ChangeAnimationState(newAnimationState);
 
        }
 
@@ -90,22 +93,22 @@ public class PlayerController : MonoBehaviour
 
         if(angleInDegrees > -45 && angleInDegrees < 45){
             print("UP");
-            currentAnimationState = _isMoving ? AnimationState.WalkUp : AnimationState.IdleUp;
+            newAnimationState = _isMoving ? AnimationState.player_walk_up : AnimationState.player_idle_up;
         }
         else if(angleInDegrees > 45 && angleInDegrees < 135)
         {
             print("RIGHT");
-            currentAnimationState = _isMoving ? AnimationState.WalkRight : AnimationState.IdleRight;
+            newAnimationState = _isMoving ? AnimationState.player_walk_right : AnimationState.player_idle_right;
         }
         else if(angleInDegrees < -45 && angleInDegrees > -135)
         {
             print("LEFT");
-            currentAnimationState = _isMoving ? AnimationState.WalkLeft : AnimationState.IdleLeft;
+            newAnimationState = _isMoving ? AnimationState.player_walk_left : AnimationState.player_idle_left;
         }
         else if(angleInDegrees > 135 || angleInDegrees < -135)
         {
             print("DOWN");
-            currentAnimationState = _isMoving ? AnimationState.WalkDown : AnimationState.IdleDown;
+            newAnimationState = _isMoving ? AnimationState.player_walk_down : AnimationState.player_idle_down;
         }
     }
 
@@ -121,78 +124,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UpdateAnimationState()
+    void ChangeAnimationState(AnimationState newState)
     {
-        if (_playerAnimator != null)
-        {
-            // Reset all triggers
-            _playerAnimator.SetInteger("AnimationState", (int)currentAnimationState);
-            print("Current Animation state: " + currentAnimationState);
+        string state = newState.ToString();
 
-            _playerAnimator.ResetTrigger("TriggerIdleUp");
-            _playerAnimator.ResetTrigger("TriggerIdleRight");
-            _playerAnimator.ResetTrigger("TriggerIdleDown");
-            _playerAnimator.ResetTrigger("TriggerIdleLeft");
-            _playerAnimator.ResetTrigger("TriggerWalkUp");
-            _playerAnimator.ResetTrigger("TriggerWalkRight");
-            _playerAnimator.ResetTrigger("TriggerWalkDown");
-            _playerAnimator.ResetTrigger("TriggerWalkLeft");
+        if (currentAnimationState == newState) return;
 
-            // Set the trigger for the current animation state
-            switch (currentAnimationState)
-            {
-                case AnimationState.IdleUp:
-                    _playerAnimator.SetTrigger("TriggerIdleUp");
-                    
-                    break;
-                case AnimationState.IdleRight:
-                    _playerAnimator.SetTrigger("TriggerIdleRight");
-                    break;
-                case AnimationState.IdleDown:
-                    _playerAnimator.SetTrigger("TriggerIdleDown");
-                    break;
-                case AnimationState.IdleLeft:
-                    _playerAnimator.SetTrigger("TriggerIdleLeft");
-                    break;
-                case AnimationState.WalkUp:
-                    _playerAnimator.SetTrigger("TriggerWalkUp");
-                    break;
-                case AnimationState.WalkRight:
-                    _playerAnimator.SetTrigger("TriggerWalkRight");
-                    break;
-                case AnimationState.WalkDown:
-                    _playerAnimator.SetTrigger("TriggerWalkDown");
-                    break;
-                case AnimationState.WalkLeft:
-                    _playerAnimator.SetTrigger("TriggerWalkLeft");
-                    break;
-            }
-        }
-    }
+        _playerAnimator.Play(state);
 
-
-    void AnimationHandler()
-    {
-        Animator animator = GetComponent<Animator>();
-
-
-        if (_movementInput.x == 0 && _movementInput.y == 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 0); // Idle
-        }
-        else if(_movementInput.x != 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 1); // Walk right or left
-        }
-        else if(_movementInput.y > 0 && _movementInput.x == 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 2); // Walk up
-        }
-        else if(_movementInput.y < 0 && _movementInput.x == 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 3); // Walk down
-        }
-
+        currentAnimationState = newState;
     }
 
     void FlipPlayer()
