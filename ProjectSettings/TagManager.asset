@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Player
+  - Weapon
   - 
   - Menu
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3507243511
+    locked: 0
+  - name: PlayerWeapon
+    uniqueID: 4195347723
     locked: 0
   m_RenderingLayers:
   - Default
