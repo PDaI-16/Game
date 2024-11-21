@@ -1,6 +1,24 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
+
+
+public enum AnimationState
+{
+    player_idle_up, 
+    player_idle_right, 
+    player_idle_down,  
+    player_idle_left, 
+    player_walk_up, 
+    player_walk_right, 
+    player_walk_down, 
+    player_walk_left 
+}
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,8 +31,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject WeaponArm;
     [SerializeField] GameObject WeaponPrefab;
-   
 
+    [SerializeField] public string lookDirection;
 
     private Vector2 _movementInput;
     private Animator _playerAnimator;
@@ -22,6 +40,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _mousePosition;
     private Vector3 _screenPoint;
+
+    private bool _isMoving;
+    private AnimationState currentAnimationState;
+    private AnimationState newAnimationState;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,44 +68,71 @@ public class PlayerController : MonoBehaviour
         _mousePosition = Input.mousePosition;
         _screenPoint = _mainCamera.WorldToScreenPoint(transform.localPosition);
 
-        FlipPlayer();
-        AnimationHandler();
+
+        UpdateIsMoving();
+        UpdateLookDirection();
+        ChangeAnimationState(newAnimationState);
+
        }
 
-
-
-   void AnimationHandler()
+    void UpdateLookDirection()
     {
+        Vector2 dir = _mousePosition - _screenPoint;
 
-        if(_movementInput.x == 0 && _movementInput.y == 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 0); // Idle
-        }
-        else if(_movementInput.x != 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 1); // Walk right or left
-        }
-        else if(_movementInput.y > 0 && _movementInput.x == 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 2); // Walk up
-        }
-        else if(_movementInput.y < 0 && _movementInput.x == 0)
-        {
-            _playerAnimator.SetInteger("walkingState", 3); // Walk down
-        }
+        // Calculate angle in radians
+        float angleInRadians = Mathf.Atan2(dir.x, dir.y);
 
+        // Convert radians to degrees
+        float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
+/*
+        print("Mouse angle in degrees: " + angleInDegrees);*/
+
+
+        if(angleInDegrees > -45 && angleInDegrees < 45){
+            print("UP");
+            newAnimationState = _isMoving ? AnimationState.player_walk_up : AnimationState.player_idle_up;
+        }
+        else if(angleInDegrees > 45 && angleInDegrees < 135)
+        {
+            print("RIGHT");
+            newAnimationState = _isMoving ? AnimationState.player_walk_right : AnimationState.player_idle_right;
+        }
+        else if(angleInDegrees < -45 && angleInDegrees > -135)
+        {
+            print("LEFT");
+            newAnimationState = _isMoving ? AnimationState.player_walk_left : AnimationState.player_idle_left;
+        }
+        else if(angleInDegrees > 135 || angleInDegrees < -135)
+        {
+            print("DOWN");
+            newAnimationState = _isMoving ? AnimationState.player_walk_down : AnimationState.player_idle_down;
+        }
     }
 
-    void FlipPlayer()
+    public void UpdateIsMoving()
     {
-
-        if (_mousePosition.x < _screenPoint.x)
+        if(_movementInput.x == 0 && _movementInput.y == 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            _isMoving = false;
         }
         else
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }            
+            _isMoving = true;
+        }
     }
+
+    void ChangeAnimationState(AnimationState newState)
+    {
+        string state = newState.ToString();
+
+        if (currentAnimationState == newState) return;
+
+        _playerAnimator.Play(state);
+
+        currentAnimationState = newState;
+    }
+
+
 }
+
+
