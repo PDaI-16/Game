@@ -4,15 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponSO", menuName = "Scriptable Objects/WeaponSO")]
 public class WeaponSO : ScriptableObject
 {
-    
-    public enum WeaponType
-    {
-        Melee,
-        Ranged,
-        Magic
-    }
 
-    [SerializeField] private WeaponType weaponType;
 
     [SerializeField] private Sprite[] possibleSprites;
 
@@ -21,9 +13,7 @@ public class WeaponSO : ScriptableObject
     [SerializeField] private float baseAttackSpeed = 3.0f;
 
 
-
     public Sprite[] PossibleSprites => possibleSprites;
-    public WeaponType Type => weaponType;
     public float BaseDamage => baseDamage;
     public float BaseAttackSpeed => baseAttackSpeed;
 

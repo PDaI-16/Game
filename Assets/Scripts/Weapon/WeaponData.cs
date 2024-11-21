@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 // References
-// https://stackoverflow.com/questions/972307/how-to-loop-through-all-enum-values-in-c
+// https://stackoverflow.com/questions/972307/how-to-loop-through-all-enum-values-in-c // Iterating an enum
 
 public class WeaponData
 {
