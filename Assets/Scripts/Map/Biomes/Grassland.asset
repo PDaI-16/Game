@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d468c45e408a944ad6edf780e14bcf, type: 3}
+  m_Name: Grassland
+  m_EditorClassIdentifier: 
+  biomeName: Grassland
+  ruleTile: {fileID: 11400000, guid: ac8e0aad6c16d814b8eff11d6e473c0d, type: 2}
+  minHeight: 0.2
+  minMoisture: 0.5
+  minHeat: 0.3
+  environmentObjects:
+  - prefab: {fileID: 1520593319525261209, guid: e25ce0803a4b7c841b5e77c3792e66ce, type: 3}
+    spawnProbability: 0.45
+    minDistanceFromEdge: 0
+  - prefab: {fileID: 1520593319525261209, guid: 233866b2689185044beb069854f64392, type: 3}
+    spawnProbability: 0.75
+    minDistanceFromEdge: 0
+  - prefab: {fileID: 1520593319525261209, guid: 5492bffd352ea69408190870d83a10d1, type: 3}
+    spawnProbability: 0.3
+    minDistanceFromEdge: 1
+  - prefab: {fileID: 1520593319525261209, guid: 20176bd2b53375e4883de0e6ffd62a23, type: 3}
+    spawnProbability: 0.2
+    minDistanceFromEdge: 1
