@@ -11,6 +11,7 @@ public class SkillTree : MonoBehaviour
         public int cost;     // Cost to unlock the skill
         public int prerequisiteSkillIndex = -1; // Index of the prerequisite skill (if any)
         public bool isUnlocked = false; // Whether the skill is unlocked or not
+        public string requiredClass; // The player class required for this skill (optional)
     }
 
     public Skill[] skills; // Array of skills in the skill tree
@@ -24,6 +25,8 @@ public class SkillTree : MonoBehaviour
             Debug.LogError("PlayerStats is not assigned in the inspector!");
             return;
         }
+
+        UnlockFirstSkillBasedOnClass();
 
         // Set up EventTriggers for each image
         for (int i = 0; i < skillImages.Length; i++)
@@ -46,6 +49,25 @@ public class SkillTree : MonoBehaviour
             // Assign the callback method for clicking
             pointerClickEntry.callback.AddListener((eventData) => OnSkillClick(skillIndex));
             eventTrigger.triggers.Add(pointerClickEntry);
+        }
+
+        UpdateSkillVisuals(); // Update visuals after initializing
+    }
+
+    void UnlockFirstSkillBasedOnClass()
+    {
+        string playerClass = playerStats.playerClass;
+
+        // Iterate through the skills to find the first skill for the player's class
+        for (int i = 0; i < skills.Length; i++)
+        {
+            if (skills[i].requiredClass == playerClass && !skills[i].isUnlocked)
+            {
+                Debug.Log($"Automatically unlocking first skill for class: {playerClass}");
+                skills[i].isUnlocked = true; // Unlock the skill
+                UpdateSkillVisuals(); // Update UI visuals
+                break; // Stop after unlocking the first skill for the class
+            }
         }
     }
 
