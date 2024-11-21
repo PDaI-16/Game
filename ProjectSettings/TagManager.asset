@@ -51,5 +51,8 @@ TagManager:
   - name: PlayerWeapon
     uniqueID: 4195347723
     locked: 0
+  - name: InGameUI
+    uniqueID: 2532103855
+    locked: 0
   m_RenderingLayers:
   - Default

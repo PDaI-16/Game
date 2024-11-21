@@ -140,7 +140,11 @@ MonoBehaviour:
   playerRigidbody: {fileID: 4681880649504773632}
   Inventory: {fileID: 0}
   InventoryController: {fileID: 0}
-  InventoryWeapons: []
+  InventoryWeapons:
+  - Sprite: {fileID: 0}
+    Damage: 0
+    AttackSpeed: 0
+    WeaponScore: 0
   movementSpeed: 1
   WeaponArm: {fileID: 5161243686675801620}
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
