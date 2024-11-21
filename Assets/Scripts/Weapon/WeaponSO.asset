@@ -28,6 +28,13 @@ MonoBehaviour:
   - {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1528549045, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  weaponType: 0
-  damage: 1
-  attackSpeed: 1
+  - {fileID: -6485620861604442150, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 1603191712332893284, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 8129931209985509928, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -3660968397536320358, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 522230306696365469, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -522063991367933815, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -4958237423881113845, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 3075639979285774041, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  baseDamage: 3
+  baseAttackSpeed: 3

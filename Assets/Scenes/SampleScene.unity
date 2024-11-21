@@ -4460,10 +4460,11 @@ MonoBehaviour:
   _weaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   _background: {fileID: 935371815}
   _defaultWeaponData:
-    Sprite: {fileID: -821610248, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-    Damage: 2
-    AttackSpeed: 2
-    WeaponScore: 4
+    Sprite: {fileID: 0}
+    Damage: 0
+    AttackSpeed: 0
+    WeaponScore: 0
+    weaponType: 0
   _inventory: {fileID: 2064573351}
 --- !u!4 &1995354917
 Transform:
