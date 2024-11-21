@@ -9,9 +9,10 @@ public class SkillTree : MonoBehaviour
     {
         public string name;  // Name of the skill
         public int cost;     // Cost to unlock the skill
-        public int prerequisiteSkillIndex = -1; // Index of the prerequisite skill (if any)
+        public int[] prerequisiteSkillIndices; // Indices of prerequisite skills (can be multiple)
         public bool isUnlocked = false; // Whether the skill is unlocked or not
         public string requiredClass; // The player class required for this skill (optional)
+        public bool isSpecial = false; // Indicates if the skill is a special skill
     }
 
     public Skill[] skills; // Array of skills in the skill tree
@@ -82,10 +83,7 @@ public class SkillTree : MonoBehaviour
         Skill clickedSkill = skills[skillIndex];
         Debug.Log($"Clicked on skill: {clickedSkill.name}");
 
-        int availableSkillPoints = playerStats.GetAvailableSkillPoints();
-
-        if (availableSkillPoints >= clickedSkill.cost &&
-            (clickedSkill.prerequisiteSkillIndex == -1 || skills[clickedSkill.prerequisiteSkillIndex].isUnlocked))
+        if (CanUnlockSkill(clickedSkill))
         {
             UnlockSkill(clickedSkill);
         }
@@ -93,6 +91,35 @@ public class SkillTree : MonoBehaviour
         {
             Debug.Log("Not enough points or prerequisites not met.");
         }
+    }
+
+    bool CanUnlockSkill(Skill skill)
+    {
+        int availableSkillPoints = playerStats.GetAvailableSkillPoints();
+
+        // Check if the player has enough points
+        if (availableSkillPoints < skill.cost)
+            return false;
+
+        // Check if at least one prerequisite skill is unlocked
+        if (skill.prerequisiteSkillIndices != null && skill.prerequisiteSkillIndices.Length > 0)
+        {
+            bool anyPrerequisiteUnlocked = false;
+
+            foreach (int prerequisiteIndex in skill.prerequisiteSkillIndices)
+            {
+                if (prerequisiteIndex >= 0 && prerequisiteIndex < skills.Length && skills[prerequisiteIndex].isUnlocked)
+                {
+                    anyPrerequisiteUnlocked = true;
+                    break;
+                }
+            }
+
+            if (!anyPrerequisiteUnlocked)
+                return false;
+        }
+
+        return true;
     }
 
     void UnlockSkill(Skill skill)
