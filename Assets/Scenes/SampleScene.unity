@@ -512,8 +512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -275}
-  m_SizeDelta: {x: -1300, y: -950}
+  m_AnchoredPosition: {x: 2.2235718, y: -273.88818}
+  m_SizeDelta: {x: -1304.4473, y: -952.2236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106048544
 MonoBehaviour:
@@ -571,6 +571,12 @@ MonoBehaviour:
   HearthQuarter: {fileID: 2856352067689470904, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
   HearthEmpty: {fileID: 2593637213367561700, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
   heartImage: {fileID: 1351701656}
+  meleeSkillImage: {fileID: 37329635}
+  rangedSkillImage: {fileID: 265923657}
+  magicSkillImage: {fileID: 653135743}
+  playerStats: {fileID: 1884459293}
+  skillTree: {fileID: 1220771557}
+  GUI1_0: {fileID: 8673036059832601084, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
 --- !u!1 &141286668
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +664,7 @@ GameObject:
   - component: {fileID: 173594270}
   - component: {fileID: 173594269}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 1aSpecialMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,9 +709,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1398113343881063737, guid: 8478e765a9f3dfd41b0b2975a2ac2d1e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1126,7 +1132,7 @@ GameObject:
   - component: {fileID: 336186817}
   - component: {fileID: 336186816}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 1bSpecialMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1171,9 +1177,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2325187026322624268, guid: 720f07f067b21b64288fd4d622de2576, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3206,111 +3212,144 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - name: FirstSkill
+  - name: First Melee
     cost: 1
-    prerequisiteSkillIndex: -1
+    prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: Melee
+    isSpecial: 0
   - name: 1a Melee
     cost: 1
-    prerequisiteSkillIndex: 0
+    prerequisiteSkillIndices: 00000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 2a Melee
     cost: 1
-    prerequisiteSkillIndex: 1
+    prerequisiteSkillIndices: 01000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 3a Melee
     cost: 1
-    prerequisiteSkillIndex: 2
+    prerequisiteSkillIndices: 02000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 1b Melee
     cost: 1
-    prerequisiteSkillIndex: -1
+    prerequisiteSkillIndices: 00000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 2b Melee
     cost: 1
-    prerequisiteSkillIndex: 4
+    prerequisiteSkillIndices: 04000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 3b Melee
     cost: 1
-    prerequisiteSkillIndex: 5
+    prerequisiteSkillIndices: 05000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: FirstRanged
     cost: 1
-    prerequisiteSkillIndex: -1
+    prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: Ranged
+    isSpecial: 0
   - name: 1a Ranged
     cost: 1
-    prerequisiteSkillIndex: 7
+    prerequisiteSkillIndices: 07000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 2a Ranged
     cost: 1
-    prerequisiteSkillIndex: 8
+    prerequisiteSkillIndices: 08000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 3a Ranged
     cost: 1
-    prerequisiteSkillIndex: 9
+    prerequisiteSkillIndices: 09000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 1b Ranged
     cost: 1
-    prerequisiteSkillIndex: 7
+    prerequisiteSkillIndices: 07000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 2b Ranged
     cost: 1
-    prerequisiteSkillIndex: 11
+    prerequisiteSkillIndices: 0b000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 3b Ranged
     cost: 1
-    prerequisiteSkillIndex: 12
+    prerequisiteSkillIndices: 0c000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: FirstMagic
     cost: 1
-    prerequisiteSkillIndex: -1
+    prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: Magic
+    isSpecial: 0
   - name: 1a Magic
     cost: 1
-    prerequisiteSkillIndex: 14
+    prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 2a Magic
     cost: 1
-    prerequisiteSkillIndex: 15
+    prerequisiteSkillIndices: 0f000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 3a Magic
     cost: 1
-    prerequisiteSkillIndex: 16
+    prerequisiteSkillIndices: 10000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 1b Magic
     cost: 1
-    prerequisiteSkillIndex: 14
+    prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 2b Magic
     cost: 1
-    prerequisiteSkillIndex: 18
+    prerequisiteSkillIndices: 12000000
     isUnlocked: 0
     requiredClass: 
+    isSpecial: 0
   - name: 3b Magic
     cost: 1
-    prerequisiteSkillIndex: 19
+    prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 19
+    isSpecial: 0
+  - name: 1a SpecialMelee
+    cost: 1
+    prerequisiteSkillIndices: 0300000006000000
+    isUnlocked: 0
+    requiredClass: Melee
+    isSpecial: 1
+  - name: 1b SpecialMelee
+    cost: 1
+    prerequisiteSkillIndices: 0300000006000000
+    isUnlocked: 0
+    requiredClass: Melee
+    isSpecial: 1
   skillImages:
   - {fileID: 820599833}
   - {fileID: 1389983868}
@@ -3333,7 +3372,30 @@ MonoBehaviour:
   - {fileID: 1253028184}
   - {fileID: 811503660}
   - {fileID: 935815880}
+  - {fileID: 173594269}
+  - {fileID: 336186816}
   playerStats: {fileID: 1884459293}
+  meleeSpecialSkill:
+    name: 
+    cost: 0
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  rangedSpecialSkill:
+    name: 
+    cost: 0
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  magicSpecialSkill:
+    name: 
+    cost: 0
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
 --- !u!1 &1225376486
 GameObject:
   m_ObjectHideFlags: 0

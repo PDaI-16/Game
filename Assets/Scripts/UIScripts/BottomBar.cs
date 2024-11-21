@@ -17,10 +17,10 @@ public class BottomBar : MonoBehaviour
 
     [SerializeField] private PlayerStats playerStats;  // Reference to PlayerStats
     [SerializeField] private SkillTree skillTree;      // Reference to SkillTree
+    public Sprite GUI1_0;  // Placeholder sprite for special skills
 
     void Start()
     {
-        // Use serialized fields or explicitly assign in the Inspector
         if (playerStats == null)
         {
             playerStats = GameObject.FindObjectOfType<PlayerStats>();
@@ -76,66 +76,44 @@ public class BottomBar : MonoBehaviour
     }
 
     public void UpdateSkillIcons()
-{
-    SkillTree.Skill meleeSkill = null;
-    SkillTree.Skill rangedSkill = null;
-    SkillTree.Skill magicSkill = null;
-
-    // Debugging: Checking unlocked skills
-    Debug.Log("Checking unlocked skills...");
-
-    foreach (var skill in skillTree.skills)
     {
-        if (skill.isUnlocked && skill.name.Contains("Special")) // Special skills only
-        {
-            Debug.Log($"Unlocked skill: {skill.name} (Class: {skill.requiredClass})");
-
-            if (skill.requiredClass == "Melee" && meleeSkill == null)
-            {
-                meleeSkill = skill;
-                meleeSkillImage.sprite = GetSkillSprite(skill);
-                meleeSkillImage.color = Color.white; // Make sure the image is visible
-                Debug.Log($"Assigned {meleeSkill.name} to Melee slot.");
-            }
-            else if (skill.requiredClass == "Ranged" && rangedSkill == null)
-            {
-                rangedSkill = skill;
-                rangedSkillImage.sprite = GetSkillSprite(skill);
-                rangedSkillImage.color = Color.white;
-                Debug.Log($"Assigned {rangedSkill.name} to Ranged slot.");
-            }
-            else if (skill.requiredClass == "Magic" && magicSkill == null)
-            {
-                magicSkill = skill;
-                magicSkillImage.sprite = GetSkillSprite(skill);
-                magicSkillImage.color = Color.white;
-                Debug.Log($"Assigned {magicSkill.name} to Magic slot.");
-            }
-        }
+        UpdateSkillIcon(skillTree.meleeSpecialSkill, meleeSkillImage);
+        UpdateSkillIcon(skillTree.rangedSpecialSkill, rangedSkillImage);
+        UpdateSkillIcon(skillTree.magicSpecialSkill, magicSkillImage);
     }
-}
+
+
+    private void UpdateSkillIcon(SkillTree.Skill skill, Image skillImage)
+    {
+        // Use the placeholder sprite for null or invalid skills
+        Sprite skillSprite = GetSkillSprite(skill);
+
+        // Update the image with the obtained sprite
+        skillImage.sprite = skillSprite;
+
+        // Highlight owned skills (non-placeholder) in blue; otherwise, default to white
+        skillImage.color = skillSprite == GUI1_0 ? Color.white : Color.blue;
+    }
 
     private Sprite GetSkillSprite(SkillTree.Skill skill)
     {
+        // If the skill is null, return the placeholder sprite
+        if (skill == null)
+        {
+            return GUI1_0; // Default placeholder sprite
+        }
+
+        // Locate the skill in the array
         int index = System.Array.IndexOf(skillTree.skills, skill);
-        return skillTree.skillImages[index].sprite;
+
+        // Validate index and return the sprite if valid
+        if (index >= 0 && index < skillTree.skillImages.Length)
+        {
+            return skillTree.skillImages[index].sprite;
+        }
+
+        // If skill is not found or index is invalid, silently return the placeholder
+        return GUI1_0;
     }
 
-    public void ActivateMeleeSkill()
-    {
-        Debug.Log("Melee skill activated!");
-        // Implement your activation logic here
-    }
-
-    public void ActivateRangedSkill()
-    {
-        Debug.Log("Ranged skill activated!");
-        // Implement your activation logic here
-    }
-
-    public void ActivateMagicSkill()
-    {
-        Debug.Log("Magic skill activated!");
-        // Implement your activation logic here
-    }
 }
