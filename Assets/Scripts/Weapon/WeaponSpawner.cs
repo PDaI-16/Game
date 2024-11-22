@@ -71,7 +71,7 @@ public class WeaponSpawner : MonoBehaviour
     private void SpawnWeapon(int multiplier)
     {
         // Get random stats from WeaponSO
-        var (randomSprite, damage, attackSpeed, weaponScore) = _weaponSO.GetRandomWeaponStats(multiplier);
+        var (weaponType, randomSprite, damage, attackSpeed, weaponScore) = _weaponSO.GetRandomWeaponStats(multiplier);
 
         // Generate a random spawn position
         var spawnPosition = GetRandomSpawnPosition();
@@ -82,7 +82,7 @@ public class WeaponSpawner : MonoBehaviour
 
         if (weaponScript != null)
         {
-            weaponScript.SetValues(randomSprite, damage, attackSpeed, weaponScore, false);
+            weaponScript.SetValues(weaponType, randomSprite, damage, attackSpeed, weaponScore, false);
         }
         else
         {

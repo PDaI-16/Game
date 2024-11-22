@@ -10,9 +10,9 @@ public class Weapon : MonoBehaviour
         UpdateWeaponSprite();
     }
 
-    public void SetValues(Sprite sprite, float damage, float attackSpeed, float weaponScore, bool boolEquip)
+    public void SetValues(WeaponType weaponType, Sprite sprite, float damage, float attackSpeed, float weaponScore, bool boolEquip)
     {
-        _weaponData = new WeaponData(sprite, damage, attackSpeed, weaponScore);
+        _weaponData = new WeaponData(weaponType,sprite, damage, attackSpeed, weaponScore);
         _isEquipped = boolEquip;
 
         UpdateWeaponSprite();

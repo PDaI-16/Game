@@ -4460,11 +4460,11 @@ MonoBehaviour:
   _weaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   _background: {fileID: 935371815}
   _defaultWeaponData:
+    WeaponType: 0
     Sprite: {fileID: 3075639979285774041, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
     Damage: 3
     AttackSpeed: 3
     WeaponScore: 6
-    weaponType: 0
   _inventory: {fileID: 2064573351}
 --- !u!4 &1995354917
 Transform:
@@ -4731,6 +4731,18 @@ PrefabInstance:
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523477561491027954, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1603191712332893284, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+    - target: {fileID: 6797865712334257691, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6797865712334257691, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
