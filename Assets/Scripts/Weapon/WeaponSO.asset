@@ -14,16 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSprites:
   - {fileID: -821610248, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1641298915, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 2004021625, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: -758129973, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1160843012, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -168130433, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: 2088792048, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1126870494, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1760885134, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
@@ -36,5 +31,14 @@ MonoBehaviour:
   - {fileID: -522063991367933815, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
   - {fileID: -4958237423881113845, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
   - {fileID: 3075639979285774041, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -5529913528257722966, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -7633173953499609873, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 9064598016285145008, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -3070135667437856048, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 6572943983779065804, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 1127913836097284074, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -7267376149188162782, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -7267376149188162782, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -7267376149188162782, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   baseDamage: 3
   baseAttackSpeed: 3
