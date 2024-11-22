@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         InventoryController = Inventory.GetComponent<InventoryController>();
         InventoryWeapons = InventoryController.weaponsInInventory;
         _mainCamera = Camera.main;
-        movementSpeed = 2;
+        movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
         
     } // Update is called once per frame
