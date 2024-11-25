@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         InventoryController = Inventory.GetComponent<InventoryController>();
         InventoryWeapons = InventoryController.weaponsInInventory;
         _mainCamera = Camera.main;
-        movementSpeed = 2;
+        movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
         
     } // Update is called once per frame
@@ -89,22 +89,22 @@ public class PlayerController : MonoBehaviour
 
 
         if(angleInDegrees > -45 && angleInDegrees < 45){
-            print("UP");
+            //print("UP");
             newAnimationState = _isMoving ? AnimationState.player_walk_up : AnimationState.player_idle_up;
         }
         else if(angleInDegrees > 45 && angleInDegrees < 135)
         {
-            print("RIGHT");
+            //print("RIGHT");
             newAnimationState = _isMoving ? AnimationState.player_walk_right : AnimationState.player_idle_right;
         }
         else if(angleInDegrees < -45 && angleInDegrees > -135)
         {
-            print("LEFT");
+            //print("LEFT");
             newAnimationState = _isMoving ? AnimationState.player_walk_left : AnimationState.player_idle_left;
         }
         else if(angleInDegrees > 135 || angleInDegrees < -135)
         {
-            print("DOWN");
+            //print("DOWN");
             newAnimationState = _isMoving ? AnimationState.player_walk_down : AnimationState.player_idle_down;
         }
     }

@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -99619573
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: -787723785
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -117,7 +117,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.83444566, y: 0.2858521, z: -0.01621871}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8721601699263338959}
@@ -140,6 +140,7 @@ MonoBehaviour:
     Damage: 2
     AttackSpeed: 2
     WeaponScore: 4
+    weaponType: 0
   _isEquipped: 0
 --- !u!114 &4001579112281035674
 MonoBehaviour:
@@ -153,9 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88b4a5a18a323a4a8bab83184d613b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventory: {fileID: 0}
-  InventoryController: {fileID: 0}
-  selfWeaponScript: {fileID: 0}
+  _inventory: {fileID: 0}
+  _inventoryController: {fileID: 0}
+  _selfWeaponScript: {fileID: 0}
 --- !u!61 &7573175521086044557
 BoxCollider2D:
   m_ObjectHideFlags: 0

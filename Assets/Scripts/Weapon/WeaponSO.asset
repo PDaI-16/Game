@@ -12,22 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7b9b8e62eae234dbe4600aefff0d13, type: 3}
   m_Name: WeaponSO
   m_EditorClassIdentifier: 
-  possibleSprites:
+  meleeSprites:
   - {fileID: -821610248, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1641298915, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 2004021625, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -758129973, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1160843012, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -168130433, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: 2088792048, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1126870494, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1760885134, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1528549045, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 195837492, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  rangedSprites:
+  - {fileID: -6485620861604442150, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 1603191712332893284, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 8129931209985509928, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -3660968397536320358, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 522230306696365469, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -522063991367933815, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -4958237423881113845, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 3075639979285774041, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: 900157509006843835, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  magicSprites:
+  - {fileID: -2472764754003397310, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 4028022972693503830, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 7326086248900390973, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -7267376149188162782, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 2192076965276110184, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -8237403664325967161, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -1341226490458307269, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 9064598016285145008, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -5529913528257722966, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   weaponType: 0
-  damage: 1
-  attackSpeed: 1
+  baseDamage: 3
+  baseAttackSpeed: 3
