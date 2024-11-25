@@ -6,6 +6,7 @@ using UnityEngine;
 public class HatGO : MonoBehaviour
 {
     [SerializeField] public Hat hatData;
+    private bool onGround = true;
 
     /// <summary>
     /// Initializes the HatGO with the given Hat data.
@@ -39,6 +40,14 @@ public class HatGO : MonoBehaviour
         // Set the sprite
         spriteRenderer.sprite = hat.Sprite;
         Debug.Log($"HatGO initialized successfully with category {hat.Category} and sprite {hat.Sprite.name}");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player on hat");
+        }
     }
 
     // Update is called once per frame
