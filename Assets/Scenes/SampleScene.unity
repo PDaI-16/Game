@@ -1225,9 +1225,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Map: {fileID: 935371815}
-  MeleeHatSprites: []
-  RangedHatSprites: []
-  MagicHatSprites: []
+  MeleeHatSprites:
+  - {fileID: -4634720409283538282, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+  - {fileID: -35276699701321369, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+  RangedHatSprites:
+  - {fileID: -2683581536351381293, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: 7613330016314061283, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  MagicHatSprites:
+  - {fileID: -1831940730658185210, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: -2797532859992406980, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   HatPrefab: {fileID: 5814705116746937280, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
   MeleeWeaponSprites: []
   RangedWeaponSprites: []
@@ -4852,7 +4858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1995354916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5184,6 +5190,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2860863510239154944, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860863510239154944, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -787723785
+      objectReference: {fileID: 0}
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
