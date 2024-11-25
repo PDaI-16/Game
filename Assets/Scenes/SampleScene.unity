@@ -1235,10 +1235,16 @@ MonoBehaviour:
   - {fileID: -1831940730658185210, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   - {fileID: -2797532859992406980, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   hatPrefab: {fileID: 5814705116746937280, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
-  meleeWeaponSprites: []
-  rangedWeaponSprites: []
-  magicWeaponSprites: []
-  weaponPrefab: {fileID: 0}
+  meleeWeaponSprites:
+  - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -758129973, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  rangedWeaponSprites:
+  - {fileID: 1603191712332893284, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  - {fileID: -522063991367933815, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
+  magicWeaponSprites:
+  - {fileID: 7326086248900390973, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: -1341226490458307269, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  weaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
 --- !u!4 &366607904
 Transform:
   m_ObjectHideFlags: 0
@@ -1723,8 +1729,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4001579112281035674, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4882,6 +4887,8 @@ MonoBehaviour:
     AttackSpeed: 3
     WeaponScore: 6
   _inventory: {fileID: 2064573351}
+  _playerWeaponController: {fileID: 0}
+  _inventoryController: {fileID: 0}
 --- !u!4 &1995354917
 Transform:
   m_ObjectHideFlags: 0

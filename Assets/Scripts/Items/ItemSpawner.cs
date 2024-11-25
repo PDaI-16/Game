@@ -24,6 +24,7 @@ public class ItemSpawner : MonoBehaviour
         try
         {
             SpawnRandomHatToRandomLocation(2.0f);
+            SpawnRandomWeaponToRandomLocation(2.0f);
         }
         catch (Exception e)
         {
@@ -53,6 +54,26 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
+    public void SpawnRandomWeaponToRandomLocation(float levelMultiplier)
+    {
+        if (map == null)
+        {
+            Debug.LogError("Map reference is null. Cannot spawn weapons.");
+            return;
+        }
+
+        try
+        {
+            Weapon newWeapon = GetRandomWeapon(levelMultiplier);  // Get a random weapon using the level multiplier
+            Vector3 randomLocation = GetRandomSpawnPosition(map);  // Get a random spawn position on the map
+            SpawnWeapon(newWeapon, randomLocation);  // Spawn the weapon at the random location
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error while spawning weapon: {e.Message}");
+        }
+    }
+
     // Instantiates a hat at the given location.
     public void SpawnHat(Hat hat, Vector3 location)
     {
@@ -67,6 +88,26 @@ public class ItemSpawner : MonoBehaviour
         if (hatInstance.TryGetComponent(out HatGO hatScript))
         {
             hatScript.Initialize(hat);
+        }
+        else
+        {
+            Debug.LogError("The instantiated HatPrefab is missing the HatGO component.");
+        }
+    }
+
+    public void SpawnWeapon(Weapon weapon, Vector3 location)
+    {
+        if (hatPrefab == null)
+        {
+            Debug.LogError("Hat prefab is not assigned.");
+            return;
+        }
+
+        var weaponInstance = Instantiate(weaponPrefab, location, Quaternion.identity);
+
+        if (weaponInstance.TryGetComponent(out WeaponGO weaponScript))
+        {
+            weaponScript.Initialize(weapon);
         }
         else
         {
@@ -109,6 +150,45 @@ public class ItemSpawner : MonoBehaviour
         var attackSpeedMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);
 
         return new Hat(category, randomSprite, damageMultiplier, attackSpeedMultiplier);
+    }
+
+    public Weapon GetRandomWeapon(float levelMultiplier)
+    {
+        if (levelMultiplier <= 0)
+        {
+            Debug.LogError("Invalid level multiplier. Must be greater than 0.");
+            throw new ArgumentException("Level multiplier must be greater than 0.");
+        }
+
+        var category = GetRandomEnumValue<ItemCategory>();
+
+        // Assuming you have different sprite lists based on category
+        var spriteList = category switch
+        {
+            ItemCategory.Melee => meleeWeaponSprites,  // Replace with your actual sprite list for melee weapons
+            ItemCategory.Ranged => rangedWeaponSprites,  // Replace with your actual sprite list for ranged weapons
+            ItemCategory.Magic => magicWeaponSprites,  // Replace with your actual sprite list for magic weapons
+            _ => throw new ArgumentOutOfRangeException(nameof(category), "Invalid item category.")
+        };
+
+        if (spriteList == null || spriteList.Length == 0)
+        {
+            Debug.LogError($"Sprite list for category {category} is null or empty.");
+            throw new InvalidOperationException($"Sprite list for {category} cannot be null or empty.");
+        }
+
+        Sprite randomSprite;
+        do
+        {
+            randomSprite = spriteList[UnityEngine.Random.Range(0, spriteList.Length)];
+        } while (randomSprite == null);
+
+        // Define weapon-specific properties like damage, attack speed, or other stats
+        var damage = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);  // Random damage based on level
+        var attackSpeed = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);  // Random attack speed based on level
+
+        // Create and return a new Weapon instance
+        return new Weapon(category, randomSprite, damage, attackSpeed);
     }
 
     // Returns a random spawn position within the bounds of the given GameObject.

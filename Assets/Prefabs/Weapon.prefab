@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -787723785
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,8 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6650466961264447942}
-  - component: {fileID: 1818495235630909391}
-  - component: {fileID: 4001579112281035674}
+  - component: {fileID: 4315595138000568141}
   - component: {fileID: 7573175521086044557}
   - component: {fileID: 6985159486982324820}
   m_Layer: 10
@@ -123,7 +122,7 @@ Transform:
   - {fileID: 8721601699263338959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1818495235630909391
+--- !u!114 &4315595138000568141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,31 +131,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1550832497689544042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f284a79f2febec742805c537020498ac, type: 3}
+  m_Script: {fileID: 11500000, guid: a4c67df1bec966046956a1e19bbe74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData:
-    Sprite: {fileID: 195837492, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-    Damage: 2
-    AttackSpeed: 2
-    WeaponScore: 4
-    weaponType: 0
-  _isEquipped: 0
---- !u!114 &4001579112281035674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550832497689544042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88b4a5a18a323a4a8bab83184d613b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventory: {fileID: 0}
-  _inventoryController: {fileID: 0}
-  _selfWeaponScript: {fileID: 0}
+  weaponData:
+    Type: 0
+    Category: 0
+    Sprite: {fileID: 0}
+    ItemScore: 0
+    Damage: 0
+    AttackSpeed: 0
 --- !u!61 &7573175521086044557
 BoxCollider2D:
   m_ObjectHideFlags: 0

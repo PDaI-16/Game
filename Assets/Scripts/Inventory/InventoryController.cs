@@ -6,8 +6,8 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public List<WeaponData> weaponsInInventory = new List<WeaponData>();
-    /*    public List<GameObject> hatsInInventory = new List<GameObject>(); // todo hats*/
+   /* public List<WeaponData> weaponsInInventory = new List<WeaponData>();
+    *//*    public List<GameObject> hatsInInventory = new List<GameObject>(); // todo hats*//*
 
 
     public void AddWeapon(WeaponData weaponData)
@@ -30,5 +30,5 @@ public class InventoryController : MonoBehaviour
     public void RemoveWeapon(WeaponData droppedWeapon)
     {
         weaponsInInventory.Remove(droppedWeapon);
-    }
+    }*/
 }

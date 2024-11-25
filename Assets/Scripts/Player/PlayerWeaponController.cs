@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    [SerializeField] private WeaponData _weaponData;
+/*    [SerializeField] private WeaponData _weaponData;
     private SpriteRenderer _weaponSpriteRenderer;
 
     private void Start()
@@ -27,5 +27,5 @@ public class PlayerWeaponController : MonoBehaviour
         {
             Debug.LogWarning("Cannot set weapon sprite. SpriteRenderer is not assigned.");
         }
-    }
+    }*/
 }
