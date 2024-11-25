@@ -24,9 +24,9 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody2D playerRigidbody;
-    [SerializeField] GameObject Inventory;
-    [SerializeField] InventoryController InventoryController;
-    [SerializeField] List<WeaponData> InventoryWeapons;
+/*    [SerializeField] GameObject Inventory;
+    [SerializeField] InventoryController InventoryController;*/
+/*    [SerializeField] List<WeaponData> InventoryWeapons;*/
     [SerializeField] int movementSpeed;
 
     [SerializeField] GameObject WeaponArm;
@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InventoryController = Inventory.GetComponent<InventoryController>();
-        InventoryWeapons = InventoryController.weaponsInInventory;
+/*        InventoryController = Inventory.GetComponent<InventoryController>();
+        InventoryWeapons = InventoryController.weaponsInInventory;*/
         _mainCamera = Camera.main;
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();

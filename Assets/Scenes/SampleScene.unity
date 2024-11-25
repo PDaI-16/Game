@@ -1723,7 +1723,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4001579112281035674, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5105,10 +5106,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2064573351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da5fb7d78e51aa46a1720956d45719d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d07bf6a1146bfd4b9894fa8fa06cc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsInInventory: []
+  InventoryData:
+    hatsInInventory: []
+    weaponsInInventory: []
 --- !u!1001 &2683329362811795667
 PrefabInstance:
   m_ObjectHideFlags: 0

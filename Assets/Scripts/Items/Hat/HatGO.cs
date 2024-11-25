@@ -8,6 +8,9 @@ public class HatGO : MonoBehaviour
     [SerializeField] public Hat hatData;
     private bool onGround = true;
 
+    [SerializeField] private GameObject inventory;
+    [SerializeField] private InventoryGO inventoryGO;
+
     /// <summary>
     /// Initializes the HatGO with the given Hat data.
     /// </summary>
@@ -44,10 +47,33 @@ public class HatGO : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && onGround == true && inventoryGO != null)
         {
             Debug.Log("Player on hat");
+            HandleItemPickup();
         }
+    }
+
+    private void HandleItemPickup()
+    {
+        if (inventoryGO == null)
+        {
+            Debug.LogWarning("InventoryController is not assigned or invalid.");
+            return;
+        }
+
+        // Add weapon to the inventory
+        inventoryGO.InventoryData.AddHatToInventory(hatData);
+
+        // Destroy the weapon pickup object after adding to inventory
+        Destroy(gameObject);
+    }
+
+
+
+    private void Start()
+    {
+        InitializeInventoryScript();
     }
 
     // Update is called once per frame
@@ -55,4 +81,22 @@ public class HatGO : MonoBehaviour
     {
         // You can add HatGO-specific behavior here if needed.
     }
+
+    private void InitializeInventoryScript()
+    {
+        // Find Inventory GameObject by tag
+        inventory = GameObject.FindWithTag("Inventory");
+
+        if (inventory != null)
+        {
+            inventoryGO = inventory.GetComponent<InventoryGO>();
+        }
+        else
+        {
+            Debug.LogError("Inventory GameObject not found.");
+        }
+    }
+
+
+
 }
