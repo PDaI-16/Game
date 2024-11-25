@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 [System.Serializable]
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject Map; // The gameobject where we get the possible locations to spawn
+    [SerializeField] private GameObject Map; // The gameobject where we get the possible locations to spawn
 
     [SerializeField] private Sprite[] MeleeHatSprites;
     [SerializeField] private Sprite[] RangedHatSprites;
@@ -24,13 +24,20 @@ public class ItemSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        SpawnRandomHatToRandomLocation(2.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SpawnRandomHatToRandomLocation(float levelMultiplier)
+    {
+        Hat newHat = GetRandomHat(levelMultiplier);
+        Vector3 randomLocation = GetRandomSpawnPosition(Map);
+        SpawnHat(newHat, randomLocation);
     }
 
     public void SpawnHat(Hat hat, Vector3 location)
@@ -43,11 +50,10 @@ public class ItemSpawner : MonoBehaviour
         {
             HatScript.Initialize(hat);
         }
-    }
-
-    public void SpawnWeapon(Weapon weapon, Vector3 location)
-    {
-
+        else
+        {
+            Debug.LogError("HatPrefab is missing a HatGO component.");
+        }
     }
 
     public Hat GetRandomHat(float levelMultiplier)
@@ -55,6 +61,7 @@ public class ItemSpawner : MonoBehaviour
         /* public Hat(ItemCategory itemCategory, Sprite sprite, float damageMultiplier, float attackSpeedMultiplier)*/
 
         var category = GetRandomEnumValue<ItemCategory>();
+
 
         var spriteList = category switch
         {
