@@ -3,101 +3,127 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[System.Serializable]
+[Serializable]
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject Map; // The gameobject where we get the possible locations to spawn
+    [SerializeField] private GameObject map; // The GameObject containing spawn locations.
 
-    [SerializeField] private Sprite[] MeleeHatSprites;
-    [SerializeField] private Sprite[] RangedHatSprites;
-    [SerializeField] private Sprite[] MagicHatSprites;
-    [SerializeField] private GameObject HatPrefab;
+    [SerializeField] private Sprite[] meleeHatSprites;
+    [SerializeField] private Sprite[] rangedHatSprites;
+    [SerializeField] private Sprite[] magicHatSprites;
+    [SerializeField] private GameObject hatPrefab;
 
-    [SerializeField] private Sprite[] MeleeWeaponSprites;
-    [SerializeField] private Sprite[] RangedWeaponSprites;
-    [SerializeField] private Sprite[] MagicWeaponSprites;
-    [SerializeField] private GameObject WeaponPrefab;
+    [SerializeField] private Sprite[] meleeWeaponSprites;
+    [SerializeField] private Sprite[] rangedWeaponSprites;
+    [SerializeField] private Sprite[] magicWeaponSprites;
+    [SerializeField] private GameObject weaponPrefab;
 
-
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Called before the first frame update.
+    private void Start()
     {
-        SpawnRandomHatToRandomLocation(2.0f);
+        try
+        {
+            SpawnRandomHatToRandomLocation(2.0f);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to initialize spawner: {e.Message}");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Spawns a random hat at a random location.
     public void SpawnRandomHatToRandomLocation(float levelMultiplier)
     {
-        Hat newHat = GetRandomHat(levelMultiplier);
-        Vector3 randomLocation = GetRandomSpawnPosition(Map);
-        SpawnHat(newHat, randomLocation);
+        if (map == null)
+        {
+            Debug.LogError("Map reference is null. Cannot spawn hats.");
+            return;
+        }
+
+        try
+        {
+            Hat newHat = GetRandomHat(levelMultiplier);
+            /*            Vector3 randomLocation = GetRandomSpawnPosition(map);*/
+            Vector3 randomLocation = GetRandomSpawnPosition(map);
+            SpawnHat(newHat, randomLocation);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error while spawning hat: {e.Message}");
+        }
     }
 
+    // Instantiates a hat at the given location.
     public void SpawnHat(Hat hat, Vector3 location)
     {
-        var HatInstance = Instantiate(HatPrefab, location, Quaternion.identity);
-
-        var HatScript = HatInstance.GetComponent<HatGO>();
-
-        if (HatScript != null)
+        if (hatPrefab == null)
         {
-            HatScript.Initialize(hat);
+            Debug.LogError("Hat prefab is not assigned.");
+            return;
+        }
+
+        var hatInstance = Instantiate(hatPrefab, location, Quaternion.identity);
+
+        if (hatInstance.TryGetComponent(out HatGO hatScript))
+        {
+            hatScript.Initialize(hat);
         }
         else
         {
-            Debug.LogError("HatPrefab is missing a HatGO component.");
+            Debug.LogError("The instantiated HatPrefab is missing the HatGO component.");
         }
     }
 
+    // Returns a randomly generated hat based on the level multiplier.
     public Hat GetRandomHat(float levelMultiplier)
     {
-        /* public Hat(ItemCategory itemCategory, Sprite sprite, float damageMultiplier, float attackSpeedMultiplier)*/
+        if (levelMultiplier <= 0)
+        {
+            Debug.LogError("Invalid level multiplier. Must be greater than 0.");
+            throw new ArgumentException("Level multiplier must be greater than 0.");
+        }
 
         var category = GetRandomEnumValue<ItemCategory>();
 
-
         var spriteList = category switch
         {
-            ItemCategory.Melee => MeleeHatSprites,
-            ItemCategory.Ranged => RangedHatSprites,
-            ItemCategory.Magic => MagicHatSprites,
-            _ => throw new ArgumentOutOfRangeException(nameof(ItemCategory), "Invalid weapon type.")
+            ItemCategory.Melee => meleeHatSprites,
+            ItemCategory.Ranged => rangedHatSprites,
+            ItemCategory.Magic => magicHatSprites,
+            _ => throw new ArgumentOutOfRangeException(nameof(category), "Invalid item category.")
         };
+
+        if (spriteList == null || spriteList.Length == 0)
+        {
+            Debug.LogError($"Sprite list for category {category} is null or empty.");
+            throw new InvalidOperationException($"Sprite list for {category} cannot be null or empty.");
+        }
 
         Sprite randomSprite;
         do
         {
             randomSprite = spriteList[UnityEngine.Random.Range(0, spriteList.Length)];
-        } while (randomSprite == null); // Ensure the sprite is valid.
+        } while (randomSprite == null);
 
-        float damageMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3 * levelMultiplier);
-
-        // Randomize the attack speed in a similar way, encouraging a balance between damage and speed.
-        float attackSpeedMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3 * levelMultiplier);
+        var damageMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);
+        var attackSpeedMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);
 
         return new Hat(category, randomSprite, damageMultiplier, attackSpeedMultiplier);
     }
 
-
-    private Vector3 GetRandomSpawnPosition(GameObject map)
+    // Returns a random spawn position within the bounds of the given GameObject.
+    private Vector3 GetRandomSpawnPosition(GameObject targetMap)
     {
-        if (map == null)
+        if (targetMap == null)
         {
-            Debug.LogError("Background object is not assigned.");
+            Debug.LogError("Target map is null.");
             return Vector3.zero;
         }
 
-        var renderer = map.GetComponent<Renderer>();
+        var renderer = targetMap.GetComponent<Renderer>();
         if (renderer == null)
         {
-            Debug.LogError("Renderer not found on the background object.");
+            Debug.LogError("Renderer not found on the target map.");
             return Vector3.zero;
         }
 
@@ -106,14 +132,10 @@ public class ItemSpawner : MonoBehaviour
         return new Vector3(randomX, randomY, 0);
     }
 
-    public static T GetRandomEnumValue<T>() where T : Enum
+    // Returns a random value from an Enum type.
+    private static T GetRandomEnumValue<T>() where T : Enum
     {
-        // Get all possible values of the enum. This supports enums with any number of values.
         var values = Enum.GetValues(typeof(T));
-
         return (T)values.GetValue(UnityEngine.Random.Range(0, values.Length));
     }
-
-
-
 }
