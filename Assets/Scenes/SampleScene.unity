@@ -205,8 +205,9 @@ GameObject:
   - component: {fileID: 39473971}
   - component: {fileID: 39473973}
   - component: {fileID: 39473972}
+  - component: {fileID: 39473974}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 3aRangedSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,6 +270,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39473970}
   m_CullTransparentMesh: 1
+--- !u!114 &39473974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39473970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &70329646
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,8 +298,9 @@ GameObject:
   - component: {fileID: 70329647}
   - component: {fileID: 70329649}
   - component: {fileID: 70329648}
+  - component: {fileID: 70329650}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 1aMagicSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,6 +363,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70329646}
   m_CullTransparentMesh: 1
+--- !u!114 &70329650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70329646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &92893091
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +391,9 @@ GameObject:
   - component: {fileID: 92893092}
   - component: {fileID: 92893094}
   - component: {fileID: 92893093}
+  - component: {fileID: 92893095}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 2bMeleeSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,6 +456,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92893091}
   m_CullTransparentMesh: 1
+--- !u!114 &92893095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92893091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &106048542
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +571,12 @@ MonoBehaviour:
   HearthQuarter: {fileID: 2856352067689470904, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
   HearthEmpty: {fileID: 2593637213367561700, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
   heartImage: {fileID: 1351701656}
+  meleeSkillImage: {fileID: 37329635}
+  rangedSkillImage: {fileID: 265923657}
+  magicSkillImage: {fileID: 653135743}
+  playerStats: {fileID: 1884459293}
+  skillTree: {fileID: 1220771557}
+  GUI1_0: {fileID: 8673036059832601084, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
 --- !u!1 &141286668
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +664,7 @@ GameObject:
   - component: {fileID: 173594270}
   - component: {fileID: 173594269}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 1aSpecialMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,9 +709,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1398113343881063737, guid: 8478e765a9f3dfd41b0b2975a2ac2d1e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -678,8 +738,9 @@ GameObject:
   - component: {fileID: 184122395}
   - component: {fileID: 184122397}
   - component: {fileID: 184122396}
+  - component: {fileID: 184122398}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 3bRangedSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,6 +803,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184122394}
   m_CullTransparentMesh: 1
+--- !u!114 &184122398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184122394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &257936381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1132,7 @@ GameObject:
   - component: {fileID: 336186817}
   - component: {fileID: 336186816}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 1bSpecialMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1099,9 +1177,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2325187026322624268, guid: 720f07f067b21b64288fd4d622de2576, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1128,8 +1206,9 @@ GameObject:
   - component: {fileID: 411870632}
   - component: {fileID: 411870634}
   - component: {fileID: 411870633}
+  - component: {fileID: 411870635}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 2bRangedSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,6 +1271,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411870631}
   m_CullTransparentMesh: 1
+--- !u!114 &411870635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411870631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &484702258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,8 +1299,9 @@ GameObject:
   - component: {fileID: 484702259}
   - component: {fileID: 484702261}
   - component: {fileID: 484702260}
+  - component: {fileID: 484702262}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 2aMeleeSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,6 +1364,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484702258}
   m_CullTransparentMesh: 1
+--- !u!114 &484702262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484702258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,8 +1530,9 @@ GameObject:
   - component: {fileID: 530529264}
   - component: {fileID: 530529266}
   - component: {fileID: 530529265}
+  - component: {fileID: 530529267}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 1bRangedSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1480,6 +1595,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530529263}
   m_CullTransparentMesh: 1
+--- !u!114 &530529267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530529263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &581651687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1799,8 +1931,9 @@ GameObject:
   - component: {fileID: 811503659}
   - component: {fileID: 811503661}
   - component: {fileID: 811503660}
+  - component: {fileID: 811503662}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 2bMagicSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1863,6 +1996,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811503658}
   m_CullTransparentMesh: 1
+--- !u!114 &811503662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811503658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &820599831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +2145,6 @@ RectTransform:
   - {fileID: 1253028183}
   - {fileID: 811503659}
   - {fileID: 935815879}
-  - {fileID: 1940825615}
   - {fileID: 900330588}
   - {fileID: 1225376487}
   - {fileID: 1532231635}
@@ -2057,7 +2206,7 @@ GameObject:
   - component: {fileID: 900330590}
   - component: {fileID: 900330589}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 1a SpecialMagic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2102,9 +2251,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1831940730658185210, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2218,8 +2367,9 @@ GameObject:
   - component: {fileID: 935815879}
   - component: {fileID: 935815881}
   - component: {fileID: 935815880}
+  - component: {fileID: 935815882}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 3bMagicSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2282,6 +2432,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935815878}
   m_CullTransparentMesh: 1
+--- !u!114 &935815882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935815878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1054786181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,8 +2460,9 @@ GameObject:
   - component: {fileID: 1054786182}
   - component: {fileID: 1054786184}
   - component: {fileID: 1054786183}
+  - component: {fileID: 1054786185}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 1aRangedSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2357,81 +2525,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054786181}
   m_CullTransparentMesh: 1
---- !u!1 &1057250205
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1057250206}
-  - component: {fileID: 1057250208}
-  - component: {fileID: 1057250207}
-  m_Layer: 5
-  m_Name: InnerRangedSkill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1057250206
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057250205}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1484310259}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 236, y: 48}
-  m_SizeDelta: {x: 100, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1057250207
+--- !u!114 &1054786185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057250205}
+  m_GameObject: {fileID: 1054786181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1057250208
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057250205}
-  m_CullTransparentMesh: 1
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1076507329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2443,8 +2553,9 @@ GameObject:
   - component: {fileID: 1076507330}
   - component: {fileID: 1076507332}
   - component: {fileID: 1076507331}
+  - component: {fileID: 1076507333}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 2aMagicSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2507,6 +2618,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076507329}
   m_CullTransparentMesh: 1
+--- !u!114 &1076507333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076507329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1082624879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,12 +2683,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2575,8 +2703,8 @@ Canvas:
   m_GameObject: {fileID: 1082624879}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2586,7 +2714,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1762863441
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1082624883
@@ -2695,8 +2823,9 @@ GameObject:
   - component: {fileID: 1132652240}
   - component: {fileID: 1132652242}
   - component: {fileID: 1132652241}
+  - component: {fileID: 1132652243}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 2aRangedSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2759,6 +2888,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132652239}
   m_CullTransparentMesh: 1
+--- !u!114 &1132652243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132652239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1152058119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,10 +2974,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2887,6 +3033,7 @@ GameObject:
   - component: {fileID: 1153853466}
   - component: {fileID: 1153853465}
   - component: {fileID: 1153853464}
+  - component: {fileID: 1153853467}
   m_Layer: 5
   m_Name: FirstRangedSkill
   m_TagString: Untagged
@@ -2968,6 +3115,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153853462}
   m_CullTransparentMesh: 1
+--- !u!114 &1153853467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153853462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1220771553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,10 +3164,10 @@ RectTransform:
   - {fileID: 866324992}
   m_Father: {fileID: 1082624883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1220771555
 MonoBehaviour:
@@ -3029,8 +3189,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 332700653, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3060,18 +3220,218 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - name: FirstSkill
+  - name: First Melee
     cost: 1
-    prerequisiteSkillIndex: -1
+    prerequisiteSkillIndices: 
     isUnlocked: 0
-  - name: Second
+    requiredClass: Melee
+    isSpecial: 0
+  - name: 1a Melee
     cost: 1
-    prerequisiteSkillIndex: 0
+    prerequisiteSkillIndices: 00000000
     isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 2a Melee
+    cost: 1
+    prerequisiteSkillIndices: 01000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 3a Melee
+    cost: 1
+    prerequisiteSkillIndices: 02000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 1b Melee
+    cost: 1
+    prerequisiteSkillIndices: 00000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 2b Melee
+    cost: 1
+    prerequisiteSkillIndices: 04000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 3b Melee
+    cost: 1
+    prerequisiteSkillIndices: 05000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: FirstRanged
+    cost: 1
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: Ranged
+    isSpecial: 0
+  - name: 1a Ranged
+    cost: 1
+    prerequisiteSkillIndices: 07000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 2a Ranged
+    cost: 1
+    prerequisiteSkillIndices: 08000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 3a Ranged
+    cost: 1
+    prerequisiteSkillIndices: 09000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 1b Ranged
+    cost: 1
+    prerequisiteSkillIndices: 07000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 2b Ranged
+    cost: 1
+    prerequisiteSkillIndices: 0b000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 3b Ranged
+    cost: 1
+    prerequisiteSkillIndices: 0c000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: FirstMagic
+    cost: 1
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: Magic
+    isSpecial: 0
+  - name: 1a Magic
+    cost: 1
+    prerequisiteSkillIndices: 0e000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 2a Magic
+    cost: 1
+    prerequisiteSkillIndices: 0f000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 3a Magic
+    cost: 1
+    prerequisiteSkillIndices: 10000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 1b Magic
+    cost: 1
+    prerequisiteSkillIndices: 0e000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 2b Magic
+    cost: 1
+    prerequisiteSkillIndices: 12000000
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  - name: 3b Magic
+    cost: 1
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 19
+    isSpecial: 0
+  - name: 1a SpecialMelee
+    cost: 1
+    prerequisiteSkillIndices: 0300000006000000
+    isUnlocked: 0
+    requiredClass: Melee
+    isSpecial: 1
+  - name: 1b SpecialMelee
+    cost: 1
+    prerequisiteSkillIndices: 0300000006000000
+    isUnlocked: 0
+    requiredClass: Melee
+    isSpecial: 1
+  - name: 1a SpecialRanged
+    cost: 1
+    prerequisiteSkillIndices: 0a0000000d000000
+    isUnlocked: 0
+    requiredClass: Ranged
+    isSpecial: 1
+  - name: 1b SpecialRanged
+    cost: 1
+    prerequisiteSkillIndices: 0a0000000d000000
+    isUnlocked: 0
+    requiredClass: Ranged
+    isSpecial: 1
+  - name: 1a SpecialMagic
+    cost: 1
+    prerequisiteSkillIndices: 1400000011000000
+    isUnlocked: 0
+    requiredClass: Magic
+    isSpecial: 1
+  - name: 1b SpecialMagic
+    cost: 1
+    prerequisiteSkillIndices: 1400000011000000
+    isUnlocked: 0
+    requiredClass: Magic
+    isSpecial: 1
   skillImages:
   - {fileID: 820599833}
   - {fileID: 1389983868}
+  - {fileID: 484702260}
+  - {fileID: 2052895540}
+  - {fileID: 1235852681}
+  - {fileID: 92893093}
+  - {fileID: 1605840344}
+  - {fileID: 1153853465}
+  - {fileID: 1054786183}
+  - {fileID: 1132652241}
+  - {fileID: 39473972}
+  - {fileID: 530529265}
+  - {fileID: 411870633}
+  - {fileID: 184122396}
+  - {fileID: 1577758453}
+  - {fileID: 70329648}
+  - {fileID: 1076507331}
+  - {fileID: 1278730461}
+  - {fileID: 1253028184}
+  - {fileID: 811503660}
+  - {fileID: 935815880}
+  - {fileID: 173594269}
+  - {fileID: 336186816}
+  - {fileID: 2002655554}
+  - {fileID: 1549391839}
+  - {fileID: 900330589}
+  - {fileID: 1225376488}
   playerStats: {fileID: 1884459293}
+  meleeSpecialSkill:
+    name: 
+    cost: 0
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  rangedSpecialSkill:
+    name: 
+    cost: 0
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
+  magicSpecialSkill:
+    name: 
+    cost: 0
+    prerequisiteSkillIndices: 
+    isUnlocked: 0
+    requiredClass: 
+    isSpecial: 0
 --- !u!1 &1225376486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3084,7 +3444,7 @@ GameObject:
   - component: {fileID: 1225376489}
   - component: {fileID: 1225376488}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 1b SpecialMagic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3129,9 +3489,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -6746083241023490579, guid: 9f0f708f8a8e0804784c1c333ec916a2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3158,8 +3518,9 @@ GameObject:
   - component: {fileID: 1235852680}
   - component: {fileID: 1235852682}
   - component: {fileID: 1235852681}
+  - component: {fileID: 1235852683}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 1bMeleeSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3222,6 +3583,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235852679}
   m_CullTransparentMesh: 1
+--- !u!114 &1235852683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235852679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1253028182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,8 +3611,9 @@ GameObject:
   - component: {fileID: 1253028183}
   - component: {fileID: 1253028185}
   - component: {fileID: 1253028184}
+  - component: {fileID: 1253028186}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 1bMagicSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3297,6 +3676,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253028182}
   m_CullTransparentMesh: 1
+--- !u!114 &1253028186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253028182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1278730459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3308,8 +3704,9 @@ GameObject:
   - component: {fileID: 1278730460}
   - component: {fileID: 1278730462}
   - component: {fileID: 1278730461}
+  - component: {fileID: 1278730463}
   m_Layer: 5
-  m_Name: InnerMagicSkills
+  m_Name: 3aMagicSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3372,6 +3769,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278730459}
   m_CullTransparentMesh: 1
+--- !u!114 &1278730463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278730459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1351701654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,7 +3949,7 @@ GameObject:
   - component: {fileID: 1389983868}
   - component: {fileID: 1389983870}
   m_Layer: 5
-  m_Name: SecondMeleeSkill
+  m_Name: 1aMeleeSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3731,7 +4145,6 @@ RectTransform:
   - {fileID: 530529264}
   - {fileID: 411870632}
   - {fileID: 184122395}
-  - {fileID: 1057250206}
   - {fileID: 2002655553}
   - {fileID: 1549391838}
   - {fileID: 1363972240}
@@ -3943,7 +4356,7 @@ GameObject:
   - component: {fileID: 1549391840}
   - component: {fileID: 1549391839}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 1b SpecialRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3988,9 +4401,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4966746807143359305, guid: 9c40780a9944abf4db55fdf8fc9205cd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4110,8 +4523,9 @@ GameObject:
   - component: {fileID: 1605840343}
   - component: {fileID: 1605840345}
   - component: {fileID: 1605840344}
+  - component: {fileID: 1605840346}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 3bMeleeSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4174,6 +4588,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605840342}
   m_CullTransparentMesh: 1
+--- !u!114 &1605840346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605840342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1621937788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,81 +4791,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillTreePanel: {fileID: 1220771553}
---- !u!1 &1940825614
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1940825615}
-  - component: {fileID: 1940825617}
-  - component: {fileID: 1940825616}
-  m_Layer: 5
-  m_Name: InnerMagicSkills
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1940825615
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940825614}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 866324992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 239, y: 42}
-  m_SizeDelta: {x: 100, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1940825616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940825614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1940825617
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940825614}
-  m_CullTransparentMesh: 1
 --- !u!1 &1995354915
 GameObject:
   m_ObjectHideFlags: 0
@@ -4500,7 +4856,7 @@ GameObject:
   - component: {fileID: 2002655555}
   - component: {fileID: 2002655554}
   m_Layer: 5
-  m_Name: InnerRangedSkill
+  m_Name: 1a SpecialRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4545,9 +4901,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3483438551839090165, guid: 9c40780a9944abf4db55fdf8fc9205cd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4574,8 +4930,9 @@ GameObject:
   - component: {fileID: 2052895539}
   - component: {fileID: 2052895541}
   - component: {fileID: 2052895540}
+  - component: {fileID: 2052895542}
   m_Layer: 5
-  m_Name: InnerMeleeSkills
+  m_Name: 3aMeleeSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4638,6 +4995,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052895538}
   m_CullTransparentMesh: 1
+--- !u!114 &2052895542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052895538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &2064573351
 GameObject:
   m_ObjectHideFlags: 0
