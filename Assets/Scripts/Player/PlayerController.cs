@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
             // Check if the current weapon is different from the previous one
             if (currentWeapon != previousWeaponData)
             {
+                // Destroy weapon before new is created
                 if (currentWeaponObject != null)
                 {
                     Destroy(currentWeaponObject);
