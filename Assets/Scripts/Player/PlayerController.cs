@@ -45,7 +45,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
 
-    private GameObject weaponArm;
+    private GameObject weaponArmMelee;
+    private GameObject weaponArmRanged;
+    private GameObject weaponArmMagic;
+
     private GameObject weaponInstance = null;
     private GameObject currentWeaponObject = null;
     private Weapon previousWeaponData = null;
@@ -60,8 +63,9 @@ public class PlayerController : MonoBehaviour
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
 
-        weaponArm = GameObject.Find("Weapon Arm");
-
+        weaponArmMelee = GameObject.Find("Melee");
+        weaponArmRanged = GameObject.Find("Ranged");
+        weaponArmMagic = GameObject.Find("Magic");
 
     } // Update is called once per frame
     void Update()
@@ -93,43 +97,71 @@ public class PlayerController : MonoBehaviour
 
     public void EquipWeapon(Weapon WeaponData)
     {
-            // Check if the current weapon is different from the previous one
-            if (WeaponData != previousWeaponData)
+        // Check if the current weapon is different from the previous one
+        if (WeaponData != previousWeaponData)
+        {
+            // Destroy the previous weapon before spawning a new one
+            if (currentWeaponObject != null)
             {
-                // Destroy weapon before new is created
-                if (currentWeaponObject != null)
-                {
-                    Destroy(currentWeaponObject);
-                }
-                // Spawn the new weapon and assign it to currentWeaponObject
-                currentWeaponObject = itemSpawner.SpawnWeapon(WeaponData, weaponArm, new Vector2(0, 0), false);
-
-                // Set previousWeaponObject to the current weapon object for next comparison
-
-                currentWeapon = WeaponData;
-                previousWeaponData = WeaponData;
-
-
-              // Adjust the localPosition from the parent objects player's weaponArm, because otherwise it wont be zero.
-
-                Transform weaponCloneTransform = weaponArm.transform.Find("Weapon(Clone)");
-
-                if (weaponCloneTransform != null)
-                {
-                    // Set its localPosition to (0, 0, 0)
-                    weaponCloneTransform.localPosition = Vector3.zero;
-                }
-                else
-                {
-                    Debug.LogError("Weapon(Clone) not found as a child of weaponArm.");
-                }
-
-                }
-                else
-                {
-                    Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
+                Destroy(currentWeaponObject);
             }
-        
+
+            GameObject chosenArm = null;
+
+            // Determine the appropriate arm based on weapon category
+            switch (WeaponData.Category)
+            {
+                case ItemCategory.Melee:
+                    Debug.Log("Equipping a melee weapon.");
+                    // Add logic for melee weapon handling
+                    chosenArm = weaponArmMelee;
+                    break;
+
+                case ItemCategory.Ranged:
+                    Debug.Log("Equipping a ranged weapon.");
+                    // Add logic for ranged weapon handling
+                    chosenArm = weaponArmRanged;
+                    break;
+
+                case ItemCategory.Magic:
+                    Debug.Log("Equipping a magic weapon.");
+                    // Add logic for magic weapon handling
+                    chosenArm = weaponArmMagic;
+                    break;
+
+                default:
+                    Debug.LogWarning("Unknown weapon category.");
+                    // Handle cases where the category is not recognized
+                    break;
+            }
+
+            // Spawn the new weapon and assign it to currentWeaponObject
+            if (chosenArm != null)
+            {
+                currentWeaponObject = itemSpawner.SpawnWeapon(WeaponData, chosenArm, new Vector2(0, 0), false);
+            }
+
+            // Set the current and previous weapon data for comparison
+            currentWeapon = WeaponData;
+            previousWeaponData = WeaponData;
+
+            // Adjust the localPosition of the weapon from the parent object's player's weaponArm
+            Transform weaponCloneTransform = chosenArm.transform.Find("Weapon(Clone)");
+
+            if (weaponCloneTransform != null)
+            {
+                // Set its localPosition to (0, 0, 0)
+                weaponCloneTransform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                Debug.LogError("Weapon(Clone) not found as a child of weaponArm.");
+            }
+        }
+        else
+        {
+            Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
+        }
     }
 
     void UpdateLookDirection()
