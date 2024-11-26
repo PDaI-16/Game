@@ -21,26 +21,6 @@ public class BottomBar : MonoBehaviour
 
     void Start()
     {
-        if (playerStats == null)
-        {
-            playerStats = GameObject.FindObjectOfType<PlayerStats>();
-            if (playerStats == null)
-            {
-                Debug.LogError("PlayerStats not found! Please assign it in the Inspector.");
-                return;
-            }
-        }
-
-        if (skillTree == null)
-        {
-            skillTree = GameObject.FindObjectOfType<SkillTree>();
-            if (skillTree == null)
-            {
-                Debug.LogError("SkillTree not found! Please assign it in the Inspector.");
-                return;
-            }
-        }
-
         UpdateHealthImage();
         UpdateSkillIcons();
     }

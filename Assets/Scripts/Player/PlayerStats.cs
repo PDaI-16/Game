@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     public string playerClass;
     private BottomBar bottomBar;
     public int availableSkillPoints = 5; // Default value for available skill points
-
+    public float Damage;
 
     void Awake()
     {
@@ -54,9 +54,36 @@ public class PlayerStats : MonoBehaviour
     
         health = maxHealth;
     }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        checkDeath();
+    }
+
+    public void checkDeath()
+    {
+        if (health <= 0)
+        {
+            Destroy(Player);
+        }
+    }
+
       public int GetAvailableSkillPoints()
     {
         return availableSkillPoints;
+    }
+    public void HealCharacter(float heal)
+    {
+        health += heal;
+        checkOverheal();
+    }
+    public void checkOverheal()
+    {
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     // Setter for available skill points (if you want to modify the points elsewhere)
