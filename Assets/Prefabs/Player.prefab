@@ -203,7 +203,7 @@ MonoBehaviour:
   playerRigidbody: {fileID: 4681880649504773632}
   movementSpeed: 3
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-  currentWeapon:
+  currentWeaponData:
     Type: 1
     Category: 0
     Sprite: {fileID: 0}
