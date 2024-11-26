@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     private BottomBar bottomBar;
     public int availableSkillPoints = 5; // Default value for available skill points
     public float Damage;
+    public GameObject deathScreenPanel;
 
     void Awake()
     {
@@ -66,6 +67,7 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             Destroy(Player);
+            deathScreenPanel.SetActive(true);
         }
     }
 

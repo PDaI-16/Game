@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject settingsPanel;
     public GameObject selectPanel;
+    public GameObject deathScreenPanel;
     public static string selectedClass;
 
 
@@ -50,5 +51,10 @@ public class MainMenu : MonoBehaviour
     {
         selectedClass = "Magic";
         StartGame();
+    }
+    public void BackToMenu()
+    {
+        deathScreenPanel.SetActive(false);
+        SceneManager.LoadScene("MainMenu");
     }
 }
