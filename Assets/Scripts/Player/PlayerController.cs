@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 
@@ -26,8 +27,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
 
-    [SerializeField] GameObject WeaponArm;
-    [SerializeField] GameObject WeaponPrefab;
 
     private Vector2 _movementInput;
     private Animator _playerAnimator;
@@ -40,11 +39,18 @@ public class PlayerController : MonoBehaviour
     private AnimationState currentAnimationState;
     private AnimationState newAnimationState;
 
+    [SerializeField] GameObject WeaponPrefab;
     [SerializeField] private Weapon currentWeapon = null;
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
- 
+
+    [SerializeField] public GameObject weaponArm;
+    [SerializeField] private Transform weaponArmTransform;
+    GameObject weaponInstance = null;
+
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,7 +58,10 @@ public class PlayerController : MonoBehaviour
         _mainCamera = Camera.main;
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
-        
+
+        weaponArm = GameObject.Find("Weapon Arm");
+        weaponArmTransform = weaponArm.transform;
+
     } // Update is called once per frame
     void Update()
     {
@@ -75,12 +84,53 @@ public class PlayerController : MonoBehaviour
         //Change weapon (just for testing)
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // Perform your action here
-            currentWeapon = inventoryGOScript.InventoryData.GetWeaponFromInventory(0);
+            // Get the weapon data from inventory
+            currentWeapon = inventoryGOScript.InventoryData.GetWeaponFromInventory(1);
+
+            if (weaponArmTransform == null)
+            {
+                Debug.LogError("Weapon Arm not assigned!");
+                return;
+            }
+
+            // Instantiate the weapon prefab at the position of the WeaponArm
+            // Using Quaternion.identity ensures no initial rotation
+            if (weaponInstance == null)
+            {
+                weaponInstance = Instantiate(WeaponPrefab, weaponArmTransform.position, Quaternion.identity);
+
+                // Parent the instantiated weapon to the weapon arm
+                weaponInstance.transform.SetParent(weaponArmTransform);
+
+                // Force the weapon to stay at position (0, 0, 0) relative to the weapon arm
+                weaponInstance.transform.localPosition = Vector3.zero;
+
+                // Ensure it follows the rotation of the weapon arm (fixes the issue with initial rotation)
+                weaponInstance.transform.localRotation = Quaternion.identity;
+
+                // Optional: Adjust scale if needed (ensuring it doesn't scale unexpectedly)
+                weaponInstance.transform.localScale = Vector3.one;
+
+                // Access the WeaponGO script attached to the weapon instance
+                WeaponGO weaponGO = weaponInstance.GetComponent<WeaponGO>();
+
+                if (weaponGO != null)
+                {
+                    // Initialize the weapon or set any data you need
+                    weaponGO.Initialize(currentWeapon, false);  // Assuming you have an Initialize method in WeaponGO
+                    Debug.Log("Weapon equipped successfully and initialized!");
+                }
+                else
+                {
+                    Debug.LogError("WeaponGO script not found on weapon prefab!");
+                }
+
+                // Debug log to confirm the weapon is equipped
+                Debug.Log("Weapon equipped successfully!");
+            }
 
 
         }
-
     }
 
     void UpdateLookDirection()

@@ -66,7 +66,7 @@ public class ItemSpawner : MonoBehaviour
         {
             Weapon newWeapon = GetRandomWeapon(levelMultiplier);  // Get a random weapon using the level multiplier
             Vector3 randomLocation = GetRandomSpawnPosition(map);  // Get a random spawn position on the map
-            SpawnWeapon(newWeapon, randomLocation);  // Spawn the weapon at the random location
+            SpawnWeapon(newWeapon, map, randomLocation, true);  // Spawn the weapon at the random location
         }
         catch (Exception e)
         {
@@ -95,23 +95,49 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnWeapon(Weapon weapon, Vector3 location)
+    /// <summary>
+    /// Spawns a weapon as a child of the specified parent object at the provided location.
+    /// The weapon will be initialized with the provided weapon data.
+    /// </summary>
+    /// <param name="weapon">The weapon data to initialize the spawned weapon.</param>
+    /// <param name="parentObject">The GameObject that will act as the parent for the weapon.</param>
+    /// <param name="location">The world-space position where the weapon should spawn, relative to the parent object.</param>
+    /// <param name="isOnGround">A flag indicating whether the weapon is on the ground, which makes picking up possible</param>
+
+    public void SpawnWeapon(Weapon weapon, GameObject parentObject, Vector3 location, bool isOnGround)
     {
-        if (hatPrefab == null)
+        if (weaponPrefab == null)
         {
-            Debug.LogError("Hat prefab is not assigned.");
+            Debug.LogError("Weapon prefab is not assigned.");
+            return;
+        }
+
+        if (parentObject == null)
+        {
+            Debug.LogError("Parent object is not assigned.");
             return;
         }
 
         var weaponInstance = Instantiate(weaponPrefab, location, Quaternion.identity);
 
+        weaponInstance.transform.SetParent(parentObject.transform);
+
+        weaponInstance.transform.localPosition = parentObject.transform.InverseTransformPoint(location);
+
+        weaponInstance.transform.localRotation = Quaternion.identity;
+
+        weaponInstance.transform.localScale = Vector3.one;
+
+        // Try to get the WeaponGO script on the instantiated weapon
         if (weaponInstance.TryGetComponent(out WeaponGO weaponScript))
         {
-            weaponScript.Initialize(weapon);
+            // Initialize the weapon script with the provided weapon data
+            weaponScript.Initialize(weapon, isOnGround);
+            Debug.Log("Weapon spawned and initialized successfully!");
         }
         else
         {
-            Debug.LogError("The instantiated HatPrefab is missing the HatGO component.");
+            Debug.LogError("The instantiated WeaponPrefab is missing the WeaponGO component.");
         }
     }
 

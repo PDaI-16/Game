@@ -140,7 +140,15 @@ MonoBehaviour:
   movementSpeed: 3
   WeaponArm: {fileID: 5161243686675801620}
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-  lookDirection: 
+  currentWeapon:
+    Type: 0
+    Category: 0
+    Sprite: {fileID: 0}
+    ItemScore: 0
+    Damage: 0
+    AttackSpeed: 0
+  inventoryGOScript: {fileID: 0}
+  weaponSpriteRenderer: {fileID: 0}
 --- !u!95 &1441634743815130511
 Animator:
   serializedVersion: 7
@@ -247,7 +255,7 @@ GameObject:
   - component: {fileID: 625600496261253312}
   m_Layer: 9
   m_Name: Weapon Arm
-  m_TagString: Untagged
+  m_TagString: PlayerWeaponArm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 5161243686675801620}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.6003259, w: 0.7997555}
-  m_LocalPosition: {x: -0.43, y: -0.1, z: 0}
+  m_LocalPosition: {x: -0.55, y: 0.11, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -280,7 +288,7 @@ GameObject:
   - component: {fileID: 5523477561491027954}
   m_Layer: 9
   m_Name: Weapon Sprite
-  m_TagString: Untagged
+  m_TagString: PlayerWeaponArmChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +302,7 @@ Transform:
   m_GameObject: {fileID: 8272852979777204991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.209, y: 0.215, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []

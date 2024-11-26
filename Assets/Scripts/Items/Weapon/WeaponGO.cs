@@ -15,8 +15,10 @@ public class WeaponGO : MonoBehaviour
     /// Initializes the WeaponGO with the given Weapon data.
     /// </summary>
     /// <param name="weapon">The Weapon data to associate with this WeaponGO.</param>
-    public void Initialize(Weapon weapon)
+    public void Initialize(Weapon weapon, bool isOnGround)
     {
+        onGround = isOnGround;
+
         if (weapon == null)
         {
             Debug.LogError("Weapon data is null. Initialization failed.");
