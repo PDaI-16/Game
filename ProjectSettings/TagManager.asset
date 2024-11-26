@@ -50,6 +50,9 @@ TagManager:
   - name: ItemsOnGround
     uniqueID: 4159228003
     locked: 0
+  - name: PlayerWeaponBehind
+    uniqueID: 3773600881
+    locked: 0
   - name: Player
     uniqueID: 3507243511
     locked: 0

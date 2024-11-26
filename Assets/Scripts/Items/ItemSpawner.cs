@@ -23,8 +23,11 @@ public class ItemSpawner : MonoBehaviour
     {
         try
         {
-            SpawnRandomHatToRandomLocation(2.0f);
-            SpawnRandomWeaponToRandomLocation(2.0f);
+            for (int i = 0; i < 5; i++)
+            {
+                SpawnRandomHatToRandomLocation(2.0f);
+                SpawnRandomWeaponToRandomLocation(2.0f);
+            }
         }
         catch (Exception e)
         {
