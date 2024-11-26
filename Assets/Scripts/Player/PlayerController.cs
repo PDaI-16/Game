@@ -91,6 +91,10 @@ public class PlayerController : MonoBehaviour
             // Check if the current weapon is different from the previous one
             if (currentWeapon != previousWeaponData)
             {
+                if (currentWeaponObject != null)
+                {
+                    Destroy(currentWeaponObject);
+                }
                 // Spawn the new weapon and assign it to currentWeaponObject
                 currentWeaponObject = itemSpawner.SpawnWeapon(currentWeapon, weaponArm, new Vector3(0, 0, 0), false);
 
