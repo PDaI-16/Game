@@ -45,11 +45,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
 
-    [SerializeField] public GameObject weaponArm;
-    [SerializeField] private Transform weaponArmTransform;
-    GameObject weaponInstance = null;
+    private GameObject weaponArm;
+    private GameObject weaponInstance = null;
+    private GameObject currentWeaponObject = null;
+    private Weapon previousWeaponData = null;
 
-
+    [SerializeField] private ItemSpawner itemSpawner;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
         _playerAnimator = GetComponent<Animator>();
 
         weaponArm = GameObject.Find("Weapon Arm");
-        weaponArmTransform = weaponArm.transform;
+
 
     } // Update is called once per frame
     void Update()
@@ -87,49 +88,19 @@ public class PlayerController : MonoBehaviour
             // Get the weapon data from inventory
             currentWeapon = inventoryGOScript.InventoryData.GetWeaponFromInventory(1);
 
-            if (weaponArmTransform == null)
+            // Check if the current weapon is different from the previous one
+            if (currentWeapon != previousWeaponData)
             {
-                Debug.LogError("Weapon Arm not assigned!");
-                return;
-            }
+                // Spawn the new weapon and assign it to currentWeaponObject
+                currentWeaponObject = itemSpawner.SpawnWeapon(currentWeapon, weaponArm, new Vector3(0, 0, 0), false);
 
-            // Instantiate the weapon prefab at the position of the WeaponArm
-            // Using Quaternion.identity ensures no initial rotation
-            if (weaponInstance == null)
+                // Set previousWeaponObject to the current weapon object for next comparison
+                previousWeaponData = currentWeaponObject.GetComponent<WeaponGO>().weaponData; 
+            }
+            else
             {
-                weaponInstance = Instantiate(WeaponPrefab, weaponArmTransform.position, Quaternion.identity);
-
-                // Parent the instantiated weapon to the weapon arm
-                weaponInstance.transform.SetParent(weaponArmTransform);
-
-                // Force the weapon to stay at position (0, 0, 0) relative to the weapon arm
-                weaponInstance.transform.localPosition = Vector3.zero;
-
-                // Ensure it follows the rotation of the weapon arm (fixes the issue with initial rotation)
-                weaponInstance.transform.localRotation = Quaternion.identity;
-
-                // Optional: Adjust scale if needed (ensuring it doesn't scale unexpectedly)
-                weaponInstance.transform.localScale = Vector3.one;
-
-                // Access the WeaponGO script attached to the weapon instance
-                WeaponGO weaponGO = weaponInstance.GetComponent<WeaponGO>();
-
-                if (weaponGO != null)
-                {
-                    // Initialize the weapon or set any data you need
-                    weaponGO.Initialize(currentWeapon, false);  // Assuming you have an Initialize method in WeaponGO
-                    Debug.Log("Weapon equipped successfully and initialized!");
-                }
-                else
-                {
-                    Debug.LogError("WeaponGO script not found on weapon prefab!");
-                }
-
-                // Debug log to confirm the weapon is equipped
-                Debug.Log("Weapon equipped successfully!");
+                Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
             }
-
-
         }
     }
 

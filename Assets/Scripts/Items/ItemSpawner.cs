@@ -104,28 +104,31 @@ public class ItemSpawner : MonoBehaviour
     /// <param name="location">The world-space position where the weapon should spawn, relative to the parent object.</param>
     /// <param name="isOnGround">A flag indicating whether the weapon is on the ground, which makes picking up possible</param>
 
-    public void SpawnWeapon(Weapon weapon, GameObject parentObject, Vector3 location, bool isOnGround)
+    public GameObject SpawnWeapon(Weapon weapon, GameObject parentObject, Vector3 location, bool isOnGround)
     {
         if (weaponPrefab == null)
         {
             Debug.LogError("Weapon prefab is not assigned.");
-            return;
+            return null;  // Return null if prefab is missing
         }
 
         if (parentObject == null)
         {
             Debug.LogError("Parent object is not assigned.");
-            return;
+            return null;  // Return null if parent object is missing
         }
 
+        // Instantiate the weapon prefab at the given location
         var weaponInstance = Instantiate(weaponPrefab, location, Quaternion.identity);
 
+        // Set the instantiated weapon as a child of the parent object
         weaponInstance.transform.SetParent(parentObject.transform);
 
+        // Position the weapon correctly relative to the parent object
         weaponInstance.transform.localPosition = parentObject.transform.InverseTransformPoint(location);
 
+        // Reset the rotation and scale if necessary
         weaponInstance.transform.localRotation = Quaternion.identity;
-
         weaponInstance.transform.localScale = Vector3.one;
 
         // Try to get the WeaponGO script on the instantiated weapon
@@ -139,6 +142,9 @@ public class ItemSpawner : MonoBehaviour
         {
             Debug.LogError("The instantiated WeaponPrefab is missing the WeaponGO component.");
         }
+
+        // Return the weapon instance so you can use it outside this method
+        return weaponInstance;
     }
 
     // Returns a randomly generated hat based on the level multiplier.
