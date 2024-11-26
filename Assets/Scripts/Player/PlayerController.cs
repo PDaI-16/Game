@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
@@ -44,12 +45,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
-
+    private GameObject weaponArm;
+    private SortingGroup weaponArmSortingGroup;
     private GameObject weaponArmMelee;
     private GameObject weaponArmRanged;
     private GameObject weaponArmMagic;
 
-    private GameObject weaponInstance = null;
     private GameObject currentWeaponObject = null;
     private Weapon previousWeaponData = null;
 
@@ -63,9 +64,13 @@ public class PlayerController : MonoBehaviour
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
 
+        weaponArm = GameObject.Find("Weapon Arm");
         weaponArmMelee = GameObject.Find("Melee");
         weaponArmRanged = GameObject.Find("Ranged");
         weaponArmMagic = GameObject.Find("Magic");
+
+        weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
+        /*weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";*/
 
     } // Update is called once per frame
     void Update()
@@ -198,6 +203,45 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Used for weapon arm layer changes depending on the animationstate
+    /// </summary>
+    /// <param name="animatioState">Current animation state the player is in.</param>
+
+    void UpdateWeaponArmSorting(AnimationState animationState)
+    {
+        if (weaponArmSortingGroup == null)
+        {
+            Debug.LogWarning("No weapon arm Sorting Group found!");
+            return;
+        }
+
+        // Adjust sorting layer and order based on animation state
+        switch (animationState)
+        {
+            case AnimationState.player_walk_up:
+            case AnimationState.player_idle_up:
+            case AnimationState.player_walk_left:
+            case AnimationState.player_idle_left:
+                weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind"; 
+                break;
+
+            case AnimationState.player_walk_down:
+            case AnimationState.player_idle_down:
+            case AnimationState.player_walk_right:
+            case AnimationState.player_idle_right:
+                weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Weapon in front of the player
+                break;
+
+    
+
+            default:
+                weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Default sorting order
+                break;
+        }
+    }
+
     public void UpdateIsMoving()
     {
         if(_movementInput.x == 0 && _movementInput.y == 0)
@@ -219,6 +263,7 @@ public class PlayerController : MonoBehaviour
         _playerAnimator.Play(state);
 
         currentAnimationState = newState;
+        UpdateWeaponArmSorting(newState);
     }
 
 
