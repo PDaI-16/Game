@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private AnimationState newAnimationState;
 
     [SerializeField] GameObject WeaponPrefab;
-    [SerializeField] private Weapon currentWeapon = null;
+    [SerializeField] private Weapon currentWeaponData = null;
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // Set the current and previous weapon data for comparison
-            currentWeapon = WeaponData;
+            currentWeaponData = WeaponData;
             previousWeaponData = WeaponData;
 
             // Adjust the localPosition of the weapon from the parent object's player's weaponArm

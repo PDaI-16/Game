@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData:
-    Type: 0
+    Type: 1
     Category: 0
     Sprite: {fileID: 0}
     ItemScore: 0
