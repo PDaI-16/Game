@@ -8,6 +8,8 @@ public class Map : MonoBehaviour
     public BiomePreset[] biomes;
     public Tilemap tilemap;  // Reference to the Tilemap component
     public GameObject colliderParent;
+    public RuleTile borderTile; // Assign this in the Inspector
+    public Tilemap BorderTilemap;
 
     [Header("Dimensions")]
     public int width = 50;
@@ -33,33 +35,49 @@ public class Map : MonoBehaviour
     }
 
     void GenerateMap()
+{
+    // Generate noise maps for height, moisture, and heat
+    heightMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heightWaves);
+    moistureMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, moistureWaves);
+    heatMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heatWaves);
+
+    // Iterate over each tile position
+    for (int x = -1; x <= width; ++x) // Extend bounds for borders
     {
-        // Generate noise maps for height, moisture, and heat
-        heightMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heightWaves);
-        moistureMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, moistureWaves);
-        heatMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heatWaves);
-
-        // Iterate over each tile position
-        for (int x = 0; x < width; ++x)
+        for (int y = -1; y <= height; ++y) // Extend bounds for borders
         {
-            for (int y = 0; y < height; ++y)
-            {
-                Vector3Int position = new Vector3Int(x, y, 0);
+            Vector3Int position = new Vector3Int(x, y, 0);
 
-                // Determine the biome of the current tile
+            // Place borders outside the playable area
+            if (IsBorder(x, y))
+            {
+                tilemap.SetTile(position, borderTile); // Ensure borderTile is assigned
+                continue;
+            }
+
+            // Place regular tiles only within playable bounds
+            if (x >= 0 && x < width && y >= 0 && y < height)
+            {
                 BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
 
-                // Set the tile to the biome's RuleTile
                 if (currentBiome != null && currentBiome.ruleTile != null)
                 {
                     tilemap.SetTile(position, currentBiome.ruleTile);
                 }
             }
         }
-        GenerateEnvironmentObjects();
-        GenerateOceanColliders();
-        
     }
+    ClearBordersFromMapTilemap();
+    GenerateBorders();
+    GenerateEnvironmentObjects();
+    GenerateOceanColliders();
+    
+}
+
+bool IsBorder(int x, int y)
+{
+    return x < 0 || y < 0 || x >= width || y >= height; // Borders are outside playable area
+}
 
    void GenerateEnvironmentObjects()
 {
@@ -70,6 +88,9 @@ public class Map : MonoBehaviour
     {
         for (int y = 0; y < height; ++y)
         {
+             if (IsBorder(x, y))
+                continue; // Skip borders
+
             Vector3Int position = new Vector3Int(x, y, 0);
             BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
 
@@ -165,21 +186,56 @@ public class Map : MonoBehaviour
     }
 }
 
+void GenerateBorders()
+{
+    for (int x = -1; x <= width; ++x)
+    {
+        for (int y = -1; y <= height; ++y)
+        {
+            if (IsBorder(x, y))
+            {
+                Vector3Int position = new Vector3Int(x, y, 0);
+
+                // Place border tiles on the BorderTilemap
+                if (BorderTilemap != null)
+                {
+                    BorderTilemap.SetTile(position, borderTile); // Use your RuleTile or Tile
+                }
+                else
+                {
+                    Debug.LogError("BorderTilemap is not assigned!");
+                }
+            }
+        }
+    }
+}
+
+void ClearBordersFromMapTilemap()
+{
+    for (int x = -1; x <= width; ++x)
+    {
+        for (int y = -1; y <= height; ++y)
+        {
+            if (IsBorder(x, y))
+            {
+                Vector3Int position = new Vector3Int(x, y, 0);
+
+                // Clear tiles from the _Map tilemap
+                tilemap.SetTile(position, null);
+            }
+        }
+    }
+}
 void GenerateOceanColliders()
 {
-    // Check if the OceanColliders GameObject already exists and remove it
     Transform existingOceanColliders = transform.Find("OceanColliders");
     if (existingOceanColliders != null)
     {
         DestroyImmediate(existingOceanColliders.gameObject);
     }
 
-    // Create a new GameObject for ocean colliders
     GameObject oceanCollidersParent = new GameObject("OceanColliders");
     oceanCollidersParent.transform.parent = transform;
-
-    // Reference the Tilemap's origin position
-    Vector3 tilemapOrigin = tilemap.origin;
 
     bool[,] visited = new bool[width, height];
 
@@ -192,35 +248,21 @@ void GenerateOceanColliders()
 
             BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
 
-            // Check if the current tile belongs to the Ocean biome
             if (currentBiome != null && currentBiome.name == "Ocean")
             {
-                // Perform flood fill to determine the size of the contiguous ocean area
                 List<Vector2Int> oceanArea = new List<Vector2Int>();
                 FloodFillOcean(x, y, oceanArea, visited);
 
-                // Determine the width and height of the ocean area
-                int minX = oceanArea.Min(pos => pos.x);
-                int maxX = oceanArea.Max(pos => pos.x);
-                int minY = oceanArea.Min(pos => pos.y);
-                int maxY = oceanArea.Max(pos => pos.y);
-
-                int areaWidth = maxX - minX + 1;
-                int areaHeight = maxY - minY + 1;
-
-                // Skip generating colliders if the area is too small
-                if (areaWidth < 3 || areaHeight < 3)
+                // Skip borders when generating colliders
+                if (oceanArea.Any(pos => IsBorder(pos.x, pos.y)))
                     continue;
 
-                // Generate colliders for the ocean area
                 foreach (var pos in oceanArea)
                 {
                     Vector3 tilePosition = tilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
-
                     BoxCollider2D oceanCollider = oceanCollidersParent.AddComponent<BoxCollider2D>();
-                    oceanCollider.offset = tilePosition - transform.position; // Align collider to the tile center
-                    oceanCollider.size = Vector2.one; // Assuming each tile is 1x1 in size
-                    oceanCollider.isTrigger = false; // Ensure the collider is not a trigger
+                    oceanCollider.offset = tilePosition - transform.position;
+                    oceanCollider.size = Vector2.one;
                 }
             }
         }
