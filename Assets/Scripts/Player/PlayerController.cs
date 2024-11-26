@@ -85,11 +85,16 @@ public class PlayerController : MonoBehaviour
         //Change weapon (just for testing)
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // Get the weapon data from inventory
-            currentWeapon = inventoryGOScript.InventoryData.GetWeaponFromInventory(1);
+            // Get first weapon from inventory and equip it (JUST FOR TESTING EQUIPPING)
+            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(0));
+        }
 
+    }
+
+    public void EquipWeapon(Weapon WeaponData)
+    {
             // Check if the current weapon is different from the previous one
-            if (currentWeapon != previousWeaponData)
+            if (WeaponData != previousWeaponData)
             {
                 // Destroy weapon before new is created
                 if (currentWeaponObject != null)
@@ -97,10 +102,12 @@ public class PlayerController : MonoBehaviour
                     Destroy(currentWeaponObject);
                 }
                 // Spawn the new weapon and assign it to currentWeaponObject
-                currentWeaponObject = itemSpawner.SpawnWeapon(currentWeapon, weaponArm, new Vector2(0, 0), false);
+                currentWeaponObject = itemSpawner.SpawnWeapon(WeaponData, weaponArm, new Vector2(0, 0), false);
 
-                // Set previousWeaponObject to the current weapon object for next comparison
-                previousWeaponData = currentWeaponObject.GetComponent<WeaponGO>().weaponData;
+            // Set previousWeaponObject to the current weapon object for next comparison
+            /*                previousWeaponData = currentWeaponObject.GetComponent<WeaponGO>().weaponData;*/
+
+                previousWeaponData = WeaponData;
 
 
                 // Adjust the localPosition from the parent objects player's weaponArm, because otherwise it wont be zero.
@@ -122,7 +129,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
             }
-        }
+        
     }
 
     void UpdateLookDirection()
