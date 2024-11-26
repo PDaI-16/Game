@@ -138,7 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 4681880649504773632}
   movementSpeed: 3
-  WeaponArm: {fileID: 5161243686675801620}
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   currentWeapon:
     Type: 0
@@ -149,6 +148,7 @@ MonoBehaviour:
     AttackSpeed: 0
   inventoryGOScript: {fileID: 0}
   weaponSpriteRenderer: {fileID: 0}
+  itemSpawner: {fileID: 0}
 --- !u!95 &1441634743815130511
 Animator:
   serializedVersion: 7
@@ -292,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6797865712334257691
 Transform:
   m_ObjectHideFlags: 0

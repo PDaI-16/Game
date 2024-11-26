@@ -97,10 +97,26 @@ public class PlayerController : MonoBehaviour
                     Destroy(currentWeaponObject);
                 }
                 // Spawn the new weapon and assign it to currentWeaponObject
-                currentWeaponObject = itemSpawner.SpawnWeapon(currentWeapon, weaponArm, new Vector3(0, 0, 0), false);
+                currentWeaponObject = itemSpawner.SpawnWeapon(currentWeapon, weaponArm, new Vector2(0, 0), false);
 
                 // Set previousWeaponObject to the current weapon object for next comparison
-                previousWeaponData = currentWeaponObject.GetComponent<WeaponGO>().weaponData; 
+                previousWeaponData = currentWeaponObject.GetComponent<WeaponGO>().weaponData;
+
+
+                // Adjust the localPosition from the parent objects player's weaponArm, because otherwise it wont be zero.
+
+                Transform weaponCloneTransform = weaponArm.transform.Find("Weapon(Clone)");
+
+                if (weaponCloneTransform != null)
+                {
+                    // Set its localPosition to (0, 0, 0)
+                    weaponCloneTransform.localPosition = Vector3.zero;
+                }
+                else
+                {
+                    Debug.LogError("Weapon(Clone) not found as a child of weaponArm.");
+                }
+
             }
             else
             {
