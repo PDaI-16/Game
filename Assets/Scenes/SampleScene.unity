@@ -1716,11 +1716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83444566
+      value: -7.6
       objectReference: {fileID: 0}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2858521
+      value: -3.38
       objectReference: {fileID: 0}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5137,24 +5137,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: Inventory
+      propertyPath: InventoryGO
       value: 
-      objectReference: {fileID: 2064573351}
+      objectReference: {fileID: 2064573353}
+    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: InventoryGOScript
+      value: 
+      objectReference: {fileID: 2064573353}
+    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: inventoryGOScript
+      value: 
+      objectReference: {fileID: 2064573353}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5523477561491027954, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1603191712332893284, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
-    - target: {fileID: 6797865712334257691, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+    - target: {fileID: 5161243686675801620, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerWeaponArm
       objectReference: {fileID: 0}
-    - target: {fileID: 6797865712334257691, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+    - target: {fileID: 8272852979777204991, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerWeaponSpriteRenderer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5171,11 +5175,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.38
+      value: -6.15
       objectReference: {fileID: 0}
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.z

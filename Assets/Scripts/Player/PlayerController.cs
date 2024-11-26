@@ -24,15 +24,10 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] Rigidbody2D playerRigidbody;
-/*    [SerializeField] GameObject Inventory;
-    [SerializeField] InventoryController InventoryController;*/
-/*    [SerializeField] List<WeaponData> InventoryWeapons;*/
     [SerializeField] int movementSpeed;
 
     [SerializeField] GameObject WeaponArm;
     [SerializeField] GameObject WeaponPrefab;
-
-    [SerializeField] public string lookDirection;
 
     private Vector2 _movementInput;
     private Animator _playerAnimator;
@@ -45,12 +40,15 @@ public class PlayerController : MonoBehaviour
     private AnimationState currentAnimationState;
     private AnimationState newAnimationState;
 
+    [SerializeField] private Weapon currentWeapon = null;
+    [SerializeField] private InventoryGO inventoryGOScript;
+    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
+
+ 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-/*        InventoryController = Inventory.GetComponent<InventoryController>();
-        InventoryWeapons = InventoryController.weaponsInInventory;*/
         _mainCamera = Camera.main;
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
@@ -73,7 +71,17 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
-       }
+
+        //Change weapon (just for testing)
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            // Perform your action here
+            currentWeapon = inventoryGOScript.InventoryData.GetWeaponFromInventory(0);
+
+
+        }
+
+    }
 
     void UpdateLookDirection()
     {

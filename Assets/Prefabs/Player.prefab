@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -787723785
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 3577252072171977909, guid: 9388d5cd1d3e2584e887fdcdb3d10776, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,7 +97,6 @@ GameObject:
   m_Component:
   - component: {fileID: 372409239872217965}
   - component: {fileID: 3142304944509865204}
-  - component: {fileID: 7412304943352921202}
   - component: {fileID: 1441634743815130511}
   - component: {fileID: 2753480610576612696}
   - component: {fileID: 4681880649504773632}
@@ -138,36 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 4681880649504773632}
-  Inventory: {fileID: 0}
-  InventoryController: {fileID: 0}
-  InventoryWeapons:
-  - Sprite: {fileID: 0}
-    Damage: 0
-    AttackSpeed: 0
-    WeaponScore: 0
-    weaponType: 0
   movementSpeed: 3
   WeaponArm: {fileID: 5161243686675801620}
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   lookDirection: 
---- !u!114 &7412304943352921202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4180048407753474886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7359ab5ae24293b43b89c0b9fde46ba9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponData:
-    Sprite: {fileID: 0}
-    Damage: 0
-    AttackSpeed: 0
-    WeaponScore: 0
-    weaponType: 0
 --- !u!95 &1441634743815130511
 Animator:
   serializedVersion: 7
@@ -369,9 +342,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -787723785
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
-  m_Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  m_Sprite: {fileID: 1603191712332893284, guid: 4f2d25b70b334c347b686b9ab126b032, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
