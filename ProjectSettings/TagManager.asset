@@ -7,6 +7,8 @@ TagManager:
   - Inventory
   - Enemy
   - MainMenu
+  - PlayerWeaponArm
+  - PlayerWeaponArmChild
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,12 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1379402359
+    locked: 0
+  - name: ItemsOnGround
+    uniqueID: 4159228003
+    locked: 0
+  - name: PlayerWeaponBehind
+    uniqueID: 3773600881
     locked: 0
   - name: Player
     uniqueID: 3507243511
