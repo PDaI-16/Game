@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public GameObject Enemy; // Reference to the enemy GameObject
+    public GameObject Enemy;
     public float health;
     public float maxHealth;
     public float Damage;
-    [SerializeField] private PlayerStats playerStats; // Reference to PlayerStats (assign in Inspector or find dynamically)
+    public int experienceReward = 100; 
+
+    [SerializeField] private PlayerStats playerStats;
 
     void Start()
     {
@@ -24,8 +26,15 @@ public class EnemyStats : MonoBehaviour
     {
         if (health <= 0)
         {
-            Debug.Log("Enemy died!");
-            Destroy(Enemy);
+            if (playerStats != null)
+            {
+                playerStats.GainXP(experienceReward);
+            }
+            else
+            {
+                Debug.LogError("playerStats is null, can't award XP.");
+            }
+            Destroy(gameObject);
         }
     }
 
