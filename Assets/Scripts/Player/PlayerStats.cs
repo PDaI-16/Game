@@ -121,10 +121,10 @@ public class PlayerStats : MonoBehaviour
         HealCharacter(maxHealth); 
         availableSkillPoints++; 
     }
-private int GetXPForNextLevel()
-{
-    return 100 * (int)Mathf.Pow(2, level - 1); // 100, 200, 400, 800, ...
-}
+    public int GetXPForNextLevel()
+    {
+        return 100 * (int)Mathf.Pow(2, level - 1); // 100, 200, 400, 800, ...
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {

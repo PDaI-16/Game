@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // Keep this for Slider UI components
+using TMPro; // Add this for TextMeshPro
 
 public class BottomBar : MonoBehaviour
 {
@@ -9,26 +10,31 @@ public class BottomBar : MonoBehaviour
     public Sprite HearthQuarter;
     public Sprite HearthEmpty;
 
-    public Image heartImage; // Reference to the Image component in HealthUI
+    public Image heartImage;
 
-    public Image meleeSkillImage;  // UI slot for melee skill
-    public Image rangedSkillImage; // UI slot for ranged skill
-    public Image magicSkillImage;  // UI slot for magic skill
+    public Image meleeSkillImage;
+    public Image rangedSkillImage;
+    public Image magicSkillImage;
 
-    [SerializeField] private PlayerStats playerStats;  // Reference to PlayerStats
-    [SerializeField] private SkillTree skillTree;      // Reference to SkillTree
-    public Sprite GUI1_0;  // Placeholder sprite for special skills
+    public Slider xpBarSlider;
+    public TextMeshProUGUI xpText;
+
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private SkillTree skillTree;
+    public Sprite GUI1_0;
 
     void Start()
     {
         UpdateHealthImage();
         UpdateSkillIcons();
+        UpdateXPBar();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         UpdateHealthImage();
         UpdateSkillIcons();
+        UpdateXPBar();
     }
 
     public void UpdateHealthImage()
@@ -62,38 +68,41 @@ public class BottomBar : MonoBehaviour
         UpdateSkillIcon(skillTree.magicSpecialSkill, magicSkillImage);
     }
 
-
     private void UpdateSkillIcon(SkillTree.Skill skill, Image skillImage)
     {
-        // Use the placeholder sprite for null or invalid skills
         Sprite skillSprite = GetSkillSprite(skill);
 
-        // Update the image with the obtained sprite
         skillImage.sprite = skillSprite;
-
-        // Highlight owned skills (non-placeholder) in blue; otherwise, default to white
         skillImage.color = skillSprite == GUI1_0 ? Color.white : Color.blue;
     }
 
     private Sprite GetSkillSprite(SkillTree.Skill skill)
     {
-        // If the skill is null, return the placeholder sprite
         if (skill == null)
         {
-            return GUI1_0; // Default placeholder sprite
+            return GUI1_0; 
         }
 
-        // Locate the skill in the array
         int index = System.Array.IndexOf(skillTree.skills, skill);
-
-        // Validate index and return the sprite if valid
         if (index >= 0 && index < skillTree.skillImages.Length)
         {
             return skillTree.skillImages[index].sprite;
         }
 
-        // If skill is not found or index is invalid, silently return the placeholder
         return GUI1_0;
     }
 
+    public void UpdateXPBar()
+    {
+        // Calculate the current XP percentage
+        float xpPercent = (float)playerStats.currentXP / playerStats.GetXPForNextLevel();
+
+        xpBarSlider.value = xpPercent;
+        xpBarSlider.fillRect.GetComponent<Image>().color = Color.green; // Change color to green when full (for level-up)
+
+        if (xpText != null)
+        {
+            xpText.text = $"{playerStats.currentXP} / {playerStats.GetXPForNextLevel()} XP";
+        }
+    }
 }
