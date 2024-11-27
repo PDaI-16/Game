@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: -1147929234313141602, guid: 9ae54b49566b1134784aabeb7f1aae07, type: 3}
   m_DefaultGameObject: {fileID: 0}
-  m_DefaultColliderType: 2
+  m_DefaultColliderType: 1
   m_TilingRules: []
   tileSize: {x: 2, y: 2}

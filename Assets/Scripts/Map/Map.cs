@@ -34,49 +34,57 @@ public class Map : MonoBehaviour
         GenerateMap();
     }
 
-    void GenerateMap()
+void GenerateMap()
 {
     // Generate noise maps for height, moisture, and heat
     heightMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heightWaves);
     moistureMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, moistureWaves);
     heatMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heatWaves);
 
-    // Iterate over each tile position
-    for (int x = -1; x <= width; ++x) // Extend bounds for borders
+    // Fixed border size of 45x45
+    int borderSize = 26;
+
+    // Iterate over each tile position for the border
+    for (int x = -1; x <= borderSize; ++x) // Extend bounds for borders
     {
-        for (int y = -1; y <= height; ++y) // Extend bounds for borders
+        for (int y = -1; y <= borderSize; ++y) // Extend bounds for borders
         {
             Vector3Int position = new Vector3Int(x, y, 0);
 
             // Place borders outside the playable area
             if (IsBorder(x, y))
             {
-                tilemap.SetTile(position, borderTile); // Ensure borderTile is assigned
-                continue;
-            }
-
-            // Place regular tiles only within playable bounds
-            if (x >= 0 && x < width && y >= 0 && y < height)
-            {
-                BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
-
-                if (currentBiome != null && currentBiome.ruleTile != null)
-                {
-                    tilemap.SetTile(position, currentBiome.ruleTile);
-                }
+                BorderTilemap.SetTile(position, borderTile); // Ensure borderTile is assigned
             }
         }
     }
-    ClearBordersFromMapTilemap();
-    GenerateBorders();
+
+    // Iterate over each tile position for the main map
+    for (int x = 0; x < width; ++x)
+    {
+        for (int y = 0; y < height; ++y)
+        {
+            Vector3Int position = new Vector3Int(x, y, 0);
+
+            // Place regular tiles only within playable bounds
+            BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
+
+            if (currentBiome != null && currentBiome.ruleTile != null)
+            {
+                tilemap.SetTile(position, currentBiome.ruleTile);
+            }
+        }
+    }
+
     GenerateEnvironmentObjects();
     GenerateOceanColliders();
-    
 }
 
 bool IsBorder(int x, int y)
 {
-    return x < 0 || y < 0 || x >= width || y >= height; // Borders are outside playable area
+    // Fixed border size of 45x45
+    int borderSize = 26;
+    return x < 0 || y < 0 || x >= borderSize || y >= borderSize;
 }
 
    void GenerateEnvironmentObjects()
@@ -88,8 +96,7 @@ bool IsBorder(int x, int y)
     {
         for (int y = 0; y < height; ++y)
         {
-             if (IsBorder(x, y))
-                continue; // Skip borders
+
 
             Vector3Int position = new Vector3Int(x, y, 0);
             BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
@@ -254,8 +261,7 @@ void GenerateOceanColliders()
                 FloodFillOcean(x, y, oceanArea, visited);
 
                 // Skip borders when generating colliders
-                if (oceanArea.Any(pos => IsBorder(pos.x, pos.y)))
-                    continue;
+               
 
                 foreach (var pos in oceanArea)
                 {

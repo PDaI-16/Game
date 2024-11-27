@@ -158,7 +158,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2e6a34c971f391544ba295a9b0efbe07, type: 2}
   tilemap: {fileID: 944894449}
   colliderParent: {fileID: 0}
-  borderTile: {fileID: 11400000, guid: 7ce3c055dc0704442a2fd5daff0df507, type: 2}
+  borderTile: {fileID: 11400000, guid: 9712bbec9d6b73f459ad3d38caa5d6a5, type: 2}
   BorderTilemap: {fileID: 1303617409}
   width: 60
   height: 60
@@ -483,7 +483,7 @@ Grid:
   m_GameObject: {fileID: 1083498918}
   m_Enabled: 1
   m_CellSize: {x: 1, y: 1, z: 0}
-  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellGap: {x: 1.25, y: 1.25, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
 --- !u!4 &1083498920
@@ -624,8 +624,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -787723785
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
