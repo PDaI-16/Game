@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Inventory
+  - Enemy
+  - MainMenu
   - PlayerWeaponArm
   - PlayerWeaponArmChild
   layers:
@@ -14,14 +16,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - Player
   - Weapon
   - 
   - Menu
-  - 
+  - MainMenu
   - 
   - 
   - 
@@ -61,6 +63,9 @@ TagManager:
     locked: 0
   - name: InGameUI
     uniqueID: 2532103855
+    locked: 0
+  - name: MainMenu'
+    uniqueID: 1174784085
     locked: 0
   m_RenderingLayers:
   - Default

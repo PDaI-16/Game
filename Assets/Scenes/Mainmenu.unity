@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 207724437}
   - component: {fileID: 207724439}
   - component: {fileID: 207724438}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: MagicText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,9 +266,9 @@ GameObject:
   - component: {fileID: 383666836}
   - component: {fileID: 383666835}
   - component: {fileID: 383666834}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: SettingsPanel
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 597311770}
   - component: {fileID: 597311772}
   - component: {fileID: 597311771}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 718849820}
   - component: {fileID: 718849819}
   - component: {fileID: 718849818}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: SelectBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 903958229}
   - component: {fileID: 903958231}
   - component: {fileID: 903958230}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,9 +747,9 @@ GameObject:
   - component: {fileID: 1013687935}
   - component: {fileID: 1013687937}
   - component: {fileID: 1013687936}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: MenuText
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 1092978722}
   - component: {fileID: 1092978724}
   - component: {fileID: 1092978723}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: MeleeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 1102590656}
   - component: {fileID: 1102590655}
   - component: {fileID: 1102590657}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: RangerSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,9 +1263,9 @@ GameObject:
   - component: {fileID: 1300800611}
   - component: {fileID: 1300800610}
   - component: {fileID: 1300800609}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: StartGame
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1396,7 +1396,7 @@ GameObject:
   - component: {fileID: 1352912532}
   - component: {fileID: 1352912531}
   - component: {fileID: 1352912533}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: MeleeSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1502,9 +1502,9 @@ GameObject:
   - component: {fileID: 1368330303}
   - component: {fileID: 1368330302}
   - component: {fileID: 1368330301}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: QuitGame
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1634,7 +1634,7 @@ GameObject:
   - component: {fileID: 1482637482}
   - component: {fileID: 1482637484}
   - component: {fileID: 1482637483}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: RangerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1770,9 +1770,9 @@ GameObject:
   - component: {fileID: 1487567879}
   - component: {fileID: 1487567881}
   - component: {fileID: 1487567880}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: SpriteL
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1846,9 +1846,9 @@ GameObject:
   - component: {fileID: 1535577207}
   - component: {fileID: 1535577206}
   - component: {fileID: 1535577205}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Settings
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1978,9 +1978,9 @@ GameObject:
   - component: {fileID: 1609351445}
   - component: {fileID: 1609351447}
   - component: {fileID: 1609351446}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: MenuUI
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2059,7 +2059,7 @@ GameObject:
   - component: {fileID: 1689222714}
   - component: {fileID: 1689222716}
   - component: {fileID: 1689222715}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2195,7 +2195,7 @@ GameObject:
   - component: {fileID: 1690485936}
   - component: {fileID: 1690485938}
   - component: {fileID: 1690485937}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2331,9 +2331,9 @@ GameObject:
   - component: {fileID: 1926989349}
   - component: {fileID: 1926989351}
   - component: {fileID: 1926989350}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: CharacterSelect
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2410,9 +2410,9 @@ GameObject:
   - component: {fileID: 1981013505}
   - component: {fileID: 1981013507}
   - component: {fileID: 1981013506}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: SpriteR
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2486,7 +2486,7 @@ GameObject:
   - component: {fileID: 2023563616}
   - component: {fileID: 2023563615}
   - component: {fileID: 2023563617}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: MagicSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2591,7 +2591,7 @@ GameObject:
   - component: {fileID: 2072892474}
   - component: {fileID: 2072892476}
   - component: {fileID: 2072892475}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 2084607145}
   - component: {fileID: 2084607144}
   - component: {fileID: 2084607143}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2863,9 +2863,11 @@ GameObject:
   - component: {fileID: 2105970134}
   - component: {fileID: 2105970133}
   - component: {fileID: 2105970138}
-  m_Layer: 5
+  - component: {fileID: 2105970140}
+  - component: {fileID: 2105970139}
+  m_Layer: 13
   m_Name: MainMenuUI
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2884,6 +2886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 383666833}
   selectPanel: {fileID: 1926989348}
+  deathScreenPanel: {fileID: 0}
 --- !u!114 &2105970134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2986,6 +2989,52 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &2105970139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105970132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
+--- !u!114 &2105970140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105970132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
