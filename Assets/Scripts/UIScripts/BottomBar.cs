@@ -10,18 +10,18 @@ public class BottomBar : MonoBehaviour
     public Sprite HearthQuarter;
     public Sprite HearthEmpty;
 
-    public Image heartImage;
+    public Image heartImage; 
 
-    public Image meleeSkillImage;
-    public Image rangedSkillImage;
-    public Image magicSkillImage;
+    public Image meleeSkillImage; 
+    public Image rangedSkillImage; 
+    public Image magicSkillImage;  
 
-    public Slider xpBarSlider;
-    public TextMeshProUGUI xpText;
+    public Slider xpBarSlider;  
+    public TextMeshProUGUI xpText;  
 
-    [SerializeField] private PlayerStats playerStats;
-    [SerializeField] private SkillTree skillTree;
-    public Sprite GUI1_0;
+    [SerializeField] private PlayerStats playerStats;  
+    [SerializeField] private SkillTree skillTree;     
+    public Sprite GUI1_0;  
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class BottomBar : MonoBehaviour
         UpdateXPBar();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         UpdateHealthImage();
         UpdateSkillIcons();
@@ -80,21 +80,20 @@ public class BottomBar : MonoBehaviour
     {
         if (skill == null)
         {
-            return GUI1_0; 
+            return GUI1_0; // Default placeholder sprite
         }
 
         int index = System.Array.IndexOf(skillTree.skills, skill);
+
         if (index >= 0 && index < skillTree.skillImages.Length)
         {
             return skillTree.skillImages[index].sprite;
         }
-
         return GUI1_0;
     }
 
     public void UpdateXPBar()
     {
-        // Calculate the current XP percentage
         float xpPercent = (float)playerStats.currentXP / playerStats.GetXPForNextLevel();
 
         xpBarSlider.value = xpPercent;
