@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -54,8 +55,9 @@ public class PlayerController : MonoBehaviour
     private GameObject rangedArm;
 
     private SortingGroup weaponArmSortingGroup;
+    private SortingGroup rangedArmSortingGroup;
+
     private GameObject weaponArmMelee;
-    private GameObject weaponArmRanged;
     private GameObject weaponArmMagic;
 
     private GameObject currentWeaponObject = null;
@@ -76,11 +78,10 @@ public class PlayerController : MonoBehaviour
         weaponArm = GameObject.Find("Weapon Arm");
         rangedArm = GameObject.Find("Ranged Arm");
         weaponArmMelee = GameObject.Find("Melee");
-        weaponArmRanged = GameObject.Find("Ranged");
         weaponArmMagic = GameObject.Find("Magic");
 
         weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
-
+        rangedArmSortingGroup = rangedArm.GetComponent<SortingGroup>();
 
     } // Update is called once per frame
     void Update()
@@ -246,7 +247,8 @@ public class PlayerController : MonoBehaviour
             case AnimationState.player_idle_up:
             case AnimationState.player_walk_left:
             case AnimationState.player_idle_left:
-                weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind"; 
+                weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";
+                rangedArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";
                 break;
 
             case AnimationState.player_walk_down:
@@ -254,12 +256,14 @@ public class PlayerController : MonoBehaviour
             case AnimationState.player_walk_right:
             case AnimationState.player_idle_right:
                 weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Weapon in front of the player
+                rangedArmSortingGroup.sortingLayerName = "PlayerWeapon";
                 break;
 
     
 
             default:
                 weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Default sorting order
+                rangedArmSortingGroup.sortingLayerName = "PlayerWeapon";
                 break;
         }
     }
