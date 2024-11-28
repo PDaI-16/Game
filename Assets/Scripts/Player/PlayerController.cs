@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        //Change weapon to latest in inventory (just for testing)
+        //Change weapon to latest in inventory (just for testing before proper inventory is made...)
         if (Input.GetKeyDown(KeyCode.Q))
         {
             int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
