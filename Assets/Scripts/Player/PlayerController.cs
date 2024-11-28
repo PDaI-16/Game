@@ -45,7 +45,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
+
+
+    [SerializeField] private Camera currentCamera;
+
+
     private GameObject weaponArm;
+    private GameObject rangedArm;
+
     private SortingGroup weaponArmSortingGroup;
     private GameObject weaponArmMelee;
     private GameObject weaponArmRanged;
@@ -53,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject currentWeaponObject = null;
     private Weapon previousWeaponData = null;
+
+
 
     [SerializeField] private ItemSpawner itemSpawner;
 
@@ -65,12 +74,13 @@ public class PlayerController : MonoBehaviour
         _playerAnimator = GetComponent<Animator>();
 
         weaponArm = GameObject.Find("Weapon Arm");
+        rangedArm = GameObject.Find("Ranged Arm");
         weaponArmMelee = GameObject.Find("Melee");
         weaponArmRanged = GameObject.Find("Ranged");
         weaponArmMagic = GameObject.Find("Magic");
 
         weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
-        /*weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";*/
+
 
     } // Update is called once per frame
     void Update()
@@ -89,6 +99,12 @@ public class PlayerController : MonoBehaviour
         UpdateIsMoving();
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
+
+        if (currentWeaponData.Category == ItemCategory.Ranged)
+        {
+            ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
+        }
+
 
 
         //Change weapon (just for testing)
@@ -125,7 +141,7 @@ public class PlayerController : MonoBehaviour
                 case ItemCategory.Ranged:
                     Debug.Log("Equipping a ranged weapon.");
                     // Add logic for ranged weapon handling
-                    chosenArm = weaponArmRanged;
+                    chosenArm = rangedArm;
                     break;
 
                 case ItemCategory.Magic:
@@ -144,6 +160,11 @@ public class PlayerController : MonoBehaviour
             if (chosenArm != null)
             {
                 currentWeaponObject = itemSpawner.SpawnWeapon(WeaponData, chosenArm, new Vector2(0, 0), false);
+                Debug.Log("Weapon was spawned to arm");
+            }
+            else
+            {
+                Debug.LogError("Specific arm was not found.");
             }
 
             // Set the current and previous weapon data for comparison
@@ -168,6 +189,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
         }
     }
+
 
     void UpdateLookDirection()
     {
