@@ -52,7 +52,9 @@ public class PlayerController : MonoBehaviour
 
 
     private GameObject weaponArm;
+
     private GameObject rangedArm;
+    private Transform rangedArmTransform;
 
     private SortingGroup weaponArmSortingGroup;
     private SortingGroup rangedArmSortingGroup;
@@ -62,6 +64,9 @@ public class PlayerController : MonoBehaviour
 
     private GameObject currentWeaponObject = null;
     private Weapon previousWeaponData = null;
+
+    private Vector3 defaultPositionRangedArm;
+    private Vector3 newRangedWeaponPosition;
 
 
 
@@ -80,8 +85,14 @@ public class PlayerController : MonoBehaviour
         weaponArmMelee = GameObject.Find("Melee");
         weaponArmMagic = GameObject.Find("Magic");
 
+
+        rangedArmTransform = rangedArm.transform;
+
         weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
         rangedArmSortingGroup = rangedArm.GetComponent<SortingGroup>();
+
+        defaultPositionRangedArm = rangedArm.transform.localPosition;
+        newRangedWeaponPosition = new Vector3(0, 0, 0);
 
     } // Update is called once per frame
     void Update()
@@ -104,15 +115,16 @@ public class PlayerController : MonoBehaviour
         if (currentWeaponData.Category == ItemCategory.Ranged)
         {
             ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
+            ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
         }
 
 
 
-        //Change weapon (just for testing)
+        //Change weapon to latest in inventory (just for testing)
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // Get first weapon from inventory and equip it (JUST FOR TESTING EQUIPPING)
-            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(0));
+            int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
+            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory-1));
         }
 
     }
@@ -224,6 +236,52 @@ public class PlayerController : MonoBehaviour
             //print("DOWN");
             newAnimationState = _isMoving ? AnimationState.player_walk_down : AnimationState.player_idle_down;
         }
+    }
+
+
+    void ChangeRangedWeaponPositionBasedOnAnimation(AnimationState animationState)
+    {
+        if(rangedArmTransform != null)
+        {
+            switch (animationState)
+            {
+                case AnimationState.player_walk_up:
+                case AnimationState.player_idle_up:
+                    newRangedWeaponPosition = new Vector3(0, 0.15f, 0);
+                    break;
+
+                case AnimationState.player_walk_left:
+                case AnimationState.player_idle_left:
+                    newRangedWeaponPosition = new Vector3(-0.45f, 0, 0);
+                    break;
+
+
+                case AnimationState.player_walk_right:
+                case AnimationState.player_idle_right:
+                    newRangedWeaponPosition = new Vector3 (0.45f, 0, 0);
+                    break;
+
+
+                case AnimationState.player_walk_down:
+                case AnimationState.player_idle_down:
+                    newRangedWeaponPosition = defaultPositionRangedArm;
+                    break;
+
+
+                default:
+                    newRangedWeaponPosition = defaultPositionRangedArm;
+                    break;
+            }
+
+            
+            rangedArmTransform.transform.localPosition = newRangedWeaponPosition;
+        }
+        else
+        {
+            Debug.LogError("Ranged arm transform was null");
+            return;
+        }
+
     }
 
 
