@@ -23,8 +23,12 @@ public class AttackHandler : MonoBehaviour
     // Static so no need to create this object to use.
 
     // Needed : Player sprite location and animationstate the player is currently in
-    void MeleeWeaponAttackPlayerInstation(Transform playerTransform, AnimationState animationState)
+    // ability to make current weapon dissappear during the slash animation
+    // Differntiate who performed the function to know which objects can be hit (MAYBE IF SAME KIND OF FUNCTION IS USED BY ENEMIES TOO)
+
+    public void MeleeWeaponAttackPlayerInstatiation(GameObject PlayerGameObject, Transform playerTransform, AnimationState animationState)
     {
+
 
         switch (animationState)
         {
@@ -50,13 +54,18 @@ public class AttackHandler : MonoBehaviour
                 animationPosition = new Vector3(0, 0, 0);
                 break;
 
-
             default:
+                animationPosition = new Vector3(0, 0, 0);
                 print("DEFAULT");
                 break;
 
         }
-        var meleeAttackInstance = Instantiate(meleeAttackPrefab, animationPosition, Quaternion.identity);
+        var meleeAttackInstance = Instantiate(meleeAttackPrefab, playerTransform.position, Quaternion.identity);
+
+        meleeAttackInstance.transform.localRotation = Quaternion.identity;
+        meleeAttackInstance.transform.localScale = Vector3.one;
+
+        
     }
         
     }

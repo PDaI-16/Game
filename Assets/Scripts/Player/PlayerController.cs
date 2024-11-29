@@ -73,6 +73,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ItemSpawner itemSpawner;
 
 
+    // Attack related stuff
+
+    [SerializeField] private AttackHandler attackHandler;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -119,14 +124,22 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        PlayerInputs();
+    }
 
+    private void PlayerInputs()
+    {
         //Change to latest weapon in the inventory (just for testing before proper inventory is made...)
         if (Input.GetKeyDown(KeyCode.Q))
         {
             int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
-            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory-1));
+            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory - 1));
         }
 
+        if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
+        {
+            attackHandler.MeleeWeaponAttackPlayerInstatiation(gameObject, transform, currentAnimationState);
+        }
     }
 
     public void EquipWeapon(Weapon WeaponData)
@@ -203,6 +216,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Vector3 GetCurrentPositon()
+    {
+        return transform.localPosition;
+    }
 
     void UpdateLookDirection()
     {
