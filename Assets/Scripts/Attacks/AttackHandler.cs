@@ -7,6 +7,8 @@ public class AttackHandler : MonoBehaviour
     [SerializeField] private GameObject meleeAttackPrefab;
     private AnimationState playerAnimationState;
     private Vector3 animationPosition = Vector3.zero;
+    private Quaternion animationRotation = Quaternion.identity;
+    private Vector3 animationScale = Vector3.one;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +28,7 @@ public class AttackHandler : MonoBehaviour
     // ability to make current weapon dissappear during the slash animation
     // Differntiate who performed the function to know which objects can be hit (MAYBE IF SAME KIND OF FUNCTION IS USED BY ENEMIES TOO)
 
-    public void MeleeWeaponAttackPlayerInstatiation(GameObject PlayerGameObject, Transform playerTransform, AnimationState animationState)
+    public void MeleeWeaponAttackPlayerInstatiation(GameObject playerGameObject, Transform playerTransform, AnimationState animationState)
     {
 
 
@@ -34,24 +36,29 @@ public class AttackHandler : MonoBehaviour
         {
             case AnimationState.player_walk_up:
             case AnimationState.player_idle_up:
+                animationRotation = Quaternion.Euler(0, 0, 180);
                 animationPosition = new Vector3 (0, 0, 0);
                 break;
 
             case AnimationState.player_walk_left:
             case AnimationState.player_idle_left:
+                animationRotation = Quaternion.Euler(0, 0, 270);
                 animationPosition = new Vector3(0, 0, 0);
                 break;
 
 
             case AnimationState.player_walk_right:
             case AnimationState.player_idle_right:
+                animationScale = new Vector3(1f, -1f, 0);
                 animationPosition = new Vector3(0, 0, 0);
+                animationRotation = Quaternion.Euler(0, 0, 90);
                 break;
 
 
             case AnimationState.player_walk_down:
             case AnimationState.player_idle_down:
                 animationPosition = new Vector3(0, 0, 0);
+                animationRotation = Quaternion.Euler(0, 0, 0);
                 break;
 
             default:
@@ -60,10 +67,13 @@ public class AttackHandler : MonoBehaviour
                 break;
 
         }
-        var meleeAttackInstance = Instantiate(meleeAttackPrefab, playerTransform.position, Quaternion.identity);
+        var meleeAttackInstance = Instantiate(meleeAttackPrefab, animationPosition, animationRotation);
 
-        meleeAttackInstance.transform.localRotation = Quaternion.identity;
-        meleeAttackInstance.transform.localScale = Vector3.one;
+        meleeAttackInstance.transform.SetParent(playerTransform);
+
+        meleeAttackInstance.transform.rotation = animationRotation;
+        meleeAttackInstance.transform.localScale = animationScale;
+        meleeAttackInstance.transform.localPosition = animationPosition;
 
         
     }
