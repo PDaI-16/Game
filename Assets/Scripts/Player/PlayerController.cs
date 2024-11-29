@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _screenPoint;
 
     private bool _isMoving;
-    private AnimationState currentAnimationState;
-    private AnimationState newAnimationState;
+    public AnimationState currentAnimationState;
+    public AnimationState newAnimationState;
 
     [SerializeField] GameObject WeaponPrefab;
     [SerializeField] private Weapon currentWeaponData = null;
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        //Change weapon to latest in inventory (just for testing before proper inventory is made...)
+        //Change to latest weapon in the inventory (just for testing before proper inventory is made...)
         if (Input.GetKeyDown(KeyCode.Q))
         {
             int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
