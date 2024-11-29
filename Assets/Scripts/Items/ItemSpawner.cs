@@ -150,7 +150,7 @@ public class ItemSpawner : MonoBehaviour
         // Reset the rotation and scale if necessary
         weaponInstance.transform.localRotation = Quaternion.identity;
         weaponInstance.transform.localScale = Vector3.one;
-        weaponInstance.transform.position = location;
+        weaponInstance.transform.localPosition = location;
 
         // Try to get the WeaponGO script on the instantiated weapon
         if (weaponInstance.TryGetComponent(out WeaponGO weaponScript))
