@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public Slider healthBarSlider; // The health bar slider UI component
-    [SerializeField] private EnemyStats enemyStats; // Reference to the enemy stats script
+    public Slider healthBarSlider;
+    [SerializeField] private EnemyStats enemyStats;
 
     void Start()
     {
@@ -12,13 +12,19 @@ public class EnemyHealthBar : MonoBehaviour
         UpdateHealthBar();
     }
 
-
     public void UpdateHealthBar()
     {
         // Calculate the health percentage
         float hpPercent = (float)enemyStats.health / enemyStats.maxHealth;
-
-        // Update the slider value
         healthBarSlider.value = hpPercent;
+
+        if (hpPercent >= 1f)
+        {
+            healthBarSlider.gameObject.SetActive(false); // Hide the slider
+        }
+        else
+        {
+            healthBarSlider.gameObject.SetActive(true); // Show the slider
+        }
     }
 }
