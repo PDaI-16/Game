@@ -157,7 +157,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4623bd29f1b950742bf7a2d472efeace, type: 2}
   - {fileID: 11400000, guid: 2e6a34c971f391544ba295a9b0efbe07, type: 2}
   tilemap: {fileID: 944894449}
-  colliderParent: {fileID: 0}
+  colliderParent: {fileID: 1083498918}
   borderTile: {fileID: 11400000, guid: 9712bbec9d6b73f459ad3d38caa5d6a5, type: 2}
   BorderTilemap: {fileID: 1303617409}
   width: 60
