@@ -9,6 +9,7 @@ TagManager:
   - MainMenu
   - PlayerWeaponArm
   - PlayerWeaponArmChild
+  - MeleeAttackObject
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,11 @@ public class EnemyStats : MonoBehaviour
         CheckDeath();
     }
 
+    private void Update()
+    {
+        CheckDeath();
+    }
+
     public void CheckDeath()
     {
         if (health <= 0)

@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
+using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 
@@ -42,10 +43,9 @@ public class PlayerController : MonoBehaviour
     public AnimationState newAnimationState;
 
     [SerializeField] GameObject WeaponPrefab;
-    [SerializeField] private Weapon currentWeaponData = null;
+    private Weapon currentWeaponData = null;
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-
 
 
     [SerializeField] private Camera currentCamera;
@@ -69,13 +69,15 @@ public class PlayerController : MonoBehaviour
     private Vector3 newRangedWeaponPosition;
 
 
-
     [SerializeField] private ItemSpawner itemSpawner;
 
 
     // Attack related stuff
 
-    [SerializeField] private AttackHandler attackHandler;
+    [SerializeField] private GameObject meleeAttack;
+    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
+    [SerializeField] private BoxCollider2D meleeAttackHitbox;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -96,10 +98,12 @@ public class PlayerController : MonoBehaviour
         weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
         rangedArmSortingGroup = rangedArm.GetComponent<SortingGroup>();
 
-        defaultPositionRangedArm = rangedArm.transform.localPosition;
-        newRangedWeaponPosition = new Vector3(0, 0, 0);
+        meleeAttackHitbox.gameObject.SetActive(false);
+
+
 
     } // Update is called once per frame
+
     void Update()
     {
         _movementInput.x = Input.GetAxisRaw("Horizontal");
@@ -117,15 +121,25 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
-        if (currentWeaponData.Category == ItemCategory.Ranged)
+        if (currentWeaponData != null)
         {
-            ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
-            ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
+            if (currentWeaponData.Category == ItemCategory.Ranged)
+            {
+                ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(rangedArm.transform, currentCamera);
+                ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
+            }
         }
+        else
+        {
+            Debug.Log("No weapon equipped");
+        }
+
 
 
         PlayerInputs();
     }
+
+
 
     private void PlayerInputs()
     {
@@ -136,11 +150,49 @@ public class PlayerController : MonoBehaviour
             EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory - 1));
         }
 
+        PlayerAttack();
+    }
+
+    void PlayerAttack()
+    {
         if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
         {
-            attackHandler.MeleeWeaponAttackPlayerInstatiation(gameObject, transform, currentAnimationState);
+            if (currentWeaponData != null)
+            {
+                switch (currentWeaponData.Category)
+                {
+                    case ItemCategory.Melee:
+                        if (meleeAttackGOScript != null && meleeAttackHitbox != null)
+                        {
+                            try
+                            {
+                                meleeAttackHitbox.gameObject.SetActive(true);
+                                meleeAttackGOScript.Attack(currentWeaponData, currentAnimationState, currentWeaponObject, currentCamera);
+                            }
+                            catch
+                            {
+                                Debug.LogError("Failed to find attack script before activating the script");
+                            }
+
+
+                        }
+                        else
+                        {
+                            Debug.LogError("Melee attack go script or hitbox not found by PlayerAttack");
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("Do weapon equiped - PlayerAttack");
+            }
+
+
+            
         }
     }
+
 
     public void EquipWeapon(Weapon WeaponData)
     {
@@ -214,11 +266,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
         }
-    }
-
-    public Vector3 GetCurrentPositon()
-    {
-        return transform.localPosition;
     }
 
     void UpdateLookDirection()

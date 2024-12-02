@@ -1,43 +1,105 @@
+using UnityEditor.Animations;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MeleeAttackGO : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private Animator meleeAttackAnimator;
-    private Vector3 shouldBePosition;
+    [SerializeField] public Animator meleeAttackAnimator;
+    [SerializeField] public BoxCollider2D hitbox;
+    private GameObject currentWeaponGameObject;
+    [SerializeField] private Camera currentCamera;
+
+    private Weapon usedWeaponData;
 
     void Start()
     {
-        meleeAttackAnimator = GetComponent<Animator>();
-        Attack();
+
+        if (hitbox == null)
+        {
+            Debug.LogError("Hitbox collider2D not found");
+            return;
+        }
     }
 
 
-    // This activated from event at the end of the animation
-    public void DestroyAfterAnimation()
+    public void Attack(Weapon usedWeapon, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
     {
-        Destroy(gameObject);
-    }
+        usedWeaponData = usedWeapon;
+        currentCamera = camera;
+        currentWeaponGameObject = currentWeaponObject;
+        currentWeaponObject.SetActive(false);
 
-    void Attack()
-    {
+
+        FlipMeleeAttack(playerAnimationState);
+        ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(gameObject.transform, currentCamera);
+
+
         meleeAttackAnimator.Play("Melee attack");
-    }
-/*    void Update()
-    {
-        transform.position = shouldBePosition;
+        Debug.Log("Melee attack with damage of: " + usedWeapon.Damage);
+
     }
 
-    public void UpdateAttackPosition(Vector3 position)
-    {   
-        shouldBePosition = position;
-    
-    }*/
+    private void FlipMeleeAttack(AnimationState playerAnimationState)
+    {
+        transform.localScale = new Vector3(1f, 1f, 0);
+
+        switch (playerAnimationState)
+        {
+            case AnimationState.player_walk_up:
+            case AnimationState.player_idle_up:
+                break;
+
+            case AnimationState.player_walk_left:
+            case AnimationState.player_idle_left:
+                break;
+
+
+            case AnimationState.player_walk_right:
+            case AnimationState.player_idle_right:
+                transform.localScale = new Vector3(-1f, 1f, 0);
+                break;
+
+
+            case AnimationState.player_walk_down:
+            case AnimationState.player_idle_down:
+                break;
+
+            default:
+                break;
+
+        }
+        ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(gameObject.transform, currentCamera);
+    }
+
+    // Activates on after animation event.
+    void DeactivateHitbox()
+    {
+        currentWeaponGameObject.gameObject.SetActive(true);
+        hitbox.gameObject.SetActive(false);
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Melee weapon hit something");
+        if (collision.CompareTag("Enemy"))
+        {
+            // Get the enemy's script that contains the health variable
+            EnemyStats enemy = collision.GetComponent<EnemyStats>();
+            if (enemy != null)
+            {
+                // Reduce the enemy's health
+                enemy.health -= usedWeaponData.Damage;
+                Debug.Log("Enemy health reduced. Current health: " + enemy.health);
+            }
+            else
+            {
+                Debug.LogWarning("Enemy script not found on the collided object.");
+            }
+        }
+
+
     }
 
 }
