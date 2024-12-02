@@ -101,14 +101,14 @@ public class BottomBar : MonoBehaviour
 
     public void UpdateXPBar()
     {
-        float xpPercent = playerData.GetXP() / playerData.GetMaxXP();
+        float xpPercent = playerData.GetXP() / playerData.GetXpRequiredForLevelUp();
 
         xpBarSlider.value = xpPercent;
         xpBarSlider.fillRect.GetComponent<Image>().color = Color.green; // Change color to green when full (for level-up)
 
         if (xpText != null)
         {
-            xpText.text = $"{playerData.GetXP()} / {playerData.GetXP()} XP";
+            xpText.text = $"{playerData.GetXP()} / {playerData.GetXpRequiredForLevelUp()} XP";
         }
     }
 }

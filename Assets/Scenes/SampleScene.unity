@@ -577,7 +577,7 @@ MonoBehaviour:
   magicSkillImage: {fileID: 653135743}
   xpBarSlider: {fileID: 593425679}
   xpText: {fileID: 1410976807}
-  playerStats: {fileID: 1884459293}
+  playerController: {fileID: 264712827}
   skillTree: {fileID: 1220771557}
   GUI1_0: {fileID: 8673036059832601084, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
 --- !u!1 &141286668
@@ -1036,6 +1036,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
   m_PrefabInstance: {fileID: 2683329362811795667}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &264712827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+  m_PrefabInstance: {fileID: 2683329362811795667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264712822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca5f01b146d5b14b8af3844144c296a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &265923655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,9 +2062,8 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   health: 0
   maxHealth: 50
-  Damage: 5
+  Damage: 20
   experienceReward: 80
-  playerStats: {fileID: 1884459293}
 --- !u!70 &529051086
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -6538,7 +6548,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3834709343353103895, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
