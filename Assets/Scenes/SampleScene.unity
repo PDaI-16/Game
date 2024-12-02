@@ -1913,16 +1913,16 @@ GameObject:
   - component: {fileID: 529051082}
   - component: {fileID: 529051081}
   - component: {fileID: 529051080}
+  - component: {fileID: 529051085}
   - component: {fileID: 529051084}
   - component: {fileID: 529051086}
-  - component: {fileID: 529051085}
   m_Layer: 6
   m_Name: gorr_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &529051080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6000,7 +6000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 264712822}
-  health: 0
+  health: 100
   maxHealth: 100
   playerClass: 
   availableSkillPoints: 5

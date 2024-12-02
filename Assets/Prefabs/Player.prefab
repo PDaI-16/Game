@@ -260,7 +260,6 @@ MonoBehaviour:
   meleeAttack: {fileID: 1078246238509084022}
   meleeAttackGOScript: {fileID: 6625457365243968257}
   meleeAttackHitbox: {fileID: 4923570406897306325}
-  attackHandler: {fileID: 0}
 --- !u!114 &3834709343353103895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,6 +728,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MeleeAttackObject
       objectReference: {fileID: 0}
+    - target: {fileID: 7383674523847795364, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9736327
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383674523847795364, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5450116
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383674523847795364, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.005289614
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383674523847795364, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.4917943
+      objectReference: {fileID: 0}
     - target: {fileID: 7963461748506801132, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
       propertyPath: m_LocalScale.z
       value: 0
@@ -776,10 +791,10 @@ PrefabInstance:
     - target: {fileID: 9063429415578092591, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3062665138650254500, guid: 00025b9698500e247932e8f3ce7b2b65, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9063429415578092591, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5090743113764251780, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
