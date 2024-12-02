@@ -72,7 +72,7 @@ public class PlayerData
 
     public void TakeDamage(float damage)
     {
-        if (health >= 0)
+        if (health > 0f)
         {
             health -= damage;
         }

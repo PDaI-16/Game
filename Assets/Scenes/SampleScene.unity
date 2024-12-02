@@ -2063,7 +2063,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 50
   Damage: 20
-  experienceReward: 80
+  experienceReward: 120
 --- !u!70 &529051086
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4571,7 +4571,7 @@ MonoBehaviour:
   - {fileID: 1549391839}
   - {fileID: 900330589}
   - {fileID: 1225376488}
-  playerStats: {fileID: 1884459293}
+  playerStats: {fileID: 0}
   meleeSpecialSkill:
     name: 
     cost: 0
@@ -5986,7 +5986,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1884459294}
-  - component: {fileID: 1884459293}
   - component: {fileID: 1884459296}
   - component: {fileID: 1884459295}
   - component: {fileID: 1884459297}
@@ -5997,28 +5996,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1884459293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884459292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d609a8a26bf294189ed427bc265095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 264712822}
-  health: 100
-  maxHealth: 100
-  playerClass: 
-  availableSkillPoints: 5
-  Damage: 0
-  deathScreenPanel: {fileID: 479602729}
-  currentXP: 0
-  level: 1
-  enemyStats: {fileID: 529051085}
 --- !u!4 &1884459294
 Transform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
-        /*        playerData = GameObject.FindWithTag("Player").GetComponent<PlayerController>().playerData;*/
         health = maxHealth;
     }
 
@@ -54,7 +53,7 @@ public class EnemyStats : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("PlayerStats script not found on Player.");
+                Debug.LogWarning("PlayerData script not found on Player.");
             }
         }
     }
