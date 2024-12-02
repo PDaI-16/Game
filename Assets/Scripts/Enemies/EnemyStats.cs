@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public GameObject Enemy;
     public float health;
     public float maxHealth;
     public float Damage;
     public int experienceReward = 100; 
 
     [SerializeField] private PlayerStats playerStats;
-
+    [SerializeField] private EnemyHealthBar enemyHealthBar;
     void Start()
     {
         health = maxHealth;
@@ -20,6 +19,7 @@ public class EnemyStats : MonoBehaviour
         health -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {health}");
         CheckDeath();
+        enemyHealthBar.UpdateHealthBar();
     }
 
     public void CheckDeath()
