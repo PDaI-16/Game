@@ -9,10 +9,11 @@ public class EnemyRandomSprite : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = true;
         SetRandomSprite();
     }
 
-    void SetRandomSprite()
+    public void SetRandomSprite()
     {
         if (enemySprites.Length > 0)
         {
