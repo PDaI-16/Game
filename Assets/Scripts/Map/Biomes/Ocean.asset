@@ -17,7 +17,4 @@ MonoBehaviour:
   minHeight: 0
   minMoisture: 0
   minHeat: 0
-  environmentObjects:
-  - prefab: {fileID: 1520593319525261209, guid: c1852aae76d9c5a4f87523013165a736, type: 3}
-    spawnProbability: 0.12
-    minDistanceFromEdge: 1
+  environmentObjects: []

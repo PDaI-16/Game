@@ -95,7 +95,6 @@ bool IsBorder(int x, int y)
     {
         for (int y = 0; y < height; ++y)
         {
-            Vector3Int position = new Vector3Int(x, y, 0);
             BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
 
             if (currentBiome == null)
@@ -105,68 +104,70 @@ bool IsBorder(int x, int y)
             {
                 if (Random.value < biomeObject.spawnProbability)
                 {
+                    // Skip spawning if too close to the map edge
                     if (x < minDistanceFromMapEdge || x >= width - minDistanceFromMapEdge ||
                         y < minDistanceFromMapEdge || y >= height - minDistanceFromMapEdge)
                     {
-                        // Skip objects too close to the edge
                         continue;
                     }
 
-                    // Calculate distance from biome edge
+                    // Calculate the distance from the biome edge
                     int distanceFromBiomeEdge = CalculateDistanceFromBiomeEdge(x, y, currentBiome);
+
+                    // Check if the distance from the edge meets the requirement for this object
                     if (distanceFromBiomeEdge < biomeObject.minDistanceFromEdge)
                     {
-                        // Skip objects too close to the biome edge
-                        continue;
+                        continue; // Skip spawning if too close to the biome edge
                     }
 
-                    // Instantiate the environment object
-                    GameObject obj = Instantiate(biomeObject.prefab, tilemap.CellToWorld(position), Quaternion.identity, colliderParent.transform);
-                    Renderer renderer = obj.GetComponent<Renderer>();
+                    // Calculate spawn position with a random offset
+                    Vector3 spawnPosition = new Vector3(x + Random.Range(-0.5f, 0.5f), y + Random.Range(-0.5f, 0.5f), 0);
+
+                    // Calculate the bounding box of the prefab considering its scale
+                    Renderer renderer = biomeObject.prefab.GetComponent<Renderer>();
                     if (renderer == null)
                     {
-                        Destroy(obj);
+                        Debug.LogWarning("Prefab does not have a Renderer component: " + biomeObject.prefab.name);
                         continue;
                     }
+                    Bounds newObjectBounds = renderer.bounds;
+                    newObjectBounds.center = spawnPosition;
 
-                    Bounds bounds = renderer.bounds;
+                    // Check if the bounding box is fully contained within the intended biome
                     bool isFullyContained = true;
-
-                    // Calculate the corners of the bounds
-                    Vector3[] corners = new Vector3[4];
-                    corners[0] = bounds.min;
-                    corners[1] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
-                    corners[2] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
-                    corners[3] = bounds.max;
-
-                    foreach (Vector3 corner in corners)
+                    for (float bx = newObjectBounds.min.x; bx <= newObjectBounds.max.x; bx += 1.0f)
                     {
-                        Vector3Int cellPosition = tilemap.WorldToCell(corner);
-                        if (cellPosition.x < 0 || cellPosition.y < 0 || cellPosition.x >= width || cellPosition.y >= height)
+                        for (float by = newObjectBounds.min.y; by <= newObjectBounds.max.y; by += 1.0f)
                         {
-                            isFullyContained = false;
-                            break;
-                        }
+                            int checkX = Mathf.FloorToInt(bx);
+                            int checkY = Mathf.FloorToInt(by);
 
-                        BiomePreset nearbyBiome = GetBiome(heightMap[cellPosition.x, cellPosition.y], moistureMap[cellPosition.x, cellPosition.y], heatMap[cellPosition.x, cellPosition.y]);
-                        if (nearbyBiome != currentBiome)
-                        {
-                            isFullyContained = false;
-                            break;
+                            if (checkX < 0 || checkY < 0 || checkX >= width || checkY >= height)
+                            {
+                                isFullyContained = false;
+                                break;
+                            }
+
+                            BiomePreset nearbyBiome = GetBiome(heightMap[checkX, checkY], moistureMap[checkX, checkY], heatMap[checkX, checkY]);
+                            if (nearbyBiome != currentBiome)
+                            {
+                                isFullyContained = false;
+                                break;
+                            }
                         }
+                        if (!isFullyContained) break;
                     }
 
                     if (!isFullyContained)
                     {
-                        Destroy(obj);
                         continue; // Skip spawning if the bounding box is not fully contained within the intended biome
                     }
 
                     // Check if the position is already occupied by considering the object's size
                     bool overlaps = false;
-                    foreach (var occupied in occupiedBounds)
+                    foreach (var bounds in occupiedBounds)
                     {
-                        if (bounds.Intersects(occupied))
+                        if (bounds.Intersects(newObjectBounds))
                         {
                             overlaps = true;
                             break;
@@ -175,18 +176,59 @@ bool IsBorder(int x, int y)
 
                     if (overlaps)
                     {
-                        Destroy(obj);
                         continue; // Skip spawning if the position is already occupied
                     }
 
-                    // Mark the position as occupied
-                    occupiedBounds.Add(bounds);
+                    // Instantiate the object and mark the position as occupied
+                    Instantiate(biomeObject.prefab, spawnPosition, Quaternion.identity, transform);
+                    occupiedBounds.Add(newObjectBounds);
+                    //Debug.Log("Spawned " + biomeObject.prefab.name + " at " + spawnPosition);
                 }
             }
         }
     }
 }
 
+void GenerateBorders()
+{
+    for (int x = -1; x <= width; ++x)
+    {
+        for (int y = -1; y <= height; ++y)
+        {
+            if (IsBorder(x, y))
+            {
+                Vector3Int position = new Vector3Int(x, y, 0);
+
+                // Place border tiles on the BorderTilemap
+                if (BorderTilemap != null)
+                {
+                    BorderTilemap.SetTile(position, borderTile); // Use your RuleTile or Tile
+                }
+                else
+                {
+                    Debug.LogError("BorderTilemap is not assigned!");
+                }
+            }
+        }
+    }
+}
+
+void ClearBordersFromMapTilemap()
+{
+    for (int x = -1; x <= width; ++x)
+    {
+        for (int y = -1; y <= height; ++y)
+        {
+            if (IsBorder(x, y))
+            {
+                Vector3Int position = new Vector3Int(x, y, 0);
+
+                // Clear tiles from the _Map tilemap
+                tilemap.SetTile(position, null);
+            }
+        }
+    }
+}
 void GenerateOceanColliders()
 {
     Transform existingOceanColliders = transform.Find("OceanColliders");
