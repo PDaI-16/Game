@@ -206,7 +206,6 @@ GameObject:
   m_Component:
   - component: {fileID: 372409239872217965}
   - component: {fileID: 3142304944509865204}
-  - component: {fileID: 3834709343353103895}
   - component: {fileID: 1441634743815130511}
   - component: {fileID: 2753480610576612696}
   - component: {fileID: 4681880649504773632}
@@ -260,20 +259,6 @@ MonoBehaviour:
   meleeAttack: {fileID: 1078246238509084022}
   meleeAttackGOScript: {fileID: 6625457365243968257}
   meleeAttackHitbox: {fileID: 4923570406897306325}
---- !u!114 &3834709343353103895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4180048407753474886}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75a1cfad0d998d4ebad745e6fd1a080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 10
-  enemyStats: {fileID: 0}
 --- !u!95 &1441634743815130511
 Animator:
   serializedVersion: 7

@@ -26,6 +26,7 @@ public enum AnimationState
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] public PlayerData playerData;
 
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
@@ -83,6 +84,8 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerData = new PlayerData();
+
         _mainCamera = Camera.main;
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
@@ -99,6 +102,8 @@ public class PlayerController : MonoBehaviour
         rangedArmSortingGroup = rangedArm.GetComponent<SortingGroup>();
 
         meleeAttackHitbox.gameObject.SetActive(false);
+
+        
 
 
 
@@ -137,9 +142,16 @@ public class PlayerController : MonoBehaviour
 
 
         PlayerInputs();
+        CheckIfShouldDie();
     }
 
-
+    public void CheckIfShouldDie()
+    {
+        if (playerData.GetHealth() <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void PlayerInputs()
     {

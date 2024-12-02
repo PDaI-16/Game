@@ -90,7 +90,7 @@ public class MeleeAttackGO : MonoBehaviour
             if (enemy != null)
             {
                 // Reduce the enemy's health
-                enemy.health -= usedWeaponData.Damage;
+                enemy.TakeDamage(usedWeaponData.Damage);
                 Debug.Log("Enemy health reduced. Current health: " + enemy.health);
             }
             else
