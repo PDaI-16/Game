@@ -19,39 +19,52 @@ public class BottomBar : MonoBehaviour
     public Slider xpBarSlider;  
     public TextMeshProUGUI xpText;  
 
-    [SerializeField] private PlayerStats playerStats;  
+    [SerializeField] private PlayerController playerController; 
+
     [SerializeField] private SkillTree skillTree;     
     public Sprite GUI1_0;  
 
     void Start()
     {
-        UpdateHealthImage();
-        UpdateSkillIcons();
-        UpdateXPBar();
+
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController is not assigned to BottomBar!");
+        }
     }
 
     void Update()
     {
-        UpdateHealthImage();
-        UpdateSkillIcons();
-        UpdateXPBar();
+        if (playerController.playerData != null)
+        {
+            Debug.Log("Bottom bar updating...");
+            UpdateHealthImage();
+            UpdateSkillIcons();
+            UpdateXPBar();
+        }
+        else
+        {
+            Debug.Log("Player does not exist - Bottom bar");
+        }
+
     }
 
     public void UpdateHealthImage()
     {
-        if (playerStats.health >= (playerStats.maxHealth * 76) / 100)
+
+        if (playerController.playerData.GetHealth() >= (playerController.playerData.GetMaxPossibleHealth() * 76) / 100)
         {
             heartImage.sprite = HearthFull;
         }
-        else if (playerStats.health >= (playerStats.maxHealth * 51) / 100)
+        else if (playerController.playerData.GetHealth() >= (playerController.playerData.GetMaxPossibleHealth() * 51) / 100)
         {
             heartImage.sprite = HearthThreeQuarters;
         }
-        else if (playerStats.health >= (playerStats.maxHealth * 26) / 100)
+        else if (playerController.playerData.GetHealth() >= (playerController.playerData.GetMaxPossibleHealth() * 26) / 100)
         {
             heartImage.sprite = HearthHalf;
         }
-        else if (playerStats.health >= (playerStats.maxHealth * 1) / 100)
+        else if (playerController.playerData.GetHealth() >= (playerController.playerData.GetMaxPossibleHealth() * 1) / 100)
         {
             heartImage.sprite = HearthQuarter;
         }
@@ -94,14 +107,14 @@ public class BottomBar : MonoBehaviour
 
     public void UpdateXPBar()
     {
-        float xpPercent = (float)playerStats.currentXP / playerStats.GetXPForNextLevel();
+        float xpPercent = playerController.playerData.GetXP() / playerController.playerData.GetXpRequiredForLevelUp();
 
         xpBarSlider.value = xpPercent;
         xpBarSlider.fillRect.GetComponent<Image>().color = Color.green; // Change color to green when full (for level-up)
 
         if (xpText != null)
         {
-            xpText.text = $"{playerStats.currentXP} / {playerStats.GetXPForNextLevel()} XP";
+            xpText.text = $"{playerController.playerData.GetXP()} / {playerController.playerData.GetXpRequiredForLevelUp()} XP";
         }
     }
 }

@@ -46,10 +46,9 @@ public class ItemSpawner : MonoBehaviour
 
         try
         {
-            Hat newHat = GetRandomHat(levelMultiplier);
-            /*            Vector3 randomLocation = GetRandomSpawnPosition(map);*/
-            Vector3 randomLocation = GetRandomSpawnPosition(map);
-            SpawnHat(newHat, randomLocation);
+            Hat newHat = GetRandomHat(levelMultiplier);  // Get a random hat using the level multiplier
+            Vector3 randomLocation = GetRandomSpawnPosition(map);  // Get a random spawn position on the map
+            SpawnHat(newHat, map, randomLocation);  // Spawn the hat at the random location
         }
         catch (Exception e)
         {
@@ -78,24 +77,45 @@ public class ItemSpawner : MonoBehaviour
     }
 
     // Instantiates a hat at the given location.
-    public void SpawnHat(Hat hat, Vector3 location)
+    public GameObject SpawnHat(Hat hat, GameObject parentObject, Vector3 location)
     {
         if (hatPrefab == null)
         {
             Debug.LogError("Hat prefab is not assigned.");
-            return;
+            return null;  // Return null if prefab is missing
         }
 
+        if (parentObject == null)
+        {
+            Debug.LogError("Parent object is not assigned.");
+            return null;  // Return null if parent object is missing
+        }
+
+        // Instantiate the hat prefab at the given location
         var hatInstance = Instantiate(hatPrefab, location, Quaternion.identity);
 
+        // Set the instantiated hat as a child of the parent object
+        hatInstance.transform.SetParent(parentObject.transform);
+
+        // Reset the rotation and scale if necessary
+        hatInstance.transform.localRotation = Quaternion.identity;
+        hatInstance.transform.localScale = Vector3.one;
+        hatInstance.transform.position = location;
+
+        // Try to get the HatGO script on the instantiated hat
         if (hatInstance.TryGetComponent(out HatGO hatScript))
         {
+            // Initialize the hat script with the provided hat data
             hatScript.Initialize(hat);
+            Debug.Log("Hat spawned and initialized successfully!");
         }
         else
         {
             Debug.LogError("The instantiated HatPrefab is missing the HatGO component.");
         }
+
+        // Return the hat instance so you can use it outside this method
+        return hatInstance;
     }
 
     /// <summary>
@@ -130,7 +150,7 @@ public class ItemSpawner : MonoBehaviour
         // Reset the rotation and scale if necessary
         weaponInstance.transform.localRotation = Quaternion.identity;
         weaponInstance.transform.localScale = Vector3.one;
-        weaponInstance.transform.position = location;
+        weaponInstance.transform.localPosition = location;
 
         // Try to get the WeaponGO script on the instantiated weapon
         if (weaponInstance.TryGetComponent(out WeaponGO weaponScript))

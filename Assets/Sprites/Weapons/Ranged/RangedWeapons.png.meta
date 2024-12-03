@@ -1,103 +1,103 @@
 fileFormatVersion: 2
-guid: 4f2d25b70b334c347b686b9ab126b032
+guid: 75aa10025e2da4744a3f2e61ef52afff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1011090268056254933
-    second: RangedWeapon_0
+      213: -4932253587847856427
+    second: RangedWeapons_0
   - first:
-      213: -4166681548778513087
-    second: RangedWeapon_1
+      213: 4305723841014395064
+    second: RangedWeapons_1
   - first:
-      213: 8755169686389934300
-    second: RangedWeapon_2
+      213: 5394854400137584499
+    second: RangedWeapons_2
   - first:
-      213: -8181179554380715079
-    second: RangedWeapon_3
+      213: 4495639585662229573
+    second: RangedWeapons_3
   - first:
-      213: -8570987397671001300
-    second: RangedWeapon_4
+      213: 5887784299910484198
+    second: RangedWeapons_4
   - first:
-      213: -3223649505778681425
-    second: RangedWeapon_5
+      213: -654664121543561728
+    second: RangedWeapons_5
   - first:
-      213: 5120707043055024493
-    second: RangedWeapon_6
+      213: 6253371272671683592
+    second: RangedWeapons_6
   - first:
-      213: 9041722231730176197
-    second: RangedWeapon_7
+      213: -3016221643945048579
+    second: RangedWeapons_7
   - first:
-      213: -6485620861604442150
-    second: RangedWeapon_8
+      213: -1953212740387011268
+    second: RangedWeapons_8
   - first:
-      213: 1603191712332893284
-    second: RangedWeapon_9
+      213: -9163666593600327624
+    second: RangedWeapons_9
   - first:
-      213: 8129931209985509928
-    second: RangedWeapon_10
+      213: 7709604452557607169
+    second: RangedWeapons_10
   - first:
-      213: -3660968397536320358
-    second: RangedWeapon_11
+      213: -846485480426014635
+    second: RangedWeapons_11
   - first:
-      213: 522230306696365469
-    second: RangedWeapon_12
+      213: 6355487656406915730
+    second: RangedWeapons_12
   - first:
-      213: -522063991367933815
-    second: RangedWeapon_13
+      213: 2397987581307968174
+    second: RangedWeapons_13
   - first:
-      213: -7213788230117500983
-    second: RangedWeapon_14
+      213: 7471348411859066599
+    second: RangedWeapons_14
   - first:
-      213: -5715545257048017384
-    second: RangedWeapon_15
+      213: -1400363849545465033
+    second: RangedWeapons_15
   - first:
-      213: 578293798996073770
-    second: RangedWeapon_16
+      213: 2351004242879918398
+    second: RangedWeapons_16
   - first:
-      213: 605586242643207100
-    second: RangedWeapon_17
+      213: -6342252267277014305
+    second: RangedWeapons_17
   - first:
-      213: -7537704981830876853
-    second: RangedWeapon_18
+      213: 6649510941789643195
+    second: RangedWeapons_18
   - first:
-      213: -5401752084003574823
-    second: RangedWeapon_19
+      213: -4754329047802879202
+    second: RangedWeapons_19
   - first:
-      213: 4789037158543231751
-    second: RangedWeapon_20
+      213: 5105106818723011503
+    second: RangedWeapons_20
   - first:
-      213: 900157509006843835
-    second: RangedWeapon_21
+      213: 3903269265897685451
+    second: RangedWeapons_21
   - first:
-      213: 8878292035206514262
-    second: RangedWeapon_22
+      213: -4481990965038104119
+    second: RangedWeapons_22
   - first:
-      213: -4958237423881113845
-    second: RangedWeapon_23
+      213: 8573539522581543317
+    second: RangedWeapons_23
   - first:
-      213: 3075639979285774041
-    second: RangedWeapon_24
+      213: 6579198143609103874
+    second: RangedWeapons_24
   - first:
-      213: -2485400171755262025
-    second: RangedWeapon_25
+      213: 1048705128528922489
+    second: RangedWeapons_25
   - first:
-      213: 279608803070470168
-    second: RangedWeapon_26
+      213: 8269038100919006204
+    second: RangedWeapons_26
   - first:
-      213: 6232463143227481350
-    second: RangedWeapon_27
+      213: -7121214819139958989
+    second: RangedWeapons_27
   - first:
-      213: -7358189832701519003
-    second: RangedWeapon_28
+      213: -2280097118225975757
+    second: RangedWeapons_28
   - first:
-      213: 862719019350877897
-    second: RangedWeapon_29
+      213: -1827922958464986507
+    second: RangedWeapons_29
   - first:
-      213: 7976951860886299867
-    second: RangedWeapon_30
+      213: -2950823000464462213
+    second: RangedWeapons_30
   - first:
-      213: -5479054322914763108
-    second: RangedWeapon_31
+      213: 5077669650488528537
+    second: RangedWeapons_31
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -206,7 +206,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RangedWeapon_0
+      name: RangedWeapons_0
       rect:
         serializedVersion: 2
         x: 0
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d9f857ed3d180e00800000000000000
-      internalID: 1011090268056254933
+      spriteID: 5debe2a7e7d1d8bb0800000000000000
+      internalID: -4932253587847856427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_1
+      name: RangedWeapons_1
       rect:
         serializedVersion: 2
         x: 16
@@ -243,14 +243,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14dd1e81539fc26c0800000000000000
-      internalID: -4166681548778513087
+      spriteID: 8b0f79c450101cb30800000000000000
+      internalID: 4305723841014395064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_2
+      name: RangedWeapons_2
       rect:
         serializedVersion: 2
         x: 32
@@ -265,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd84a81617c908970800000000000000
-      internalID: 8755169686389934300
+      spriteID: 37f57276e7f5eda40800000000000000
+      internalID: 5394854400137584499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_3
+      name: RangedWeapons_3
       rect:
         serializedVersion: 2
         x: 48
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9bbe2718a8c967e80800000000000000
-      internalID: -8181179554380715079
+      spriteID: 54cd49d5268b36e30800000000000000
+      internalID: 4495639585662229573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_4
+      name: RangedWeapons_4
       rect:
         serializedVersion: 2
         x: 64
@@ -309,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2368737f5cbd0980800000000000000
-      internalID: -8570987397671001300
+      spriteID: 6e0594e30ac95b150800000000000000
+      internalID: 5887784299910484198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_5
+      name: RangedWeapons_5
       rect:
         serializedVersion: 2
         x: 0
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa9b2b7aadb4343d0800000000000000
-      internalID: -3223649505778681425
+      spriteID: 00ee334337a2ae6f0800000000000000
+      internalID: -654664121543561728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_6
+      name: RangedWeapons_6
       rect:
         serializedVersion: 2
         x: 16
@@ -353,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d69b22ccce7601740800000000000000
-      internalID: 5120707043055024493
+      spriteID: 8046a3c6a0078c650800000000000000
+      internalID: 6253371272671683592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_7
+      name: RangedWeapons_7
       rect:
         serializedVersion: 2
         x: 32
@@ -375,14 +375,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c08704f676aa7d70800000000000000
-      internalID: 9041722231730176197
+      spriteID: df58fcc356a3426d0800000000000000
+      internalID: -3016221643945048579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_8
+      name: RangedWeapons_8
       rect:
         serializedVersion: 2
         x: 48
@@ -397,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adf443c40327ef5a0800000000000000
-      internalID: -6485620861604442150
+      spriteID: c3507767c5bc4e4e0800000000000000
+      internalID: -1953212740387011268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_9
+      name: RangedWeapons_9
       rect:
         serializedVersion: 2
         x: 64
@@ -419,14 +419,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46cc3784e5eaf3610800000000000000
-      internalID: 1603191712332893284
+      spriteID: 830b658c8cd14d080800000000000000
+      internalID: -9163666593600327624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_10
+      name: RangedWeapons_10
       rect:
         serializedVersion: 2
         x: 0
@@ -441,14 +441,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82a4c8b7c5153d070800000000000000
-      internalID: 8129931209985509928
+      spriteID: 101577107640efa60800000000000000
+      internalID: 7709604452557607169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_11
+      name: RangedWeapons_11
       rect:
         serializedVersion: 2
         x: 16
@@ -463,14 +463,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a94aaea93a0a13dc0800000000000000
-      internalID: -3660968397536320358
+      spriteID: 5587eafb0fda044f0800000000000000
+      internalID: -846485480426014635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_12
+      name: RangedWeapons_12
       rect:
         serializedVersion: 2
         x: 32
@@ -485,14 +485,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d95849172b55f3700800000000000000
-      internalID: 522230306696365469
+      spriteID: 29a9386c95a333850800000000000000
+      internalID: 6355487656406915730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_13
+      name: RangedWeapons_13
       rect:
         serializedVersion: 2
         x: 48
@@ -507,14 +507,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 980ed7cd09141c8f0800000000000000
-      internalID: -522063991367933815
+      spriteID: eaad8a7000d574120800000000000000
+      internalID: 2397987581307968174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_14
+      name: RangedWeapons_14
       rect:
         serializedVersion: 2
         x: 64
@@ -529,14 +529,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c7d3f233d973eb90800000000000000
-      internalID: -7213788230117500983
+      spriteID: 7eed902bbcf8fa760800000000000000
+      internalID: 7471348411859066599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_15
+      name: RangedWeapons_15
       rect:
         serializedVersion: 2
         x: 0
@@ -551,14 +551,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 816fbf7fedd4ea0b0800000000000000
-      internalID: -5715545257048017384
+      spriteID: 7334b8f8f78e09ce0800000000000000
+      internalID: -1400363849545465033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_16
+      name: RangedWeapons_16
       rect:
         serializedVersion: 2
         x: 16
@@ -573,14 +573,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a2dd8f07523860800800000000000000
-      internalID: 578293798996073770
+      spriteID: e313b4a17e170a020800000000000000
+      internalID: 2351004242879918398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_17
+      name: RangedWeapons_17
       rect:
         serializedVersion: 2
         x: 32
@@ -595,14 +595,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb3ac99aa79776800800000000000000
-      internalID: 605586242643207100
+      spriteID: fdaa9056a2bcbf7a0800000000000000
+      internalID: -6342252267277014305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_18
+      name: RangedWeapons_18
       rect:
         serializedVersion: 2
         x: 48
@@ -617,14 +617,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4147486141b46790800000000000000
-      internalID: -7537704981830876853
+      spriteID: bb1e17f88fec74c50800000000000000
+      internalID: 6649510941789643195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_19
+      name: RangedWeapons_19
       rect:
         serializedVersion: 2
         x: 64
@@ -639,14 +639,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9dbad3c691f1905b0800000000000000
-      internalID: -5401752084003574823
+      spriteID: e136368abea350eb0800000000000000
+      internalID: -4754329047802879202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_20
+      name: RangedWeapons_20
       rect:
         serializedVersion: 2
         x: 0
@@ -661,14 +661,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70b8d1b1ce3167240800000000000000
-      internalID: 4789037158543231751
+      spriteID: fabd8668a9bf8d640800000000000000
+      internalID: 5105106818723011503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_21
+      name: RangedWeapons_21
       rect:
         serializedVersion: 2
         x: 16
@@ -683,14 +683,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbfd0463c700e7c00800000000000000
-      internalID: 900157509006843835
+      spriteID: bc1088887b23b2630800000000000000
+      internalID: 3903269265897685451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_22
+      name: RangedWeapons_22
       rect:
         serializedVersion: 2
         x: 32
@@ -705,14 +705,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6560aaa1197063b70800000000000000
-      internalID: 8878292035206514262
+      spriteID: 9c1c462c6f4ccc1c0800000000000000
+      internalID: -4481990965038104119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_23
+      name: RangedWeapons_23
       rect:
         serializedVersion: 2
         x: 48
@@ -727,14 +727,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0fa485355dc03bb0800000000000000
-      internalID: -4958237423881113845
+      spriteID: 599be3f65c45bf670800000000000000
+      internalID: 8573539522581543317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_24
+      name: RangedWeapons_24
       rect:
         serializedVersion: 2
         x: 64
@@ -749,14 +749,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9de7156044edeaa20800000000000000
-      internalID: 3075639979285774041
+      spriteID: 206eab08ad10e4b50800000000000000
+      internalID: 6579198143609103874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_25
+      name: RangedWeapons_25
       rect:
         serializedVersion: 2
         x: 0
@@ -771,14 +771,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7bf25d546b5128dd0800000000000000
-      internalID: -2485400171755262025
+      spriteID: 977c81412cfbd8e00800000000000000
+      internalID: 1048705128528922489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_26
+      name: RangedWeapons_26
       rect:
         serializedVersion: 2
         x: 16
@@ -793,14 +793,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 818661799be51e300800000000000000
-      internalID: 279608803070470168
+      spriteID: cf3b27f675681c270800000000000000
+      internalID: 8269038100919006204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedWeapon_27
+      name: RangedWeapons_27
       rect:
         serializedVersion: 2
         x: 32
@@ -815,8 +815,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60dd9cf25382e7650800000000000000
-      internalID: 6232463143227481350
+      spriteID: 3374aef0adc5c2d90800000000000000
+      internalID: -7121214819139958989
       vertices: []
       indices: 
       edges: []
@@ -825,7 +825,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0868e70f87495f044888c77c49a7104d
+    spriteID: 95fb34ab9515ba94c853febbb9444dee
     internalID: 0
     vertices: []
     indices: 
@@ -835,34 +835,34 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RangedWeapon_0: 1011090268056254933
-      RangedWeapon_1: -4166681548778513087
-      RangedWeapon_10: 8129931209985509928
-      RangedWeapon_11: -3660968397536320358
-      RangedWeapon_12: 522230306696365469
-      RangedWeapon_13: -522063991367933815
-      RangedWeapon_14: -7213788230117500983
-      RangedWeapon_15: -5715545257048017384
-      RangedWeapon_16: 578293798996073770
-      RangedWeapon_17: 605586242643207100
-      RangedWeapon_18: -7537704981830876853
-      RangedWeapon_19: -5401752084003574823
-      RangedWeapon_2: 8755169686389934300
-      RangedWeapon_20: 4789037158543231751
-      RangedWeapon_21: 900157509006843835
-      RangedWeapon_22: 8878292035206514262
-      RangedWeapon_23: -4958237423881113845
-      RangedWeapon_24: 3075639979285774041
-      RangedWeapon_25: -2485400171755262025
-      RangedWeapon_26: 279608803070470168
-      RangedWeapon_27: 6232463143227481350
-      RangedWeapon_3: -8181179554380715079
-      RangedWeapon_4: -8570987397671001300
-      RangedWeapon_5: -3223649505778681425
-      RangedWeapon_6: 5120707043055024493
-      RangedWeapon_7: 9041722231730176197
-      RangedWeapon_8: -6485620861604442150
-      RangedWeapon_9: 1603191712332893284
+      RangedWeapons_0: -4932253587847856427
+      RangedWeapons_1: 4305723841014395064
+      RangedWeapons_10: 7709604452557607169
+      RangedWeapons_11: -846485480426014635
+      RangedWeapons_12: 6355487656406915730
+      RangedWeapons_13: 2397987581307968174
+      RangedWeapons_14: 7471348411859066599
+      RangedWeapons_15: -1400363849545465033
+      RangedWeapons_16: 2351004242879918398
+      RangedWeapons_17: -6342252267277014305
+      RangedWeapons_18: 6649510941789643195
+      RangedWeapons_19: -4754329047802879202
+      RangedWeapons_2: 5394854400137584499
+      RangedWeapons_20: 5105106818723011503
+      RangedWeapons_21: 3903269265897685451
+      RangedWeapons_22: -4481990965038104119
+      RangedWeapons_23: 8573539522581543317
+      RangedWeapons_24: 6579198143609103874
+      RangedWeapons_25: 1048705128528922489
+      RangedWeapons_26: 8269038100919006204
+      RangedWeapons_27: -7121214819139958989
+      RangedWeapons_3: 4495639585662229573
+      RangedWeapons_4: 5887784299910484198
+      RangedWeapons_5: -654664121543561728
+      RangedWeapons_6: 6253371272671683592
+      RangedWeapons_7: -3016221643945048579
+      RangedWeapons_8: -1953212740387011268
+      RangedWeapons_9: -9163666593600327624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,11 +1,13 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
+using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 
@@ -24,6 +26,7 @@ public enum AnimationState
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] public PlayerData playerData;
 
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
@@ -37,42 +40,79 @@ public class PlayerController : MonoBehaviour
     private Vector3 _screenPoint;
 
     private bool _isMoving;
-    private AnimationState currentAnimationState;
-    private AnimationState newAnimationState;
+    public AnimationState currentAnimationState;
+    public AnimationState newAnimationState;
 
     [SerializeField] GameObject WeaponPrefab;
-    [SerializeField] private Weapon currentWeaponData = null;
+    private Weapon currentWeaponData = null;
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
+
+    [SerializeField] private Camera currentCamera;
+
+
     private GameObject weaponArm;
+
+    private GameObject rangedArm;
+    private Transform rangedArmTransform;
+
     private SortingGroup weaponArmSortingGroup;
+    private SortingGroup rangedArmSortingGroup;
+
     private GameObject weaponArmMelee;
-    private GameObject weaponArmRanged;
     private GameObject weaponArmMagic;
 
     private GameObject currentWeaponObject = null;
     private Weapon previousWeaponData = null;
 
+    private Vector3 defaultPositionRangedArm;
+    private Vector3 newRangedWeaponPosition;
+
+
     [SerializeField] private ItemSpawner itemSpawner;
+
+
+    // Attack related stuff
+
+    [SerializeField] private GameObject meleeAttack;
+    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
+    [SerializeField] private BoxCollider2D meleeAttackHitbox;
+
+    [SerializeField] private GameObject deathScreenPanel;
+
+/*    [SerializeField] private MainMenu mainMenu;*/
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerData = new PlayerData(MainMenu.playerClass);
+
+
         _mainCamera = Camera.main;
         movementSpeed = 4;
         _playerAnimator = GetComponent<Animator>();
 
         weaponArm = GameObject.Find("Weapon Arm");
+        rangedArm = GameObject.Find("Ranged Arm");
         weaponArmMelee = GameObject.Find("Melee");
-        weaponArmRanged = GameObject.Find("Ranged");
         weaponArmMagic = GameObject.Find("Magic");
 
+
+        rangedArmTransform = rangedArm.transform;
+
         weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
-        /*weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";*/
+        rangedArmSortingGroup = rangedArm.GetComponent<SortingGroup>();
+
+        meleeAttackHitbox.gameObject.SetActive(false);
+
+        
+
+
 
     } // Update is called once per frame
+
     void Update()
     {
         _movementInput.x = Input.GetAxisRaw("Horizontal");
@@ -90,15 +130,87 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
-
-        //Change weapon (just for testing)
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (currentWeaponData != null)
         {
-            // Get first weapon from inventory and equip it (JUST FOR TESTING EQUIPPING)
-            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(0));
+            if (currentWeaponData.Category == ItemCategory.Ranged)
+            {
+                ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(rangedArm.transform, currentCamera);
+                ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
+            }
+        }
+        else
+        {
+            Debug.Log("No weapon equipped");
         }
 
+
+
+        PlayerInputs();
+        CheckIfShouldDie();
+
     }
+
+    public void CheckIfShouldDie()
+    {
+        if (playerData.GetHealth() <= 0.0f)
+        {
+            deathScreenPanel.SetActive(true);
+            Destroy(gameObject);
+        }
+    }
+
+    private void PlayerInputs()
+    {
+        //Change to latest weapon in the inventory (just for testing before proper inventory is made...)
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
+            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory - 1));
+        }
+
+        PlayerAttack();
+    }
+
+    void PlayerAttack()
+    {
+        if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
+        {
+            if (currentWeaponData != null)
+            {
+                switch (currentWeaponData.Category)
+                {
+                    case ItemCategory.Melee:
+                        if (meleeAttackGOScript != null && meleeAttackHitbox != null)
+                        {
+                            try
+                            {
+                                meleeAttackHitbox.gameObject.SetActive(true);
+                                meleeAttackGOScript.Attack(currentWeaponData, currentAnimationState, currentWeaponObject, currentCamera);
+                            }
+                            catch
+                            {
+                                Debug.LogError("Failed to find attack script before activating the script");
+                            }
+
+
+                        }
+                        else
+                        {
+                            Debug.LogError("Melee attack go script or hitbox not found by PlayerAttack");
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("Do weapon equiped - PlayerAttack");
+            }
+
+
+            
+        }
+    }
+
 
     public void EquipWeapon(Weapon WeaponData)
     {
@@ -125,7 +237,7 @@ public class PlayerController : MonoBehaviour
                 case ItemCategory.Ranged:
                     Debug.Log("Equipping a ranged weapon.");
                     // Add logic for ranged weapon handling
-                    chosenArm = weaponArmRanged;
+                    chosenArm = rangedArm;
                     break;
 
                 case ItemCategory.Magic:
@@ -144,6 +256,11 @@ public class PlayerController : MonoBehaviour
             if (chosenArm != null)
             {
                 currentWeaponObject = itemSpawner.SpawnWeapon(WeaponData, chosenArm, new Vector2(0, 0), false);
+                Debug.Log("Weapon was spawned to arm");
+            }
+            else
+            {
+                Debug.LogError("Specific arm was not found.");
             }
 
             // Set the current and previous weapon data for comparison
@@ -204,6 +321,52 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void ChangeRangedWeaponPositionBasedOnAnimation(AnimationState animationState)
+    {
+        if(rangedArmTransform != null)
+        {
+            switch (animationState)
+            {
+                case AnimationState.player_walk_up:
+                case AnimationState.player_idle_up:
+                    newRangedWeaponPosition = new Vector3(0, 0.15f, 0);
+                    break;
+
+                case AnimationState.player_walk_left:
+                case AnimationState.player_idle_left:
+                    newRangedWeaponPosition = new Vector3(-0.45f, 0, 0);
+                    break;
+
+
+                case AnimationState.player_walk_right:
+                case AnimationState.player_idle_right:
+                    newRangedWeaponPosition = new Vector3 (0.45f, 0, 0);
+                    break;
+
+
+                case AnimationState.player_walk_down:
+                case AnimationState.player_idle_down:
+                    newRangedWeaponPosition = defaultPositionRangedArm;
+                    break;
+
+
+                default:
+                    newRangedWeaponPosition = defaultPositionRangedArm;
+                    break;
+            }
+
+            
+            rangedArmTransform.transform.localPosition = newRangedWeaponPosition;
+        }
+        else
+        {
+            Debug.LogError("Ranged arm transform was null");
+            return;
+        }
+
+    }
+
+
     /// <summary>
     /// Used for weapon arm layer changes depending on the animationstate
     /// </summary>
@@ -224,7 +387,8 @@ public class PlayerController : MonoBehaviour
             case AnimationState.player_idle_up:
             case AnimationState.player_walk_left:
             case AnimationState.player_idle_left:
-                weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind"; 
+                weaponArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";
+                rangedArmSortingGroup.sortingLayerName = "PlayerWeaponBehind";
                 break;
 
             case AnimationState.player_walk_down:
@@ -232,12 +396,14 @@ public class PlayerController : MonoBehaviour
             case AnimationState.player_walk_right:
             case AnimationState.player_idle_right:
                 weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Weapon in front of the player
+                rangedArmSortingGroup.sortingLayerName = "PlayerWeapon";
                 break;
 
     
 
             default:
                 weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Default sorting order
+                rangedArmSortingGroup.sortingLayerName = "PlayerWeapon";
                 break;
         }
     }

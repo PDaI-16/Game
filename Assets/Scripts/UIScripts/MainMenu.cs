@@ -7,13 +7,18 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject selectPanel;
     public GameObject deathScreenPanel;
-    public static string selectedClass;
+
+    public static ItemCategory playerClass;
+
+    [SerializeField] private PlayerController playerController;
 
 
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+
     public void OpenSettings()
     {
         settingsPanel.SetActive(true);
@@ -37,21 +42,22 @@ public class MainMenu : MonoBehaviour
     }
     public void SelectMelee()
     {
-        selectedClass = "Melee";
+        playerClass = ItemCategory.Melee;
         StartGame();
     }
 
     public void SelectRanged()
     {
-        selectedClass = "Ranged";
+        playerClass = ItemCategory.Ranged;
         StartGame();
     }
 
     public void SelectMagic()
     {
-        selectedClass = "Magic";
+        playerClass = ItemCategory.Magic;
         StartGame();
     }
+
     public void BackToMenu()
     {
         deathScreenPanel.SetActive(false);

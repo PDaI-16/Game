@@ -68,6 +68,7 @@ public class WeaponGO : MonoBehaviour
         // Add weapon to the inventory
         inventoryGO.InventoryData.AddWeaponToInventory(weaponData); // Assuming AddWeaponToInventory exists in InventoryGO
         onGround = false;
+
         // Destroy the weapon pickup object after adding to inventory
         Destroy(gameObject);
     }

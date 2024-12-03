@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,6 +7,19 @@ public class Inventory
 {
     [SerializeField] private List<Hat> hatsInInventory = new List<Hat>();
     [SerializeField] private List<Weapon> weaponsInInventory = new List<Weapon>();
+
+    public int GetItemTypeCountFromInventory(ItemType listType)
+    {
+        switch (listType)
+        {
+            case ItemType.Weapon:
+                return weaponsInInventory.Count;
+            case ItemType.Hat:
+                return hatsInInventory.Count;
+            default:
+                return 0;
+        }
+    }
 
     public Weapon GetWeaponFromInventory(int index)
     {

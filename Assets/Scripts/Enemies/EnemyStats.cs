@@ -5,10 +5,11 @@ public class EnemyStats : MonoBehaviour
     public float health;
     public float maxHealth;
     public float Damage;
-    public int experienceReward = 100; 
 
-    [SerializeField] private PlayerStats playerStats;
+    public int experienceReward = 100;
+    private PlayerData playerData;
     [SerializeField] private EnemyHealthBar enemyHealthBar;
+
     void Start()
     {
         health = maxHealth;
@@ -22,13 +23,14 @@ public class EnemyStats : MonoBehaviour
         enemyHealthBar.UpdateHealthBar();
     }
 
+
     public void CheckDeath()
     {
         if (health <= 0)
         {
-            if (playerStats != null)
+            if (playerData != null)
             {
-                playerStats.GainXP(experienceReward);
+                playerData.AddXP(experienceReward);
             }
             else
             {
@@ -42,7 +44,19 @@ public class EnemyStats : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerStats.TakeDamage(Damage * Time.deltaTime);
+            Debug.Log("Enemy is continuously colliding with Player.");
+
+            // Access the player's script
+            playerData = other.gameObject.GetComponent<PlayerController>().playerData;
+            if (playerData != null)
+            {
+                // Continuously apply damage as long as the enemy is colliding with the player
+                playerData.TakeDamage(Damage * Time.deltaTime); // Damage per second
+            }
+            else
+            {
+                Debug.LogWarning("PlayerData script not found on Player.");
+            }
         }
     }
 }
