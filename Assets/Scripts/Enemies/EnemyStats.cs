@@ -42,12 +42,12 @@ public class EnemyStats : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Enemy is continuously colliding with Player.");
 
             // Access the player's script
-            playerData = collision.gameObject.GetComponent<PlayerController>().playerData;
+            playerData = other.gameObject.GetComponent<PlayerController>().playerData;
             if (playerData != null)
             {
                 // Continuously apply damage as long as the enemy is colliding with the player
