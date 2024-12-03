@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public GameObject Enemy;
     public float health;
     public float maxHealth;
     public float Damage;
     public int experienceReward = 100; 
 
     [SerializeField] private PlayerStats playerStats;
-
+    [SerializeField] private EnemyHealthBar enemyHealthBar;
     void Start()
     {
         health = maxHealth;
@@ -20,6 +19,7 @@ public class EnemyStats : MonoBehaviour
         health -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {health}");
         CheckDeath();
+        enemyHealthBar.UpdateHealthBar();
     }
 
     public void CheckDeath()
@@ -38,15 +38,11 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        // Check if the object is the player
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Enemy is continuously colliding with Player.");
-
-            // Continuously apply damage as long as the enemy is colliding with the player
-            playerStats.TakeDamage(Damage * Time.deltaTime);  // Damage per second, using deltaTime to scale it properly
+            playerStats.TakeDamage(Damage * Time.deltaTime);
         }
     }
 }
