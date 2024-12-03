@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public GameObject Enemy;
     public float health;
     public float maxHealth;
     public float Damage;
+
     public int experienceReward = 100;
     private PlayerData playerData;
+    [SerializeField] private EnemyHealthBar enemyHealthBar;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class EnemyStats : MonoBehaviour
         health -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {health}");
         CheckDeath();
+        enemyHealthBar.UpdateHealthBar();
     }
 
 
@@ -38,7 +40,7 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
