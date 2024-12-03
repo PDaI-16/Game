@@ -79,12 +79,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private MeleeAttackGO meleeAttackGOScript;
     [SerializeField] private BoxCollider2D meleeAttackHitbox;
 
+    [SerializeField] private GameObject deathScreenPanel;
+
+/*    [SerializeField] private MainMenu mainMenu;*/
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerData = new PlayerData();
+        playerData = new PlayerData(MainMenu.playerClass);
+
 
         _mainCamera = Camera.main;
         movementSpeed = 4;
@@ -143,12 +147,14 @@ public class PlayerController : MonoBehaviour
 
         PlayerInputs();
         CheckIfShouldDie();
+
     }
 
     public void CheckIfShouldDie()
     {
         if (playerData.GetHealth() <= 0.0f)
         {
+            deathScreenPanel.SetActive(true);
             Destroy(gameObject);
         }
     }

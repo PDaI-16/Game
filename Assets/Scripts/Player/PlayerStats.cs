@@ -17,24 +17,24 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
-        // Initialize player stats if a class is selected
-        if (!string.IsNullOrEmpty(MainMenu.selectedClass))
+/*        // Initialize player stats if a class is selected
+        if (!string.IsNullOrEmpty(MainMenu.initialPlayerClass))
         {
             InitializeStats();
-        }
+        }*/
     }
 
     void Start()
     {
-        // Double-check in case Awake didn't have the correct class selection
+/*        // Double-check in case Awake didn't have the correct class selection
         if (string.IsNullOrEmpty(playerClass) && !string.IsNullOrEmpty(MainMenu.selectedClass))
         {
             InitializeStats();
             bottomBar = Object.FindFirstObjectByType<BottomBar>();  // Use FindFirstObjectByType for BottomBar
-        }
+        }*/
     }
 
-    private void InitializeStats()
+/*    private void InitializeStats()
     {
         // Set the player class based on the selection in MainMenu
         playerClass = MainMenu.selectedClass;
@@ -58,7 +58,7 @@ public class PlayerStats : MonoBehaviour
 
     
         health = maxHealth;
-    }
+    }*/
 
     public void TakeDamage(float damage)
     {

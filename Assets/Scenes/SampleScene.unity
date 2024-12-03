@@ -3554,6 +3554,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 0}
   selectPanel: {fileID: 0}
   deathScreenPanel: {fileID: 479602729}
+  playerController: {fileID: 0}
 --- !u!114 &1073704625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4385,163 +4386,163 @@ MonoBehaviour:
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: Melee
+    requiredClass: 0
     isSpecial: 0
   - name: 1a Melee
     cost: 1
     prerequisiteSkillIndices: 00000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 2a Melee
     cost: 1
     prerequisiteSkillIndices: 01000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 3a Melee
     cost: 1
     prerequisiteSkillIndices: 02000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 1b Melee
     cost: 1
     prerequisiteSkillIndices: 00000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 2b Melee
     cost: 1
     prerequisiteSkillIndices: 04000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 3b Melee
     cost: 1
     prerequisiteSkillIndices: 05000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: FirstRanged
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: Ranged
+    requiredClass: 0
     isSpecial: 0
   - name: 1a Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 2a Ranged
     cost: 1
     prerequisiteSkillIndices: 08000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 3a Ranged
     cost: 1
     prerequisiteSkillIndices: 09000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 1b Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 2b Ranged
     cost: 1
     prerequisiteSkillIndices: 0b000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 3b Ranged
     cost: 1
     prerequisiteSkillIndices: 0c000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: FirstMagic
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: Magic
+    requiredClass: 0
     isSpecial: 0
   - name: 1a Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 2a Magic
     cost: 1
     prerequisiteSkillIndices: 0f000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 3a Magic
     cost: 1
     prerequisiteSkillIndices: 10000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 1b Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 2b Magic
     cost: 1
     prerequisiteSkillIndices: 12000000
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   - name: 3b Magic
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: 19
+    requiredClass: 0
     isSpecial: 0
   - name: 1a SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 0300000006000000
     isUnlocked: 0
-    requiredClass: Melee
+    requiredClass: 0
     isSpecial: 1
   - name: 1b SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 0300000006000000
     isUnlocked: 0
-    requiredClass: Melee
+    requiredClass: 0
     isSpecial: 1
   - name: 1a SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
     isUnlocked: 0
-    requiredClass: Ranged
+    requiredClass: 0
     isSpecial: 1
   - name: 1b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
     isUnlocked: 0
-    requiredClass: Ranged
+    requiredClass: 0
     isSpecial: 1
   - name: 1a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
     isUnlocked: 0
-    requiredClass: Magic
+    requiredClass: 0
     isSpecial: 1
   - name: 1b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
     isUnlocked: 0
-    requiredClass: Magic
+    requiredClass: 0
     isSpecial: 1
   skillImages:
   - {fileID: 820599833}
@@ -4571,27 +4572,27 @@ MonoBehaviour:
   - {fileID: 1549391839}
   - {fileID: 900330589}
   - {fileID: 1225376488}
-  playerStats: {fileID: 0}
+  playerController: {fileID: 264712827}
   meleeSpecialSkill:
     name: 
     cost: 0
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 0
     isSpecial: 0
   rangedSpecialSkill:
     name: 
     cost: 0
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 1
     isSpecial: 0
   magicSpecialSkill:
     name: 
     cost: 0
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: 
+    requiredClass: 2
     isSpecial: 0
 --- !u!1 &1225376486
 GameObject:
@@ -6506,6 +6507,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: mainMenu
+      value: 
+      objectReference: {fileID: 1073704624}
+    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: itemSpawner
       value: 
       objectReference: {fileID: 366607903}
@@ -6513,6 +6518,10 @@ PrefabInstance:
       propertyPath: currentCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: deathScreenPanel
+      value: 
+      objectReference: {fileID: 479602729}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: inventoryGOScript
       value: 

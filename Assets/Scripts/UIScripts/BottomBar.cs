@@ -51,7 +51,6 @@ public class BottomBar : MonoBehaviour
 
     public void UpdateHealthImage()
     {
-        Debug.Log("Current health of the player is: "+ playerController.playerData.GetHealth());
 
         if (playerController.playerData.GetHealth() >= (playerController.playerData.GetMaxPossibleHealth() * 76) / 100)
         {

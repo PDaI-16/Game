@@ -11,13 +11,13 @@ public class SkillTree : MonoBehaviour
         public int cost;     // Cost to unlock the skill
         public int[] prerequisiteSkillIndices; // Indices of prerequisite skills (can be multiple)
         public bool isUnlocked = false; // Whether the skill is unlocked or not
-        public string requiredClass; // The player class required for this skill (optional)
+        public ItemCategory requiredClass; // The player class required for this skill (optional)
         public bool isSpecial = false; // Indicates if the skill is a special skill
     }
 
     public Skill[] skills; // Array of skills in the skill tree
     public Image[] skillImages; // Array of skill images
-    public PlayerStats playerStats; // Reference to PlayerStats
+    public PlayerController playerController; // We are going to get playerdata from playercontroller
 
     // Track which special skill is currently active for each class
     public Skill meleeSpecialSkill = null;
@@ -26,9 +26,9 @@ public class SkillTree : MonoBehaviour
 
     void Start()
     {
-        if (playerStats == null)
+        if (playerController.playerData == null)
         {
-            Debug.LogError("PlayerStats is not assigned in the inspector!");
+            Debug.LogError("PlayerData not found by SkillTree");
             return;
         }
 
@@ -62,16 +62,29 @@ public class SkillTree : MonoBehaviour
 
     void UnlockFirstSkillBasedOnClass()
     {
-        string playerClass = playerStats.playerClass;
+        ItemCategory playerClass = MainMenu.playerClass;
+        Debug.LogWarning("UnlockFirstSkillBasedOnClass");
+        Debug.LogWarning(MainMenu.playerClass);
+        Debug.LogWarning(playerController.playerData.GetInitialPlayerClassFromPlayer().ToString());
+
 
         // Iterate through the skills to find the first skill for the player's class
         for (int i = 0; i < skills.Length; i++)
         {
-            if (skills[i].requiredClass == playerClass && !skills[i].isUnlocked)
+            Debug.LogWarning("Skill in index");
+            Debug.LogWarning(skills[i].requiredClass.ToString());
+            if (skills[i].requiredClass == playerClass)
             {
-                skills[i].isUnlocked = true; // Unlock the skill
-                UpdateSkillVisuals(); // Update UI visuals
-                break; // Stop after unlocking the first skill for the class
+                Debug.LogWarning("skills[i].requiredClass == playerClass ");
+
+                if (!skills[i].isUnlocked)
+                {
+                    Debug.LogWarning("!skills[i].isUnlocked ");
+                    skills[i].isUnlocked = true; // Unlock the skill
+                    UpdateSkillVisuals(); // Update UI visuals
+                    break; // Stop after unlocking the first skill for the class
+                }
+
             }
         }
     }
@@ -110,7 +123,7 @@ public class SkillTree : MonoBehaviour
         }
 
         // Toggle the special skill's active state
-        if (skill.requiredClass == "Melee")
+        if (skill.requiredClass == ItemCategory.Melee)
         {
             if (meleeSpecialSkill == skill)
             {
@@ -123,7 +136,7 @@ public class SkillTree : MonoBehaviour
                 meleeSpecialSkill = skill;
             }
         }
-        else if (skill.requiredClass == "Ranged")
+        else if (skill.requiredClass == ItemCategory.Ranged)
         {
             if (rangedSpecialSkill == skill)
             {
@@ -136,7 +149,7 @@ public class SkillTree : MonoBehaviour
                 rangedSpecialSkill = skill;
             }
         }
-        else if (skill.requiredClass == "Magic")
+        else if (skill.requiredClass == ItemCategory.Magic)
         {
             if (magicSpecialSkill == skill)
             {
@@ -155,7 +168,7 @@ public class SkillTree : MonoBehaviour
 
     bool CanUnlockSkill(Skill skill)
     {
-        int availableSkillPoints = playerStats.GetAvailableSkillPoints();
+        int availableSkillPoints = playerController.playerData.GetSkillPoints();
 
         // Check if the player has enough points
         if (availableSkillPoints < skill.cost)
@@ -184,30 +197,35 @@ public class SkillTree : MonoBehaviour
 
     void UnlockSkill(Skill skill)
     {
-        if (skill.isUnlocked)
+        if (skill.cost < playerController.playerData.GetSkillPoints())
         {
-            // If the skill is already unlocked, no need to do anything
-            return;
+            if (skill.isUnlocked)
+            {
+                // If the skill is already unlocked, no need to do anything
+                return;
+            }
+
+            // Unlock the skill
+            skill.isUnlocked = true;
+
+
+            playerController.playerData.SpendSkillPoints(skill.cost);  // Deduct points only when the skill is first unlocked
+
+            // If it's a special skill, set it as active
+            if (skill.isSpecial)
+            {
+                SetActiveSpecialSkill(skill); // Set the unlocked special skill as active
+            }
+
+            UpdateSkillVisuals();  // Update UI visuals
         }
-
-        // Unlock the skill
-        skill.isUnlocked = true;
-        playerStats.SpendSkillPoints(skill.cost);  // Deduct points only when the skill is first unlocked
-
-        // If it's a special skill, set it as active
-        if (skill.isSpecial)
-        {
-            SetActiveSpecialSkill(skill); // Set the unlocked special skill as active
-        }
-
-        UpdateSkillVisuals();  // Update UI visuals
     }
 
 
     void SetActiveSpecialSkill(Skill skill)
     {
         // Deactivate any previous special skill of the same class
-        if (skill.requiredClass == "Melee")
+        if (skill.requiredClass == ItemCategory.Melee)
         {
             if (meleeSpecialSkill == skill)
             {
@@ -219,7 +237,7 @@ public class SkillTree : MonoBehaviour
                 meleeSpecialSkill = skill; // Set the new melee special skill
             }
         }
-        else if (skill.requiredClass == "Ranged")
+        else if (skill.requiredClass == ItemCategory.Ranged)
         {
             if (rangedSpecialSkill == skill)
             {
@@ -231,7 +249,7 @@ public class SkillTree : MonoBehaviour
                 rangedSpecialSkill = skill; // Set the new ranged special skill
             }
         }
-        else if (skill.requiredClass == "Magic")
+        else if (skill.requiredClass == ItemCategory.Magic)
         {
             if (magicSpecialSkill == skill)
             {
@@ -283,15 +301,15 @@ public class SkillTree : MonoBehaviour
 
     bool IsSpecialSkillActive(Skill skill)
     {
-        if (skill.requiredClass == "Melee" && meleeSpecialSkill == skill)
+        if (skill.requiredClass == ItemCategory.Melee && meleeSpecialSkill == skill)
         {
             return true;
         }
-        else if (skill.requiredClass == "Ranged" && rangedSpecialSkill == skill)
+        else if (skill.requiredClass == ItemCategory.Ranged && rangedSpecialSkill == skill)
         {
             return true;
         }
-        else if (skill.requiredClass == "Magic" && magicSpecialSkill == skill)
+        else if (skill.requiredClass == ItemCategory.Magic && magicSpecialSkill == skill)
         {
             return true;
         }
