@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using Math = System.Math;
 
 public class Map : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class Map : MonoBehaviour
     public RuleTile borderTile; // Assign this in the Inspector
     public Tilemap BorderTilemap;
 
+    public bool Randomized = false;
+
     [Header("Dimensions")]
-    public int width = 50;
-    public int height = 50;
+    public int width = 60;
+    public int height = 60;
     public float scale = 1.0f;
     public Vector2 offset;
 
@@ -38,6 +41,23 @@ public class Map : MonoBehaviour
 
 void GenerateMap()
 {
+     if (Randomized)
+    {
+        System.Random random = new System.Random();
+        heightWaves[0].seed = (float)Math.Round(random.NextDouble() * 1000, 2);
+        heightWaves[1].seed = (float)Math.Round(random.NextDouble() * 1000, 2);
+        moistureWaves[0].seed = (float)Math.Round(random.NextDouble() * 1000, 2);
+        heatWaves[0].seed = (float)Math.Round(random.NextDouble() * 1000, 2);
+        heatWaves[1].seed = (float)Math.Round(random.NextDouble() * 1000, 2);
+    }
+    else
+    {
+        heightWaves[0].seed = 56f;
+        heightWaves[1].seed = 199.36f;
+        moistureWaves[0].seed = 621f;
+        heatWaves[0].seed = 318.6f;
+        heatWaves[1].seed = 329.7f;
+    }
     // Generate noise maps for height, moisture, and heat
     heightMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heightWaves);
     moistureMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, moistureWaves);

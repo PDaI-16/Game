@@ -160,6 +160,7 @@ MonoBehaviour:
   colliderParent: {fileID: 1083498918}
   borderTile: {fileID: 11400000, guid: 9712bbec9d6b73f459ad3d38caa5d6a5, type: 2}
   BorderTilemap: {fileID: 1303617409}
+  Randomized: 1
   width: 60
   height: 60
   scale: 1
@@ -631,7 +632,7 @@ TilemapRenderer:
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
-  m_SortOrder: 0
+  m_SortOrder: 2
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
