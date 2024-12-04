@@ -319,18 +319,34 @@ int CalculateDistanceFromBiomeEdge(int x, int y, BiomePreset biome)
 }
 
 
-     BiomePreset GetBiome(float height, float moisture, float heat)
-    {
-        // Loop through each biome and return the first one that matches the conditions
-        foreach (BiomePreset biome in biomes)
-        {
-            if (biome.MatchCondition(height, moisture, heat))
-            {
-                return biome;
-            }
-        }
+    BiomePreset GetBiome(float height, float moisture, float heat)
+{
+    // Define thresholds or weights for each biome
+    float desertThreshold = 0.7f; // Example threshold for desert biome
+    float forestThreshold = 0.5f; // Example threshold for forest biome
+    float grasslandThreshold = 0.4f; // Example threshold for grassland biome
 
-        // If no biome matches, you could return a default biome or null
-        return null;
+    foreach (BiomePreset biome in biomes)
+    {
+        if (biome.name == "Desert" && height > desertThreshold)
+        {
+            return biome;
+        }
+        else if (biome.name == "Forest" && height > forestThreshold)
+        {
+            return biome;
+        }
+        else if (biome.name == "Grassland" && height > grasslandThreshold)
+        {
+            return biome;
+        }
+        else if (biome.MatchCondition(height, moisture, heat))
+        {
+            return biome;
+        }
     }
+
+    // If no biome matches, you could return a default biome or null
+    return null;
+}
 }
