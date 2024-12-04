@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d468c45e408a944ad6edf780e14bcf, type: 3}
-  m_Name: Ocean
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: Borders
   m_EditorClassIdentifier: 
-  biomeName: Ocean
-  ruleTile: {fileID: 11400000, guid: c9fd68ad6cb537945a2a7efc18c77f13, type: 2}
-  minHeight: 0
-  minMoisture: 0
-  minHeat: 0
-  environmentObjects: []
+  m_DefaultSprite: {fileID: -1147929234313141602, guid: 9ae54b49566b1134784aabeb7f1aae07, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules: []
