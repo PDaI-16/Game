@@ -325,6 +325,9 @@ int CalculateDistanceFromBiomeEdge(int x, int y, BiomePreset biome)
     float desertThreshold = 0.7f; // Example threshold for desert biome
     float forestThreshold = 0.5f; // Example threshold for forest biome
     float grasslandThreshold = 0.4f; // Example threshold for grassland biome
+    float mountainThreshold = 0.8f; // Example threshold for mountain biome
+    float oceanThreshold = 0.45f; // Example threshold for ocean biome
+
 
     foreach (BiomePreset biome in biomes)
     {
@@ -337,6 +340,14 @@ int CalculateDistanceFromBiomeEdge(int x, int y, BiomePreset biome)
             return biome;
         }
         else if (biome.name == "Grassland" && height > grasslandThreshold)
+        {
+            return biome;
+        }
+        else if (biome.name == "Mountains" && height > mountainThreshold)
+        {
+            return biome;
+        }
+        else if (biome.name == "Ocean" && height < oceanThreshold)
         {
             return biome;
         }

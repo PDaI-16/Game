@@ -160,7 +160,7 @@ MonoBehaviour:
   colliderParent: {fileID: 1083498918}
   borderTile: {fileID: 11400000, guid: 9712bbec9d6b73f459ad3d38caa5d6a5, type: 2}
   BorderTilemap: {fileID: 1303617409}
-  Randomized: 1
+  Randomized: 0
   width: 60
   height: 60
   scale: 1
