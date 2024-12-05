@@ -9,6 +9,7 @@ public class EnemyStats : MonoBehaviour
     public int experienceReward = 100;
     private PlayerData playerData;
     [SerializeField] private EnemyHealthBar enemyHealthBar;
+    
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class EnemyStats : MonoBehaviour
             {
                 Debug.LogError("playerStats is null, can't award XP.");
             }
-            Destroy(gameObject);
+            Destroy(transform.root.gameObject);
         }
     }
 
