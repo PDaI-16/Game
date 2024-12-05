@@ -37,7 +37,7 @@ public class BottomBar : MonoBehaviour
     {
         if (playerController.playerData != null)
         {
-            Debug.Log("Bottom bar updating...");
+            //Debug.Log("Bottom bar updating...");
             UpdateHealthImage();
             UpdateSkillIcons();
             UpdateXPBar();
