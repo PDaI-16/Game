@@ -3109,8 +3109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 1024815788}
-  enemyPrefab: {fileID: 2089142117}
-  rangedEnemyPrefab: {fileID: 1004243880}
+  enemyPrefab: {fileID: 0}
+  rangedEnemyPrefab: {fileID: 0}
   maxEnemies: 30
   spawnRadius: 5
 --- !u!4 &983346200
@@ -3196,6 +3196,10 @@ PrefabInstance:
       propertyPath: 'enemySprites.Array.data[6]'
       value: 
       objectReference: {fileID: -435101905, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+    - target: {fileID: 8470670469590292474, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
+      propertyPath: 'enemySprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: -435101905, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
     - target: {fileID: 8862380037412996455, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.91977274
@@ -3247,13 +3251,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6636366954059701426, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1598342212}
   m_SourcePrefab: {fileID: 100100000, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
---- !u!1 &1004243880 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5147095794478659403, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
-  m_PrefabInstance: {fileID: 1004243879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1024815788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2355982236353727140, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
@@ -5812,6 +5814,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577758450}
   m_CullTransparentMesh: 1
+--- !u!1 &1598342209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6636366954059701426, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
+  m_PrefabInstance: {fileID: 1004243879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1598342212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598342209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04dae0aec7e60d3498e7b56111a40a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 264712822}
+  speed: 2
+  aggroStartDistance: 10
+  aggroEndDistance: 12
+  attackDistance: 5
+  attackGraceTime: 1.5
 --- !u!1 &1605840342
 GameObject:
   m_ObjectHideFlags: 0
@@ -6578,11 +6603,6 @@ MonoBehaviour:
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []
---- !u!1 &2089142117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5147095794478659403, guid: 7b5da0aae43b64749b7849c58135326b, type: 3}
-  m_PrefabInstance: {fileID: 4445114392290284483}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &171084923332916767
 PrefabInstance:
   m_ObjectHideFlags: 0
