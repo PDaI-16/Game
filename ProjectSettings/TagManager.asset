@@ -68,5 +68,8 @@ TagManager:
   - name: MainMenu'
     uniqueID: 1174784085
     locked: 0
+  - name: InventoryUI
+    uniqueID: 3488107273
+    locked: 0
   m_RenderingLayers:
   - Default
