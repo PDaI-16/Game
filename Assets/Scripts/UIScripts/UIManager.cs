@@ -17,8 +17,6 @@ public class UIManager : MonoBehaviour
         Inventory
     }
 
-    private PanelState currentState = PanelState.None; // Initial state
-
     void Start()
     {
         // Add panels to the list
@@ -68,8 +66,6 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
-
-        currentState = newState;
     }
 
     // Deactivate all panels
