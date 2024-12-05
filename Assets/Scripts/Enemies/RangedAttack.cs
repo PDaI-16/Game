@@ -58,9 +58,6 @@ public class RangedAttack : MonoBehaviour
             return;
         }
 
-        // Debug log to confirm projectile instantiation
-        Debug.Log("Instantiating projectile at position: " + firePoint.position);
-
         // Instantiate the projectile at the firePoint (enemy's position)
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
@@ -96,13 +93,39 @@ public class RangedAttack : MonoBehaviour
 
         Debug.Log("Enemy fired a projectile!");
     }
-    private void OnDrawGizmos()
-{
-    if (firePoint != null && player != null)
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(firePoint.position, player.transform.position);
-    }
 }
+
+public class ProjectileMoveToPlayer : MonoBehaviour
+{
+    public Transform target; // The target (player)
+    public float projectileSpeed = 10f; // Speed of the projectile
+
+    private void Update()
+    {
+        if (target != null)
+        {
+            // Move the projectile towards the player
+            Vector3 direction = (target.position - transform.position).normalized;
+            transform.position += direction * projectileSpeed * Time.deltaTime;
+        }
+    }
+
+    // When the projectile collides with something
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        Debug.Log("Triggered by: " + other.name); // Debug log to see what it's colliding with
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Hit player");
+            // Deal damage to the player
+            PlayerData playerData = other.GetComponent<PlayerData>();
+            if (playerData != null)
+            {
+                playerData.TakeDamage(10f);  // Adjust the damage value as needed
+                Debug.Log("Projectile dealt damage to the player!");
+            }
+            Destroy(gameObject); // Destroy the projectile
+        }
+    }
 
 }
