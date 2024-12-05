@@ -87,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 6
+  spritePixelsToUnits: 5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2085,16 +2085,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI0_88
+      name: GUI_placeholder2
       rect:
         serializedVersion: 2
         x: 208
-        y: 176
-        width: 16
-        height: 16
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 6, w: 6}
       customData: 
       outline: []
       physicsShape: []
@@ -3845,16 +3845,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI0_168
+      name: GUI_placeholder
       rect:
         serializedVersion: 2
         x: 208
-        y: 80
-        width: 16
-        height: 16
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 6, w: 6}
       customData: 
       outline: []
       physicsShape: []
@@ -4553,9 +4553,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 1
+        y: 0
         width: 48
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 6, z: 6, w: 6}
@@ -5413,7 +5413,6 @@ TextureImporter:
       GUI0_165: -1612426991
       GUI0_166: 2034666138
       GUI0_167: 1145571430
-      GUI0_168: -1954577601
       GUI0_169: 1507879415
       GUI0_17: -1411678630
       GUI0_170: -752166175
@@ -5557,7 +5556,6 @@ TextureImporter:
       GUI0_85: 1999335300
       GUI0_86: 340911250
       GUI0_87: -524495914
-      GUI0_88: -1288556565
       GUI0_89: 1627796424
       GUI0_9: -7892894065571213107
       GUI0_90: 1897844919
@@ -5571,6 +5569,8 @@ TextureImporter:
       GUI0_98: 2032953388
       GUI0_99: -1562631848
       GUI_inv: -281879711
+      GUI_placeholder: -1954577601
+      GUI_placeholder2: -1288556565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
