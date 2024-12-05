@@ -3135,6 +3135,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5297236755034897140, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6510367515166482207, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
       propertyPath: projectilePrefab
       value: 
