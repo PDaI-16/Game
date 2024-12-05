@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("No weapon equipped");
+            //Debug.Log("No weapon equipped");
         }
 
 

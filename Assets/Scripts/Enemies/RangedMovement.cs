@@ -11,7 +11,7 @@ public class RangedMovement : MonoBehaviour
 
     private float distanceToPlayer;   // Current distance to the player
     private bool isAggroed;           // Tracks if the enemy is aggroed
-    private bool isInGracePeriod;     // Tracks if the enemy is in the grace period
+    public bool isInGracePeriod;     // Tracks if the enemy is in the grace period
     private float graceTimer;         // Tracks time left in the grace period
 
     private void Update()
