@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -5,25 +7,90 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject skillTreePanel;
     [SerializeField] private GameObject inventoryPanel;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private List<GameObject> panels = new List<GameObject>();
+
+    // Define the states of the FSM
+    private enum PanelState
     {
-        
+        None,
+        SkillTree,
+        Inventory
     }
 
-    // Update is called once per frame
+    private PanelState currentState = PanelState.None; // Initial state
+
+    void Start()
+    {
+        // Add panels to the list
+        panels.Add(skillTreePanel);
+        panels.Add(inventoryPanel);
+    }
+
     void Update()
     {
+        // Check for input and handle state transitions
         if (Input.GetKeyDown(KeyCode.K))
         {
             Debug.Log("Pressed K");
-            skillTreePanel.SetActive(!skillTreePanel.activeSelf);
+            ChangeState(PanelState.SkillTree);
         }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
             Debug.Log("Pressed I");
-            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+            ChangeState(PanelState.Inventory);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangeState(PanelState.None);
+        }
+    }
+
+    // Change the FSM state
+    private void ChangeState(PanelState newState)
+    {
+        // Activate the panel based on the new state
+        switch (newState)
+        {
+            case PanelState.SkillTree:
+                DeactivateAllExludingThis(skillTreePanel);
+                skillTreePanel.SetActive(!skillTreePanel.activeSelf);
+                break;
+
+            case PanelState.Inventory:
+                DeactivateAllExludingThis(inventoryPanel);
+                inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+                break;
+
+            case PanelState.None:
+                DeactivateAllPanels();
+                break;
+        }
+
+
+        currentState = newState;
+    }
+
+    // Deactivate all panels
+
+    private void DeactivateAllExludingThis(GameObject usedPanel)
+    {
+        foreach (var panel in panels)
+        {
+            if (panel != usedPanel)
+            {
+                panel.SetActive(false);
+            }
+           
+        }
+    }
+
+    private void DeactivateAllPanels()
+    {
+        foreach (var panel in panels)
+        {
+            panel.SetActive(false);
         }
     }
 }
