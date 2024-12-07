@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentWeaponData.Category == ItemCategory.Ranged)
             {
-                ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(rangedArm.transform, currentCamera);
+                ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
                 ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
             }
         }

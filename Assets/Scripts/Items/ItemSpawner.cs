@@ -18,12 +18,14 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] private Sprite[] magicWeaponSprites;
     [SerializeField] private GameObject weaponPrefab;
 
+    [SerializeField] private int itemSpawnAmount = 50;
+
     // Called before the first frame update.
     private void Start()
     {
         try
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < itemSpawnAmount; i++)
             {
                 SpawnRandomHatToRandomLocation(2.0f);
                 SpawnRandomWeaponToRandomLocation(2.0f);
