@@ -21,6 +21,11 @@ public class Inventory
         }
     }
 
+    public List<Weapon> GetWeaponsInInventory()
+    {
+        return weaponsInInventory;
+    }
+
     public Weapon GetWeaponFromInventory(int index)
     {
         // Check if the inventory is empty

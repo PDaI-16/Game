@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -12,21 +14,47 @@ public class InventoryUI : MonoBehaviour
 
 
     private Inventory inventoryData = null;
+    private List<Weapon> weaponsInInventory = new List<Weapon>();
 
     void Start()
     {
-        inventoryData = inventoryGO.InventoryData;
+        FetchInventoryData();
         GameObject newItem = Instantiate(itemSlotPrefab, contentParent.transform);
-        SetDamageText(newItem);
     }
 
     // Update is called once per frame
     void Update()
     {
+        MapItems(inventoryData);
 
     }
 
-    public void SetDamageText(GameObject itemSlotObject)
+
+
+    private void FetchInventoryData()
+    {
+        inventoryData = inventoryGO.InventoryData;
+    }
+
+    private void MapItems(Inventory playerInventoryData)
+    {
+        weaponsInInventory = playerInventoryData.GetWeaponsInInventory();
+
+        if (weaponsInInventory != null)
+        {
+            foreach (Weapon weapon in weaponsInInventory)
+            {
+                GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
+                SetAttackSpeedText(itemInInventoryUI, weapon.AttackSpeed);
+            }
+        }
+
+
+
+    }
+
+
+    private void SetAttackSpeedText(GameObject itemSlotObject, float attackSpeedOfItem)
     {
         // Find the child GameObject with the name "AttackSpeedText"
         Transform attackSpeedTextTransform = itemSlotObject.transform.Find("AttackSpeedText");
@@ -41,7 +69,7 @@ public class InventoryUI : MonoBehaviour
             if (attackSpeedTextMeshPro != null)
             {
                 // Modify the text of the TextMeshProUGUI component
-                attackSpeedTextMeshPro.text = "50";  // Update this value as needed
+                attackSpeedTextMeshPro.text = attackSpeedOfItem.ToString(); 
             }
             else
             {
