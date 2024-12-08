@@ -61,7 +61,7 @@ public class ItemSlotScript : MonoBehaviour
 
     private void SetImage(Sprite itemImage)
     {
-        Transform itemImageTransform = transform.Find("ItemImage");
+        Transform itemImageTransform = transform.Find("HorizontalLayout").transform.Find("ItemImage");
 
         if (itemImageTransform != null)
         {
@@ -85,7 +85,7 @@ public class ItemSlotScript : MonoBehaviour
     // Modular method to set the text for any UI element
     private void SetText(string childName, string textValue)
     {
-        Transform textTransform = transform.Find(childName);
+        Transform textTransform = transform.Find("HorizontalLayout").transform.Find(childName);
 
         if (textTransform != null)
         {
