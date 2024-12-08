@@ -5787,6 +5787,9 @@ MonoBehaviour:
   itemSlotPrefab: {fileID: 1756415748440900220, guid: 2c516a372d0c74749a3fb146804299a1, type: 3}
   contentParent: {fileID: 65105639}
   attackSpeedGUI: {fileID: 0}
+  inventoryData:
+    hatsInInventory: []
+    weaponsInInventory: []
 --- !u!1 &1351701654
 GameObject:
   m_ObjectHideFlags: 0

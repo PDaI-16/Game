@@ -12,41 +12,49 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject contentParent;
     [SerializeField] TextMeshProUGUI attackSpeedGUI;
 
+    private int previousWeaponCount = 0;
+
 
     [SerializeField] Inventory inventoryData = null;
     private List<Weapon> weaponsInInventory = new List<Weapon>();
-    private bool wasInventoryPanelActive = false;
+
 
     void Start()
     {
-        GameObject newItem = Instantiate(itemSlotPrefab, contentParent.transform);
 
-        
+        FetchInventoryData();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check if the inventory panel has transitioned from inactive to active
-        if (inventoryPanel.activeSelf && !wasInventoryPanelActive)
+        
+        if (previousWeaponCount != inventoryData.GetWeaponsInInventory().Count)
         {
-            Debug.LogWarning("Mapping inventory data inside update");
-            MapItems(FetchInventoryData());
-        }
+            FetchInventoryData();
 
-        // Update the panel state for the next frame
-        wasInventoryPanelActive = inventoryPanel.activeSelf;
+            MapItems(inventoryData);
+        }
     }
 
 
-
-    private Inventory FetchInventoryData()
+   
+    private void FetchInventoryData()
     {
-        return inventoryData = inventoryGO.InventoryData;
+        previousWeaponCount = inventoryGO.InventoryData.GetWeaponsInInventory().Count; // Previous weapon count is saved so that we know if we have to update the mappings.
+        inventoryData = inventoryGO.InventoryData;
     }
 
     private void MapItems(Inventory playerInventoryData)
     {
+
+        foreach (Transform child in contentParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         weaponsInInventory = playerInventoryData.GetWeaponsInInventory();
 
         if (weaponsInInventory != null)
