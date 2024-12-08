@@ -30,6 +30,7 @@ public class ItemSlotScript : MonoBehaviour
         SetAttackSpeedText(weapondata.AttackSpeed);
         SetDamageText(weapondata.Damage);
         SetImage(weapondata.Sprite);
+        SetCategoryText(weapondata.Category);
        
     }
 
@@ -52,6 +53,7 @@ public class ItemSlotScript : MonoBehaviour
             return hat;
         }
     */
+
 
 
     private void SetImage(Sprite itemImage)
@@ -82,6 +84,33 @@ public class ItemSlotScript : MonoBehaviour
         }
     }
 
+    private void SetCategoryText(ItemCategory category)
+    {
+        // Find the child GameObject with the name "AttackSpeedText"
+        Transform categoryTextTransform = transform.Find("ItemCategoryText");
+
+        // Check if the GameObject is found
+        if (categoryTextTransform != null)
+        {
+            // Get the TextMeshProUGUI component from the found GameObject
+            TextMeshProUGUI textObject = categoryTextTransform.GetComponent<TextMeshProUGUI>();
+
+            // Check if the TextMeshProUGUI component is found
+            if (textObject != null)
+            {
+                // Modify the text of the TextMeshProUGUI component
+                textObject.text = category.ToString();
+            }
+            else
+            {
+                Debug.LogWarning("No TextMeshProUGUI component found in AttackSpeedText.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No child named 'AttackSpeedText' found in itemSlotObject.");
+        }
+    }
 
     private void SetDamageText(float damage)
     {
