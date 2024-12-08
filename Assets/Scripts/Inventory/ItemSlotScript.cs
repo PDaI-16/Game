@@ -26,6 +26,7 @@ public class ItemSlotScript : MonoBehaviour
         SetText("AttackSpeedText", weapondata.AttackSpeed.ToString("F2"));
         SetText("DamageText", weapondata.Damage.ToString("F2"));
         SetText("ItemCategoryText", weapondata.Category.ToString());
+        SetText("ScoreText", weapondata.ItemScore.ToString("F2"));
         SetImage(weapondata.Sprite);
     }
 
