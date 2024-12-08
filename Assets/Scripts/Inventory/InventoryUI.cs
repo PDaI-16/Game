@@ -13,27 +13,35 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI attackSpeedGUI;
 
 
-    private Inventory inventoryData = null;
+/*    private Inventory inventoryData = null;*/
     private List<Weapon> weaponsInInventory = new List<Weapon>();
+    private bool wasInventoryPanelActive = false;
 
     void Start()
     {
-        FetchInventoryData();
         GameObject newItem = Instantiate(itemSlotPrefab, contentParent.transform);
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        MapItems(inventoryData);
+        // Check if the inventory panel has transitioned from inactive to active
+        if (inventoryPanel.activeSelf && !wasInventoryPanelActive)
+        {
+            MapItems(FetchInventoryData());
+        }
 
+        // Update the panel state for the next frame
+        wasInventoryPanelActive = inventoryPanel.activeSelf;
     }
 
 
 
-    private void FetchInventoryData()
+    private Inventory FetchInventoryData()
     {
-        inventoryData = inventoryGO.InventoryData;
+        return inventoryGO.InventoryData;
     }
 
     private void MapItems(Inventory playerInventoryData)
@@ -45,8 +53,21 @@ public class InventoryUI : MonoBehaviour
             foreach (Weapon weapon in weaponsInInventory)
             {
                 GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
-                SetAttackSpeedText(itemInInventoryUI, weapon.AttackSpeed);
+
+                ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
+                if (itemSlotScript != null)
+                {
+                    itemSlotScript.SetWeapon(weapon);
+                }
+                else
+                {
+                    Debug.LogError("ItemSlotScript is missing on the instantiated prefab!");
+                }
             }
+        }
+        else
+        {
+            Debug.LogWarning("No weapon in inventory");
         }
 
 
