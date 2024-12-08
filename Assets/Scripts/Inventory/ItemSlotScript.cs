@@ -7,6 +7,9 @@ public class ItemSlotScript : MonoBehaviour
     [SerializeField] private Weapon weapon = null;
     [SerializeField] private Hat hat = null;
 
+    private enum ItemType {None, Weapon, Hat }
+    private ItemType selfItemType = ItemType.None;
+
     void Start()
     {
     }
@@ -20,14 +23,31 @@ public class ItemSlotScript : MonoBehaviour
         if (hat == null)
         {
             weapon = weapondata;
-        }
+            selfItemType = ItemType.Weapon;
 
-        // Call the modular SetText function for attack speed, damage, and category
-        SetText("AttackSpeedText", weapondata.AttackSpeed.ToString("F2"));
-        SetText("DamageText", weapondata.Damage.ToString("F2"));
-        SetText("ItemCategoryText", weapondata.Category.ToString());
-        SetText("ScoreText", weapondata.ItemScore.ToString("F2"));
-        SetImage(weapondata.Sprite);
+            // Call the modular SetText function for attack speed, damage, and category
+            SetText("AttackSpeedText", weapondata.AttackSpeed.ToString("F2"));
+            SetText("DamageText", weapondata.Damage.ToString("F2"));
+            SetText("ItemCategoryText", weapondata.Category.ToString());
+            SetText("ScoreText", weapondata.ItemScore.ToString("F2"));
+            SetImage(weapondata.Sprite);
+        }
+    }
+
+    public void SetHat(Hat hatdata)
+    {
+        if (weapon == null)
+        {
+            hat = hatdata;
+            selfItemType = ItemType.Hat;
+
+            // Call the modular SetText function for attack speed, damage, and category
+            SetText("AttackSpeedText", "ATTACKSPEEDX");
+            SetText("DamageText", "DAMAGEX");
+            SetText("ItemCategoryText", hatdata.Category.ToString());
+            SetText("ScoreText", "SCORE");
+            SetImage(hatdata.Sprite);
+        }
     }
 
     public Weapon GetWeapon()

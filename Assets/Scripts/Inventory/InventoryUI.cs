@@ -17,6 +17,10 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] Inventory inventoryData = null;
     private List<Weapon> weaponsInInventory = new List<Weapon>();
+    private List<Hat> hatsInInventory = new List<Hat>();
+
+    private enum ItemType { Weapons, Hats }
+    private ItemType currentItemType = ItemType.Weapons;
 
 
     void Start()
@@ -39,8 +43,20 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public void ShowWeapons()
+    {
+        currentItemType = ItemType.Weapons;
+        MapItems(inventoryData);
+    }
 
-   
+    public void ShowHats()
+    {
+        currentItemType = ItemType.Hats;
+        MapItems(inventoryData);
+    }
+
+
+
     private void FetchInventoryData()
     {
         previousWeaponCount = inventoryGO.InventoryData.GetWeaponsInInventory().Count; // Previous weapon count is saved so that we know if we have to update the mappings.
@@ -49,38 +65,63 @@ public class InventoryUI : MonoBehaviour
 
     private void MapItems(Inventory playerInventoryData)
     {
-
+        // Clear current inventory UI items
         foreach (Transform child in contentParent.transform)
         {
             Destroy(child.gameObject);
         }
 
-        weaponsInInventory = playerInventoryData.GetWeaponsInInventory();
-
-        if (weaponsInInventory != null)
+        // Fetch the correct list of items based on the selected type
+        if (currentItemType == ItemType.Weapons)
         {
-            foreach (Weapon weapon in weaponsInInventory)
-            {
-                GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
+            weaponsInInventory = playerInventoryData.GetWeaponsInInventory();
 
-                ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
-                if (itemSlotScript != null)
+            if (weaponsInInventory != null)
+            {
+                foreach (Weapon weapon in weaponsInInventory)
                 {
-                    itemSlotScript.SetWeapon(weapon);
-                }
-                else
-                {
-                    Debug.LogError("ItemSlotScript is missing on the instantiated prefab!");
+                    GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
+                    ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
+                    if (itemSlotScript != null)
+                    {
+                        itemSlotScript.SetWeapon(weapon);
+                    }
+                    else
+                    {
+                        Debug.LogError("ItemSlotScript is missing on the instantiated prefab!");
+                    }
                 }
             }
+            else
+            {
+                Debug.LogWarning("No weapons in inventory");
+            }
         }
-        else
+        else if (currentItemType == ItemType.Hats)
         {
-            Debug.LogWarning("No weapon in inventory");
+            hatsInInventory = playerInventoryData.GetHatsInInventory(); // Assuming you have a method for this
+
+            if (hatsInInventory != null)
+            {
+                foreach (Hat hat in hatsInInventory)
+                {
+                    GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
+                    ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
+                    if (itemSlotScript != null)
+                    {
+                        itemSlotScript.SetHat(hat); // Assuming you have a SetHat method
+                    }
+                    else
+                    {
+                        Debug.LogError("ItemSlotScript is missing on the instantiated prefab!");
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No hats in inventory");
+            }
         }
-
-
-
     }
 
 

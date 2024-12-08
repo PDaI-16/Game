@@ -21,6 +21,10 @@ public class Inventory
         }
     }
 
+    public List<Hat> GetHatsInInventory() {
+        return hatsInInventory;
+    }
+
     public List<Weapon> GetWeaponsInInventory()
     {
         return weaponsInInventory;
