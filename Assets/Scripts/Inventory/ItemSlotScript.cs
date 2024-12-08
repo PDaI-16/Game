@@ -20,39 +20,43 @@ public class ItemSlotScript : MonoBehaviour
 
     public void SetWeapon(Weapon weapondata)
     {
-        if (hat == null)
-        {
-            weapon = weapondata;
-            selfItemType = ItemType.Weapon;
 
-            // Call the modular SetText function for attack speed, damage, and category
-            SetText("AttackSpeedText", weapondata.AttackSpeed.ToString("F2"));
-            SetText("DamageText", weapondata.Damage.ToString("F2"));
-            SetText("ItemCategoryText", weapondata.Category.ToString());
-            SetText("ScoreText", weapondata.ItemScore.ToString("F2"));
-            SetImage(weapondata.Sprite);
-        }
+        weapon = weapondata;
+        selfItemType = ItemType.Weapon;
+
+        // Call the modular SetText function for attack speed, damage, and category
+        SetText("AttackSpeedText", weapondata.AttackSpeed.ToString("F2"));
+        SetText("DamageText", weapondata.Damage.ToString("F2"));
+        SetText("ItemCategoryText", weapondata.Category.ToString());
+        SetText("ScoreText", weapondata.ItemScore.ToString("F2"));
+        SetImage(weapondata.Sprite);
+        
     }
 
     public void SetHat(Hat hatdata)
     {
-        if (weapon == null)
-        {
-            hat = hatdata;
-            selfItemType = ItemType.Hat;
 
-            // Call the modular SetText function for attack speed, damage, and category
-            SetText("AttackSpeedText", "ATTACKSPEEDX");
-            SetText("DamageText", "DAMAGEX");
-            SetText("ItemCategoryText", hatdata.Category.ToString());
-            SetText("ScoreText", "SCORE");
-            SetImage(hatdata.Sprite);
-        }
+        hat = hatdata;
+        selfItemType = ItemType.Hat;
+
+
+        // Call the modular SetText function for attack speed, damage, and category
+        SetText("AttackSpeedText", "ATTACKSPEEDX");
+        SetText("DamageText", "DAMAGEX");
+        SetText("ItemCategoryText", hatdata.Category.ToString());
+        SetText("ScoreText", "SCORE");
+        SetImage(hatdata.Sprite);
+
     }
 
     public Weapon GetWeapon()
     {
         return weapon;
+    }
+
+    public Hat GetHat()
+    {
+        return hat;
     }
 
     private void SetImage(Sprite itemImage)

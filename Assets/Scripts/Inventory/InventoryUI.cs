@@ -34,24 +34,28 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (previousWeaponCount != inventoryData.GetWeaponsInInventory().Count)
+
+/*        if (previousWeaponCount != inventoryData.GetWeaponsInInventory().Count)
         {
             FetchInventoryData();
 
             MapItems(inventoryData);
-        }
+        }*/
     }
 
     public void ShowWeapons()
     {
+        Debug.Log("Show weapons clicked");
         currentItemType = ItemType.Weapons;
+        FetchInventoryData();
         MapItems(inventoryData);
     }
 
     public void ShowHats()
     {
+        Debug.Log("Show hats clicked");
         currentItemType = ItemType.Hats;
+        FetchInventoryData();
         MapItems(inventoryData);
     }
 
@@ -80,11 +84,13 @@ public class InventoryUI : MonoBehaviour
             {
                 foreach (Weapon weapon in weaponsInInventory)
                 {
+                    
                     GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
                     ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
                     if (itemSlotScript != null)
                     {
                         itemSlotScript.SetWeapon(weapon);
+                        Debug.LogWarning("Mapping weapons...");
                     }
                     else
                     {
@@ -99,7 +105,7 @@ public class InventoryUI : MonoBehaviour
         }
         else if (currentItemType == ItemType.Hats)
         {
-            hatsInInventory = playerInventoryData.GetHatsInInventory(); // Assuming you have a method for this
+            hatsInInventory = playerInventoryData.GetHatsInInventory(); 
 
             if (hatsInInventory != null)
             {
@@ -109,7 +115,7 @@ public class InventoryUI : MonoBehaviour
                     ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
                     if (itemSlotScript != null)
                     {
-                        itemSlotScript.SetHat(hat); // Assuming you have a SetHat method
+                        itemSlotScript.SetHat(hat); 
                     }
                     else
                     {
