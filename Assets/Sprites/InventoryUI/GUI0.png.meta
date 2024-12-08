@@ -2063,16 +2063,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI0_87
+      name: GUI_whitesimple
       rect:
         serializedVersion: 2
         x: 192
-        y: 176
+        y: 177
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 3, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -2085,7 +2085,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_placeholder2
+      name: GUI_white
       rect:
         serializedVersion: 2
         x: 208
@@ -5555,7 +5555,6 @@ TextureImporter:
       GUI0_84: 337264355
       GUI0_85: 1999335300
       GUI0_86: 340911250
-      GUI0_87: -524495914
       GUI0_89: 1627796424
       GUI0_9: -7892894065571213107
       GUI0_90: 1897844919
@@ -5570,7 +5569,8 @@ TextureImporter:
       GUI0_99: -1562631848
       GUI_inv: -281879711
       GUI_placeholder: -1954577601
-      GUI_placeholder2: -1288556565
+      GUI_white: -1288556565
+      GUI_whitesimple: -524495914
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
