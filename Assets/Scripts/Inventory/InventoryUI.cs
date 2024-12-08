@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI attackSpeedGUI;
 
 
-/*    private Inventory inventoryData = null;*/
+    [SerializeField] Inventory inventoryData = null;
     private List<Weapon> weaponsInInventory = new List<Weapon>();
     private bool wasInventoryPanelActive = false;
 
@@ -30,6 +30,7 @@ public class InventoryUI : MonoBehaviour
         // Check if the inventory panel has transitioned from inactive to active
         if (inventoryPanel.activeSelf && !wasInventoryPanelActive)
         {
+            Debug.LogWarning("Mapping inventory data inside update");
             MapItems(FetchInventoryData());
         }
 
@@ -41,7 +42,7 @@ public class InventoryUI : MonoBehaviour
 
     private Inventory FetchInventoryData()
     {
-        return inventoryGO.InventoryData;
+        return inventoryData = inventoryGO.InventoryData;
     }
 
     private void MapItems(Inventory playerInventoryData)
@@ -75,31 +76,5 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-    private void SetAttackSpeedText(GameObject itemSlotObject, float attackSpeedOfItem)
-    {
-        // Find the child GameObject with the name "AttackSpeedText"
-        Transform attackSpeedTextTransform = itemSlotObject.transform.Find("AttackSpeedText");
 
-        // Check if the GameObject is found
-        if (attackSpeedTextTransform != null)
-        {
-            // Get the TextMeshProUGUI component from the found GameObject
-            TextMeshProUGUI attackSpeedTextMeshPro = attackSpeedTextTransform.GetComponent<TextMeshProUGUI>();
-
-            // Check if the TextMeshProUGUI component is found
-            if (attackSpeedTextMeshPro != null)
-            {
-                // Modify the text of the TextMeshProUGUI component
-                attackSpeedTextMeshPro.text = attackSpeedOfItem.ToString(); 
-            }
-            else
-            {
-                Debug.LogWarning("No TextMeshProUGUI component found in AttackSpeedText.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("No child named 'AttackSpeedText' found in itemSlotObject.");
-        }
-    }
 }
