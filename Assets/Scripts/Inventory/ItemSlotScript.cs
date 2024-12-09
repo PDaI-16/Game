@@ -24,11 +24,14 @@ public class ItemSlotScript : MonoBehaviour
 
     void Update()
     {
-        if ((playerController.GetCurrentWeaponData() == weapon) != previousCurrentWeaponEqual) //Check if the current weapon has changed..
+        if (playerController.GetCurrentWeaponData() != null)
         {
-            Debug.LogWarning("ItemSlotScript update executed....");
-            CheckIfThisItemIsEquipped();
+            if ((playerController.GetCurrentWeaponData() == weapon) != previousCurrentWeaponEqual) //Check if the current weapon has changed..
+            {
+                CheckIfThisItemIsEquipped();
+            }
         }
+
 
     }
 

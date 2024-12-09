@@ -79,8 +79,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    // Deactivate all panels
-
     private void DeactivateAllExludingThis(GameObject usedPanel)
     {
         foreach (var panel in panels)

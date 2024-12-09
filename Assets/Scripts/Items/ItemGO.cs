@@ -10,7 +10,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
     [SerializeField] public T itemData;
     [SerializeField] private TextMeshPro infoText;
 
-    [SerializeField] private UIManager uiManager;
+    private UIManager uiManager = null;
 
     private bool onGround = true;
     private bool isPlayerNear = false;
@@ -75,7 +75,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 
     private void Start()
     {
-
+        FindUIManagerScript();
         InitializeInventoryScript();
 
     }
@@ -95,7 +95,15 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         if (other.CompareTag("Player") && onGround && inventoryGO != null)
         {
             isPlayerNear = true;
-            uiManager.ActivateHintPanel(); // Show the "Press E" hint
+            if (uiManager != null)
+            {
+                uiManager.ActivateHintPanel(); // Show the "Press E" hint
+            }
+            else
+            {
+                Debug.LogError("Ontriggerenter 2d no ui manager found");
+            }
+            
         }
     }
 
@@ -104,7 +112,14 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            uiManager.HideHintPanel(); // Hide the "Press E" hint
+            if (uiManager != null)
+            {
+                uiManager.HideHintPanel(); // Show the "Press E" hint
+            }
+            else
+            {
+                Debug.LogError("Ontriggerexit 2d no ui manager found");
+            }
         }
     }
 
@@ -130,7 +145,19 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         // This should be overridden in derived classes (like HatGO, WeaponGO)
     }
 
+    private void FindUIManagerScript()
+    {
+        GameObject boardManager = GameObject.Find("BoardManager");
 
+        if (boardManager != null)
+        {
+            uiManager = boardManager.GetComponent<UIManager>();
+        }
+        else
+        {
+            Debug.LogError("BoardManager GameObject not found.");
+        }
+    }
 
     private void InitializeInventoryScript()
     {

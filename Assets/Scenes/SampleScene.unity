@@ -322,7 +322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00007811333, y: 0.000029451214}
+  m_AnchoredPosition: {x: 0.000110693625, y: 0.000029451214}
   m_SizeDelta: {x: -34.41992, y: 322.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &65105641
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2407,6 +2407,10 @@ PrefabInstance:
     - target: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_Name
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4315595138000568141, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: uiManager
@@ -3213,7 +3217,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1136697018}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999354
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6204,7 +6208,7 @@ RectTransform:
   m_Father: {fileID: 842556848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.9999354, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11118,6 +11122,10 @@ PrefabInstance:
     - target: {fileID: 5814705116746937280, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_Name
       value: Hat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814705116746937280, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
