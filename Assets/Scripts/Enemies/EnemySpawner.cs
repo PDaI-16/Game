@@ -6,9 +6,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject map; // The GameObject representing the map.
     [SerializeField] private GameObject enemyPrefab; // The prefab containing the melee enemy hierarchy.
     [SerializeField] private GameObject rangedEnemyPrefab; // The prefab containing the ranged enemy hierarchy.
-    
+    [SerializeField] private GameObject bossEnemyPreFab; // The prefab containing the ranged enemy hierarchy.
+
 
     public int maxEnemies = 5;
+    public int maxBossEnemies = 2;
     public float spawnRadius = 10f;
 
     private int currentEnemyCount = 0;
@@ -19,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnMeleeEnemyToRandomLocation(2.0f);
             SpawnRangedEnemyToRandomLocation(2.0f);
+            SpawnBossEnemyToRandomLocation(2.0f);
         }
     }
 
@@ -91,7 +94,7 @@ public class EnemySpawner : MonoBehaviour
         // Instantiate the enemy prefab at the random location.
         GameObject rangedEnemyInstance = Instantiate(rangedEnemyPrefab, randomLocation, Quaternion.identity);
 
-        // Find the "MeleeEnemy" child within the prefab.
+        // Find the "RangedEnemy" child within the prefab.
         Transform rangedEnemyTransform = rangedEnemyInstance.transform.Find("RangedEnemy");
         if (rangedEnemyTransform == null)
         {
@@ -119,6 +122,68 @@ public class EnemySpawner : MonoBehaviour
 
         currentEnemyCount++;
     }
+    private void SpawnBossEnemyToRandomLocation(float levelMultiplier)
+    {
+        if (currentEnemyCount >= maxBossEnemies)
+        {
+            Debug.LogWarning("Maximum number of bosses reached. Cannot spawn more.");
+            return;
+        }
+
+        if (map == null || bossEnemyPreFab == null)
+        {
+            Debug.LogError("Map or bossEnemyPrefab is not assigned.");
+            return;
+        }
+
+        // Get a random spawn location within the map bounds.
+        Vector3 randomLocation = GetRandomSpawnPosition(map);
+
+        // Instantiate the boss enemy prefab.
+        GameObject bossEnemyInstance = Instantiate(bossEnemyPreFab, randomLocation, Quaternion.identity);
+
+        // Access the EnemyStats script on the prefab
+        EnemyStats enemyStats = bossEnemyInstance.GetComponentInChildren<EnemyStats>();
+        if (enemyStats == null)
+        {
+            Debug.LogError("EnemyStats component is missing on the boss prefab.");
+            Destroy(bossEnemyInstance); // Cleanup the incomplete enemy.
+            return;
+        }
+
+        // Set the isBoss flag to true for this enemy
+        enemyStats.isBoss = true;
+
+        // Randomly determine if the boss is melee or ranged
+        bool isMelee = UnityEngine.Random.value > 0.5f;
+
+        // Debug log for boss type
+        Debug.Log($"Spawning {(isMelee ? "melee" : "ranged")} boss.");
+
+        // Assign random stats to the boss based on the level multiplier
+        enemyStats.maxHealth = UnityEngine.Random.Range(200.0f * levelMultiplier, 500.0f * levelMultiplier);
+        enemyStats.health = enemyStats.maxHealth; // Set current health to max health
+        enemyStats.Damage = UnityEngine.Random.Range(30.0f * levelMultiplier, 70.0f * levelMultiplier);
+        enemyStats.experienceReward = UnityEngine.Random.Range(200, 500);
+
+        // If it's a melee boss, you can add melee-specific logic (e.g., abilities, stats)
+        if (isMelee)
+        {
+            // Additional melee-specific setup if needed (e.g., melee abilities)
+            Debug.Log("Melee Boss spawned with additional melee-specific stats.");
+        }
+        else
+        {
+            // Additional ranged-specific setup if needed (e.g., ranged abilities)
+            Debug.Log("Ranged Boss spawned with additional ranged-specific stats.");
+        }
+
+        Debug.Log($"Spawned {(isMelee ? "melee" : "ranged")} boss with {enemyStats.maxHealth} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");
+
+        // Increase the enemy count for bosses
+        currentEnemyCount++;
+    }
+
 
     private Vector3 GetRandomSpawnPosition(GameObject targetMap)
     {

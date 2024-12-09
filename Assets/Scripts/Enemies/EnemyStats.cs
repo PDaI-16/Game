@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
+    public bool isBoss;  // Flag to indicate if the enemy is a boss
+    public bool isMelee;
     public float health;
     public float maxHealth;
     public float Damage;
-
     public int experienceReward = 100;
     private PlayerData playerData;
     [SerializeField] private EnemyHealthBar enemyHealthBar;
-    
-
     void Start()
     {
         health = maxHealth;
@@ -23,7 +22,6 @@ public class EnemyStats : MonoBehaviour
         CheckDeath();
         enemyHealthBar.UpdateHealthBar();
     }
-
 
     public void CheckDeath()
     {
