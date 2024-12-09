@@ -31,6 +31,10 @@ public class Inventory
         return hatsInInventory.OrderByDescending(w => w.ItemScore).ToList();
     }
 
+    public List<Hat> GetHatsLatestFirst()
+    {
+        return hatsInInventory.AsEnumerable().Reverse().ToList();
+    }
 
     public List<Weapon> GetWeaponsInInventory()
     {
@@ -40,6 +44,11 @@ public class Inventory
     public List<Weapon> GetWeaponsOrderedByScore()
     {
         return weaponsInInventory.OrderByDescending(w => w.ItemScore).ToList();
+    }
+
+    public List<Weapon> GetWeaponsLatestFirst()
+    {
+        return weaponsInInventory.AsEnumerable().Reverse().ToList();
     }
 
 

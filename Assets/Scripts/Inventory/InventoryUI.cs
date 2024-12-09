@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private GameObject contentParent;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private TMP_Dropdown sortingDropdown; // Reference to the Dropdown
 
 
     private int previousWeaponCount = 0;
@@ -27,8 +28,8 @@ public class InventoryUI : MonoBehaviour
     private enum ItemType { Weapons, Hats }
     private ItemType currentItemType = ItemType.Weapons;
 
-    private enum InventorySort { Newest, Oldest, Score, Category};
-    private InventorySort sortStyle = InventorySort.Newest;
+    private enum InventorySort { Latest, Oldest, Score};
+    private InventorySort sortStyle = InventorySort.Latest;
 
 
     void Start()
