@@ -2789,16 +2789,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI0_120
+      name: GUI_BLUE
       rect:
         serializedVersion: 2
         x: 80
-        y: 128
-        width: 16
-        height: 16
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 6}
       customData: 
       outline: []
       physicsShape: []
@@ -5361,7 +5361,6 @@ TextureImporter:
       GUI0_118: 1257850918
       GUI0_119: 1674336418
       GUI0_12: 6532021943179899202
-      GUI0_120: -527961317
       GUI0_121: -72739144
       GUI0_122: -2065832361
       GUI0_123: -665598103
@@ -5566,6 +5565,7 @@ TextureImporter:
       GUI0_97: -906277546
       GUI0_98: 2032953388
       GUI0_99: -1562631848
+      GUI_BLUE: -527961317
       GUI_X: -1278503460
       GUI_inv: -281879711
       GUI_placeholder: -1954577601

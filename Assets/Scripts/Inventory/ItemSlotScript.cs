@@ -4,9 +4,15 @@ using TMPro;
 
 public class ItemSlotScript : MonoBehaviour
 {
+    [SerializeField] private Sprite equippedSprite;
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Image itemSlotImage;
+
+    private bool isTheCurrentWeapon = false;
+
     private PlayerController playerController = null;
-    [SerializeField] private Weapon weapon = null;
-    [SerializeField] private Hat hat = null;
+    private Weapon weapon = null;
+    private Hat hat = null;
 
 
     private enum ItemType {None, Weapon, Hat }
@@ -18,6 +24,34 @@ public class ItemSlotScript : MonoBehaviour
 
     void Update()
     {
+        CheckIfThisItemIsEquipped();
+
+    }
+
+    private void CheckIfThisItemIsEquipped()
+    {
+        if (playerController.GetCurrentWeaponData() != null && selfItemType != ItemType.None)
+        {
+            switch (selfItemType)
+            {
+                case ItemType.Weapon:
+                    if (playerController.GetCurrentWeaponData() == weapon)
+                    {
+                        itemSlotImage.sprite = equippedSprite;
+                    }
+                    else
+                    {
+                        itemSlotImage.sprite = defaultSprite;
+                    }
+                    break;
+
+                case ItemType.Hat:
+                    // Waiting for equiping hats logic....
+                    break;
+            }
+
+
+        }
     }
 
     public void EquipItemToPlayer()

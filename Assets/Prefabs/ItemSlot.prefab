@@ -188,20 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390ab464822746d438533737249e70c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
-    Type: 0
-    Category: 0
-    Sprite: {fileID: 0}
-    ItemScore: 0
-    Damage: 0
-    AttackSpeed: 0
-  hat:
-    Type: 0
-    Category: 0
-    Sprite: {fileID: 0}
-    ItemScore: 0
-    DamageMultiplier: 0
-    AttackSpeedMultiplier: 0
+  equippedSprite: {fileID: -527961317, guid: 4812173f459f0a546aa7c66be54d8228, type: 3}
+  defaultSprite: {fileID: -1288556565, guid: 4812173f459f0a546aa7c66be54d8228, type: 3}
+  itemSlotImage: {fileID: 5541895245945927325}
 --- !u!222 &5312185523764079871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -264,7 +253,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.72327036, g: 0.27065772, b: 0.27065772, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
