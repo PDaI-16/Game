@@ -4381,37 +4381,37 @@ MonoBehaviour:
     cost: 1
     prerequisiteSkillIndices: 07000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 0
   - name: 2a Ranged
     cost: 1
     prerequisiteSkillIndices: 08000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 0
   - name: 3a Ranged
     cost: 1
     prerequisiteSkillIndices: 09000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 0
   - name: 1b Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 0
   - name: 2b Ranged
     cost: 1
     prerequisiteSkillIndices: 0b000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 0
   - name: 3b Ranged
     cost: 1
     prerequisiteSkillIndices: 0c000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 0
   - name: FirstMagic
     cost: 1
@@ -4423,37 +4423,37 @@ MonoBehaviour:
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 0
   - name: 2a Magic
     cost: 1
     prerequisiteSkillIndices: 0f000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 0
   - name: 3a Magic
     cost: 1
     prerequisiteSkillIndices: 10000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 0
   - name: 1b Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 0
   - name: 2b Magic
     cost: 1
     prerequisiteSkillIndices: 12000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 0
   - name: 3b Magic
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 0
   - name: 1a SpecialMelee
     cost: 1
@@ -4483,13 +4483,13 @@ MonoBehaviour:
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 1
   - name: 1b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 1
     isSpecial: 1
   - name: 2a SpecialRanged
     cost: 1
