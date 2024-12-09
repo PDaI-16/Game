@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI attackSpeedGUI;
 
     private int previousWeaponCount = 0;
+    private int previousHatCount = 0;
 
 
     [SerializeField] Inventory inventoryData = null;
@@ -34,13 +35,27 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-/*        if (previousWeaponCount != inventoryData.GetWeaponsInInventory().Count)
+        switch (currentItemType)
         {
-            FetchInventoryData();
+            case ItemType.Weapons:
+                Debug.LogWarning("CASE WEAPONS");
 
-            MapItems(inventoryData);
-        }*/
+                if (previousWeaponCount != inventoryData.GetWeaponsInInventory().Count)
+                {
+                    ShowWeapons();
+                }
+                break;
+
+            case ItemType.Hats:
+                Debug.LogWarning("CASE HATS");
+
+                if (previousHatCount != inventoryData.GetHatsInInventory().Count)
+                {
+                    ShowHats();
+                }
+                break;
+        }
+
     }
 
     public void ShowWeapons()
@@ -64,6 +79,7 @@ public class InventoryUI : MonoBehaviour
     private void FetchInventoryData()
     {
         previousWeaponCount = inventoryGO.InventoryData.GetWeaponsInInventory().Count; // Previous weapon count is saved so that we know if we have to update the mappings.
+        previousHatCount = inventoryGO.InventoryData.GetHatsInInventory().Count;
         inventoryData = inventoryGO.InventoryData;
     }
 
