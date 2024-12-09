@@ -1797,6 +1797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossEnemyPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3573001223768788511, guid: b5e3bd3da906d0245b551ed4f9ab1021, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 264712822}
     - target: {fileID: 4261210630012556994, guid: b5e3bd3da906d0245b551ed4f9ab1021, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35
@@ -1841,10 +1845,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8831919050035071533, guid: b5e3bd3da906d0245b551ed4f9ab1021, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 264712822}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3198,7 +3198,7 @@ MonoBehaviour:
   rangedEnemyPrefab: {fileID: 1259595706}
   bossEnemyPreFab: {fileID: 1382183077}
   maxEnemies: 10
-  maxBossEnemies: 10
+  maxBossEnemies: 5
   spawnRadius: 10
 --- !u!1001 &1004243879
 PrefabInstance:

@@ -43,7 +43,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Enemy is continuously colliding with Player.");
+            //Debug.Log("Enemy is continuously colliding with Player.");
 
             // Access the player's script
             playerData = other.gameObject.GetComponent<PlayerController>().playerData;

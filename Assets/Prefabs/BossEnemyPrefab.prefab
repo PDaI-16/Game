@@ -144,11 +144,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1087869016432006933}
   - component: {fileID: 3687797457516325614}
-  - component: {fileID: 8831919050035071533}
   - component: {fileID: 4659657234968342896}
   - component: {fileID: 5296431218086336222}
   - component: {fileID: 37831722662285521}
   - component: {fileID: 9202778858825752857}
+  - component: {fileID: 3573001223768788511}
   m_Layer: 6
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -166,7 +166,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 1, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 70930322625797033}
@@ -227,22 +227,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8831919050035071533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2331654952717205789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d1c29deaef8f24b86bb76ae2f2174b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 2
-  aggrostart: 2
-  aggroend: 6
 --- !u!61 &4659657234968342896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -350,6 +334,26 @@ MonoBehaviour:
   Damage: 15
   experienceReward: 100
   enemyHealthBar: {fileID: 4839821008355489369}
+--- !u!114 &3573001223768788511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2331654952717205789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82dae284b33c57e4da84728baf14edfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 2
+  aggroStartDistance: 5
+  aggroEndDistance: 8
+  meleeAttackDistance: 1
+  rangedSafeDistance: 4
+  attackCooldown: 2
+  attackGraceTime: 1
 --- !u!1 &4271208178071609718
 GameObject:
   m_ObjectHideFlags: 0
