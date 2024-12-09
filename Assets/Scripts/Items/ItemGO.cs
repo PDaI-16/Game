@@ -9,8 +9,10 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 {
     [SerializeField] public T itemData;
     [SerializeField] private TextMeshPro infoText;
+    [SerializeField] private GameObject hintPanel;
 
     private bool onGround = true;
+    private bool isPlayerNear = false;
 
     private GameObject inventory;
     public InventoryGO inventoryGO;
@@ -70,12 +72,44 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         Debug.Log($"ItemGO initialized with category {item.Category} and sprite {item.Sprite.name}");
     }
 
+    private void Start()
+    {
+        if (hintPanel == null)
+        {
+            Debug.LogError("Hint panel is not assigned!");
+        }
+        else
+        {
+            Debug.Log("Hint panel assigned successfully.");
+        }
+        InitializeInventoryScript();
+    }
+
+
+    void Update()
+    {
+        // Check for E key press only if the player is near the item
+        if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
+        {
+            HandleItemPickup();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && onGround && inventoryGO != null)
         {
-            Debug.Log("Player on item");
-            HandleItemPickup();
+            isPlayerNear = true;
+            hintPanel.SetActive(true); // Show the "Press E" hint
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+            hintPanel.SetActive(false); // Hide the "Press E" hint
         }
     }
 
@@ -101,15 +135,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         // This should be overridden in derived classes (like HatGO, WeaponGO)
     }
 
-    private void Start()
-    {
-        InitializeInventoryScript();
-    }
 
-    void Update()
-    {
-        // Optional: Add ItemGO-specific behavior if needed
-    }
 
     private void InitializeInventoryScript()
     {
