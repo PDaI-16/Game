@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private InventoryGO inventoryGO;
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private GameObject contentParent;
-    [SerializeField] TextMeshProUGUI attackSpeedGUI;
+    [SerializeField] private PlayerController playerController;
+
 
     private int previousWeaponCount = 0;
     private int previousHatCount = 0;
@@ -94,6 +96,14 @@ public class InventoryUI : MonoBehaviour
                 {
                     
                     GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
+
+                    Button button = itemInInventoryUI.GetComponent<Button>();
+
+                    if (button != null && playerController.GetCurrentWeaponData() == weapon)
+                    {
+                        button.Select();
+                    }
+
                     ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
                     if (itemSlotScript != null)
                     {
