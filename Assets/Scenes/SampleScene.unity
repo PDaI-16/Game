@@ -3097,6 +3097,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 4315595138000568141, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+      propertyPath: inventoryGO
+      value: 
+      objectReference: {fileID: 2064573353}
     - target: {fileID: 6650466961264447942, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.169
@@ -10731,13 +10735,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226254317329389678, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
+      propertyPath: inventoryGO
+      value: 
+      objectReference: {fileID: 2064573353}
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.15
+      value: 22.71
       objectReference: {fileID: 0}
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: 28.49
       objectReference: {fileID: 0}
     - target: {fileID: 5743227114661889998, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10775,14 +10783,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hat
       objectReference: {fileID: 0}
-    - target: {fileID: 5814705116746937280, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 773778168081788672, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

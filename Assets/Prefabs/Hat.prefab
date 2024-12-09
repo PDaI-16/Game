@@ -310,13 +310,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2713de51ec0f4ab32a19e6664a84d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hatData:
+  itemData:
     Type: 0
     Category: 0
     Sprite: {fileID: 0}
     ItemScore: 0
     DamageMultiplier: 0
     AttackSpeedMultiplier: 0
+  infoText: {fileID: 6570523124939518829}
+  inventoryGO: {fileID: 0}
 --- !u!61 &4180453264481093199
 BoxCollider2D:
   m_ObjectHideFlags: 0
