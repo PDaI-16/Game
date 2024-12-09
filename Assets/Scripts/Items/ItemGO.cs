@@ -9,8 +9,8 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 {
     [SerializeField] public T itemData;
     [SerializeField] private TextMeshPro infoText;
-    
-    private GameObject hintPanel;
+
+    [SerializeField] private UIManager uiManager;
 
     private bool onGround = true;
     private bool isPlayerNear = false;
@@ -77,16 +77,6 @@ public class ItemGO<T> : MonoBehaviour where T : Item
     {
 
         InitializeInventoryScript();
-        InitializeHintPanel();
-
-        if (hintPanel == null)
-        {
-            Debug.LogError("Hint panel is not assigned!");
-        }
-        else
-        {
-            Debug.Log("Hint panel assigned successfully.");
-        }
 
     }
 
@@ -105,7 +95,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         if (other.CompareTag("Player") && onGround && inventoryGO != null)
         {
             isPlayerNear = true;
-            hintPanel.SetActive(true); // Show the "Press E" hint
+            uiManager.ActivateHintPanel(); // Show the "Press E" hint
         }
     }
 
@@ -114,7 +104,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            hintPanel.SetActive(false); // Hide the "Press E" hint
+            uiManager.HideHintPanel(); // Hide the "Press E" hint
         }
     }
 
@@ -154,20 +144,5 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         {
             Debug.LogError("Inventory GameObject not found.");
         }
-    }
-
-    private void InitializeHintPanel()
-    {
-        hintPanel = GameObject.FindWithTag("HintPanel");
-
-        if (hintPanel != null)
-        {
-            Debug.Log("HintPanel found.");
-        }
-        else
-        {
-            Debug.LogError("HintPanel GameObject not found.");
-        }
-
     }
 }

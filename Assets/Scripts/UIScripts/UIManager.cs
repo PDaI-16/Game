@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject skillTreePanel;
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject hintPanel;
 
     private List<GameObject> panels = new List<GameObject>();
 
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        // Add panels to the list
+        // Add panels to the list, except the hintpanel
         panels.Add(skillTreePanel);
         panels.Add(inventoryPanel);
     }
@@ -43,6 +44,16 @@ public class UIManager : MonoBehaviour
         {
             ChangeState(PanelState.None);
         }
+    }
+
+    public void ActivateHintPanel()
+    {
+        hintPanel.SetActive(true);
+    }
+
+    public void HideHintPanel()
+    {
+        hintPanel.SetActive(false);
     }
 
     // Change the FSM state
