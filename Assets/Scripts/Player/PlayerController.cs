@@ -137,10 +137,6 @@ public class PlayerController : MonoBehaviour
                 ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
             }
         }
-        else
-        {
-            Debug.Log("No weapon equipped");
-        }
 
 
 

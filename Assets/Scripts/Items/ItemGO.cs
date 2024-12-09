@@ -9,7 +9,8 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 {
     [SerializeField] public T itemData;
     [SerializeField] private TextMeshPro infoText;
-    [SerializeField] private GameObject hintPanel;
+    
+    private GameObject hintPanel;
 
     private bool onGround = true;
     private bool isPlayerNear = false;
@@ -74,6 +75,10 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 
     private void Start()
     {
+
+        InitializeInventoryScript();
+        InitializeHintPanel();
+
         if (hintPanel == null)
         {
             Debug.LogError("Hint panel is not assigned!");
@@ -82,7 +87,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         {
             Debug.Log("Hint panel assigned successfully.");
         }
-        InitializeInventoryScript();
+
     }
 
 
@@ -149,5 +154,20 @@ public class ItemGO<T> : MonoBehaviour where T : Item
         {
             Debug.LogError("Inventory GameObject not found.");
         }
+    }
+
+    private void InitializeHintPanel()
+    {
+        hintPanel = GameObject.FindWithTag("HintPanel");
+
+        if (hintPanel != null)
+        {
+            Debug.Log("HintPanel found.");
+        }
+        else
+        {
+            Debug.LogError("HintPanel GameObject not found.");
+        }
+
     }
 }

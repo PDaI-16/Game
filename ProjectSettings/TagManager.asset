@@ -10,6 +10,7 @@ TagManager:
   - PlayerWeaponArm
   - PlayerWeaponArmChild
   - MeleeAttackObject
+  - HintPanel
   layers:
   - Default
   - TransparentFX
