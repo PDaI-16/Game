@@ -41,10 +41,10 @@ public class ItemSlotScript : MonoBehaviour
 
 
         // Call the modular SetText function for attack speed, damage, and category
-        SetText("AttackSpeedText", "ATTACKSPEEDX");
-        SetText("DamageText", "DAMAGEX");
+        SetText("AttackSpeedText", "+"+hatdata.AttackSpeedMultiplier.ToString("F2"));
+        SetText("DamageText", "+"+hatdata.DamageMultiplier.ToString("F2"));
         SetText("ItemCategoryText", hatdata.Category.ToString());
-        SetText("ScoreText", "SCORE");
+        SetText("ScoreText", hatdata.ItemScore.ToString("F2"));
         SetImage(hatdata.Sprite);
 
     }

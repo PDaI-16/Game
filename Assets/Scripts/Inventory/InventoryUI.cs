@@ -82,7 +82,7 @@ public class InventoryUI : MonoBehaviour
                 break;
         }
 
-        Debug.LogWarning(sortStyle.ToString());
+        MapItems(inventoryData);
 
     }
 
@@ -120,7 +120,18 @@ public class InventoryUI : MonoBehaviour
         // Fetch the correct list of items based on the selected type
         if (currentItemType == ItemType.Weapons)
         {
-            weaponsInInventory = playerInventoryData.GetWeaponsOrderedByScore();
+            switch (sortStyle)
+            {
+                case InventorySort.Latest:
+                    weaponsInInventory = playerInventoryData.GetWeaponsLatestFirst();
+                    break;
+                case InventorySort.Oldest:
+                    weaponsInInventory = playerInventoryData.GetWeaponsInInventory();
+                    break;
+                case InventorySort.Score:
+                    weaponsInInventory = playerInventoryData.GetWeaponsOrderedByScore();
+                    break;
+            }
 
             if (weaponsInInventory != null)
             {
@@ -155,7 +166,18 @@ public class InventoryUI : MonoBehaviour
         }
         else if (currentItemType == ItemType.Hats)
         {
-            hatsInInventory = playerInventoryData.GetHatsInInventory(); 
+            switch (sortStyle)
+            {
+                case InventorySort.Latest:
+                    hatsInInventory = playerInventoryData.GetHatsLatestFirst();
+                    break;
+                case InventorySort.Oldest:
+                    hatsInInventory = playerInventoryData.GetHatsInInventory();
+                    break;
+                case InventorySort.Score:
+                    hatsInInventory = playerInventoryData.GetHatsOrderedByScore();
+                    break;
+            }
 
             if (hatsInInventory != null)
             {
