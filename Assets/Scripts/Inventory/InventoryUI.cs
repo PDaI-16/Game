@@ -15,6 +15,8 @@ public class InventoryUI : MonoBehaviour
     private int previousWeaponCount = 0;
     private int previousHatCount = 0;
 
+    private int currentWeaponCount = 0;
+    private int currentHatCount = 0;
 
     [SerializeField] Inventory inventoryData = null;
     private List<Weapon> weaponsInInventory = new List<Weapon>();
@@ -27,33 +29,31 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
 
-        FetchInventoryData();
-
+        inventoryData = inventoryGO.InventoryData;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (currentItemType)
+        inventoryData = inventoryGO.InventoryData;
+
+        // Check if the inventory has changed
+        currentWeaponCount = inventoryData.GetWeaponsInInventory().Count;
+        currentHatCount = inventoryData.GetHatsInInventory().Count;
+
+        if (currentWeaponCount != previousWeaponCount || currentHatCount != previousHatCount)
         {
-            case ItemType.Weapons:
-                Debug.LogWarning("CASE WEAPONS");
+            MapItems(inventoryData); // Update if there's a change
 
-                if (previousWeaponCount != inventoryData.GetWeaponsInInventory().Count)
-                {
-                    ShowWeapons();
-                }
-                break;
-
-            case ItemType.Hats:
-                Debug.LogWarning("CASE HATS");
-
-                if (previousHatCount != inventoryData.GetHatsInInventory().Count)
-                {
-                    ShowHats();
-                }
-                break;
+            if (currentItemType == ItemType.Weapons)
+            {
+                previousWeaponCount = currentWeaponCount; // Store the current count
+            }
+            else
+            {
+                previousHatCount = currentHatCount;
+            }
         }
 
     }
@@ -62,26 +62,18 @@ public class InventoryUI : MonoBehaviour
     {
         Debug.Log("Show weapons clicked");
         currentItemType = ItemType.Weapons;
-        FetchInventoryData();
         MapItems(inventoryData);
+/*        previousWeaponCount = currentWeaponCount;*/
     }
 
     public void ShowHats()
     {
         Debug.Log("Show hats clicked");
         currentItemType = ItemType.Hats;
-        FetchInventoryData();
         MapItems(inventoryData);
+/*        previousHatCount = previousWeaponCount;*/
     }
 
-
-
-    private void FetchInventoryData()
-    {
-        previousWeaponCount = inventoryGO.InventoryData.GetWeaponsInInventory().Count; // Previous weapon count is saved so that we know if we have to update the mappings.
-        previousHatCount = inventoryGO.InventoryData.GetHatsInInventory().Count;
-        inventoryData = inventoryGO.InventoryData;
-    }
 
     private void MapItems(Inventory playerInventoryData)
     {
