@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -6,6 +7,8 @@ using UnityEngine;
 public class WeaponGO : MonoBehaviour
 {
     [SerializeField] public Weapon weaponData; // Changed from 'hatData' to 'weaponData'
+    [SerializeField] private TextMeshPro infoText;
+
     private bool onGround = true;
 
     private GameObject inventory;
@@ -18,6 +21,26 @@ public class WeaponGO : MonoBehaviour
     public void Initialize(Weapon weapon, bool isOnGround)
     {
         onGround = isOnGround;
+        infoText.text = "";
+
+        if (isOnGround)
+        {
+            transform.localScale = new Vector3(1.5f, 1.5f, 0);
+            infoText.text = weapon.ItemScore.ToString("F2");
+
+            switch (weapon.Category)
+            {
+                case ItemCategory.Melee:
+                    infoText.color = Color.red;
+                    break;
+                case ItemCategory.Ranged:
+                    infoText.color = Color.green;
+                    break;
+                case ItemCategory.Magic:
+                    infoText.color = Color.blue;
+                    break;
+            }
+        }
 
         if (weapon == null)
         {
