@@ -60,6 +60,11 @@ public class InventoryUI : MonoBehaviour
 
     }
 
+    public void CloseInventoryPanel()
+    {
+        inventoryPanel.SetActive(false);
+    }
+
     public void ShowWeapons()
     {
         Debug.Log("Show weapons clicked");
