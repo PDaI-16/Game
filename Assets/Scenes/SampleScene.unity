@@ -4496,37 +4496,37 @@ MonoBehaviour:
     prerequisiteSkillIndices: 19000000
     isUnlocked: 0
     requiredClass: 1
-    isSpecial: 1
+    isSpecial: 0
   - name: 2b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 1a000000
     isUnlocked: 0
     requiredClass: 1
-    isSpecial: 1
+    isSpecial: 0
   - name: 1a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 1
   - name: 1b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
     isUnlocked: 0
-    requiredClass: 0
+    requiredClass: 2
     isSpecial: 1
   - name: 2a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1d000000
     isUnlocked: 0
     requiredClass: 2
-    isSpecial: 1
+    isSpecial: 0
   - name: 2b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1e000000
     isUnlocked: 0
     requiredClass: 2
-    isSpecial: 1
+    isSpecial: 0
   skillImages:
   - {fileID: 820599833}
   - {fileID: 1389983868}
