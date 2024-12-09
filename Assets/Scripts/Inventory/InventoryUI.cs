@@ -64,6 +64,29 @@ public class InventoryUI : MonoBehaviour
 
     }
 
+    public void OnDropdownValueChanged(int selectedIndex)
+    {
+        string selectedOption = sortingDropdown.options[selectedIndex].text;
+        Debug.Log($"Selected option: {selectedOption}");
+
+        switch (selectedOption)
+        {
+            case "LATEST":
+                sortStyle = InventorySort.Latest;
+                break;
+            case "OLDEST":
+                sortStyle = InventorySort.Oldest;
+                break;
+            case "SCORE":
+                sortStyle = InventorySort.Score;
+                break;
+        }
+
+        Debug.LogWarning(sortStyle.ToString());
+
+    }
+
+
     public void CloseInventoryPanel()
     {
         inventoryPanel.SetActive(false);
