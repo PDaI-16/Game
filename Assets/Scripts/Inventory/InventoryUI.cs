@@ -140,17 +140,17 @@ public class InventoryUI : MonoBehaviour
                     
                     GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
 
-                    Button button = itemInInventoryUI.GetComponent<Button>();
+/*                    Button button = itemInInventoryUI.GetComponent<Button>();
 
                     if (button != null && playerController.GetCurrentWeaponData() == weapon)
                     {
                         button.Select();
-                    }
+                    }*/
 
                     ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
                     if (itemSlotScript != null)
                     {
-                        itemSlotScript.SetWeapon(weapon);
+                        itemSlotScript.SetWeapon(weapon, playerController);
                         Debug.LogWarning("Mapping weapons...");
                     }
                     else
@@ -187,7 +187,7 @@ public class InventoryUI : MonoBehaviour
                     ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
                     if (itemSlotScript != null)
                     {
-                        itemSlotScript.SetHat(hat); 
+                        itemSlotScript.SetHat(hat, playerController); 
                     }
                     else
                     {

@@ -4,8 +4,10 @@ using TMPro;
 
 public class ItemSlotScript : MonoBehaviour
 {
+    private PlayerController playerController = null;
     [SerializeField] private Weapon weapon = null;
     [SerializeField] private Hat hat = null;
+
 
     private enum ItemType {None, Weapon, Hat }
     private ItemType selfItemType = ItemType.None;
@@ -18,8 +20,21 @@ public class ItemSlotScript : MonoBehaviour
     {
     }
 
-    public void SetWeapon(Weapon weapondata)
+    public void EquipItemToPlayer()
     {
+        if (selfItemType == ItemType.Weapon && playerController != null)
+        {
+            playerController.EquipWeapon(weapon);
+        }
+        else if (selfItemType == ItemType.Hat && playerController != null)
+        {
+            Debug.LogError("Equip hats functionality is not done yet...");
+        }
+    }
+
+    public void SetWeapon(Weapon weapondata, PlayerController playerControllerinpanel)
+    {
+        playerController = playerControllerinpanel;
 
         weapon = weapondata;
         selfItemType = ItemType.Weapon;
@@ -33,8 +48,9 @@ public class ItemSlotScript : MonoBehaviour
         
     }
 
-    public void SetHat(Hat hatdata)
+    public void SetHat(Hat hatdata, PlayerController playerControllerinpanel)
     {
+        playerController = playerControllerinpanel;
 
         hat = hatdata;
         selfItemType = ItemType.Hat;
