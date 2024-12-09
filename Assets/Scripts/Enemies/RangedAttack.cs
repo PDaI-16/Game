@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class RangedAttack : MonoBehaviour
 {
-    public GameObject projectilePrefab;  // The projectile prefab to shoot
-    public Transform firePoint;          // The point from which the projectile is fired
-    public float fireRate = 1.0f;        // Time between attacks in seconds
-    public float projectileSpeed = 10.0f; // Speed of the projectile
-    public float destroyTime = 3.0f;     // Time before the projectile destroys itself
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public float fireRate = 1.0f;
+    public float projectileSpeed = 10.0f;
+    public float destroyTime = 3.0f;
 
-    private float fireCooldown = 0.0f;   // Tracks time left until the next attack
-    private RangedMovement rangedMovement; // Reference to the RangedMovement component
-    private GameObject player;           // Reference to the player
+    private float fireCooldown = 0.0f;
+    private RangedMovement rangedMovement;
+    private GameObject player;
 
     private void Start()
     {
@@ -58,10 +58,7 @@ public class RangedAttack : MonoBehaviour
             return;
         }
 
-        // Instantiate the projectile at the firePoint (enemy's position)
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-
-        // Get the Rigidbody2D component from the projectilePrefab
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         if (rb == null)
         {
@@ -69,15 +66,16 @@ public class RangedAttack : MonoBehaviour
             return;
         }
 
-        rb.gravityScale = 0;  // Prevent gravity from affecting the projectile
+        rb.gravityScale = 0;  
 
-        // Get the direction towards the player
         Vector2 directionToPlayer = (player.transform.position - firePoint.position).normalized;
 
-        // Set the velocity towards the player
+        float angleOffset = -45f; // Adjust this value to match your prefab's alignment
+        float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg + angleOffset;
+
+        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
         rb.linearVelocity = directionToPlayer * projectileSpeed;
 
-        // Ensure the projectile has a collider
         Collider2D col = projectile.GetComponent<Collider2D>();
         if (col == null)
         {
@@ -87,8 +85,6 @@ public class RangedAttack : MonoBehaviour
 
         // Destroy the projectile after a certain time (3 seconds)
         Destroy(projectile, destroyTime);
-
-        // Reset the fire cooldown
         fireCooldown = fireRate;
 
         Debug.Log("Enemy fired a projectile!");
