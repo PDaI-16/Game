@@ -8,7 +8,7 @@ public class ItemSlotScript : MonoBehaviour
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Image itemSlotImage;
 
-    private bool isTheCurrentWeapon = false;
+    private bool previousCurrentWeaponEqual = false;
 
     private PlayerController playerController = null;
     private Weapon weapon = null;
@@ -24,12 +24,18 @@ public class ItemSlotScript : MonoBehaviour
 
     void Update()
     {
-        CheckIfThisItemIsEquipped();
+        if ((playerController.GetCurrentWeaponData() == weapon) != previousCurrentWeaponEqual) //Check if the current weapon has changed..
+        {
+            Debug.LogWarning("ItemSlotScript update executed....");
+            CheckIfThisItemIsEquipped();
+        }
 
     }
 
     private void CheckIfThisItemIsEquipped()
     {
+        
+
         if (playerController.GetCurrentWeaponData() != null && selfItemType != ItemType.None)
         {
             switch (selfItemType)
@@ -43,6 +49,8 @@ public class ItemSlotScript : MonoBehaviour
                     {
                         itemSlotImage.sprite = defaultSprite;
                     }
+
+                    previousCurrentWeaponEqual = playerController.GetCurrentWeaponData() == weapon;
                     break;
 
                 case ItemType.Hat:
@@ -50,17 +58,16 @@ public class ItemSlotScript : MonoBehaviour
                     break;
             }
 
-
         }
     }
 
     public void EquipItemToPlayer()
     {
-        if (selfItemType == ItemType.Weapon && playerController != null)
+        if (selfItemType == ItemType.Weapon && playerController != null && weapon != null)
         {
             playerController.EquipWeapon(weapon);
         }
-        else if (selfItemType == ItemType.Hat && playerController != null)
+        else if (selfItemType == ItemType.Hat && playerController != null && hat != null)
         {
             Debug.LogError("Equip hats functionality is not done yet...");
         }

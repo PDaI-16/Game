@@ -111,6 +111,8 @@ public class InventoryUI : MonoBehaviour
 
     private void MapItems(Inventory playerInventoryData)
     {
+        Debug.LogWarning("MapItems function executed...");
+
         // Clear current inventory UI items
         foreach (Transform child in contentParent.transform)
         {
@@ -140,12 +142,6 @@ public class InventoryUI : MonoBehaviour
                     
                     GameObject itemInInventoryUI = Instantiate(itemSlotPrefab, contentParent.transform);
 
-/*                    Button button = itemInInventoryUI.GetComponent<Button>();
-
-                    if (button != null && playerController.GetCurrentWeaponData() == weapon)
-                    {
-                        button.Select();
-                    }*/
 
                     ItemSlotScript itemSlotScript = itemInInventoryUI.GetComponent<ItemSlotScript>();
                     if (itemSlotScript != null)
