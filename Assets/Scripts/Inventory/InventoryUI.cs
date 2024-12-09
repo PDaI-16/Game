@@ -27,6 +27,9 @@ public class InventoryUI : MonoBehaviour
     private enum ItemType { Weapons, Hats }
     private ItemType currentItemType = ItemType.Weapons;
 
+    private enum InventorySort { Newest, Oldest, Score, Category};
+    private InventorySort sortStyle = InventorySort.Newest;
+
 
     void Start()
     {
@@ -93,7 +96,7 @@ public class InventoryUI : MonoBehaviour
         // Fetch the correct list of items based on the selected type
         if (currentItemType == ItemType.Weapons)
         {
-            weaponsInInventory = playerInventoryData.GetWeaponsInInventory();
+            weaponsInInventory = playerInventoryData.GetWeaponsOrderedByScore();
 
             if (weaponsInInventory != null)
             {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -25,10 +26,23 @@ public class Inventory
         return hatsInInventory;
     }
 
+    public List<Hat> GetHatsOrderedByScore()
+    {
+        return hatsInInventory.OrderByDescending(w => w.ItemScore).ToList();
+    }
+
+
     public List<Weapon> GetWeaponsInInventory()
     {
         return weaponsInInventory;
     }
+
+    public List<Weapon> GetWeaponsOrderedByScore()
+    {
+        return weaponsInInventory.OrderByDescending(w => w.ItemScore).ToList();
+    }
+
+
 
     public Weapon GetWeaponFromInventory(int index)
     {
