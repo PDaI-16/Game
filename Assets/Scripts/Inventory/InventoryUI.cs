@@ -52,14 +52,9 @@ public class InventoryUI : MonoBehaviour
         {
             MapItems(inventoryData); // Update if there's a change
 
-            if (currentItemType == ItemType.Weapons)
-            {
-                previousWeaponCount = currentWeaponCount; // Store the current count
-            }
-            else
-            {
-                previousHatCount = currentHatCount;
-            }
+            previousWeaponCount = currentWeaponCount; // Store the current count
+            previousHatCount = currentHatCount;
+
         }
 
     }
