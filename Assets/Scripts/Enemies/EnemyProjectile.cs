@@ -9,12 +9,28 @@ public class EnemyProjectile : MonoBehaviour
         // Check if the projectile collided with the player
         if (other.CompareTag("Player"))
         {
-            // Access the player's data to deal damage
-            PlayerController playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
+            // Access the player GameObject via the Singleton reference
+            GameObject player = PlayerReference.Instance;
+
+            if (player != null)
             {
-                playerController.playerData.TakeDamage(damage);  // Deal the damage
-                Debug.Log("Projectile hit player and dealt damage!");
+                // Assuming PlayerController is attached to the player, you can now access it
+                PlayerController playerController = player.GetComponent<PlayerController>();
+
+                if (playerController != null)
+                {
+                    // Access player data and apply damage
+                    playerController.playerData.TakeDamage(damage);  
+                    Debug.Log("Projectile hit player and dealt damage!");
+                }
+                else
+                {
+                    Debug.LogError("PlayerController not found on the player.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Player instance is null. Ensure PlayerReference is set up correctly.");
             }
 
             // Destroy the projectile upon impact
@@ -22,7 +38,7 @@ public class EnemyProjectile : MonoBehaviour
         }
     }
 
-    // Optionally, you can add behavior for when the projectile goes out of bounds, or times out:
+    // Optionally, add behavior for when the projectile goes out of bounds, or times out:
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

@@ -14,6 +14,17 @@ public class RangedMovement : MonoBehaviour
     public bool isInGracePeriod;     // Tracks if the enemy is in the grace period
     private float graceTimer;         // Tracks time left in the grace period
 
+    private void Start()
+    {
+        // Access the player reference from the singleton
+        player = PlayerReference.Instance;
+
+        // Ensure the player exists (i.e., the player singleton is set up correctly)
+        if (player == null)
+        {
+            Debug.LogError("Player reference not found! Ensure the PlayerReference script is attached to the player object.");
+        }
+    }
     private void Update()
     {
         if (player != null)

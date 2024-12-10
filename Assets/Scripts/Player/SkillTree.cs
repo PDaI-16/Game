@@ -116,6 +116,7 @@ public class SkillTree : MonoBehaviour
     }
     void ToggleSpecialSkill(Skill skill)
     {
+        Debug.Log($"Toggling special skill: {skill.name}, Class: {skill.requiredClass}");
         if (!skill.isUnlocked)
         {
             // If the skill isn't unlocked, do nothing
