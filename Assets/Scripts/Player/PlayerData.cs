@@ -3,7 +3,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    [SerializeField] private float health = 100;
+    [SerializeField] private float health = 10000;
+    [SerializeField] private float defence = 0;
+
     [SerializeField] private int level = 1;
     [SerializeField] private float xp = 0;
     [SerializeField] private int skillPoints = 5;
@@ -32,14 +34,15 @@ public class PlayerData
 
     public void SpendSkillPoints(int cost)
     {
-        if (cost < skillPoints) {
+        if (cost < skillPoints)
+        {
             skillPoints -= cost;
         }
         else
         {
             Debug.Log("Not enough skillpoints");
         }
-        
+
     }
 
     public ItemCategory GetInitialPlayerClassFromPlayer()
@@ -50,6 +53,29 @@ public class PlayerData
     public float GetHealth()
     {
         return health;
+    }
+    public void SetHealth(float newHealth)
+    {
+        health = Mathf.Max(0, newHealth); // Ensure health doesn't go below 0
+    }
+
+    public void AddHealth(float amount)
+    {
+        // Increase the player's maxHealth and heal the player by the same amount
+        float newMaxHealth = maxPossibleHealth + amount;
+        maxPossibleHealth = newMaxHealth;
+        health += amount;
+        health = Mathf.Min(health, maxPossibleHealth);
+        health = Mathf.Max(0, health);
+    }
+    public float GetDefence()
+    {
+        return defence;
+    }
+
+    public void SetDefence(float newDefence)
+    {
+        defence = Mathf.Max(0, newDefence); // Ensure defence doesn't go below 0
     }
 
     public float GetXP()
@@ -90,7 +116,7 @@ public class PlayerData
 
             // Adding the remaining xp to new level's xp
             float overflowxp = xp - xpRequiredForLevelUp;
-            if (overflowxp > 0) 
+            if (overflowxp > 0)
             {
                 xp = overflowxp;
             }
@@ -100,7 +126,7 @@ public class PlayerData
             }
 
             // Increase the required xp before level up with multiplier
-            xpRequiredForLevelUp = requiredXPPerLevelMultiplier * xpRequiredForLevelUp; 
+            xpRequiredForLevelUp = requiredXPPerLevelMultiplier * xpRequiredForLevelUp;
         }
 
     }
@@ -110,10 +136,20 @@ public class PlayerData
     {
         if (health > 0f)
         {
-            health -= damage;
+            // Calculate damage reduction based on defense
+            float damageAfterDefense = damage - defence;
+
+            // Ensure that damage is not negative (defense can't heal the player)
+            damageAfterDefense = Mathf.Max(damageAfterDefense, 0f);
+
+            // Subtract the reduced damage from the player's health
+            health -= damageAfterDefense;
+
+            // Log the result (optional for debugging)
+            Debug.Log($"Player took {damageAfterDefense} damage after defense. Health remaining: {health}");
         }
     }
 
 
-    
+
 }
