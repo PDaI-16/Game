@@ -13,6 +13,9 @@ public class SkillTree : MonoBehaviour
         public bool isUnlocked = false; // Whether the skill is unlocked or not
         public ItemCategory requiredClass; // The player class required for this skill (optional)
         public bool isSpecial = false; // Indicates if the skill is a special skill
+        public float damageBonus = 0f;   // Bonus to damage
+        public float healthBonus = 0f;   // Bonus to health
+        public float defenseBonus = 0f;  // Bonus to defense
     }
 
     public Skill[] skills; // Array of skills in the skill tree
@@ -198,7 +201,7 @@ public class SkillTree : MonoBehaviour
 
     void UnlockSkill(Skill skill)
     {
-        if (skill.cost < playerController.playerData.GetSkillPoints())
+        if (skill.cost <= playerController.playerData.GetSkillPoints())
         {
             if (skill.isUnlocked)
             {
@@ -209,8 +212,11 @@ public class SkillTree : MonoBehaviour
             // Unlock the skill
             skill.isUnlocked = true;
 
+            // Apply stat bonuses to the player
+            ApplyStatBonuses(skill);
 
-            playerController.playerData.SpendSkillPoints(skill.cost);  // Deduct points only when the skill is first unlocked
+            // Deduct points only when the skill is first unlocked
+            playerController.playerData.SpendSkillPoints(skill.cost);
 
             // If it's a special skill, set it as active
             if (skill.isSpecial)
@@ -221,7 +227,37 @@ public class SkillTree : MonoBehaviour
             UpdateSkillVisuals();  // Update UI visuals
         }
     }
+    void ApplyStatBonuses(Skill skill)
+    {
+        // If the skill provides a damage bonus, apply it to the player's damage
+        if (skill.damageBonus > 0f)
+        {
+            // Assuming you have a damage stat to modify, you can apply a damage bonus here.
+            // If you have a method or variable for damage, apply it like this:
+            //playerController.playerData.damage += skill.damageBonus; // If damage is a stat, update it accordingly
+            Debug.Log($"Damage increased by {skill.damageBonus}. ");
+        }
 
+        // If the skill provides a health bonus, apply it to the player's health using the setter
+        if (skill.healthBonus > 0f)
+        {
+            // Use the SetHealth method to apply the health bonus.
+            float newHealth = playerController.playerData.GetHealth() + skill.healthBonus;
+            playerController.playerData.SetHealth(newHealth);
+            Debug.Log($"Health increased by {skill.healthBonus}. New health: {playerController.playerData.GetHealth()}");
+        }
+
+        // If the skill provides a defense bonus, apply it to the player's defense using the setter
+        if (skill.defenseBonus > 0f)
+        {
+            // Use the SetDefence method to apply the defense bonus.
+            float newDefense = playerController.playerData.GetDefence() + skill.defenseBonus;
+            playerController.playerData.SetDefence(newDefense);
+            Debug.Log($"Defense increased by {skill.defenseBonus}. New defense: {playerController.playerData.GetDefence()}");
+        }
+
+        // Add more stat bonuses as needed (e.g., mana, speed, etc.)
+    }
 
     void SetActiveSpecialSkill(Skill skill)
     {
