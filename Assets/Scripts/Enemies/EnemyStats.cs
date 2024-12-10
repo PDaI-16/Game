@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public bool isBoss;  // Flag to indicate if the enemy is a boss
-    public bool isMelee;
     public float health;
     public float maxHealth;
     public float Damage;

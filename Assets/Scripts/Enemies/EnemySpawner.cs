@@ -64,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // Assign random stats based on the level multiplier.
-        enemyStats.maxHealth = UnityEngine.Random.Range(50.0f * levelMultiplier, 150.0f * levelMultiplier);
+        enemyStats.maxHealth = UnityEngine.Random.Range(50.0f * levelMultiplier, 100.0f * levelMultiplier);
         enemyStats.health = enemyStats.maxHealth; // Set current health to max health.
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
@@ -113,7 +113,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // Assign random stats based on the level multiplier.
-        enemyStats.maxHealth = UnityEngine.Random.Range(50.0f * levelMultiplier, 150.0f * levelMultiplier);
+        enemyStats.maxHealth = UnityEngine.Random.Range(40.0f * levelMultiplier, 80.0f * levelMultiplier);
         enemyStats.health = enemyStats.maxHealth; // Set current health to max health.
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
@@ -154,31 +154,11 @@ public class EnemySpawner : MonoBehaviour
         // Set the isBoss flag to true for this enemy
         enemyStats.isBoss = true;
 
-        // Randomly determine if the boss is melee or ranged
-        bool isMelee = UnityEngine.Random.value > 0.5f;
-
-        // Debug log for boss type
-        Debug.Log($"Spawning {(isMelee ? "melee" : "ranged")} boss.");
-
         // Assign random stats to the boss based on the level multiplier
-        enemyStats.maxHealth = UnityEngine.Random.Range(200.0f * levelMultiplier, 500.0f * levelMultiplier);
+        enemyStats.maxHealth = UnityEngine.Random.Range(100.0f * levelMultiplier, 200.0f * levelMultiplier);
         enemyStats.health = enemyStats.maxHealth; // Set current health to max health
-        enemyStats.Damage = UnityEngine.Random.Range(30.0f * levelMultiplier, 70.0f * levelMultiplier);
+        enemyStats.Damage = UnityEngine.Random.Range(15.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(200, 500);
-
-        // If it's a melee boss, you can add melee-specific logic (e.g., abilities, stats)
-        if (isMelee)
-        {
-            // Additional melee-specific setup if needed (e.g., melee abilities)
-            Debug.Log("Melee Boss spawned with additional melee-specific stats.");
-        }
-        else
-        {
-            // Additional ranged-specific setup if needed (e.g., ranged abilities)
-            Debug.Log("Ranged Boss spawned with additional ranged-specific stats.");
-        }
-
-        Debug.Log($"Spawned {(isMelee ? "melee" : "ranged")} boss with {enemyStats.maxHealth} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");
 
         // Increase the enemy count for bosses
         currentEnemyCount++;

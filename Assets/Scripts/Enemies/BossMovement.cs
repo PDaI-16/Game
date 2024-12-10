@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-    public GameObject player;             // Reference to the player GameObject
-    public float speed = 5f;              // Movement speed of the boss
-    public float aggroStartDistance = 15f;  // Distance at which the boss becomes aggroed
-    public float aggroEndDistance = 20f;    // Distance at which the boss loses aggro
-    public float meleeAttackDistance = 2f;  // Ideal distance for melee attacks
-    public float rangedSafeDistance = 10f;  // Distance to keep for ranged attacks
-    public float attackCooldown = 2f;      // Time between each attack
-    public float attackGraceTime = 1f;     // Time the boss waits after exiting attack range
+    public GameObject player;              // Reference to the player GameObject
+    public GameObject MeleeEnemyPrefab;    // Prefab for melee minions
+    public GameObject RangedEnemyPrefab;   // Prefab for ranged minions
+    public int numberOfMinionsToSummon = 3; // Number of minions to summon during special attack
+    public float summonRadius = 5f;        // Radius around the boss where minions are summoned
+    public float speed = 5f;               // Movement speed of the boss
+    public float aggroStartDistance = 15f; // Distance at which the boss becomes aggroed
+    public float aggroEndDistance = 20f;   // Distance at which the boss loses aggro
+    public float meleeAttackDistance = 2f; // Ideal distance for melee attacks
+    public float rangedSafeDistance = 10f; // Distance to keep for ranged attacks
+    public float attackCooldown = 2f;     // Time between each attack
+    public float attackGraceTime = 1f;    // Time the boss waits after exiting attack range
 
     private float distanceToPlayer;        // Current distance to the player
     private bool isAggroed;                // Tracks if the boss is aggroed
@@ -47,18 +51,9 @@ public class BossMovement : MonoBehaviour
             }
 
             // Handle movement and behavior logic based on aggro status
-            if (isAggroed)
+            if (isAggroed && !isInGracePeriod)
             {
-                if (enemyStats.isMelee)
-                {
-                    // If the boss is melee, move towards the player
-                    MoveTowardsPlayer(distanceToPlayer);
-                }
-                else
-                {
-                    // If the boss is ranged, maintain a safe distance
-                    KeepSafeDistanceFromPlayer(distanceToPlayer);
-                }
+                ChooseAction(distanceToPlayer);
             }
 
             // Handle grace period countdown after an attack
@@ -79,60 +74,90 @@ public class BossMovement : MonoBehaviour
         }
     }
 
-    // Move towards the player if it's a melee boss
+    // Choose an action based on the distance to the player
+    private void ChooseAction(float distanceToPlayer)
+    {
+        if (canAttack)
+        {
+            if (distanceToPlayer <= meleeAttackDistance)
+            {
+                PerformMeleeAttack();
+            }
+            else if (distanceToPlayer <= rangedSafeDistance)
+            {
+                PerformRangedAttack();
+            }
+            else
+            {
+                PerformSpecialMove(); // Boss executes a special move at longer ranges
+            }
+        }
+        else
+        {
+            MoveTowardsPlayer(distanceToPlayer); // Move closer if no immediate action can be performed
+        }
+    }
+
+    // Move towards the player
     private void MoveTowardsPlayer(float distanceToPlayer)
     {
-        if (distanceToPlayer > meleeAttackDistance && !isInGracePeriod)
-        {
-            // Move towards the player until reaching the melee attack distance
-            Vector2 direction = (player.transform.position - transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        }
-        else if (distanceToPlayer <= meleeAttackDistance && canAttack)
-        {
-            // If the player is within melee range, perform a melee attack
-            PerformMeleeAttack();
-        }
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
-    // Keep a safe distance from the player if it's a ranged boss
-    private void KeepSafeDistanceFromPlayer(float distanceToPlayer)
-    {
-        if (distanceToPlayer < rangedSafeDistance && !isInGracePeriod)
-        {
-            // Move away from the player to maintain the safe distance
-            Vector2 directionAwayFromPlayer = (transform.position - player.transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, -speed * Time.deltaTime);
-        }
-        else if (distanceToPlayer >= rangedSafeDistance && canAttack)
-        {
-            // If the boss is at the ideal ranged attack distance, perform a ranged attack
-            PerformRangedAttack();
-        }
-    }
-
-    // Melee attack logic (you can expand this with animations or damage logic)
+    // Melee attack logic
     private void PerformMeleeAttack()
     {
         Debug.Log("Melee Attack!");
         canAttack = false;
         isInGracePeriod = true;
-        graceTimer = attackGraceTime;  // Start grace period after attack
+        graceTimer = attackGraceTime;
 
-        // Add attack logic (e.g., damage to player, trigger animation, etc.)
-        Invoke("ResetAttackCooldown", attackCooldown);  // Reset cooldown after some time
+        // Add melee attack logic (e.g., damage to player, trigger animation, etc.)
+        Invoke("ResetAttackCooldown", attackCooldown);
     }
 
-    // Ranged attack logic (you can expand this with shooting mechanics, animations, etc.)
+    // Ranged attack logic
     private void PerformRangedAttack()
     {
         Debug.Log("Ranged Attack!");
         canAttack = false;
         isInGracePeriod = true;
-        graceTimer = attackGraceTime;  // Start grace period after attack
+        graceTimer = attackGraceTime;
 
         // Add ranged attack logic (e.g., shooting projectiles, casting spells, etc.)
-        Invoke("ResetAttackCooldown", attackCooldown);  // Reset cooldown after some time
+        Invoke("ResetAttackCooldown", attackCooldown);
+    }
+
+    // Special move logic
+    private void PerformSpecialMove()
+    {
+        Debug.Log("Special Move: Summon Minions!");
+        SummonMinions(); // Call the summon minions special attack
+
+        // Prevent immediate re-use of the special move
+        canAttack = false;
+        isInGracePeriod = true;
+        graceTimer = attackGraceTime;
+        Invoke("ResetAttackCooldown", attackCooldown);
+    }
+
+    // Summon minions logic
+    private void SummonMinions()
+    {
+        for (int i = 0; i < numberOfMinionsToSummon; i++)
+        {
+            // Randomly choose between melee and ranged minion
+            GameObject minionPrefab = Random.Range(0, 2) == 0 ? MeleeEnemyPrefab : RangedEnemyPrefab;
+
+            // Calculate a random spawn position within a radius around the boss
+            Vector2 randomOffset = Random.insideUnitCircle * summonRadius;
+            Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+            // Instantiate the chosen minion prefab at the spawn position
+            Instantiate(minionPrefab, spawnPosition, Quaternion.identity);
+        }
+        Debug.Log($"Summoned {numberOfMinionsToSummon} minions!");
     }
 
     // Reset attack cooldown, allowing the boss to attack again
