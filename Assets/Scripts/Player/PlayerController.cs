@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     public AnimationState newAnimationState;
 
     [SerializeField] GameObject WeaponPrefab;
-    private Weapon currentWeaponData = null;
+    
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
 
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private GameObject weaponArmMagic;
 
     private GameObject currentWeaponObject = null;
+    private Weapon currentWeaponData = null;
     private Weapon previousWeaponData = null;
 
     private Vector3 defaultPositionRangedArm;
@@ -107,11 +108,9 @@ public class PlayerController : MonoBehaviour
 
         meleeAttackHitbox.gameObject.SetActive(false);
 
-        
-
-
-
     } // Update is called once per frame
+
+
 
     void Update()
     {
@@ -134,13 +133,9 @@ public class PlayerController : MonoBehaviour
         {
             if (currentWeaponData.Category == ItemCategory.Ranged)
             {
-                ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(rangedArm.transform, currentCamera);
+                ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
                 ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
             }
-        }
-        else
-        {
-            //Debug.Log("No weapon equipped");
         }
 
 
@@ -209,6 +204,11 @@ public class PlayerController : MonoBehaviour
 
             
         }
+    }
+
+    public Weapon GetCurrentWeaponData()
+    {
+        return currentWeaponData;
     }
 
 
