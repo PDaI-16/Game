@@ -529,7 +529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d1c29deaef8f24b86bb76ae2f2174b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
   speed: 2
   aggrostart: 2
   aggroend: 6
@@ -623,7 +622,7 @@ MonoBehaviour:
   maxHealth: 50
   Damage: 5
   experienceReward: 80
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 2305560242365866156}
 --- !u!114 &8470670469590292474
 MonoBehaviour:
   m_ObjectHideFlags: 0
