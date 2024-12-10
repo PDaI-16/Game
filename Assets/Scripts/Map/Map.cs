@@ -12,6 +12,9 @@ public class Map : MonoBehaviour
     public RuleTile borderTile; // Assign this in the Inspector
     public Tilemap BorderTilemap;
 
+    public int currentLevel = 1;  // Start with Level 1
+    public int maxLevels = 5;     // Total levels to generate
+
     public bool Randomized = false;
 
     [Header("Dimensions")]
@@ -41,7 +44,7 @@ public class Map : MonoBehaviour
 
 void GenerateMap()
 {
-     if (Randomized)
+    if (Randomized)
     {
         System.Random random = new System.Random();
         heightWaves[0].seed = (float)Math.Round(random.NextDouble() * 1000, 2);
@@ -58,25 +61,27 @@ void GenerateMap()
         heatWaves[0].seed = 318.6f;
         heatWaves[1].seed = 329.7f;
     }
+
     // Generate noise maps for height, moisture, and heat
     heightMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heightWaves);
     moistureMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, moistureWaves);
     heatMap = NoiseGenerator.GenerateNoiseMap(width, height, scale, offset, heatWaves);
 
-    // Fixed border size of 45x45
-    int borderSize = 26;
-
-    // Iterate over each tile position for the border
-    for (int x = -1; x <= borderSize; ++x) // Extend bounds for borders
+    // Generate borders only for the first level
+    if (currentLevel == 1)
     {
-        for (int y = -1; y <= borderSize; ++y) // Extend bounds for borders
-        {
-            Vector3Int position = new Vector3Int(x, y, 0);
+        int borderSize = 26;
 
-            // Place borders outside the playable area
-            if (IsBorder(x, y))
+        for (int x = -1; x <= borderSize; ++x) // Extend bounds for borders
+        {
+            for (int y = -1; y <= borderSize; ++y) // Extend bounds for borders
             {
-                BorderTilemap.SetTile(position, borderTile); // Ensure borderTile is assigned
+                Vector3Int position = new Vector3Int(x, y, 0);
+
+                if (IsBorder(x, y))
+                {
+                    BorderTilemap.SetTile(position, borderTile); // Ensure borderTile is assigned
+                }
             }
         }
     }
@@ -95,6 +100,51 @@ void GenerateMap()
             {
                 tilemap.SetTile(position, currentBiome.ruleTile);
             }
+        }
+    }
+}
+
+public void LoadNextLevel()
+{
+    // Clear old map and colliders
+    ResetMap();
+
+    // Enable randomization for the next level
+    Randomized = true;
+    currentLevel++;
+
+    // Generate a new map
+    GenerateMap();
+
+    // Regenerate environment objects
+    GenerateEnvironmentObjects();
+
+    // Regenerate ocean colliders
+    GenerateOceanColliders();
+
+    Debug.Log($"Next level generated! {currentLevel}");
+}
+
+
+void ResetMap()
+{
+    // Destroy any leftover colliders
+    Transform existingOceanColliders = transform.Find("OceanColliders");
+    if (existingOceanColliders != null)
+    {
+        Destroy(existingOceanColliders.gameObject);
+    }
+
+    // Clear tiles in the main tilemap
+    tilemap.ClearAllTiles();
+
+    // Destroy any leftover colliders
+    foreach (Transform child in colliderParent.transform)
+    {
+        // Check if the child is not part of the BorderTilemap
+        if (child.gameObject != BorderTilemap.gameObject)
+        {
+            Destroy(child.gameObject);
         }
     }
 }
