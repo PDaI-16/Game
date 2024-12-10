@@ -328,7 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  isMelee: 0
   health: 0
   maxHealth: 200
   Damage: 15
@@ -346,7 +345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dae284b33c57e4da84728baf14edfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  MeleeEnemyPrefab: {fileID: 5147095794478659403, guid: 7b5da0aae43b64749b7849c58135326b, type: 3}
+  RangedEnemyPrefab: {fileID: 5147095794478659403, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
+  numberOfMinionsToSummon: 3
+  summonRadius: 3
   speed: 2
   aggroStartDistance: 5
   aggroEndDistance: 8

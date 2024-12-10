@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-    public GameObject player;              // Reference to the player GameObject
     public GameObject MeleeEnemyPrefab;    // Prefab for melee minions
     public GameObject RangedEnemyPrefab;   // Prefab for ranged minions
     public int numberOfMinionsToSummon = 3; // Number of minions to summon during special attack
@@ -15,6 +14,7 @@ public class BossMovement : MonoBehaviour
     public float attackCooldown = 2f;     // Time between each attack
     public float attackGraceTime = 1f;    // Time the boss waits after exiting attack range
 
+    private GameObject player;             // Player reference (will be accessed via Singleton)
     private float distanceToPlayer;        // Current distance to the player
     private bool isAggroed;                // Tracks if the boss is aggroed
     private bool isInGracePeriod;          // Tracks if the boss is in the grace period after an attack
@@ -25,6 +25,14 @@ public class BossMovement : MonoBehaviour
 
     private void Start()
     {
+        // Access the player reference from the PlayerSingleton (singleton pattern)
+        player = PlayerReference.Instance;
+
+        if (player == null)
+        {
+            Debug.LogError("Player reference not found. Ensure the PlayerSingleton script is attached to the player.");
+        }
+
         // Get the EnemyStats component attached to the boss
         enemyStats = GetComponent<EnemyStats>();
         if (enemyStats == null)

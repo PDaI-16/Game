@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc923fcd2358c0459bb678c5b89732c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
   health: 0
   maxHealth: 50
   Damage: 5
@@ -672,10 +673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dae0aec7e60d3498e7b56111a40a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
   speed: 2
-  aggroStartDistance: 10
-  aggroEndDistance: 12
+  aggroStartDistance: 8
+  aggroEndDistance: 10
   attackDistance: 5
   attackGraceTime: 1.5
   isInGracePeriod: 0
@@ -691,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60abbdc763775be468dd6e7db5ed3474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
   firePoint: {fileID: 2332651347870755457}
   fireRate: 5
   projectileSpeed: 10

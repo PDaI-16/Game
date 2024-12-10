@@ -4,16 +4,16 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject map; // The GameObject representing the map.
-    [SerializeField] private GameObject enemyPrefab; // The prefab containing the melee enemy hierarchy.
+    [SerializeField] private GameObject meleeEnemyPrefab; // The prefab containing the melee enemy hierarchy.
     [SerializeField] private GameObject rangedEnemyPrefab; // The prefab containing the ranged enemy hierarchy.
     [SerializeField] private GameObject bossEnemyPreFab; // The prefab containing the ranged enemy hierarchy.
 
 
-    public int maxEnemies = 5;
-    public int maxBossEnemies = 2;
-    public float spawnRadius = 10f;
-
+    public int maxEnemies = 10;
+    public int maxBossEnemies = 1;
+    private int currentBossEnemyCount = 0;
     private int currentEnemyCount = 0;
+    public float spawnRadius = 10f;
 
     private void Start()
     {
@@ -33,9 +33,9 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        if (map == null || enemyPrefab == null)
+        if (map == null || meleeEnemyPrefab == null)
         {
-            Debug.LogError("Map or enemyPrefab is not assigned.");
+            Debug.LogError("Map or meleeEnemyPrefab is not assigned.");
             return;
         }
 
@@ -43,14 +43,14 @@ public class EnemySpawner : MonoBehaviour
         Vector3 randomLocation = GetRandomSpawnPosition(map);
 
         // Instantiate the enemy prefab at the random location.
-        GameObject enemyInstance = Instantiate(enemyPrefab, randomLocation, Quaternion.identity);
+        GameObject meleeEnemyInstance = Instantiate(meleeEnemyPrefab, randomLocation, Quaternion.identity);
 
         // Find the "MeleeEnemy" child within the prefab.
-        Transform meleeEnemyTransform = enemyInstance.transform.Find("MeleeEnemy");
+        Transform meleeEnemyTransform = meleeEnemyInstance.transform.Find("MeleeEnemy");
         if (meleeEnemyTransform == null)
         {
             Debug.LogError("The 'MeleeEnemy' GameObject was not found in the prefab.");
-            Destroy(enemyInstance); // Cleanup the incomplete enemy.
+            Destroy(meleeEnemyInstance); // Cleanup the incomplete enemy.
             return;
         }
 
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemyStats == null)
         {
             Debug.LogError("The 'MeleeEnemy' GameObject is missing the EnemyStats component.");
-            Destroy(enemyInstance); // Cleanup the incomplete enemy.
+            Destroy(meleeEnemyInstance); // Cleanup the incomplete enemy.
             return;
         }
 
@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        if (map == null || enemyPrefab == null)
+        if (map == null || rangedEnemyPrefab == null)
         {
             Debug.LogError("Map or enemyPrefab is not assigned.");
             return;
@@ -124,7 +124,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnBossEnemyToRandomLocation(float levelMultiplier)
     {
-        if (currentEnemyCount >= maxBossEnemies)
+        if (currentBossEnemyCount >= maxBossEnemies)
         {
             Debug.LogWarning("Maximum number of bosses reached. Cannot spawn more.");
             return;
@@ -161,7 +161,7 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.experienceReward = UnityEngine.Random.Range(200, 500);
 
         // Increase the enemy count for bosses
-        currentEnemyCount++;
+        currentBossEnemyCount++;
     }
 
 
