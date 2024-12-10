@@ -3093,63 +3093,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &597421722
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 39.213146
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 28.462103
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.021642692
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663173169719157892, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
-      propertyPath: m_Name
-      value: WorldMap
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,198 +6370,297 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1a Melee
     cost: 1
     prerequisiteSkillIndices: 00000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 10
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2a Melee
     cost: 1
     prerequisiteSkillIndices: 01000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 20
+    defenseBonus: 0
   - name: 3a Melee
     cost: 1
     prerequisiteSkillIndices: 02000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1b Melee
     cost: 1
     prerequisiteSkillIndices: 00000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 100
   - name: 2b Melee
     cost: 1
     prerequisiteSkillIndices: 04000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 3b Melee
     cost: 1
     prerequisiteSkillIndices: 05000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: FirstRanged
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1a Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2a Ranged
     cost: 1
     prerequisiteSkillIndices: 08000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 3a Ranged
     cost: 1
     prerequisiteSkillIndices: 09000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1b Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2b Ranged
     cost: 1
     prerequisiteSkillIndices: 0b000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 3b Ranged
     cost: 1
     prerequisiteSkillIndices: 0c000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: FirstMagic
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1a Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2a Magic
     cost: 1
     prerequisiteSkillIndices: 0f000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 3a Magic
     cost: 1
     prerequisiteSkillIndices: 10000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1b Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2b Magic
     cost: 1
     prerequisiteSkillIndices: 12000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 3b Magic
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1a SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 0300000006000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 1
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1b SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 0300000006000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 1
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2a SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 15000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2b SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 16000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1a SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 1
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 1
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2a SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 19000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 1a000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 1
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 1b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 1
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1d000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   - name: 2b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1e000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   skillImages:
   - {fileID: 820599833}
   - {fileID: 1389983868}
@@ -6661,6 +6703,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   rangedSpecialSkill:
     name: 
     cost: 0
@@ -6668,6 +6713,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
   magicSpecialSkill:
     name: 
     cost: 0
@@ -6675,6 +6723,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
+    damageBonus: 0
+    healthBonus: 0
+    defenseBonus: 0
 --- !u!1 &1222553576
 GameObject:
   m_ObjectHideFlags: 0
@@ -7072,37 +7123,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
---- !u!1 &1259595706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259595707}
-  m_Layer: 0
-  m_Name: 
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1259595707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259595706}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1278730459
 GameObject:
   m_ObjectHideFlags: 0
@@ -10903,7 +10923,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1259595707}
   - {fileID: 519420032}
   - {fileID: 171084923332916767}
   - {fileID: 2683329362811795667}
@@ -10914,7 +10933,6 @@ SceneRoots:
   - {fileID: 366607904}
   - {fileID: 1073704623}
   - {fileID: 983346200}
-  - {fileID: 597421722}
   - {fileID: 1023845510}
   - {fileID: 1313389333}
   - {fileID: 298911274018651197}
