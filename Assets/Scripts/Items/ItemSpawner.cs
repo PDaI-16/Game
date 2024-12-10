@@ -18,12 +18,14 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] private Sprite[] magicWeaponSprites;
     [SerializeField] private GameObject weaponPrefab;
 
+    [SerializeField] private int itemSpawnAmount = 50;
+
     // Called before the first frame update.
     private void Start()
     {
         try
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < itemSpawnAmount; i++)
             {
                 SpawnRandomHatToRandomLocation(2.0f);
                 SpawnRandomWeaponToRandomLocation(2.0f);
@@ -48,7 +50,7 @@ public class ItemSpawner : MonoBehaviour
         {
             Hat newHat = GetRandomHat(levelMultiplier);  // Get a random hat using the level multiplier
             Vector3 randomLocation = GetRandomSpawnPosition(map);  // Get a random spawn position on the map
-            SpawnHat(newHat, map, randomLocation);  // Spawn the hat at the random location
+            SpawnHat(newHat, map, randomLocation, true);  // Spawn the hat at the random location
         }
         catch (Exception e)
         {
@@ -76,8 +78,7 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
-    // Instantiates a hat at the given location.
-    public GameObject SpawnHat(Hat hat, GameObject parentObject, Vector3 location)
+    public GameObject SpawnHat(Hat hat, GameObject parentObject, Vector3 location, bool isOnGround)
     {
         if (hatPrefab == null)
         {
@@ -105,8 +106,8 @@ public class ItemSpawner : MonoBehaviour
         // Try to get the HatGO script on the instantiated hat
         if (hatInstance.TryGetComponent(out HatGO hatScript))
         {
-            // Initialize the hat script with the provided hat data
-            hatScript.Initialize(hat);
+            // Initialize the hat script with the provided hat data and the isOnGround flag
+            hatScript.Initialize(hat, isOnGround);
             Debug.Log("Hat spawned and initialized successfully!");
         }
         else

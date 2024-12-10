@@ -10,6 +10,7 @@ TagManager:
   - PlayerWeaponArm
   - PlayerWeaponArmChild
   - MeleeAttackObject
+  - HintPanel
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Projectile
   - 
   - Player
   - Weapon
@@ -59,6 +60,9 @@ TagManager:
   - name: Player
     uniqueID: 3507243511
     locked: 0
+  - name: Enemy
+    uniqueID: 326090171
+    locked: 0
   - name: PlayerWeapon
     uniqueID: 4195347723
     locked: 0
@@ -67,6 +71,9 @@ TagManager:
     locked: 0
   - name: MainMenu'
     uniqueID: 1174784085
+    locked: 0
+  - name: InventoryUI
+    uniqueID: 3488107273
     locked: 0
   m_RenderingLayers:
   - Default
