@@ -3,12 +3,12 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    [SerializeField] private float health = 10000;
+    [SerializeField] private float health = 100;
     [SerializeField] private float defence = 0;
 
     [SerializeField] private int level = 1;
     [SerializeField] private float xp = 0;
-    [SerializeField] private int skillPoints = 5;
+    [SerializeField] private int skillPoints = 1;
     [SerializeField] private ItemCategory initialPlayerClass;
 
     private float xpRequiredForLevelUp = 100;
