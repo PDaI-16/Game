@@ -85,8 +85,14 @@ public class PlayerController : MonoBehaviour
     private bool _isMoving;
 
     // Current total attack stats
-    [SerializeField] private float currentTotalDamage = 0;
-    [SerializeField] private float currentTotalAttackSpeed = 0;
+    [SerializeField] private float currentTotalDamage = 1;
+    [SerializeField] private float currentTotalAttackSpeed = 1;
+
+
+    [SerializeField] private float attackCooldownTimer = 1.0f;
+    [SerializeField] private float attackCooldownTime = 1.0f;
+   
+    private bool canAttack = true;
 
 
 
@@ -134,19 +140,16 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
+        
 
         UpdateAttackStats();
 
+
+        HandleAttackCooldown();
+
         if (currentWeaponData != null)
         {
-            /*            Debug.LogWarning($"weapon damage: {currentWeaponData.Damage}, hatdamage: {currentHatData.DamageMultiplier}");*//*
-            Debug.LogWarning($"weapon damage: {currentWeaponData.Damage}");
-            *//*            UpdateAttackStats();*//*
-            if (currentHatData != null)
-            {
-                Debug.LogWarning($"hatData: {currentHatData.DamageMultiplier}");
-            }
-*/
+
             if (currentWeaponData.Category == ItemCategory.Ranged)
             {
                 ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
@@ -173,11 +176,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+
+
+        attackCooldownTime = 1.0f / currentWeaponData.AttackSpeed;
+
+       
+
         // Default values based on weapon data
         currentTotalDamage = currentWeaponData.Damage;
         currentTotalAttackSpeed = currentWeaponData.AttackSpeed;
 
-        Debug.LogWarning($"Weapon Damage: {currentWeaponData.Damage}");
+        Debug.LogWarning($"Weapon Damage: {currentWeaponData.Damage},AttackSpeed: {currentWeaponData.AttackSpeed}");
 
         // Apply hat bonuses if the hat exists and matches the weapon category
         if (currentHatData != null && currentWeaponData.Category == currentHatData.Category)
@@ -185,6 +194,24 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning($"Hat Bonus - Damage Multiplier: {currentHatData.DamageMultiplier}, Attack Speed Multiplier: {currentHatData.AttackSpeedMultiplier}");
             currentTotalDamage += currentHatData.DamageMultiplier;
             currentTotalAttackSpeed += currentHatData.AttackSpeedMultiplier;
+        }
+    }
+
+    private void StartAttackCooldown()
+    {
+        canAttack = false; // Prevent further attacks
+        attackCooldownTimer = attackCooldownTime; // Set the timer to the cooldown duration
+    }
+
+    private void HandleAttackCooldown()
+    {
+        if (!canAttack)
+        {
+            attackCooldownTimer -= Time.deltaTime; // Decrease the timer by the elapsed time
+            if (attackCooldownTimer <= 0.0f)
+            {
+                canAttack = true; // Cooldown complete, allow attacking again
+            }
         }
     }
 
@@ -206,6 +233,12 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
+
+        if (canAttack == false)
+        {
+            Debug.Log("Attack on cooldown.");
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
         {
@@ -249,6 +282,8 @@ public class PlayerController : MonoBehaviour
 
                         break;
                 }
+
+                StartAttackCooldown();
             }
             else
             {

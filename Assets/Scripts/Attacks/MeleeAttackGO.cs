@@ -75,8 +75,16 @@ public class MeleeAttackGO : MonoBehaviour
     // Activates on after animation event.
     void DeactivateHitbox()
     {
-        currentWeaponGameObject.gameObject.SetActive(true);
-        hitbox.gameObject.SetActive(false);
+        if (currentWeaponGameObject != null)
+        {
+            currentWeaponGameObject.gameObject.SetActive(true);
+            hitbox.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Current weapongameobject does not exist - deactivatehitbox()");
+        }
+
     }
 
 
