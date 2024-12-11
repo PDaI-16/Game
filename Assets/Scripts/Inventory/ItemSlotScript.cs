@@ -25,11 +25,33 @@ public class ItemSlotScript : MonoBehaviour
 
     void Update()
     {
-        if (playerController.GetCurrentWeaponData() != null)
+
+        if (selfItemType != ItemType.None)
         {
-            if ((playerController.GetCurrentWeaponData() == weapon) != previousCurrentWeaponEqual) //Check if the current weapon has changed..
+            switch (selfItemType)
             {
-                CheckIfThisItemIsEquipped();
+                case ItemType.Weapon:
+
+                    if (playerController.GetCurrentWeaponData() != null)
+                    {
+                        if ((playerController.GetCurrentWeaponData() == weapon) != previousCurrentWeaponEqual) //Check if the current weapon has changed..
+                        {
+                            CheckIfThisItemIsEquipped();
+                        }
+                    }
+                    break;
+
+                case ItemType.Hat:
+
+                    if (playerController.GetCurrentHatData() != null)
+                    {
+                        if ((playerController.GetCurrentHatData() == hat) != previousCurrentHatEqual) //Check if the current weapon has changed..
+                        {
+                            CheckIfThisItemIsEquipped();
+                        }
+                    }
+                    break;
+
             }
         }
 
