@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
     private int currentWeaponCount = 0;
     private int currentHatCount = 0;
 
-    [SerializeField] Inventory inventoryData = null;
+    [SerializeField] public Inventory inventoryData;
     private List<Weapon> weaponsInInventory = new List<Weapon>();
     private List<Hat> hatsInInventory = new List<Hat>();
 
