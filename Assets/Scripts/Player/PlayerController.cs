@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
 
     private float attackCooldownTimer = 1.0f;
-    private float attackCooldownTime = 1.0f;
+    [SerializeField] private float attackCooldownTime = 1.0f;
    
     private bool canAttack = true;
 
@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
                         
                         if (projectileAttackGO != null)
                         {
-                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, currentWeaponData.AttackSpeed, currentCamera, currentAnimationState);
+                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, 10.0f, currentCamera, currentAnimationState);
                         }
 
                         else
@@ -432,7 +432,11 @@ public class PlayerController : MonoBehaviour
     void ChangeRangedWeaponPositionBasedOnAnimation(AnimationState animationState)
     {
         if (currentAnimationState == animationState)
+        {
             return;
+
+        }
+            
 
         if (rangedArmTransform != null)
         {
@@ -486,7 +490,10 @@ public class PlayerController : MonoBehaviour
     void UpdateWeaponArmSorting(AnimationState animationState)
     {
         if (currentAnimationState == animationState)
+        {
             return;
+        }
+            
 
 
         if (weaponArmSortingGroup == null)

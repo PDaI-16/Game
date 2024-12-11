@@ -61,12 +61,12 @@ public class UIManager : MonoBehaviour
     // Change the FSM state
     private void ChangeState(PanelState newState)
     {
-        if (newState == previousState)
+/*        if (newState == previousState)
         {
             return;
         }
 
-        previousState = newState;
+        previousState = newState;*/
 
 
         // Activate the panel based on the new state
