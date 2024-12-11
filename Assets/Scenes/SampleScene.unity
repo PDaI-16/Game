@@ -7232,7 +7232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1313389332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10604,6 +10604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedProjectile
       objectReference: {fileID: 0}
+    - target: {fileID: 8866896664993352859, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10733,6 +10737,10 @@ PrefabInstance:
     - target: {fileID: 5619965334463188764, guid: a44baac035c1d04478927833d68fe756, type: 3}
       propertyPath: m_Name
       value: MagicProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619965334463188764, guid: a44baac035c1d04478927833d68fe756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

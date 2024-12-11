@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     private GameObject currentWeaponObject = null;
 
     private Weapon currentWeaponData = null;
+    private Weapon previousWeaponData = null;
 
     [SerializeField] private Hat currentHatData = null;
 

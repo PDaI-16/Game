@@ -9,6 +9,7 @@ public class ItemSlotScript : MonoBehaviour
     [SerializeField] private Image itemSlotImage;
 
     private bool previousCurrentWeaponEqual = false;
+    private bool previousCurrentHatEqual = false;
 
     private PlayerController playerController = null;
     private Weapon weapon = null;
@@ -37,14 +38,38 @@ public class ItemSlotScript : MonoBehaviour
 
     private void CheckIfThisItemIsEquipped()
     {
-        
 
-        if (playerController.GetCurrentWeaponData() != null && selfItemType != ItemType.None)
+        switch (selfItemType)
         {
-            switch (selfItemType)
-            {
-                case ItemType.Weapon:
-                    if (playerController.GetCurrentWeaponData() == weapon)
+            case ItemType.Weapon:
+                {
+
+
+                    if (playerController.GetCurrentWeaponData() != null && selfItemType != ItemType.None)
+                    {
+
+                        if (playerController.GetCurrentWeaponData() == weapon)
+                        {
+                            itemSlotImage.sprite = equippedSprite;
+                        }
+                        else
+                        {
+                            itemSlotImage.sprite = defaultSprite;
+                        }
+
+                        previousCurrentWeaponEqual = playerController.GetCurrentWeaponData() == weapon;
+
+                    }
+
+                }
+                break;
+
+            case ItemType.Hat:
+
+                if (playerController.GetCurrentHatData() != null && selfItemType != ItemType.None)
+                {
+
+                    if (playerController.GetCurrentHatData() == hat)
                     {
                         itemSlotImage.sprite = equippedSprite;
                     }
@@ -53,15 +78,12 @@ public class ItemSlotScript : MonoBehaviour
                         itemSlotImage.sprite = defaultSprite;
                     }
 
-                    previousCurrentWeaponEqual = playerController.GetCurrentWeaponData() == weapon;
-                    break;
+                    previousCurrentHatEqual = playerController.GetCurrentHatData() == hat;
 
-                case ItemType.Hat:
-                    // Waiting for equiping hats logic....
-                    break;
-            }
-
+                }
+                break;
         }
+
     }
 
     public void EquipItemToPlayer()
@@ -72,7 +94,7 @@ public class ItemSlotScript : MonoBehaviour
         }
         else if (selfItemType == ItemType.Hat && playerController != null && hat != null)
         {
-            Debug.LogError("Equip hats functionality is not done yet...");
+            playerController.EquipHat(hat);
         }
     }
 
