@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
                         
                         if (projectileAttackGO != null)
                         {
-                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, currentWeaponData.AttackSpeed, currentCamera);
+                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, currentWeaponData.AttackSpeed, currentCamera, currentAnimationState);
                         }
 
                         else

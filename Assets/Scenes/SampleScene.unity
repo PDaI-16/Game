@@ -1358,6 +1358,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2574784375075246839, guid: 2c516a372d0c74749a3fb146804299a1, type: 3}
   m_PrefabInstance: {fileID: 7291247061667893662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &218701051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
+  m_PrefabInstance: {fileID: 298911274018651197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &218701057
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218701051}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &257936381
 GameObject:
   m_ObjectHideFlags: 0
@@ -10062,7 +10079,7 @@ Transform:
   m_GameObject: {fileID: 1991333535}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: -0.44, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10675,7 +10692,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 218701057}
   m_SourcePrefab: {fileID: 100100000, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
 --- !u!1001 &355673622435341379
 PrefabInstance:
@@ -10724,6 +10744,14 @@ PrefabInstance:
     - target: {fileID: 4705071210248404736, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950543886460345486, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950543886460345486, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -99619573
       objectReference: {fileID: 0}
     - target: {fileID: 8866896664993352859, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
       propertyPath: m_Name
@@ -10900,6 +10928,14 @@ PrefabInstance:
     - target: {fileID: 5619965334463188764, guid: a44baac035c1d04478927833d68fe756, type: 3}
       propertyPath: m_Name
       value: MagicProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671187553766483245, guid: a44baac035c1d04478927833d68fe756, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671187553766483245, guid: a44baac035c1d04478927833d68fe756, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -99619573
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

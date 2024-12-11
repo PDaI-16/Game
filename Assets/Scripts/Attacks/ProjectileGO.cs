@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ProjectileGO : MonoBehaviour
 {
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,4 +27,6 @@ public class ProjectileGO : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
 }

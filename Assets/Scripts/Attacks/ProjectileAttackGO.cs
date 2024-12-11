@@ -8,16 +8,19 @@ public class ProjectileAttackGO : MonoBehaviour
     [SerializeField] private GameObject rangedProjectilePrefab;
     [SerializeField] private Transform rangedProjectileFirepoint;
 
-    public void ProjectileAttack(ItemCategory weaponCategory, float attackSpeed, Camera currentCamera)
+
+    private SpriteRenderer projectileSpriteRenderer;
+
+    public void ProjectileAttack(ItemCategory weaponCategory, float attackSpeed, Camera currentCamera, AnimationState currenAnimation)
     {
         switch (weaponCategory)
         {
             case ItemCategory.Ranged:
-                FireProjectile(rangedProjectilePrefab, rangedProjectileFirepoint, attackSpeed, currentCamera, -45.0f);
+                FireProjectile(rangedProjectilePrefab, rangedProjectileFirepoint, attackSpeed, currentCamera, -45.0f, currenAnimation);
                 break;
 
             case ItemCategory.Magic:
-                FireProjectile(magicProjectilePrefab, magicProjectileFirepoint, attackSpeed, currentCamera, 0);
+                FireProjectile(magicProjectilePrefab, magicProjectileFirepoint, attackSpeed, currentCamera, 0, currenAnimation);
                 break;
 
             default:
@@ -26,7 +29,7 @@ public class ProjectileAttackGO : MonoBehaviour
         }
     }
 
-    private void FireProjectile(GameObject projectilePrefab, Transform firepoint, float speed, Camera camera, float angleAdjust)
+    private void FireProjectile(GameObject projectilePrefab, Transform firepoint, float speed, Camera camera, float angleAdjust, AnimationState currentAnimation)
     {
         if (projectilePrefab != null && firepoint != null)
         {
@@ -44,6 +47,10 @@ public class ProjectileAttackGO : MonoBehaviour
                 Quaternion.identity
             );
 
+            projectileSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
+
+            UpdateProjectileSortinglayer(currentAnimation);
+
             // Rotate the projectile to face the mouse direction
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -60,6 +67,44 @@ public class ProjectileAttackGO : MonoBehaviour
         else
         {
             Debug.LogError("Projectile prefab or firepoint is not assigned.");
+        }
+    }
+
+
+    void UpdateProjectileSortinglayer(AnimationState animationState)
+    {
+
+        // Adjust sorting layer and order based on animation state
+        switch (animationState)
+        {
+            case AnimationState.player_walk_up:
+            case AnimationState.player_idle_up:
+            case AnimationState.player_walk_left:
+            case AnimationState.player_idle_left:
+                ChangeSortingLayer("PlayerWeaponBehind");
+                break;
+
+            case AnimationState.player_walk_down:
+            case AnimationState.player_idle_down:
+            case AnimationState.player_walk_right:
+            case AnimationState.player_idle_right:
+                ChangeSortingLayer("PlayerWeapon");
+                break;
+
+
+
+            default:
+                ChangeSortingLayer("PlayerWeapon");
+                break;
+        }
+    }
+
+
+    public void ChangeSortingLayer(string newLayer)
+    {
+        if (projectileSpriteRenderer != null)
+        {
+            projectileSpriteRenderer.sortingLayerName = newLayer;  // Change sorting layer to the new one
         }
     }
 }
