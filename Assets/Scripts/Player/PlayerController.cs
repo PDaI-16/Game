@@ -55,8 +55,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private ItemSpawner itemSpawner;
 
-    // Damage
-    [SerializeField] private float currentTotalDamage;
+
 
     // Private Variables (Internal state tracking)
     private Vector2 _movementInput;
@@ -85,14 +84,10 @@ public class PlayerController : MonoBehaviour
     // Movement State
     private bool _isMoving;
 
+    // Current total attack stats
+    [SerializeField] private float currentTotalDamage = 0;
+    [SerializeField] private float currentTotalAttackSpeed = 0;
 
-
-
-    // Attack related stuff
-
-
-
-    /*    [SerializeField] private MainMenu mainMenu;*/
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -139,20 +134,58 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
+
+        UpdateAttackStats();
+
         if (currentWeaponData != null)
         {
+            /*            Debug.LogWarning($"weapon damage: {currentWeaponData.Damage}, hatdamage: {currentHatData.DamageMultiplier}");*//*
+            Debug.LogWarning($"weapon damage: {currentWeaponData.Damage}");
+            *//*            UpdateAttackStats();*//*
+            if (currentHatData != null)
+            {
+                Debug.LogWarning($"hatData: {currentHatData.DamageMultiplier}");
+            }
+*/
             if (currentWeaponData.Category == ItemCategory.Ranged)
             {
                 ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
                 ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
             }
         }
+        else
+        {
+            Debug.LogWarning("No weapons equipped");
+        }
 
-
+        
 
         PlayerInputs();
         CheckIfShouldDie();
 
+    }
+
+    public void UpdateAttackStats()
+    {
+        if (currentWeaponData == null)
+        {
+            Debug.LogWarning("No weapon is equipped - UpdateAttackStats");
+            return;
+        }
+
+        // Default values based on weapon data
+        currentTotalDamage = currentWeaponData.Damage;
+        currentTotalAttackSpeed = currentWeaponData.AttackSpeed;
+
+        Debug.LogWarning($"Weapon Damage: {currentWeaponData.Damage}");
+
+        // Apply hat bonuses if the hat exists and matches the weapon category
+        if (currentHatData != null && currentWeaponData.Category == currentHatData.Category)
+        {
+            Debug.LogWarning($"Hat Bonus - Damage Multiplier: {currentHatData.DamageMultiplier}, Attack Speed Multiplier: {currentHatData.AttackSpeedMultiplier}");
+            currentTotalDamage += currentHatData.DamageMultiplier;
+            currentTotalAttackSpeed += currentHatData.AttackSpeedMultiplier;
+        }
     }
 
     public void CheckIfShouldDie()
@@ -173,6 +206,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
+
         if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
         {
             if (currentWeaponData != null)
