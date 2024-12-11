@@ -72,6 +72,9 @@ public class PlayerController : MonoBehaviour
     public AnimationState currentAnimationState;
     public AnimationState newAnimationState;
 
+    private AnimationState previousStateRanged;
+    private AnimationState previousStateSorting;
+
     // Weapon and Items
     private GameObject currentWeaponObject = null;
     private Weapon currentWeaponData = null;
@@ -432,11 +435,13 @@ public class PlayerController : MonoBehaviour
 
     void ChangeRangedWeaponPositionBasedOnAnimation(AnimationState animationState)
     {
-        if (currentAnimationState == animationState)
+        if (previousStateRanged == animationState)
         {
             return;
 
         }
+
+        previousStateRanged = animationState;
             
 
         if (rangedArmTransform != null)
@@ -490,10 +495,12 @@ public class PlayerController : MonoBehaviour
 
     void UpdateWeaponArmSorting(AnimationState animationState)
     {
-        if (currentAnimationState == animationState)
+        if (previousStateSorting == animationState)
         {
             return;
         }
+
+        previousStateSorting = animationState;
 
 
         if (weaponArmSortingGroup == null)
