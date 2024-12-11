@@ -10844,10 +10844,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicProjectile
       objectReference: {fileID: 0}
-    - target: {fileID: 5619965334463188764, guid: a44baac035c1d04478927833d68fe756, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

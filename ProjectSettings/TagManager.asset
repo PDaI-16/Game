@@ -11,6 +11,7 @@ TagManager:
   - PlayerWeaponArmChild
   - MeleeAttackObject
   - HintPanel
+  - tree
   layers:
   - Default
   - TransparentFX
