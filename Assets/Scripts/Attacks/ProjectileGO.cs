@@ -3,6 +3,8 @@ using UnityEngine;
 public class ProjectileGO : MonoBehaviour
 {
 
+    private float totalDamage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,7 +14,13 @@ public class ProjectileGO : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     
+       
+    }
+
+    public void SetDamage(float damage)
+    {
+        totalDamage = damage;
     }
 
 

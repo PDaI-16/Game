@@ -65,8 +65,11 @@ public class PlayerController : MonoBehaviour
     private GameObject weaponArmMagic;
 
     private GameObject currentWeaponObject = null;
+
     private Weapon currentWeaponData = null;
-    private Weapon previousWeaponData = null;
+
+    [SerializeField] private Hat currentHatData = null;
+
 
     private Vector3 defaultPositionRangedArm;
     private Vector3 newRangedWeaponPosition;
@@ -82,6 +85,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D meleeAttackHitbox;
 
     [SerializeField] private GameObject deathScreenPanel;
+
+    [SerializeField] private float currentTotalDamage;
 
 /*    [SerializeField] private MainMenu mainMenu;*/
 
@@ -227,6 +232,11 @@ public class PlayerController : MonoBehaviour
         return currentWeaponData;
     }
 
+    public Hat GetCurrentHatData()
+    {
+        return currentHatData;
+    }
+
 
     public void EquipWeapon(Weapon WeaponData)
     {
@@ -299,6 +309,23 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Weapon is the same as the previous one, not spawning a new one.");
+        }
+    }
+
+
+    public void EquipHat(Hat HatData)
+    {
+        // Check if the current weapon is different from the previous one
+        if (HatData != currentHatData)
+        {
+
+            // Set the current and previous weapon data for comparison
+            currentHatData = HatData;
+
+        }
+        else
+        {
+            Debug.Log("Item is the same as the previous one, not spawning a new one.");
         }
     }
 
