@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     private List<GameObject> panels = new List<GameObject>();
 
+    [SerializeField] private PanelState previousState;
+
     // Define the states of the FSM
     private enum PanelState
     {
@@ -59,6 +61,14 @@ public class UIManager : MonoBehaviour
     // Change the FSM state
     private void ChangeState(PanelState newState)
     {
+        if (newState == previousState)
+        {
+            return;
+        }
+
+        previousState = newState;
+
+
         // Activate the panel based on the new state
         switch (newState)
         {

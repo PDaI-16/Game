@@ -10,6 +10,8 @@ public class MeleeAttackGO : MonoBehaviour
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
 
+    [SerializeField] private AnimationState previousState;
+
     private Weapon usedWeaponData;
 
     void Start()
@@ -42,7 +44,14 @@ public class MeleeAttackGO : MonoBehaviour
 
     private void FlipMeleeAttack(AnimationState playerAnimationState)
     {
+        if (playerAnimationState == previousState)
+        {
+            return;
+        }
+
         transform.localScale = new Vector3(1f, 1f, 0);
+
+        previousState = playerAnimationState;
 
         switch (playerAnimationState)
         {

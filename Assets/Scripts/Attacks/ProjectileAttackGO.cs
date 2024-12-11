@@ -8,6 +8,8 @@ public class ProjectileAttackGO : MonoBehaviour
     [SerializeField] private GameObject rangedProjectilePrefab;
     [SerializeField] private Transform rangedProjectileFirepoint;
 
+    private AnimationState previousState;
+
 
     private SpriteRenderer projectileSpriteRenderer;
 
@@ -73,6 +75,12 @@ public class ProjectileAttackGO : MonoBehaviour
 
     void UpdateProjectileSortinglayer(AnimationState animationState)
     {
+       if (previousState == animationState)
+        {
+            return;
+        }
+
+        previousState = animationState;
 
         // Adjust sorting layer and order based on animation state
         switch (animationState)

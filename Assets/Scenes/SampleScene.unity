@@ -9852,6 +9852,7 @@ MonoBehaviour:
   skillTreePanel: {fileID: 1220771553}
   inventoryPanel: {fileID: 1314429937}
   hintPanel: {fileID: 123447493}
+  previousState: 0
 --- !u!1 &1936407768
 GameObject:
   m_ObjectHideFlags: 0
@@ -10411,14 +10412,14 @@ MonoBehaviour:
     Sprite: {fileID: -9163666593600327624, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
     ItemScore: 3
     Damage: 3
-    AttackSpeed: 6
+    AttackSpeed: 1
   defaultMagicWeapon:
     Type: 1
     Category: 2
     Sprite: {fileID: -4981723808371634254, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
     ItemScore: 3
     Damage: 3
-    AttackSpeed: 6
+    AttackSpeed: 1
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []

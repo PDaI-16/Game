@@ -89,8 +89,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentTotalAttackSpeed = 1;
 
 
-    [SerializeField] private float attackCooldownTimer = 1.0f;
-    [SerializeField] private float attackCooldownTime = 1.0f;
+    private float attackCooldownTimer = 1.0f;
+    private float attackCooldownTime = 1.0f;
    
     private bool canAttack = true;
 
@@ -140,15 +140,13 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
-        
 
-        UpdateAttackStats();
-
-
-        HandleAttackCooldown();
 
         if (currentWeaponData != null)
         {
+
+            UpdateAttackStats();
+            HandleAttackCooldown();
 
             if (currentWeaponData.Category == ItemCategory.Ranged)
             {
@@ -175,7 +173,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("No weapon is equipped - UpdateAttackStats");
             return;
         }
-
 
 
         attackCooldownTime = 1.0f / currentWeaponData.AttackSpeed;
@@ -434,7 +431,10 @@ public class PlayerController : MonoBehaviour
 
     void ChangeRangedWeaponPositionBasedOnAnimation(AnimationState animationState)
     {
-        if(rangedArmTransform != null)
+        if (currentAnimationState == animationState)
+            return;
+
+        if (rangedArmTransform != null)
         {
             switch (animationState)
             {
@@ -485,11 +485,16 @@ public class PlayerController : MonoBehaviour
 
     void UpdateWeaponArmSorting(AnimationState animationState)
     {
+        if (currentAnimationState == animationState)
+            return;
+
+
         if (weaponArmSortingGroup == null)
         {
             Debug.LogWarning("No weapon arm Sorting Group found!");
             return;
         }
+
 
         // Adjust sorting layer and order based on animation state
         switch (animationState)
