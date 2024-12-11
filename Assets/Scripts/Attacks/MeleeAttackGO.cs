@@ -10,6 +10,8 @@ public class MeleeAttackGO : MonoBehaviour
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
     private float skillDamageBonus = 0f;
+    private float critChance = 0.9f; // 10% chance for crit
+    private float critMultiplier = 2f; // 2x damage for crits
 
 
     private Weapon usedWeaponData;
@@ -91,8 +93,18 @@ public class MeleeAttackGO : MonoBehaviour
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             if (enemy != null)
             {
-                // Reduce the enemy's health with bonus damage included
-                enemy.TakeDamage(usedWeaponData.Damage + skillDamageBonus);
+                // Calculate total damage
+                float totalDamage = usedWeaponData.Damage + skillDamageBonus;
+
+                // Determine if this attack is a critical hit
+                if (IsCriticalHit())
+                {
+                    totalDamage *= critMultiplier;
+                    Debug.Log("Critical hit! Damage doubled.");
+                }
+
+                // Apply the damage to the enemy
+                enemy.TakeDamage(totalDamage);
                 Debug.Log($"Enemy health reduced. Current health: {enemy.health}");
             }
             else
@@ -100,5 +112,10 @@ public class MeleeAttackGO : MonoBehaviour
                 Debug.LogWarning("Enemy script not found on the collided object.");
             }
         }
+    }
+    // Method to check if the hit is a critical hit (10% chance)
+    private bool IsCriticalHit()
+    {
+        return Random.value < critChance; // Random.value gives a float between 0 and 1
     }
 }
