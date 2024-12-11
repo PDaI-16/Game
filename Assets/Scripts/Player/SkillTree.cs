@@ -16,6 +16,7 @@ public class SkillTree : MonoBehaviour
         public float damageBonus = 0f;   // Bonus to damage
         public float healthBonus = 0f;   // Bonus to health
         public float defenseBonus = 0f;  // Bonus to defense
+        public int speedBonus = 0;
     }
 
     public Skill[] skills; // Array of skills in the skill tree
@@ -232,16 +233,16 @@ public class SkillTree : MonoBehaviour
         MeleeAttackGO meleeAttackGO = FindFirstObjectByType<MeleeAttackGO>();
         if (meleeAttackGO == null)
         {
-            Debug.LogWarning("MeleeAttackGO not found in the scene.");
-            return;
+            Debug.LogWarning("MeleeAttackGO not found in the scene. Damage bonus will not be applied.");
         }
-        // If the skill provides a damage bonus, apply it to the player's damage
-        if (skill.damageBonus > 0f)
+        else
         {
-            meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
-            Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
+            if (skill.damageBonus > 0f)
+            {
+                meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
+                Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
+            }
         }
-
         // If the skill provides a health bonus, apply it to the player's health using the setter
         if (skill.healthBonus > 0f)
         {
@@ -260,6 +261,12 @@ public class SkillTree : MonoBehaviour
             Debug.Log($"Defense increased by {skill.defenseBonus}. New defense: {playerController.playerData.GetDefence()}");
         }
 
+        if (skill.speedBonus > 0f)
+        {
+            float newMovementSpeed = playerController.GetMovementSpeed() + skill.speedBonus;
+            playerController.SetMovementSpeed(newMovementSpeed);
+            Debug.Log($"Defense increased by {skill.speedBonus}. New movement speed {playerController.GetMovementSpeed()}");
+        }
         // Add more stat bonuses as needed (e.g., mana, speed, etc.)
     }
 
