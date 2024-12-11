@@ -11,11 +11,11 @@ public class EnemySpawner : MonoBehaviour
 
     public int maxEnemies = 10;
     public int maxBossEnemies = 1;
-    public int currentBossEnemyCount = 0;
-    public int currentEnemyCount = 0;
+    private int currentBossEnemyCount = 0;
+    private int currentEnemyCount = 0;
     public float spawnRadius = 10f;
 
-    public void Start()
+    private void Start()
     {
         for (int i = 0; i < maxEnemies; i++)
         {
@@ -72,21 +72,6 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");
 
         currentEnemyCount++;
-    }
-
-    public void DestroyAllEnemies()
-    {
-        // Find all the MeleeEnemy objects in the scene
-        GameObject[] meleeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        // Loop through each MeleeEnemy object and destroy it
-        foreach (GameObject enemy in meleeEnemies)
-        {
-            Destroy(enemy);
-        }
-
-        // Reset the current enemy count to 0
-        currentEnemyCount = 0;
     }
 
     private void SpawnRangedEnemyToRandomLocation(float levelMultiplier)

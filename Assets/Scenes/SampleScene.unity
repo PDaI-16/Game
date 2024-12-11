@@ -5094,6 +5094,8 @@ MonoBehaviour:
   bossEnemyPreFab: {fileID: 2037248298580118833, guid: b5e3bd3da906d0245b551ed4f9ab1021, type: 3}
   maxEnemies: 20
   maxBossEnemies: 1
+  currentBossEnemyCount: 0
+  currentEnemyCount: 0
   spawnRadius: 10
 --- !u!1 &1011604809
 GameObject:
@@ -10497,6 +10499,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 382458032690146619, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
+      propertyPath: EnemySpawner
+      value: 
+      objectReference: {fileID: 983346201}
+    - target: {fileID: 382458032690146619, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
+      propertyPath: portalPrefab
+      value: 
+      objectReference: {fileID: 8926164121868548546, guid: 79eec5e221edcf9438e10724e32e3a88, type: 3}
     - target: {fileID: 6586221781403348538, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.213146

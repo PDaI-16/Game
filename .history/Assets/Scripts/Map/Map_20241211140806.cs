@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Linq;
 using Math = System.Math;
-using System.Threading;
 
 public class Map : MonoBehaviour
 {
@@ -15,8 +14,8 @@ public class Map : MonoBehaviour
 
     public int currentLevel = 1;  // Start with Level 1
     public int maxLevels = 5;     // Total levels to generate
+
     public bool Randomized = false;
-    public EnemySpawner EnemySpawner;
 
     [Header("Prefabs")]
     public GameObject portalPrefab; // Add this field for the portal prefab
@@ -110,20 +109,21 @@ void GenerateMap()
 
 public void LoadNextLevel()
 {
+    // Clear old map and colliders
     ResetMap();
 
-    EnemySpawner.currentBossEnemyCount = 0;
-
+    // Enable randomization for the next level
     Randomized = true;
     currentLevel++;
 
+    // Generate a new map
     GenerateMap();
 
+    // Regenerate environment objects
     GenerateEnvironmentObjects();
 
+    // Regenerate ocean colliders
     GenerateOceanColliders();
-
-    EnemySpawner.Start();
 
     Debug.Log($"Next level generated! {currentLevel}");
 }
@@ -150,66 +150,6 @@ void ResetMap()
             Destroy(child.gameObject);
         }
     }
-
-    EnemySpawner.DestroyAllEnemies();
-}
-
-public (Vector3Int, string) GetRandomSpawnPosition()
-{
-    List<(Vector3Int, string)> spawnPositions = new List<(Vector3Int, string)>();
-    int minDistanceFromMapEdge = 2; // Minimum distance from the edge of the map
-    int minDistanceFromOcean = 2; // Minimum distance from the ocean biome
-    float waterThreshold = 0.4f; // Threshold to determine water
-
-    for (int x = minDistanceFromMapEdge; x < width - minDistanceFromMapEdge; ++x)
-    {
-        for (int y = minDistanceFromMapEdge; y < height - minDistanceFromMapEdge; ++y)
-        {
-            BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
-            if (currentBiome != null && (currentBiome.name == "Desert" || currentBiome.name == "Grassland" || currentBiome.name == "Forest"))
-            {
-                bool isFarEnoughFromOcean = true;
-
-                // Check if the position is at least minDistanceFromOcean blocks away from the ocean biome
-                for (int dx = -minDistanceFromOcean; dx <= minDistanceFromOcean; ++dx)
-                {
-                    for (int dy = -minDistanceFromOcean; dy <= minDistanceFromOcean; ++dy)
-                    {
-                        int checkX = x + dx;
-                        int checkY = y + dy;
-
-                        if (checkX >= 0 && checkY >= 0 && checkX < width && checkY < height)
-                        {
-                            BiomePreset nearbyBiome = GetBiome(heightMap[checkX, checkY], moistureMap[checkX, checkY], heatMap[checkX, checkY]);
-                            if (nearbyBiome != null && nearbyBiome.name == "Ocean")
-                            {
-                                isFarEnoughFromOcean = false;
-                                break;
-                            }
-                        }
-                    }
-                    if (!isFarEnoughFromOcean)
-                        break;
-                }
-
-                // Ensure the position is not in water
-                if (isFarEnoughFromOcean && heightMap[x, y] >= waterThreshold)
-                {
-                    spawnPositions.Add((new Vector3Int(x, y, 0), currentBiome.name));
-                }
-            }
-        }
-    }
-
-    if (spawnPositions.Count == 0)
-    {
-        Debug.LogWarning("No suitable spawn positions found.");
-        return (new Vector3Int(width / 2, height / 2, 0), "Default"); // Default to center if no suitable positions found
-    }
-
-    System.Random rng = new System.Random();
-    int randomIndex = rng.Next(spawnPositions.Count);
-    return spawnPositions[randomIndex];
 }
 
 bool IsBorder(int x, int y)
@@ -236,7 +176,7 @@ void GenerateEnvironmentObjects()
     }
 
     // Shuffle the list of positions
-    System.Random rng = new();
+    System.Random rng = new System.Random();
     int n = positions.Count;
     while (n > 1)
     {
@@ -470,6 +410,7 @@ int CalculateDistanceFromBiomeEdge(int x, int y, BiomePreset biome)
 
     return distance;
 }
+
 
     BiomePreset GetBiome(float height, float moisture, float heat)
 {
