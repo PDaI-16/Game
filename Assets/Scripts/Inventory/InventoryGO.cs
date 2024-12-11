@@ -17,7 +17,7 @@ public class InventoryGO : MonoBehaviour
     void Start()
     {
         InventoryData = new Inventory();
-
+        
         defaultWeapons.Add(defaultMeleeWeapon);
         defaultWeapons.Add(defaultRangedWeapon);
         defaultWeapons.Add(defaultMagicWeapon);

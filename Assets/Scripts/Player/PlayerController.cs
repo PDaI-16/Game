@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
+    [SerializeField] private ProjectileAttackGO projectileAttackGO;
 
 
     private Vector2 _movementInput;
@@ -184,15 +185,30 @@ public class PlayerController : MonoBehaviour
                             }
                             catch
                             {
-                                Debug.LogError("Failed to find attack script before activating the script");
+                                Debug.LogWarning("Failed to find attack script before activating the script");
                             }
 
 
                         }
                         else
                         {
-                            Debug.LogError("Melee attack go script or hitbox not found by PlayerAttack");
+                            Debug.LogWarning("Melee attack go script or hitbox not found by PlayerAttack");
                         }
+                        break;
+
+                    case ItemCategory.Magic:
+                    case ItemCategory.Ranged:
+                        
+                        if (projectileAttackGO != null)
+                        {
+                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, currentWeaponData.AttackSpeed, currentCamera);
+                        }
+
+                        else
+                        {
+                            Debug.LogError("ProjectileAttackGo script not found by playerController");
+                        }
+
                         break;
                 }
             }
