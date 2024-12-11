@@ -32,6 +32,13 @@ public class ProjectileGO : MonoBehaviour
         }
         else if (collision.CompareTag("Enemy"))
         {
+            EnemyStats enemy = collision.GetComponent<EnemyStats>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(totalDamage);
+            }
+
             Destroy(gameObject);
         }
     }
