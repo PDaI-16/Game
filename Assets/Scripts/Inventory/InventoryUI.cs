@@ -142,7 +142,6 @@ public class InventoryUI : MonoBehaviour
                     if (itemSlotScript != null)
                     {
                         itemSlotScript.SetWeapon(weapon, playerController);
-                        Debug.LogWarning("Mapping weapons...");
                     }
                     else
                     {

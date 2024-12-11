@@ -180,19 +180,24 @@ public class PlayerController : MonoBehaviour
 
 
         attackCooldownTime = 1.0f / currentWeaponData.AttackSpeed;
+        if (currentHatData != null)
+        {
+
+            // If equipped hat is the same category then add its benefits
+            if (currentWeaponData.Category == currentHatData.Category)
+            {
+                attackCooldownTime = 1.0f / (currentWeaponData.AttackSpeed+currentHatData.AttackSpeedMultiplier) ;
+            }
+        }
 
        
-
         // Default values based on weapon data
         currentTotalDamage = currentWeaponData.Damage;
         currentTotalAttackSpeed = currentWeaponData.AttackSpeed;
 
-        Debug.LogWarning($"Weapon Damage: {currentWeaponData.Damage},AttackSpeed: {currentWeaponData.AttackSpeed}");
-
         // Apply hat bonuses if the hat exists and matches the weapon category
         if (currentHatData != null && currentWeaponData.Category == currentHatData.Category)
         {
-            Debug.LogWarning($"Hat Bonus - Damage Multiplier: {currentHatData.DamageMultiplier}, Attack Speed Multiplier: {currentHatData.AttackSpeedMultiplier}");
             currentTotalDamage += currentHatData.DamageMultiplier;
             currentTotalAttackSpeed += currentHatData.AttackSpeedMultiplier;
         }
@@ -253,7 +258,7 @@ public class PlayerController : MonoBehaviour
                             try
                             {
                                 meleeAttackHitbox.gameObject.SetActive(true);
-                                meleeAttackGOScript.Attack(currentWeaponData, currentAnimationState, currentWeaponObject, currentCamera);
+                                meleeAttackGOScript.Attack(currentTotalDamage, currentAnimationState, currentWeaponObject, currentCamera);
                             }
                             catch
                             {
@@ -273,7 +278,7 @@ public class PlayerController : MonoBehaviour
                         
                         if (projectileAttackGO != null)
                         {
-                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, 10.0f, currentCamera, currentAnimationState);
+                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, 10.0f, currentTotalDamage, currentCamera, currentAnimationState);
                         }
 
                         else
@@ -284,6 +289,7 @@ public class PlayerController : MonoBehaviour
                         break;
                 }
 
+                Debug.LogWarning("Attack with total damage of "+currentTotalDamage);
                 StartAttackCooldown();
             }
             else

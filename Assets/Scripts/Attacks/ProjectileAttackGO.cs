@@ -13,16 +13,16 @@ public class ProjectileAttackGO : MonoBehaviour
 
     private SpriteRenderer projectileSpriteRenderer;
 
-    public void ProjectileAttack(ItemCategory weaponCategory, float attackSpeed, Camera currentCamera, AnimationState currenAnimation)
+    public void ProjectileAttack(ItemCategory weaponCategory, float attackSpeed, float totalDamage, Camera currentCamera, AnimationState currenAnimation)
     {
         switch (weaponCategory)
         {
             case ItemCategory.Ranged:
-                FireProjectile(rangedProjectilePrefab, rangedProjectileFirepoint, attackSpeed, currentCamera, -45.0f, currenAnimation);
+                FireProjectile(rangedProjectilePrefab, rangedProjectileFirepoint, attackSpeed, totalDamage, currentCamera, -45.0f, currenAnimation);
                 break;
 
             case ItemCategory.Magic:
-                FireProjectile(magicProjectilePrefab, magicProjectileFirepoint, attackSpeed, currentCamera, 0, currenAnimation);
+                FireProjectile(magicProjectilePrefab, magicProjectileFirepoint, attackSpeed, totalDamage ,currentCamera, 0, currenAnimation);
                 break;
 
             default:
@@ -31,7 +31,7 @@ public class ProjectileAttackGO : MonoBehaviour
         }
     }
 
-    private void FireProjectile(GameObject projectilePrefab, Transform firepoint, float speed, Camera camera, float angleAdjust, AnimationState currentAnimation)
+    private void FireProjectile(GameObject projectilePrefab, Transform firepoint, float speed, float totalDamage ,Camera camera, float angleAdjust, AnimationState currentAnimation)
     {
         if (projectilePrefab != null && firepoint != null)
         {
@@ -50,6 +50,8 @@ public class ProjectileAttackGO : MonoBehaviour
             );
 
             projectileSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
+
+            projectile.GetComponent<ProjectileGO>().SetDamage(totalDamage);
 
             UpdateProjectileSortinglayer(currentAnimation);
 

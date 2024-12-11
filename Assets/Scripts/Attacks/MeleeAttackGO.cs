@@ -12,7 +12,7 @@ public class MeleeAttackGO : MonoBehaviour
 
     [SerializeField] private AnimationState previousState;
 
-    private Weapon usedWeaponData;
+    private float damage = 0; 
 
     void Start()
     {
@@ -25,9 +25,8 @@ public class MeleeAttackGO : MonoBehaviour
     }
 
 
-    public void Attack(Weapon usedWeapon, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
+    public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
     {
-        usedWeaponData = usedWeapon;
         currentCamera = camera;
         currentWeaponGameObject = currentWeaponObject;
         currentWeaponObject.SetActive(false);
@@ -38,7 +37,7 @@ public class MeleeAttackGO : MonoBehaviour
 
 
         meleeAttackAnimator.Play("Melee attack");
-        Debug.Log("Melee attack with damage of: " + usedWeapon.Damage);
+        Debug.Log("Melee attack with damage of: " + totalDamage);
 
     }
 
@@ -91,7 +90,7 @@ public class MeleeAttackGO : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Current weapongameobject does not exist - deactivatehitbox()");
+            Debug.Log("Current weapongameobject does not exist - deactivatehitbox()");
         }
 
     }
@@ -107,7 +106,7 @@ public class MeleeAttackGO : MonoBehaviour
             if (enemy != null)
             {
                 // Reduce the enemy's health
-                enemy.TakeDamage(usedWeaponData.Damage);
+                enemy.TakeDamage(damage);
                 Debug.Log("Enemy health reduced. Current health: " + enemy.health);
             }
             else
