@@ -16,6 +16,8 @@ public class SkillTree : MonoBehaviour
         public float damageBonus = 0f;   // Bonus to damage
         public float healthBonus = 0f;   // Bonus to health
         public float defenseBonus = 0f;  // Bonus to defense
+        public int speedBonus = 0;
+        public float critChanceBonus = 0f;
     }
 
     public Skill[] skills; // Array of skills in the skill tree
@@ -229,15 +231,26 @@ public class SkillTree : MonoBehaviour
     }
     void ApplyStatBonuses(Skill skill)
     {
-        // If the skill provides a damage bonus, apply it to the player's damage
-        if (skill.damageBonus > 0f)
+        MeleeAttackGO meleeAttackGO = FindFirstObjectByType<MeleeAttackGO>();
+        if (meleeAttackGO == null)
         {
-            // Assuming you have a damage stat to modify, you can apply a damage bonus here.
-            // If you have a method or variable for damage, apply it like this:
-            //playerController.playerData.damage += skill.damageBonus; // If damage is a stat, update it accordingly
-            Debug.Log($"Damage increased by {skill.damageBonus}. ");
+            Debug.LogWarning("MeleeAttackGO not found in the scene. Damage bonus will not be applied.");
         }
-
+        else
+        {
+            if (skill.damageBonus > 0f)
+            {
+                meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
+                Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
+            }
+            // Apply critical chance bonus if skill has a crit chance bonus
+            if (skill.critChanceBonus > 0f)
+            {
+                // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
+                meleeAttackGO.SetCritChance(skill.critChanceBonus);
+                Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
+            }
+        }
         // If the skill provides a health bonus, apply it to the player's health using the setter
         if (skill.healthBonus > 0f)
         {
@@ -256,6 +269,12 @@ public class SkillTree : MonoBehaviour
             Debug.Log($"Defense increased by {skill.defenseBonus}. New defense: {playerController.playerData.GetDefence()}");
         }
 
+        if (skill.speedBonus > 0f)
+        {
+            float newMovementSpeed = playerController.GetMovementSpeed() + skill.speedBonus;
+            playerController.SetMovementSpeed(newMovementSpeed);
+            Debug.Log($"Defense increased by {skill.speedBonus}. New movement speed {playerController.GetMovementSpeed()}");
+        }
         // Add more stat bonuses as needed (e.g., mana, speed, etc.)
     }
 
@@ -318,22 +337,39 @@ public class SkillTree : MonoBehaviour
                 continue;
             }
 
+            // Make sure the Outline component exists for each skill icon
+            Outline outline = skillImages[i].GetComponent<Outline>();
+            if (outline == null)
+            {
+                outline = skillImages[i].gameObject.AddComponent<Outline>(); // Add Outline component if it doesn't exist
+            }
+
+            // Apply the image color and border logic
             if (skill.isUnlocked)
             {
-                skillImages[i].color = Color.green; // Change the image color to green for unlocked skills
+                // Change the image color to its normal state (no green color applied)
+                skillImages[i].color = Color.white;
 
-                // Highlight active special skill in blue
-                if (skill.isSpecial && IsSpecialSkillActive(skill))
-                {
-                    skillImages[i].color = Color.blue;
-                }
+                // Apply a yellow border effect (you can adjust this as needed)
+                outline.effectColor = new Color(1f, 1f, 0f); // Set yellow color for the border
+                outline.effectDistance = new Vector2(4f, 4f); // Set the border thickness
             }
             else
             {
                 skillImages[i].color = Color.gray; // Change the image color to gray for locked skills
+
+                // If there's an outline, remove it when locked
+                outline.effectColor = Color.clear; // Remove the border effect when locked
+            }
+
+            // Highlight active special skill in blue (apply to icon color only, no border change here)
+            if (skill.isSpecial && IsSpecialSkillActive(skill))
+            {
+                skillImages[i].color = Color.red;
             }
         }
     }
+
 
 
     bool IsSpecialSkillActive(Skill skill)
