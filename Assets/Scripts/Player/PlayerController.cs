@@ -33,19 +33,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
 
-    // Projectile Attack
+    // Attack
     [SerializeField] private ProjectileAttackGO projectileAttackGO;
+    [SerializeField] private GameObject meleeAttack;
 
     // Weapon and Attack
     [SerializeField] GameObject WeaponPrefab;
-    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-    [SerializeField] private GameObject meleeAttack;
+/*    [SerializeField] private SpriteRenderer weaponSpriteRenderer;*/
     [SerializeField] private MeleeAttackGO meleeAttackGOScript;
     [SerializeField] private BoxCollider2D meleeAttackHitbox;
-    [SerializeField] private GameObject rangedArm;
-    [SerializeField] private Transform rangedArmTransform;
-    [SerializeField] private GameObject weaponArmMelee;
-    [SerializeField] private GameObject weaponArmMagic;
+
+    private GameObject rangedArm = null;
+    private Transform rangedArmTransform = null;
+    private GameObject weaponArmMelee = null;
+    private GameObject weaponArmMagic = null;
 
     // Camera and UI
     [SerializeField] private Camera currentCamera;
@@ -493,7 +494,6 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-            
 
 
         if (weaponArmSortingGroup == null)
