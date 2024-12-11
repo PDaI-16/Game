@@ -26,70 +26,73 @@ public enum AnimationState
 
 public class PlayerController : MonoBehaviour
 {
+    // Serialized Fields (References to other components or objects)
     [SerializeField] public PlayerData playerData;
 
+    // Rigidbody and Movement
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
+
+    // Projectile Attack
     [SerializeField] private ProjectileAttackGO projectileAttackGO;
 
+    // Weapon and Attack
+    [SerializeField] GameObject WeaponPrefab;
+    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
+    [SerializeField] private GameObject meleeAttack;
+    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
+    [SerializeField] private BoxCollider2D meleeAttackHitbox;
+    [SerializeField] private GameObject rangedArm;
+    [SerializeField] private Transform rangedArmTransform;
+    [SerializeField] private GameObject weaponArmMelee;
+    [SerializeField] private GameObject weaponArmMagic;
 
+    // Camera and UI
+    [SerializeField] private Camera currentCamera;
+    [SerializeField] private GameObject deathScreenPanel;
+
+    // Inventory and Item Spawner
+    [SerializeField] private InventoryGO inventoryGOScript;
+    [SerializeField] private ItemSpawner itemSpawner;
+
+    // Damage
+    [SerializeField] private float currentTotalDamage;
+
+    // Private Variables (Internal state tracking)
     private Vector2 _movementInput;
     private Animator _playerAnimator;
     private Camera _mainCamera;
-
     private Vector3 _mousePosition;
     private Vector3 _screenPoint;
-
-    private bool _isMoving;
-    public AnimationState currentAnimationState;
-    public AnimationState newAnimationState;
-
-    [SerializeField] GameObject WeaponPrefab;
-    
-    [SerializeField] private InventoryGO inventoryGOScript;
-    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-
-
-    [SerializeField] private Camera currentCamera;
-
-
     private GameObject weaponArm;
-
-    private GameObject rangedArm;
-    private Transform rangedArmTransform;
-
     private SortingGroup weaponArmSortingGroup;
     private SortingGroup rangedArmSortingGroup;
 
-    private GameObject weaponArmMelee;
-    private GameObject weaponArmMagic;
+    // Animation State
+    public AnimationState currentAnimationState;
+    public AnimationState newAnimationState;
 
+    // Weapon and Items
     private GameObject currentWeaponObject = null;
-
     private Weapon currentWeaponData = null;
     private Weapon previousWeaponData = null;
+    private Hat currentHatData = null;
 
-    [SerializeField] private Hat currentHatData = null;
-
-
+    // Positions for Arm and Weapon
     private Vector3 defaultPositionRangedArm;
     private Vector3 newRangedWeaponPosition;
 
+    // Movement State
+    private bool _isMoving;
 
-    [SerializeField] private ItemSpawner itemSpawner;
+
 
 
     // Attack related stuff
 
-    [SerializeField] private GameObject meleeAttack;
-    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
-    [SerializeField] private BoxCollider2D meleeAttackHitbox;
 
-    [SerializeField] private GameObject deathScreenPanel;
 
-    [SerializeField] private float currentTotalDamage;
-
-/*    [SerializeField] private MainMenu mainMenu;*/
+    /*    [SerializeField] private MainMenu mainMenu;*/
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -164,11 +167,6 @@ public class PlayerController : MonoBehaviour
     private void PlayerInputs()
     {
         //Change to latest weapon in the inventory (just for testing before proper inventory is made...)
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
-            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory - 1));
-        }
 
         PlayerAttack();
     }
@@ -191,14 +189,14 @@ public class PlayerController : MonoBehaviour
                             }
                             catch
                             {
-                                Debug.LogWarning("Failed to find attack script before activating the script");
+                                Debug.Log("Failed to find attack script before activating the script");
                             }
 
 
                         }
                         else
                         {
-                            Debug.LogWarning("Melee attack go script or hitbox not found by PlayerAttack");
+                            Debug.Log("Melee attack go script or hitbox not found by PlayerAttack");
                         }
                         break;
 
@@ -212,7 +210,7 @@ public class PlayerController : MonoBehaviour
 
                         else
                         {
-                            Debug.LogError("ProjectileAttackGo script not found by playerController");
+                            Debug.Log("ProjectileAttackGo script not found by playerController");
                         }
 
                         break;
@@ -220,7 +218,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Do weapon equiped - PlayerAttack");
+                Debug.Log("No weapon equiped - PlayerAttack");
             }
 
 
