@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &20391751 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7739025597141465632, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37329633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,23 +1353,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2574784375075246839, guid: 2c516a372d0c74749a3fb146804299a1, type: 3}
   m_PrefabInstance: {fileID: 7291247061667893662}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &218701051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
-  m_PrefabInstance: {fileID: 298911274018651197}
-  m_PrefabAsset: {fileID: 0}
---- !u!210 &218701057
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218701051}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &257936381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,11 +3219,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638182531}
   m_CullTransparentMesh: 1
---- !u!4 &641938896 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4342729476828310940, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &653135741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,37 +3974,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
---- !u!1 &841727302
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 841727303}
-  m_Layer: 0
-  m_Name: FirepointMagic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &841727303
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841727302}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 0.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 20391751}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &842556847
 GameObject:
   m_ObjectHideFlags: 0
@@ -8377,54 +8319,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423979674}
   m_CullTransparentMesh: 1
---- !u!1 &1438290214
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1438290215}
-  - component: {fileID: 1438290216}
-  m_Layer: 0
-  m_Name: ProjectileAttack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1438290215
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438290214}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 641938896}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1438290216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438290214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79620a35e396ee9489c7904f64f02bd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magicProjectilePrefab: {fileID: 5619965334463188764, guid: a44baac035c1d04478927833d68fe756, type: 3}
-  magicProjectileFirepoint: {fileID: 841727303}
-  rangedProjectilePrefab: {fileID: 8866896664993352859, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
-  rangedProjectileFirepoint: {fileID: 1991333536}
 --- !u!1 &1469678083
 GameObject:
   m_ObjectHideFlags: 0
@@ -9600,11 +9494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!4 &1819015879 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8555920414389740247, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1837273931
 GameObject:
   m_ObjectHideFlags: 0
@@ -10054,37 +9943,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1991333535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1991333536}
-  m_Layer: 0
-  m_Name: FirepointRanged
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1991333536
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991333535}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1819015879}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2002655552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10692,10 +10550,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 218701057}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
 --- !u!1001 &355673622435341379
 PrefabInstance:
@@ -10744,14 +10599,6 @@ PrefabInstance:
     - target: {fileID: 4705071210248404736, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5950543886460345486, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
-      propertyPath: m_SortingLayer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5950543886460345486, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -99619573
       objectReference: {fileID: 0}
     - target: {fileID: 8866896664993352859, guid: e5231cf36cba9984380ddefe9030c32e, type: 3}
       propertyPath: m_Name
@@ -10810,18 +10657,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1078246238509084022, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2767041653773481971, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 1073704624}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: itemSpawner
       value: 
@@ -10838,43 +10673,13 @@ PrefabInstance:
       propertyPath: inventoryGOScript
       value: 
       objectReference: {fileID: 2064573353}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: projectileAttackGO
-      value: 
-      objectReference: {fileID: 1438290216}
-    - target: {fileID: 3834709343353103895, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: enemyStats
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6215240754505109689, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8607864572190984823, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8673130514849191310, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3834709343353103895, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7739025597141465632, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 841727303}
-    - targetCorrespondingSourceObject: {fileID: 8555920414389740247, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1991333536}
-    - targetCorrespondingSourceObject: {fileID: 4342729476828310940, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1438290215}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
 --- !u!1001 &6205088870253380445
@@ -10928,14 +10733,6 @@ PrefabInstance:
     - target: {fileID: 5619965334463188764, guid: a44baac035c1d04478927833d68fe756, type: 3}
       propertyPath: m_Name
       value: MagicProjectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 5671187553766483245, guid: a44baac035c1d04478927833d68fe756, type: 3}
-      propertyPath: m_SortingLayer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5671187553766483245, guid: a44baac035c1d04478927833d68fe756, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -99619573
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
