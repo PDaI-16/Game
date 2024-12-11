@@ -467,7 +467,7 @@ public class PlayerController : MonoBehaviour
 
                 case AnimationState.player_walk_down:
                 case AnimationState.player_idle_down:
-                    newRangedWeaponPosition = defaultPositionRangedArm;
+                    newRangedWeaponPosition = new Vector3(0, -0.15f, 0);
                     break;
 
 
