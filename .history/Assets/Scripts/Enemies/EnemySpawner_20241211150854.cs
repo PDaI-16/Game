@@ -74,21 +74,6 @@ public class EnemySpawner : MonoBehaviour
         currentEnemyCount++;
     }
 
-    public void DestroyAllEnemies()
-    {
-        // Find all the MeleeEnemy objects in the scene
-        GameObject[] meleeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        // Loop through each MeleeEnemy object and destroy it
-        foreach (GameObject enemy in meleeEnemies)
-        {
-            Destroy(enemy);
-        }
-
-        // Reset the current enemy count to 0
-        currentEnemyCount = 0;
-    }
-
     private void SpawnRangedEnemyToRandomLocation(float levelMultiplier)
     {
         if (currentEnemyCount >= maxEnemies)

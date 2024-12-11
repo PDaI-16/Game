@@ -74,10 +74,10 @@ public class EnemySpawner : MonoBehaviour
         currentEnemyCount++;
     }
 
-    public void DestroyAllEnemies()
+    void DestroyAllMeleeEnemies()
     {
         // Find all the MeleeEnemy objects in the scene
-        GameObject[] meleeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] meleeEnemies = GameObject.FindGameObjectsWithTag("MeleeEnemy");
 
         // Loop through each MeleeEnemy object and destroy it
         foreach (GameObject enemy in meleeEnemies)
