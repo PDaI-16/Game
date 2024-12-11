@@ -10,7 +10,7 @@ public class MeleeAttackGO : MonoBehaviour
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
     private float skillDamageBonus = 0f;
-    private float critChance = 0.9f; // 10% chance for crit
+    [SerializeField] private float critChance = 0.1f; // Default crit chance (10%)
     private float critMultiplier = 2f; // 2x damage for crits
 
 
@@ -30,6 +30,13 @@ public class MeleeAttackGO : MonoBehaviour
     {
         skillDamageBonus = bonus;
         Debug.Log($"Skill damage bonus updated to: {skillDamageBonus}");
+    }
+    public void SetCritChance(float bonusCritChance)
+    {
+        critChance += bonusCritChance;
+        // Ensure the crit chance doesn't exceed 100% (1.0f)
+        critChance = Mathf.Min(critChance, 1f);
+        Debug.Log($"Critical chance updated to: {critChance * 100}%");
     }
     public void Attack(Weapon usedWeapon, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
     {
@@ -87,7 +94,6 @@ public class MeleeAttackGO : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Melee weapon hit something");
         if (collision.CompareTag("Enemy"))
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
@@ -99,7 +105,7 @@ public class MeleeAttackGO : MonoBehaviour
                 // Determine if this attack is a critical hit
                 if (IsCriticalHit())
                 {
-                    totalDamage *= critMultiplier;
+                    totalDamage *= critMultiplier;  // Apply critical hit damage multiplier
                     Debug.Log("Critical hit! Damage doubled.");
                 }
 

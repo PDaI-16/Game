@@ -17,6 +17,7 @@ public class SkillTree : MonoBehaviour
         public float healthBonus = 0f;   // Bonus to health
         public float defenseBonus = 0f;  // Bonus to defense
         public int speedBonus = 0;
+        public float critChanceBonus = 0f;
     }
 
     public Skill[] skills; // Array of skills in the skill tree
@@ -241,6 +242,13 @@ public class SkillTree : MonoBehaviour
             {
                 meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
                 Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
+            }
+            // Apply critical chance bonus if skill has a crit chance bonus
+            if (skill.critChanceBonus > 0f)
+            {
+                // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
+                meleeAttackGO.SetCritChance(skill.critChanceBonus);
+                Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
             }
         }
         // If the skill provides a health bonus, apply it to the player's health using the setter
