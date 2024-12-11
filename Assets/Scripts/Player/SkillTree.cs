@@ -337,22 +337,39 @@ public class SkillTree : MonoBehaviour
                 continue;
             }
 
+            // Make sure the Outline component exists for each skill icon
+            Outline outline = skillImages[i].GetComponent<Outline>();
+            if (outline == null)
+            {
+                outline = skillImages[i].gameObject.AddComponent<Outline>(); // Add Outline component if it doesn't exist
+            }
+
+            // Apply the image color and border logic
             if (skill.isUnlocked)
             {
-                skillImages[i].color = Color.green; // Change the image color to green for unlocked skills
+                // Change the image color to its normal state (no green color applied)
+                skillImages[i].color = Color.white;
 
-                // Highlight active special skill in blue
-                if (skill.isSpecial && IsSpecialSkillActive(skill))
-                {
-                    skillImages[i].color = Color.blue;
-                }
+                // Apply a yellow border effect (you can adjust this as needed)
+                outline.effectColor = new Color(1f, 1f, 0f); // Set yellow color for the border
+                outline.effectDistance = new Vector2(4f, 4f); // Set the border thickness
             }
             else
             {
                 skillImages[i].color = Color.gray; // Change the image color to gray for locked skills
+
+                // If there's an outline, remove it when locked
+                outline.effectColor = Color.clear; // Remove the border effect when locked
+            }
+
+            // Highlight active special skill in blue (apply to icon color only, no border change here)
+            if (skill.isSpecial && IsSpecialSkillActive(skill))
+            {
+                skillImages[i].color = Color.red;
             }
         }
     }
+
 
 
     bool IsSpecialSkillActive(Skill skill)

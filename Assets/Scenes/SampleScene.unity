@@ -252,9 +252,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1953212740387011268, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -423,9 +423,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7326086248900390973, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -591,9 +591,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1029,9 +1029,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2325187026322624268, guid: 720f07f067b21b64288fd4d622de2576, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1313,9 +1313,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -670390156, guid: f2e8e599d92b86a49a68eb2c9eceea37, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1787,9 +1787,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -6746083241023490579, guid: 9f0f708f8a8e0804784c1c333ec916a2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2182,9 +2182,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1953212740387011268, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2534,9 +2534,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2842,9 +2842,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4412677221952415131, guid: 58305cf7794f34547ab794361fa54a7c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3846,9 +3846,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7271628321723459140, guid: 58305cf7794f34547ab794361fa54a7c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3939,7 +3939,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1236696029, guid: 0640970938e5df0468b033c3eb0c0a4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4616,9 +4616,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7326086248900390973, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5435,9 +5435,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4075307207547835167, guid: 8478e765a9f3dfd41b0b2975a2ac2d1e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5661,9 +5661,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 987182820, guid: 8478e765a9f3dfd41b0b2975a2ac2d1e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5753,9 +5753,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4966746807143359305, guid: 9c40780a9944abf4db55fdf8fc9205cd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5829,9 +5829,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 472640107, guid: 4812173f459f0a546aa7c66be54d8228, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6241,7 +6241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -178188365, guid: 0640970938e5df0468b033c3eb0c0a4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6373,24 +6373,30 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1a Melee
     cost: 1
     prerequisiteSkillIndices: 00000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 10
-    healthBonus: 0
+    damageBonus: 0
+    healthBonus: 20
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2a Melee
     cost: 1
     prerequisiteSkillIndices: 01000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
-    healthBonus: 20
+    damageBonus: 15
+    healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 3a Melee
     cost: 1
     prerequisiteSkillIndices: 02000000
@@ -6400,6 +6406,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 5
   - name: 1b Melee
     cost: 1
     prerequisiteSkillIndices: 00000000
@@ -6408,16 +6416,20 @@ MonoBehaviour:
     isSpecial: 0
     damageBonus: 0
     healthBonus: 0
-    defenseBonus: 100
+    defenseBonus: 10
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2b Melee
     cost: 1
     prerequisiteSkillIndices: 04000000
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    damageBonus: 15
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 3b Melee
     cost: 1
     prerequisiteSkillIndices: 05000000
@@ -6427,6 +6439,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 1
+    critChanceBonus: 0
   - name: FirstRanged
     cost: 1
     prerequisiteSkillIndices: 
@@ -6436,6 +6450,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1a Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
@@ -6444,7 +6460,9 @@ MonoBehaviour:
     isSpecial: 0
     damageBonus: 0
     healthBonus: 0
-    defenseBonus: 0
+    defenseBonus: 5
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2a Ranged
     cost: 1
     prerequisiteSkillIndices: 08000000
@@ -6452,17 +6470,21 @@ MonoBehaviour:
     requiredClass: 1
     isSpecial: 0
     damageBonus: 0
-    healthBonus: 0
+    healthBonus: 20
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 3a Ranged
     cost: 1
     prerequisiteSkillIndices: 09000000
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    damageBonus: 10
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1b Ranged
     cost: 1
     prerequisiteSkillIndices: 07000000
@@ -6471,7 +6493,9 @@ MonoBehaviour:
     isSpecial: 0
     damageBonus: 0
     healthBonus: 0
-    defenseBonus: 0
+    defenseBonus: 5
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2b Ranged
     cost: 1
     prerequisiteSkillIndices: 0b000000
@@ -6481,6 +6505,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 1
+    critChanceBonus: 0
   - name: 3b Ranged
     cost: 1
     prerequisiteSkillIndices: 0c000000
@@ -6490,6 +6516,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 5
   - name: FirstMagic
     cost: 1
     prerequisiteSkillIndices: 
@@ -6499,15 +6527,19 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1a Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    damageBonus: 15
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2a Magic
     cost: 1
     prerequisiteSkillIndices: 0f000000
@@ -6515,8 +6547,10 @@ MonoBehaviour:
     requiredClass: 2
     isSpecial: 0
     damageBonus: 0
-    healthBonus: 0
+    healthBonus: 20
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 3a Magic
     cost: 1
     prerequisiteSkillIndices: 10000000
@@ -6526,6 +6560,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 5
   - name: 1b Magic
     cost: 1
     prerequisiteSkillIndices: 0e000000
@@ -6533,8 +6569,10 @@ MonoBehaviour:
     requiredClass: 2
     isSpecial: 0
     damageBonus: 0
-    healthBonus: 0
+    healthBonus: 20
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2b Magic
     cost: 1
     prerequisiteSkillIndices: 12000000
@@ -6544,15 +6582,19 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 1
+    critChanceBonus: 0
   - name: 3b Magic
     cost: 1
     prerequisiteSkillIndices: 
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    damageBonus: 15
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1a SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 0300000006000000
@@ -6562,6 +6604,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1b SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 0300000006000000
@@ -6571,6 +6615,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2a SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 15000000
@@ -6580,6 +6626,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2b SpecialMelee
     cost: 1
     prerequisiteSkillIndices: 16000000
@@ -6589,6 +6637,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1a SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
@@ -6598,6 +6648,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 0a0000000d000000
@@ -6607,6 +6659,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2a SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 19000000
@@ -6616,6 +6670,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2b SpecialRanged
     cost: 1
     prerequisiteSkillIndices: 1a000000
@@ -6625,6 +6681,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
@@ -6634,6 +6692,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 1b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1400000011000000
@@ -6643,6 +6703,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2a SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1d000000
@@ -6652,6 +6714,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   - name: 2b SpecialMagic
     cost: 1
     prerequisiteSkillIndices: 1e000000
@@ -6661,6 +6725,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   skillImages:
   - {fileID: 820599833}
   - {fileID: 1389983868}
@@ -6706,6 +6772,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   rangedSpecialSkill:
     name: 
     cost: 0
@@ -6716,6 +6784,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
   magicSpecialSkill:
     name: 
     cost: 0
@@ -6726,6 +6796,8 @@ MonoBehaviour:
     damageBonus: 0
     healthBonus: 0
     defenseBonus: 0
+    speedBonus: 0
+    critChanceBonus: 0
 --- !u!1 &1222553576
 GameObject:
   m_ObjectHideFlags: 0
@@ -6995,9 +7067,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4548751759486180837, guid: 8478e765a9f3dfd41b0b2975a2ac2d1e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7088,9 +7160,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 472640107, guid: 4812173f459f0a546aa7c66be54d8228, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7181,9 +7253,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -670390156, guid: f2e8e599d92b86a49a68eb2c9eceea37, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7674,9 +7746,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3483438551839090165, guid: 9c40780a9944abf4db55fdf8fc9205cd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7886,9 +7958,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 472640107, guid: 4812173f459f0a546aa7c66be54d8228, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8706,9 +8778,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1831940730658185210, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8789,9 +8861,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1398113343881063737, guid: 8478e765a9f3dfd41b0b2975a2ac2d1e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8949,7 +9021,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1202984965197363600, guid: 0640970938e5df0468b033c3eb0c0a4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9025,9 +9097,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -918454830011851805, guid: 58305cf7794f34547ab794361fa54a7c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10212,9 +10284,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -670390156, guid: f2e8e599d92b86a49a68eb2c9eceea37, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

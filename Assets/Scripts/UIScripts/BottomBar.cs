@@ -85,7 +85,7 @@ public class BottomBar : MonoBehaviour
         Sprite skillSprite = GetSkillSprite(skill);
 
         skillImage.sprite = skillSprite;
-        skillImage.color = skillSprite == GUI1_0 ? Color.white : Color.blue;
+        skillImage.color = skillSprite == GUI1_0 ? Color.white : Color.white;
     }
 
     private Sprite GetSkillSprite(SkillTree.Skill skill)
