@@ -13,11 +13,11 @@ public class ProjectileAttackGO : MonoBehaviour
         switch (weaponCategory)
         {
             case ItemCategory.Ranged:
-                FireProjectile(rangedProjectilePrefab, rangedProjectileFirepoint, attackSpeed, currentCamera);
+                FireProjectile(rangedProjectilePrefab, rangedProjectileFirepoint, attackSpeed, currentCamera, -45.0f);
                 break;
 
             case ItemCategory.Magic:
-                FireProjectile(magicProjectilePrefab, magicProjectileFirepoint, attackSpeed, currentCamera);
+                FireProjectile(magicProjectilePrefab, magicProjectileFirepoint, attackSpeed, currentCamera, 0);
                 break;
 
             default:
@@ -26,7 +26,7 @@ public class ProjectileAttackGO : MonoBehaviour
         }
     }
 
-    private void FireProjectile(GameObject projectilePrefab, Transform firepoint, float speed, Camera camera)
+    private void FireProjectile(GameObject projectilePrefab, Transform firepoint, float speed, Camera camera, float angleAdjust)
     {
         if (projectilePrefab != null && firepoint != null)
         {
@@ -46,7 +46,9 @@ public class ProjectileAttackGO : MonoBehaviour
 
             // Rotate the projectile to face the mouse direction
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+
+            projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + angleAdjust));
 
             // Add velocity to the projectile
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
