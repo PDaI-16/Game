@@ -229,13 +229,17 @@ public class SkillTree : MonoBehaviour
     }
     void ApplyStatBonuses(Skill skill)
     {
+        MeleeAttackGO meleeAttackGO = FindFirstObjectByType<MeleeAttackGO>();
+        if (meleeAttackGO == null)
+        {
+            Debug.LogWarning("MeleeAttackGO not found in the scene.");
+            return;
+        }
         // If the skill provides a damage bonus, apply it to the player's damage
         if (skill.damageBonus > 0f)
         {
-            // Assuming you have a damage stat to modify, you can apply a damage bonus here.
-            // If you have a method or variable for damage, apply it like this:
-            //playerController.playerData.damage += skill.damageBonus; // If damage is a stat, update it accordingly
-            Debug.Log($"Damage increased by {skill.damageBonus}. ");
+            meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
         }
 
         // If the skill provides a health bonus, apply it to the player's health using the setter

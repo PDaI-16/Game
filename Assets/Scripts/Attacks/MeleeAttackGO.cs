@@ -9,6 +9,8 @@ public class MeleeAttackGO : MonoBehaviour
     [SerializeField] public BoxCollider2D hitbox;
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
+    private float skillDamageBonus = 0f;
+
 
     private Weapon usedWeaponData;
 
@@ -22,7 +24,11 @@ public class MeleeAttackGO : MonoBehaviour
         }
     }
 
-
+    public void SetSkillDamageBonus(float bonus)
+    {
+        skillDamageBonus = bonus;
+        Debug.Log($"Skill damage bonus updated to: {skillDamageBonus}");
+    }
     public void Attack(Weapon usedWeapon, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
     {
         usedWeaponData = usedWeapon;
@@ -30,14 +36,11 @@ public class MeleeAttackGO : MonoBehaviour
         currentWeaponGameObject = currentWeaponObject;
         currentWeaponObject.SetActive(false);
 
-
         FlipMeleeAttack(playerAnimationState);
         ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(gameObject.transform, currentCamera);
 
-
         meleeAttackAnimator.Play("Melee attack");
-        Debug.Log("Melee attack with damage of: " + usedWeapon.Damage);
-
+        Debug.Log("Melee attack with total damage of: " + (usedWeapon.Damage + skillDamageBonus));
     }
 
     private void FlipMeleeAttack(AnimationState playerAnimationState)
@@ -85,21 +88,17 @@ public class MeleeAttackGO : MonoBehaviour
         Debug.Log("Melee weapon hit something");
         if (collision.CompareTag("Enemy"))
         {
-            // Get the enemy's script that contains the health variable
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             if (enemy != null)
             {
-                // Reduce the enemy's health
-                enemy.TakeDamage(usedWeaponData.Damage);
-                Debug.Log("Enemy health reduced. Current health: " + enemy.health);
+                // Reduce the enemy's health with bonus damage included
+                enemy.TakeDamage(usedWeaponData.Damage + skillDamageBonus);
+                Debug.Log($"Enemy health reduced. Current health: {enemy.health}");
             }
             else
             {
                 Debug.LogWarning("Enemy script not found on the collided object.");
             }
         }
-
-
     }
-
 }
