@@ -11,6 +11,7 @@ TagManager:
   - PlayerWeaponArmChild
   - MeleeAttackObject
   - HintPanel
+  - tree
   layers:
   - Default
   - TransparentFX
@@ -20,13 +21,13 @@ TagManager:
   - UI
   - Enemy
   - Projectile
-  - 
+  - PlayerProjectile
   - Player
   - Weapon
   - MeleeAttack
   - Menu
   - MainMenu
-  - 
+  - Tree
   - 
   - 
   - 

@@ -9,6 +9,7 @@ public class ItemSlotScript : MonoBehaviour
     [SerializeField] private Image itemSlotImage;
 
     private bool previousCurrentWeaponEqual = false;
+    private bool previousCurrentHatEqual = false;
 
     private PlayerController playerController = null;
     private Weapon weapon = null;
@@ -24,44 +25,36 @@ public class ItemSlotScript : MonoBehaviour
 
     void Update()
     {
-        if (playerController.GetCurrentWeaponData() != null)
+        if (selfItemType != ItemType.None)
         {
-            if ((playerController.GetCurrentWeaponData() == weapon) != previousCurrentWeaponEqual) //Check if the current weapon has changed..
-            {
-                CheckIfThisItemIsEquipped();
-            }
-        }
-
-
-    }
-
-    private void CheckIfThisItemIsEquipped()
-    {
-        
-
-        if (playerController.GetCurrentWeaponData() != null && selfItemType != ItemType.None)
-        {
+            // Check if the item type matches and if it's different from the last state
             switch (selfItemType)
             {
                 case ItemType.Weapon:
-                    if (playerController.GetCurrentWeaponData() == weapon)
-                    {
-                        itemSlotImage.sprite = equippedSprite;
-                    }
-                    else
-                    {
-                        itemSlotImage.sprite = defaultSprite;
-                    }
-
-                    previousCurrentWeaponEqual = playerController.GetCurrentWeaponData() == weapon;
+                    HandleItemEquipChange(playerController.GetCurrentWeaponData() == weapon, ref previousCurrentWeaponEqual);
                     break;
-
                 case ItemType.Hat:
-                    // Waiting for equiping hats logic....
+                    HandleItemEquipChange(playerController.GetCurrentHatData() == hat, ref previousCurrentHatEqual);
                     break;
             }
-
         }
+    }
+
+    // Generalized method for checking item equip state and updating the sprite
+    private void HandleItemEquipChange(bool isEquipped, ref bool previousState)
+    {
+        // If the state of the equipped item changes, update the sprite
+        if (isEquipped != previousState)
+        {
+            UpdateItemSprite(isEquipped);
+            previousState = isEquipped;
+        }
+    }
+
+    // Method to update the sprite based on equipped state
+    private void UpdateItemSprite(bool isEquipped)
+    {
+        itemSlotImage.sprite = isEquipped ? equippedSprite : defaultSprite;
     }
 
     public void EquipItemToPlayer()
@@ -72,7 +65,7 @@ public class ItemSlotScript : MonoBehaviour
         }
         else if (selfItemType == ItemType.Hat && playerController != null && hat != null)
         {
-            Debug.LogError("Equip hats functionality is not done yet...");
+            playerController.EquipHat(hat);
         }
     }
 

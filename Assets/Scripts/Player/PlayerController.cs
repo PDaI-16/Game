@@ -27,63 +27,78 @@ public enum AnimationState
 
 public class PlayerController : MonoBehaviour
 {
+    // Serialized Fields (References to other components or objects)
     [SerializeField] public PlayerData playerData;
 
+    // Rigidbody and Movement
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] int movementSpeed;
 
-
-    private Vector2 _movementInput;
-    private Animator _playerAnimator;
-    private Camera _mainCamera;
-
-    private Vector3 _mousePosition;
-    private Vector3 _screenPoint;
-
-    private bool _isMoving;
-    public AnimationState currentAnimationState;
-    public AnimationState newAnimationState;
-
-    [SerializeField] GameObject WeaponPrefab;
-    
-    [SerializeField] private InventoryGO inventoryGOScript;
-    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-
-
-    [SerializeField] private Camera currentCamera;
-
-
-    private GameObject weaponArm;
-
-    private GameObject rangedArm;
-    private Transform rangedArmTransform;
-
-    private SortingGroup weaponArmSortingGroup;
-    private SortingGroup rangedArmSortingGroup;
-
-    private GameObject weaponArmMelee;
-    private GameObject weaponArmMagic;
-
-    private GameObject currentWeaponObject = null;
-    private Weapon currentWeaponData = null;
-    private Weapon previousWeaponData = null;
-
-    private Vector3 defaultPositionRangedArm;
-    private Vector3 newRangedWeaponPosition;
-
-
-    [SerializeField] private ItemSpawner itemSpawner;
-
-
-    // Attack related stuff
-
+    // Attack
+    [SerializeField] private ProjectileAttackGO projectileAttackGO;
     [SerializeField] private GameObject meleeAttack;
+
+    // Weapon and Attack
+    [SerializeField] GameObject WeaponPrefab;
+/*    [SerializeField] private SpriteRenderer weaponSpriteRenderer;*/
     [SerializeField] private MeleeAttackGO meleeAttackGOScript;
     [SerializeField] private BoxCollider2D meleeAttackHitbox;
 
+    private GameObject rangedArm = null;
+    private Transform rangedArmTransform = null;
+    private GameObject weaponArmMelee = null;
+    private GameObject weaponArmMagic = null;
+
+    // Camera and UI
+    [SerializeField] private Camera currentCamera;
     [SerializeField] private GameObject deathScreenPanel;
 
-/*    [SerializeField] private MainMenu mainMenu;*/
+    // Inventory and Item Spawner
+    [SerializeField] private InventoryGO inventoryGOScript;
+    [SerializeField] private ItemSpawner itemSpawner;
+
+
+
+    // Private Variables (Internal state tracking)
+    private Vector2 _movementInput;
+    private Animator _playerAnimator;
+    private Camera _mainCamera;
+    private Vector3 _mousePosition;
+    private Vector3 _screenPoint;
+    private GameObject weaponArm;
+    private SortingGroup weaponArmSortingGroup;
+    private SortingGroup rangedArmSortingGroup;
+
+    // Animation State
+    public AnimationState currentAnimationState;
+    public AnimationState newAnimationState;
+
+    private AnimationState previousStateRanged;
+    private AnimationState previousStateSorting;
+
+    // Weapon and Items
+    private GameObject currentWeaponObject = null;
+    private Weapon currentWeaponData = null;
+    private Weapon previousWeaponData = null;
+    private Hat currentHatData = null;
+
+    // Positions for Arm and Weapon
+    private Vector3 defaultPositionRangedArm;
+    private Vector3 newRangedWeaponPosition;
+
+    // Movement State
+    private bool _isMoving;
+
+    // Current total attack stats
+    [SerializeField] private float currentTotalDamage = 1;
+    [SerializeField] private float currentTotalAttackSpeed = 1;
+
+
+    private float attackCooldownTimer = 1.0f;
+    [SerializeField] private float attackCooldownTime = 1.0f;
+   
+    private bool canAttack = true;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -137,20 +152,81 @@ public class PlayerController : MonoBehaviour
         UpdateLookDirection();
         ChangeAnimationState(newAnimationState);
 
+
+
         if (currentWeaponData != null)
         {
+
+            UpdateAttackStats();
+            HandleAttackCooldown();
+
             if (currentWeaponData.Category == ItemCategory.Ranged)
             {
                 ObjectRotateAccordingToMouse.RotateObjectForRangedWeapon(rangedArm.transform, currentCamera);
                 ChangeRangedWeaponPositionBasedOnAnimation(newAnimationState);
             }
         }
+        else
+        {
+            Debug.LogWarning("No weapons equipped");
+        }
 
-
+        
 
         PlayerInputs();
         CheckIfShouldDie();
 
+    }
+
+    public void UpdateAttackStats()
+    {
+        if (currentWeaponData == null)
+        {
+            Debug.LogWarning("No weapon is equipped - UpdateAttackStats");
+            return;
+        }
+
+
+        attackCooldownTime = 1.0f / currentWeaponData.AttackSpeed;
+        if (currentHatData != null)
+        {
+
+            // If equipped hat is the same category then add its benefits
+            if (currentWeaponData.Category == currentHatData.Category)
+            {
+                attackCooldownTime = 1.0f / (currentWeaponData.AttackSpeed+currentHatData.AttackSpeedMultiplier) ;
+            }
+        }
+
+       
+        // Default values based on weapon data
+        currentTotalDamage = currentWeaponData.Damage;
+        currentTotalAttackSpeed = currentWeaponData.AttackSpeed;
+
+        // Apply hat bonuses if the hat exists and matches the weapon category
+        if (currentHatData != null && currentWeaponData.Category == currentHatData.Category)
+        {
+            currentTotalDamage += currentHatData.DamageMultiplier;
+            currentTotalAttackSpeed += currentHatData.AttackSpeedMultiplier;
+        }
+    }
+
+    private void StartAttackCooldown()
+    {
+        canAttack = false; // Prevent further attacks
+        attackCooldownTimer = attackCooldownTime; // Set the timer to the cooldown duration
+    }
+
+    private void HandleAttackCooldown()
+    {
+        if (!canAttack)
+        {
+            attackCooldownTimer -= Time.deltaTime; // Decrease the timer by the elapsed time
+            if (attackCooldownTimer <= 0.0f)
+            {
+                canAttack = true; // Cooldown complete, allow attacking again
+            }
+        }
     }
 
     public void CheckIfShouldDie()
@@ -165,17 +241,19 @@ public class PlayerController : MonoBehaviour
     private void PlayerInputs()
     {
         //Change to latest weapon in the inventory (just for testing before proper inventory is made...)
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            int weaponCountFromInventory = inventoryGOScript.InventoryData.GetItemTypeCountFromInventory(ItemType.Weapon);
-            EquipWeapon(inventoryGOScript.InventoryData.GetWeaponFromInventory(weaponCountFromInventory - 1));
-        }
 
         PlayerAttack();
     }
 
     void PlayerAttack()
     {
+
+        if (canAttack == false)
+        {
+            Debug.Log("Attack on cooldown.");
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
         {
             if (currentWeaponData != null)
@@ -188,25 +266,43 @@ public class PlayerController : MonoBehaviour
                             try
                             {
                                 meleeAttackHitbox.gameObject.SetActive(true);
-                                meleeAttackGOScript.Attack(currentWeaponData, currentAnimationState, currentWeaponObject, currentCamera);
+                                meleeAttackGOScript.Attack(currentTotalDamage, currentAnimationState, currentWeaponObject, currentCamera);
                             }
                             catch
                             {
-                                Debug.LogError("Failed to find attack script before activating the script");
+                                Debug.Log("Failed to find attack script before activating the script");
                             }
 
 
                         }
                         else
                         {
-                            Debug.LogError("Melee attack go script or hitbox not found by PlayerAttack");
+                            Debug.Log("Melee attack go script or hitbox not found by PlayerAttack");
                         }
                         break;
+
+                    case ItemCategory.Magic:
+                    case ItemCategory.Ranged:
+                        
+                        if (projectileAttackGO != null)
+                        {
+                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, 10.0f, currentTotalDamage, currentCamera, currentAnimationState);
+                        }
+
+                        else
+                        {
+                            Debug.Log("ProjectileAttackGo script not found by playerController");
+                        }
+
+                        break;
                 }
+
+                Debug.LogWarning("Attack with total damage of "+currentTotalDamage);
+                StartAttackCooldown();
             }
             else
             {
-                Debug.Log("Do weapon equiped - PlayerAttack");
+                Debug.Log("No weapon equiped - PlayerAttack");
             }
 
 
@@ -217,6 +313,11 @@ public class PlayerController : MonoBehaviour
     public Weapon GetCurrentWeaponData()
     {
         return currentWeaponData;
+    }
+
+    public Hat GetCurrentHatData()
+    {
+        return currentHatData;
     }
 
 
@@ -294,6 +395,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    public void EquipHat(Hat HatData)
+    {
+        // Check if the current weapon is different from the previous one
+        if (HatData != currentHatData)
+        {
+
+            // Set the current and previous weapon data for comparison
+            currentHatData = HatData;
+
+        }
+        else
+        {
+            Debug.Log("Item is the same as the previous one, not spawning a new one.");
+        }
+    }
+
     void UpdateLookDirection()
     {
         Vector2 dir = _mousePosition - _screenPoint;
@@ -331,7 +449,16 @@ public class PlayerController : MonoBehaviour
 
     void ChangeRangedWeaponPositionBasedOnAnimation(AnimationState animationState)
     {
-        if(rangedArmTransform != null)
+        if (previousStateRanged == animationState)
+        {
+            return;
+
+        }
+
+        previousStateRanged = animationState;
+            
+
+        if (rangedArmTransform != null)
         {
             switch (animationState)
             {
@@ -354,7 +481,7 @@ public class PlayerController : MonoBehaviour
 
                 case AnimationState.player_walk_down:
                 case AnimationState.player_idle_down:
-                    newRangedWeaponPosition = defaultPositionRangedArm;
+                    newRangedWeaponPosition = new Vector3(0, -0.15f, 0);
                     break;
 
 
@@ -382,11 +509,20 @@ public class PlayerController : MonoBehaviour
 
     void UpdateWeaponArmSorting(AnimationState animationState)
     {
+        if (previousStateSorting == animationState)
+        {
+            return;
+        }
+
+        previousStateSorting = animationState;
+
+
         if (weaponArmSortingGroup == null)
         {
             Debug.LogWarning("No weapon arm Sorting Group found!");
             return;
         }
+
 
         // Adjust sorting layer and order based on animation state
         switch (animationState)
@@ -439,6 +575,20 @@ public class PlayerController : MonoBehaviour
         currentAnimationState = newState;
         UpdateWeaponArmSorting(newState);
     }
+
+
+
+    public float GetCoolDownTime()
+    {
+        return attackCooldownTime;
+    }
+
+    public float GetCoolDownTimer()
+    {
+        return attackCooldownTimer;
+    }
+
+
 }
 
 

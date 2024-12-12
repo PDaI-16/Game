@@ -13,8 +13,9 @@ public class MeleeAttackGO : MonoBehaviour
     [SerializeField] private float critChance = 0.1f; // Default crit chance (10%)
     private float critMultiplier = 2f; // 2x damage for crits
 
+    [SerializeField] private AnimationState previousState;
 
-    private Weapon usedWeaponData;
+    private float damage = 0; 
 
     void Start()
     {
@@ -38,23 +39,32 @@ public class MeleeAttackGO : MonoBehaviour
         critChance = Mathf.Min(critChance, 1f);
         Debug.Log($"Critical chance updated to: {critChance * 100}%");
     }
-    public void Attack(Weapon usedWeapon, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
+
+    public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
     {
-        usedWeaponData = usedWeapon;
         currentCamera = camera;
         currentWeaponGameObject = currentWeaponObject;
         currentWeaponObject.SetActive(false);
+
+        damage = totalDamage;
 
         FlipMeleeAttack(playerAnimationState);
         ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(gameObject.transform, currentCamera);
 
         meleeAttackAnimator.Play("Melee attack");
-        Debug.Log("Melee attack with total damage of: " + (usedWeapon.Damage + skillDamageBonus));
+
     }
 
     private void FlipMeleeAttack(AnimationState playerAnimationState)
     {
+        if (playerAnimationState == previousState)
+        {
+            return;
+        }
+
         transform.localScale = new Vector3(1f, 1f, 0);
+
+        previousState = playerAnimationState;
 
         switch (playerAnimationState)
         {
@@ -87,8 +97,16 @@ public class MeleeAttackGO : MonoBehaviour
     // Activates on after animation event.
     void DeactivateHitbox()
     {
-        currentWeaponGameObject.gameObject.SetActive(true);
-        hitbox.gameObject.SetActive(false);
+        if (currentWeaponGameObject != null)
+        {
+            currentWeaponGameObject.gameObject.SetActive(true);
+            hitbox.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Current weapongameobject does not exist - deactivatehitbox()");
+        }
+
     }
 
 
@@ -100,7 +118,7 @@ public class MeleeAttackGO : MonoBehaviour
             if (enemy != null)
             {
                 // Calculate total damage
-                float totalDamage = usedWeaponData.Damage + skillDamageBonus;
+                float totalDamage = damage + skillDamageBonus;
 
                 // Determine if this attack is a critical hit
                 if (IsCriticalHit())
@@ -110,6 +128,7 @@ public class MeleeAttackGO : MonoBehaviour
                 }
 
                 // Apply the damage to the enemy
+                Debug.LogWarning("Total damage at melee: "+totalDamage);
                 enemy.TakeDamage(totalDamage);
                 Debug.Log($"Enemy health reduced. Current health: {enemy.health}");
             }

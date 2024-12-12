@@ -7,11 +7,23 @@ public class EnemyStats : MonoBehaviour
     public float maxHealth;
     public float Damage;
     public int experienceReward = 100;
-    private PlayerData playerData;
+
+    private PlayerData playerData = null;
+
     [SerializeField] private EnemyHealthBar enemyHealthBar;
     void Start()
     {
         health = maxHealth;
+
+        playerData = GameObject.Find("Player").GetComponent<PlayerController>().playerData;
+    }
+
+    public void Update()
+    {
+        if (playerData != null)
+        {
+            playerData = GameObject.Find("Player").GetComponent<PlayerController>().playerData;
+        }
     }
 
     public void TakeDamage(float damage)
@@ -32,7 +44,7 @@ public class EnemyStats : MonoBehaviour
             }
             else
             {
-                Debug.LogError("playerStats is null, can't award XP.");
+                Debug.LogError("playerData is null, can't award XP.");
             }
             Destroy(transform.root.gameObject);
         }

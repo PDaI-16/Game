@@ -9906,6 +9906,7 @@ MonoBehaviour:
   skillTreePanel: {fileID: 1220771553}
   inventoryPanel: {fileID: 1314429937}
   hintPanel: {fileID: 123447493}
+  previousState: 0
 --- !u!1 &1936407768
 GameObject:
   m_ObjectHideFlags: 0
@@ -10452,6 +10453,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d07bf6a1146bfd4b9894fa8fa06cc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMeleeWeapon:
+    Type: 1
+    Category: 0
+    Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+    ItemScore: 3
+    Damage: 3
+    AttackSpeed: 1
+  defaultRangedWeapon:
+    Type: 1
+    Category: 1
+    Sprite: {fileID: -9163666593600327624, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
+    ItemScore: 3
+    Damage: 3
+    AttackSpeed: 1
+  defaultMagicWeapon:
+    Type: 1
+    Category: 2
+    Sprite: {fileID: -4981723808371634254, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+    ItemScore: 3
+    Damage: 3
+    AttackSpeed: 1
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []
@@ -10661,14 +10683,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2767041653773481971, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 1073704624}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: itemSpawner
       value: 
@@ -10685,16 +10699,23 @@ PrefabInstance:
       propertyPath: inventoryGOScript
       value: 
       objectReference: {fileID: 2064573353}
-    - target: {fileID: 3834709343353103895, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: enemyStats
-      value: 
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3834709343353103895, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
