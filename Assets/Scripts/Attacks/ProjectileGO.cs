@@ -1,13 +1,19 @@
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class ProjectileGO : MonoBehaviour
 {
 
     private float totalDamage;
 
+    [SerializeField] private GameObject damageIndicatorPrefab;
+
+    private Vector3 positionAdjust = new Vector3(0,1.0f,0);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
         
     }
 
@@ -37,6 +43,17 @@ public class ProjectileGO : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(totalDamage);
+                if (damageIndicatorPrefab != null)
+                {
+                    GameObject damageIndicatorClone = 
+                        Instantiate(
+                            damageIndicatorPrefab,
+                            transform.position+positionAdjust,
+                            Quaternion.identity
+                        );
+                    damageIndicatorClone.GetComponent<DamageIndicatorGO>().SetDamageText(totalDamage);
+                }
+
             }
 
             Destroy(gameObject);
