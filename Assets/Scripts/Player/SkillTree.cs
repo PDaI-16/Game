@@ -13,7 +13,9 @@ public class SkillTree : MonoBehaviour
         public bool isUnlocked = false; // Whether the skill is unlocked or not
         public ItemCategory requiredClass; // The player class required for this skill (optional)
         public bool isSpecial = false; // Indicates if the skill is a special skill
-        public float damageBonus = 0f;   // Bonus to damage
+        public float meleeDamageBonus = 0f;   // Bonus to damage
+        public float rangedDamageBonus = 0f;   // Bonus to damage
+        public float magicDamageBonus = 0f;   // Bonus to damage
         public float healthBonus = 0f;   // Bonus to health
         public float defenseBonus = 0f;  // Bonus to defense
         public int speedBonus = 0;
@@ -203,53 +205,54 @@ public class SkillTree : MonoBehaviour
 
     void UnlockSkill(Skill skill)
     {
-        if (skill.cost <= playerController.playerData.GetSkillPoints())
+        int availableSkillPoints = playerController.playerData.GetSkillPoints();
+
+        if (skill.cost > availableSkillPoints)
         {
-            if (skill.isUnlocked)
-            {
-                // If the skill is already unlocked, no need to do anything
-                return;
-            }
-
-            // Unlock the skill
-            skill.isUnlocked = true;
-
-            // Apply stat bonuses to the player
-            ApplyStatBonuses(skill);
-
-            // Deduct points only when the skill is first unlocked
-            playerController.playerData.SpendSkillPoints(skill.cost);
-
-            // If it's a special skill, set it as active
-            if (skill.isSpecial)
-            {
-                SetActiveSpecialSkill(skill); // Set the unlocked special skill as active
-            }
-
-            UpdateSkillVisuals();  // Update UI visuals
+            Debug.Log("Not enough skill points to unlock the skill.");
+            return;
         }
+
+        if (skill.isUnlocked)
+        {
+            Debug.Log("Skill already unlocked.");
+            return;
+        }
+
+        // Unlock the skill
+        skill.isUnlocked = true;
+
+        // Deduct points and apply bonuses
+        playerController.playerData.SpendSkillPoints(skill.cost);
+        ApplyStatBonuses(skill);
+
+        // Update visuals
+        UpdateSkillVisuals();
     }
     void ApplyStatBonuses(Skill skill)
     {
-        MeleeAttackGO meleeAttackGO = FindFirstObjectByType<MeleeAttackGO>();
-        if (meleeAttackGO == null)
+
+        if (skill.meleeDamageBonus > 0f)
         {
-            Debug.LogWarning("MeleeAttackGO not found in the scene. Damage bonus will not be applied.");
+            playerController.SetMeleeDamageBonus(skill.meleeDamageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.meleeDamageBonus}");
         }
-        else
+        if (skill.rangedDamageBonus > 0f)
         {
-            if (skill.damageBonus > 0f)
-            {
-                meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
-                Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
-            }
-            // Apply critical chance bonus if skill has a crit chance bonus
-            if (skill.critChanceBonus > 0f)
-            {
-                // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
-                meleeAttackGO.SetCritChance(skill.critChanceBonus);
-                Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
-            }
+            playerController.SetRangedDamageBonus(skill.rangedDamageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.rangedDamageBonus}");
+        }
+        if (skill.magicDamageBonus > 0f)
+        {
+            playerController.SetMagicDamageBonus(skill.magicDamageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.magicDamageBonus}");
+        }
+        // Apply critical chance bonus if skill has a crit chance bonus
+        if (skill.critChanceBonus > 0f)
+        {
+            // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
+            playerController.SetCritChance(skill.critChanceBonus);
+            Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
         }
         // If the skill provides a health bonus, apply it to the player's health using the setter
         if (skill.healthBonus > 0f)

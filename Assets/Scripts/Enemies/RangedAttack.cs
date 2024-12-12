@@ -6,7 +6,7 @@ public class RangedAttack : MonoBehaviour
     public Transform firePoint;
     public float fireRate = 1.0f;
     public float projectileSpeed = 10.0f;
-    public float destroyTime = 3.0f;
+    public float destroyTime = 5.0f;
 
     private float fireCooldown = 0.0f;
     private RangedMovement rangedMovement;
@@ -50,7 +50,7 @@ public class RangedAttack : MonoBehaviour
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
         if (projectilePrefab == null || firePoint == null || player == null)
         {
