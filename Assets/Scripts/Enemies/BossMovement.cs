@@ -2,26 +2,31 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-    public GameObject MeleeEnemyPrefab;    // Prefab for melee minions
-    public GameObject RangedEnemyPrefab;   // Prefab for ranged minions
-    public int numberOfMinionsToSummon = 3; // Number of minions to summon during special attack
-    public float summonRadius = 5f;        // Radius around the boss where minions are summoned
-    public float speed = 5f;               // Movement speed of the boss
-    public float aggroStartDistance = 15f; // Distance at which the boss becomes aggroed
-    public float aggroEndDistance = 20f;   // Distance at which the boss loses aggro
-    public float meleeAttackDistance = 2f; // Ideal distance for melee attacks
-    public float rangedSafeDistance = 10f; // Distance to keep for ranged attacks
-    public float attackCooldown = 2f;     // Time between each attack
-    public float attackGraceTime = 1f;    // Time the boss waits after exiting attack range
+    public GameObject MeleeEnemyPrefab;
+    public GameObject RangedEnemyPrefab;
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public int numberOfMinionsToSummon = 3;
+    public float summonRadius = 5f;
+    public float speed = 5f;
+    public float aggroStartDistance = 15f;
+    public float aggroEndDistance = 20f;
+    public float meleeAttackDistance = 2f;
+    public float rangedSafeDistance = 10f;
+    public float attackCooldown = 2f;
+    public float attackGraceTime = 1f;
+    public float projectileSpeed = 10f;
+    public float projectileDestroyTime = 5f;
 
-    private GameObject player;             // Player reference (will be accessed via Singleton)
-    private float distanceToPlayer;        // Current distance to the player
-    private bool isAggroed;                // Tracks if the boss is aggroed
-    private bool isInGracePeriod;          // Tracks if the boss is in the grace period after an attack
-    private float graceTimer;              // Tracks time left in the grace period
-    private bool canAttack = true;         // Flag to track if the boss can attack again
+    private GameObject player;
+    private float distanceToPlayer;
+    private bool isAggroed;
+    private bool isInGracePeriod;
+    private float graceTimer;
+    private bool canAttack = true;
 
-    private EnemyStats enemyStats;         // Reference to the EnemyStats component
+    private EnemyStats enemyStats;
+
 
     private void Start()
     {
@@ -38,6 +43,11 @@ public class BossMovement : MonoBehaviour
         if (enemyStats == null)
         {
             Debug.LogError("EnemyStats component is missing on this boss!");
+        }
+
+        if (firePoint == null)
+        {
+            Debug.LogError("FirePoint is not assigned for ranged attacks.");
         }
     }
 
@@ -97,12 +107,12 @@ public class BossMovement : MonoBehaviour
             }
             else
             {
-                PerformSpecialMove(); // Boss executes a special move at longer ranges
+                PerformSpecialMove(); 
             }
         }
         else
         {
-            MoveTowardsPlayer(distanceToPlayer); // Move closer if no immediate action can be performed
+            MoveTowardsPlayer(distanceToPlayer);
         }
     }
 
@@ -128,14 +138,52 @@ public class BossMovement : MonoBehaviour
     // Ranged attack logic
     private void PerformRangedAttack()
     {
-        Debug.Log("Ranged Attack!");
+        if (projectilePrefab == null || firePoint == null || player == null)
+        {
+            Debug.LogWarning("ProjectilePrefab, FirePoint, or Player is missing.");
+            return;
+        }
+
+        // Instantiate the projectile
+        GameObject projectile = Instantiate(projectilePrefab, new Vector3(firePoint.position.x, firePoint.position.y, 0), Quaternion.identity);
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D component is missing from the projectilePrefab.");
+            return;
+        }
+
+        rb.gravityScale = 0;
+
+        // Calculate direction to the player
+        Vector2 displacement = player.transform.position - firePoint.position;
+        if (displacement.magnitude < 0.1f) // Prevent very small displacement from causing issues
+        {
+            displacement = Vector2.right; // Default direction if too close (e.g., to the right)
+            Debug.LogWarning("FirePoint and Player are too close. Defaulting direction to the right.");
+        }
+
+        Vector2 directionToPlayer = displacement.normalized;
+
+        // Calculate the angle for rotation
+        float angleOffset = -45f; 
+        float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg + angleOffset;
+
+        // Apply rotation and velocity to the projectile
+        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+        rb.linearVelocity = directionToPlayer * projectileSpeed;
+
+        Destroy(projectile, projectileDestroyTime);
+
+        Debug.Log("Boss fired a projectile!");
+
+        // Attack cooldown handling
         canAttack = false;
         isInGracePeriod = true;
         graceTimer = attackGraceTime;
-
-        // Add ranged attack logic (e.g., shooting projectiles, casting spells, etc.)
         Invoke("ResetAttackCooldown", attackCooldown);
     }
+
 
     // Special move logic
     private void PerformSpecialMove()

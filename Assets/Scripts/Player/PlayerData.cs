@@ -34,7 +34,7 @@ public class PlayerData
 
     public void SpendSkillPoints(int cost)
     {
-        if (cost < skillPoints)
+        if (cost <= skillPoints)
         {
             skillPoints -= cost;
         }
@@ -136,20 +136,15 @@ public class PlayerData
     {
         if (health > 0f)
         {
-            // Calculate damage reduction based on defense
-            float damageAfterDefense = damage - defence;
+            // Calculate damage reduction based on defense as a percentage
+            float damageAfterDefense = damage * (1 - (defence / 100f));
 
             // Ensure that damage is not negative (defense can't heal the player)
             damageAfterDefense = Mathf.Max(damageAfterDefense, 0f);
 
             // Subtract the reduced damage from the player's health
             health -= damageAfterDefense;
-
-            // Log the result (optional for debugging)
-            Debug.Log($"Player took {damageAfterDefense} damage after defense. Health remaining: {health}");
+            Debug.Log($"Player took {damageAfterDefense} damage after {defence}% defense reduction. Health remaining: {health}");
         }
     }
-
-
-
 }
