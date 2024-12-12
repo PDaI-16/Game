@@ -8,7 +8,7 @@ public class ProjectileGO : MonoBehaviour
 
     [SerializeField] private GameObject damageIndicatorPrefab;
 
-    private Vector3 positionAdjust = new Vector3(0,1.0f,0);
+    private Vector3 positionAdjust = new Vector3(0, 0.4f,0);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
