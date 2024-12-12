@@ -10546,9 +10546,31 @@ MonoBehaviour:
     ItemScore: 3
     Damage: 3
     AttackSpeed: 1
+  defaultMeleeHat:
+    Type: 0
+    Category: 0
+    Sprite: {fileID: 7613330016314061283, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+    ItemScore: 3
+    DamageMultiplier: 3
+    AttackSpeedMultiplier: 1
+  defaultRangedHat:
+    Type: 0
+    Category: 1
+    Sprite: {fileID: -2683581536351381293, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+    ItemScore: 3
+    DamageMultiplier: 3
+    AttackSpeedMultiplier: 1
+  defaultMagicHat:
+    Type: 0
+    Category: 2
+    Sprite: {fileID: -1831940730658185210, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+    ItemScore: 3
+    DamageMultiplier: 3
+    AttackSpeedMultiplier: 1
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []
+  playerController: {fileID: 0}
 --- !u!1 &2095745167
 GameObject:
   m_ObjectHideFlags: 0

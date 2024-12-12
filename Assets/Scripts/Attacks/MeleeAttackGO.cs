@@ -23,7 +23,11 @@ public class MeleeAttackGO : MonoBehaviour
 
     private void Update()
     {
-        transform.position = parentTransform.position;
+        if (transform != null && parentTransform != null)
+        {
+            transform.position = parentTransform.position;
+        } 
+        
     }
 
     public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera, Transform playerTransform)

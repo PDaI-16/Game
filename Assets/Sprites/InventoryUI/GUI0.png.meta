@@ -2067,12 +2067,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 177
+        y: 176
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 3, z: 4, w: 4}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -4725,16 +4725,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI0_208
+      name: GUI_DARK
       rect:
         serializedVersion: 2
         x: 208
-        y: 32
-        width: 16
-        height: 16
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -5455,7 +5455,6 @@ TextureImporter:
       GUI0_205: 1889825502
       GUI0_206: 1433840792
       GUI0_207: -506418703
-      GUI0_208: 1639225975
       GUI0_209: -167391084
       GUI0_21: 472640107
       GUI0_210: 1369384977
@@ -5566,6 +5565,7 @@ TextureImporter:
       GUI0_99: -1562631848
       GUI_BLUE: -527961317
       GUI_CHECKMARK: -612787842
+      GUI_DARK: 1639225975
       GUI_X: -1278503460
       GUI_inv: -281879711
       GUI_placeholder: -1954577601
