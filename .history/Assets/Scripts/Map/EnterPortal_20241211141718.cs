@@ -21,17 +21,13 @@ public class EnterPortal : MonoBehaviour
             Debug.Log($"Current level: {map.currentLevel}");
 
             // Get a random spawn position in the specified biomes
-            (Vector3Int spawnPosition, string biomeName) = map.GetRandomSpawnPosition();
+            Vector3Int spawnPosition = map.GetRandomSpawnPosition();
 
-            // Print out the biome name
-            Debug.Log($"Player spawned in biome: {biomeName}");
-
-            // Load the next level
-            map.LoadNextLevel();
             // Move the player to the new position
             other.transform.position = map.tilemap.CellToWorld(spawnPosition);
 
-            
+            // Load the next level
+            map.LoadNextLevel();
         }
     }
 }

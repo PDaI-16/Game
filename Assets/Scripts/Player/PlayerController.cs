@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Http.Headers;
@@ -125,7 +126,14 @@ public class PlayerController : MonoBehaviour
 
     } // Update is called once per frame
 
-
+    public void SetMovementSpeed(float newMovementSpeed)
+    {
+        movementSpeed = (int)Mathf.Max(0, newMovementSpeed); 
+    }
+    public float GetMovementSpeed()
+    {
+        return movementSpeed;
+    }
 
     void Update()
     {

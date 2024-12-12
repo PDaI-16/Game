@@ -36,8 +36,6 @@ public class CooldownIndicator : MonoBehaviour
             return;
         }
 
-        Debug.LogWarning("Cooldown percent: "+cooldownPercent);
-
         if (cooldownPercent <= 0.0f && fill.activeSelf == true) {
             fill.SetActive(false);
         }

@@ -1,40 +1,37 @@
 fileFormatVersion: 2
-guid: e5c215b168fbffa498527023cb9f0a62
+guid: 58305cf7794f34547ab794361fa54a7c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4756335130094519594
-    second: Door1_0
+      213: -2241300882062069919
+    second: Boot_0
   - first:
-      213: 870898101615144570
-    second: Door1_1
+      213: -1518846335792857908
+    second: Boot_1
   - first:
-      213: -314240632682936551
-    second: Door1_2
+      213: -4412677221952415131
+    second: Boot_2
   - first:
-      213: 5828069261732706948
-    second: Door1_3
+      213: 8162023747377384568
+    second: Boot_3
   - first:
-      213: -2551401791654550658
-    second: Door1_4
+      213: -6665495429715092877
+    second: Boot_4
   - first:
-      213: 5791638110291150986
-    second: Door1_5
+      213: -9136335009019047890
+    second: Boot_5
   - first:
-      213: 5518751789451317981
-    second: Door1_6
+      213: -918454830011851805
+    second: Boot_6
   - first:
-      213: -1944022132063291819
-    second: Door1_7
+      213: -7271628321723459140
+    second: Boot_7
   - first:
-      213: -2817834302395938663
-    second: Door1_8
+      213: 3637190462243508836
+    second: Boot_8
   - first:
-      213: -847278944672642981
-    second: Door1_9
-  - first:
-      213: 8051798189652731527
-    second: Door1_10
+      213: 7043401737531554945
+    second: Boot_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,260 +123,225 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door1_0
+      name: Boot_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 58
-        width: 17
-        height: 38
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6da310a366a1efdb0800000000000000
-      internalID: -4756335130094519594
+      spriteID: 16fabe109bc45e0e0800000000000000
+      internalID: -2241300882062069919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_1
+      name: Boot_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 58
-        width: 10
-        height: 38
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7e255e853d061c00800000000000000
-      internalID: 870898101615144570
+      spriteID: cccb9a60e49fbeae0800000000000000
+      internalID: -1518846335792857908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_2
+      name: Boot_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 58
-        width: 18
-        height: 38
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91780fa3fc793abf0800000000000000
-      internalID: -314240632682936551
+      spriteID: 56a911d227503c2c0800000000000000
+      internalID: -4412677221952415131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_3
+      name: Boot_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 58
-        width: 10
-        height: 38
+        x: 48
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48a73f77d1671e050800000000000000
-      internalID: 5828069261732706948
+      spriteID: 87c4bbe9a55554170800000000000000
+      internalID: 8162023747377384568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_4
+      name: Boot_4
       rect:
         serializedVersion: 2
-        x: 63
-        y: 58
-        width: 18
-        height: 38
+        x: 64
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e73a221a699979cd0800000000000000
-      internalID: -2551401791654550658
+      spriteID: 37a97d3d8376f73a0800000000000000
+      internalID: -6665495429715092877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_5
+      name: Boot_5
       rect:
         serializedVersion: 2
-        x: 83
-        y: 58
-        width: 10
-        height: 38
+        x: 80
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a88c4870d28006050800000000000000
-      internalID: 5791638110291150986
+      spriteID: e20547637b7353180800000000000000
+      internalID: -9136335009019047890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_6
+      name: Boot_6
       rect:
         serializedVersion: 2
-        x: 86
-        y: 31
-        width: 42
-        height: 65
+        x: 96
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd21ccd438b869c40800000000000000
-      internalID: 5518751789451317981
+      spriteID: 3ebd6e2c23ef043f0800000000000000
+      internalID: -918454830011851805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_7
+      name: Boot_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb9d001719cf51b90800000000000000
+      internalID: -7271628321723459140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boot_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 42
-        width: 17
-        height: 7
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 556bed6bb227505e0800000000000000
-      internalID: -1944022132063291819
+      spriteID: 462967a6475e97230800000000000000
+      internalID: 3637190462243508836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door1_8
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 42
-        width: 27
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99887c9a1aa05e8d0800000000000000
-      internalID: -2817834302395938663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Door1_9
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 42
-        width: 27
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b588e15f94cdd34f0800000000000000
-      internalID: -847278944672642981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Door1_10
+      name: Boot_9
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78662611bcbbdbf60800000000000000
-      internalID: 8051798189652731527
+      spriteID: 18cffef00903fb160800000000000000
+      internalID: 7043401737531554945
       vertices: []
       indices: 
       edges: []
@@ -388,7 +350,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fc103f9f7ca3d4b4da07fb28765ee74a
+    spriteID: 47a8b2b59a28965428d34e5a59deaba7
     internalID: 0
     vertices: []
     indices: 
@@ -398,17 +360,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Door1_0: -4756335130094519594
-      Door1_1: 870898101615144570
-      Door1_10: 8051798189652731527
-      Door1_2: -314240632682936551
-      Door1_3: 5828069261732706948
-      Door1_4: -2551401791654550658
-      Door1_5: 5791638110291150986
-      Door1_6: 5518751789451317981
-      Door1_7: -1944022132063291819
-      Door1_8: -2817834302395938663
-      Door1_9: -847278944672642981
+      Boot_0: -2241300882062069919
+      Boot_1: -1518846335792857908
+      Boot_2: -4412677221952415131
+      Boot_3: 8162023747377384568
+      Boot_4: -6665495429715092877
+      Boot_5: -9136335009019047890
+      Boot_6: -918454830011851805
+      Boot_7: -7271628321723459140
+      Boot_8: 3637190462243508836
+      Boot_9: 7043401737531554945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

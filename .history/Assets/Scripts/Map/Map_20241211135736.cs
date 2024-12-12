@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Linq;
 using Math = System.Math;
-using System.Threading;
 
 public class Map : MonoBehaviour
 {
@@ -15,8 +14,8 @@ public class Map : MonoBehaviour
 
     public int currentLevel = 1;  // Start with Level 1
     public int maxLevels = 5;     // Total levels to generate
+
     public bool Randomized = false;
-    public EnemySpawner EnemySpawner;
 
     [Header("Prefabs")]
     public GameObject portalPrefab; // Add this field for the portal prefab
@@ -110,20 +109,21 @@ void GenerateMap()
 
 public void LoadNextLevel()
 {
+    // Clear old map and colliders
     ResetMap();
 
-    EnemySpawner.currentBossEnemyCount = 0;
-
+    // Enable randomization for the next level
     Randomized = true;
     currentLevel++;
 
+    // Generate a new map
     GenerateMap();
 
+    // Regenerate environment objects
     GenerateEnvironmentObjects();
 
+    // Regenerate ocean colliders
     GenerateOceanColliders();
-
-    EnemySpawner.Start();
 
     Debug.Log($"Next level generated! {currentLevel}");
 }
@@ -150,66 +150,6 @@ void ResetMap()
             Destroy(child.gameObject);
         }
     }
-
-    EnemySpawner.DestroyAllEnemies();
-}
-
-public (Vector3Int, string) GetRandomSpawnPosition()
-{
-    List<(Vector3Int, string)> spawnPositions = new List<(Vector3Int, string)>();
-    int minDistanceFromMapEdge = 2; // Minimum distance from the edge of the map
-    int minDistanceFromOcean = 2; // Minimum distance from the ocean biome
-    float waterThreshold = 0.4f; // Threshold to determine water
-
-    for (int x = minDistanceFromMapEdge; x < width - minDistanceFromMapEdge; ++x)
-    {
-        for (int y = minDistanceFromMapEdge; y < height - minDistanceFromMapEdge; ++y)
-        {
-            BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
-            if (currentBiome != null && (currentBiome.name == "Desert" || currentBiome.name == "Grassland" || currentBiome.name == "Forest"))
-            {
-                bool isFarEnoughFromOcean = true;
-
-                // Check if the position is at least minDistanceFromOcean blocks away from the ocean biome
-                for (int dx = -minDistanceFromOcean; dx <= minDistanceFromOcean; ++dx)
-                {
-                    for (int dy = -minDistanceFromOcean; dy <= minDistanceFromOcean; ++dy)
-                    {
-                        int checkX = x + dx;
-                        int checkY = y + dy;
-
-                        if (checkX >= 0 && checkY >= 0 && checkX < width && checkY < height)
-                        {
-                            BiomePreset nearbyBiome = GetBiome(heightMap[checkX, checkY], moistureMap[checkX, checkY], heatMap[checkX, checkY]);
-                            if (nearbyBiome != null && nearbyBiome.name == "Ocean")
-                            {
-                                isFarEnoughFromOcean = false;
-                                break;
-                            }
-                        }
-                    }
-                    if (!isFarEnoughFromOcean)
-                        break;
-                }
-
-                // Ensure the position is not in water
-                if (isFarEnoughFromOcean && heightMap[x, y] >= waterThreshold)
-                {
-                    spawnPositions.Add((new Vector3Int(x, y, 0), currentBiome.name));
-                }
-            }
-        }
-    }
-
-    if (spawnPositions.Count == 0)
-    {
-        Debug.LogWarning("No suitable spawn positions found.");
-        return (new Vector3Int(width / 2, height / 2, 0), "Default"); // Default to center if no suitable positions found
-    }
-
-    System.Random rng = new System.Random();
-    int randomIndex = rng.Next(spawnPositions.Count);
-    return spawnPositions[randomIndex];
 }
 
 bool IsBorder(int x, int y)
@@ -225,136 +165,114 @@ void GenerateEnvironmentObjects()
     List<Bounds> occupiedBounds = new List<Bounds>();
     bool portalSpawned = false; // Flag to check if the portal has been spawned
 
-    // Create a list of all possible positions
-    List<Vector2Int> positions = new List<Vector2Int>();
     for (int x = 0; x < width; ++x)
     {
         for (int y = 0; y < height; ++y)
         {
-            positions.Add(new Vector2Int(x, y));
-        }
-    }
+            Vector3Int position = new Vector3Int(x, y, 0);
+            BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
 
-    // Shuffle the list of positions
-    System.Random rng = new();
-    int n = positions.Count;
-    while (n > 1)
-    {
-        n--;
-        int k = rng.Next(n + 1);
-        Vector2Int value = positions[k];
-        positions[k] = positions[n];
-        positions[n] = value;
-    }
+            if (currentBiome == null)
+                continue;
 
-    // Iterate through the shuffled list to find a suitable position for the portal
-    foreach (Vector2Int pos in positions)
-    {
-        int x = pos.x;
-        int y = pos.y;
-        Vector3Int position = new Vector3Int(x, y, 0);
-        BiomePreset currentBiome = GetBiome(heightMap[x, y], moistureMap[x, y], heatMap[x, y]);
+            // Check if the current biome is suitable for spawning the portal
+            bool isSuitableForPortal = currentBiome.name == "Desert" || currentBiome.name == "Forest" || currentBiome.name == "Grassland";
 
-        if (currentBiome == null)
-            continue;
-
-        // Check if the current biome is suitable for spawning the portal
-        bool isSuitableForPortal = currentBiome.name == "Desert" || currentBiome.name == "Forest" || currentBiome.name == "Grassland";
-
-        // Spawn the portal if it hasn't been spawned yet, the current biome is suitable, and the position is not too close to the edge
-        if (!portalSpawned && isSuitableForPortal && Random.value < 0.01f &&
-            x >= minDistanceFromMapEdge && x < width - minDistanceFromMapEdge &&
-            y >= minDistanceFromMapEdge && y < height - minDistanceFromMapEdge) // Adjust the probability as needed
-        {
-            GameObject portal = Instantiate(portalPrefab, tilemap.CellToWorld(position), Quaternion.identity, colliderParent.transform);
-            EnterPortal portalScript = portal.GetComponent<EnterPortal>();
-            if (portalScript != null)
+            // Spawn the portal if it hasn't been spawned yet, the current biome is suitable, and the position is not too close to the edge
+            if (!portalSpawned && isSuitableForPortal && Random.value < 0.01f &&
+                x >= minDistanceFromMapEdge && x < width - minDistanceFromMapEdge &&
+                y >= minDistanceFromMapEdge && y < height - minDistanceFromMapEdge) // Adjust the probability as needed
             {
-                portalScript.map = this; // Set the reference to the Map component
+                GameObject portal = Instantiate(portalPrefab, tilemap.CellToWorld(position), Quaternion.identity, colliderParent.transform);
+                Portal portalScript = portal.GetComponent<Portal>();
+                if (portalScript != null)
+                {
+                    portalScript.map = this; // Set the reference to the Map component
+                }
+                portalSpawned = true;
             }
-            portalSpawned = true;
-        }
 
-        foreach (var biomeObject in currentBiome.environmentObjects)
-        {
-            if (Random.value < biomeObject.spawnProbability)
+            foreach (var biomeObject in currentBiome.environmentObjects)
             {
-                if (x < minDistanceFromMapEdge || x >= width - minDistanceFromMapEdge ||
-                    y < minDistanceFromMapEdge || y >= height - minDistanceFromMapEdge)
+                if (Random.value < biomeObject.spawnProbability)
                 {
-                    // Skip objects too close to the edge
-                    continue;
-                }
-
-                // Calculate distance from biome edge
-                int distanceFromBiomeEdge = CalculateDistanceFromBiomeEdge(x, y, currentBiome);
-                if (distanceFromBiomeEdge < biomeObject.minDistanceFromEdge)
-                {
-                    // Skip objects too close to the biome edge
-                    continue;
-                }
-
-                // Instantiate the environment object
-                GameObject obj = Instantiate(biomeObject.prefab, tilemap.CellToWorld(position), Quaternion.identity, colliderParent.transform);
-                Renderer renderer = obj.GetComponent<Renderer>();
-                if (renderer == null)
-                {
-                    Destroy(obj);
-                    continue;
-                }
-
-                Bounds bounds = renderer.bounds;
-                bool isFullyContained = true;
-
-                // Calculate the corners of the bounds
-                Vector3[] corners = new Vector3[4];
-                corners[0] = bounds.min;
-                corners[1] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
-                corners[2] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
-                corners[3] = bounds.max;
-
-                foreach (Vector3 corner in corners)
-                {
-                    Vector3Int cellPosition = tilemap.WorldToCell(corner);
-                    if (cellPosition.x < 0 || cellPosition.y < 0 || cellPosition.x >= width || cellPosition.y >= height)
+                    if (x < minDistanceFromMapEdge || x >= width - minDistanceFromMapEdge ||
+                        y < minDistanceFromMapEdge || y >= height - minDistanceFromMapEdge)
                     {
-                        isFullyContained = false;
-                        break;
+                        // Skip objects too close to the edge
+                        continue;
                     }
 
-                    BiomePreset nearbyBiome = GetBiome(heightMap[cellPosition.x, cellPosition.y], moistureMap[cellPosition.x, cellPosition.y], heatMap[cellPosition.x, cellPosition.y]);
-                    if (nearbyBiome != currentBiome)
+                    // Calculate distance from biome edge
+                    int distanceFromBiomeEdge = CalculateDistanceFromBiomeEdge(x, y, currentBiome);
+                    if (distanceFromBiomeEdge < biomeObject.minDistanceFromEdge)
                     {
-                        isFullyContained = false;
-                        break;
+                        // Skip objects too close to the biome edge
+                        continue;
                     }
-                }
 
-                if (!isFullyContained)
-                {
-                    Destroy(obj);
-                    continue; // Skip spawning if the bounding box is not fully contained within the intended biome
-                }
-
-                // Check if the position is already occupied by considering the object's size
-                bool overlaps = false;
-                foreach (var occupied in occupiedBounds)
-                {
-                    if (bounds.Intersects(occupied))
+                    // Instantiate the environment object
+                    GameObject obj = Instantiate(biomeObject.prefab, tilemap.CellToWorld(position), Quaternion.identity, colliderParent.transform);
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    if (renderer == null)
                     {
-                        overlaps = true;
-                        break;
+                        Destroy(obj);
+                        continue;
                     }
-                }
 
-                if (overlaps)
-                {
-                    Destroy(obj);
-                    continue; // Skip spawning if the position is already occupied
-                }
+                    Bounds bounds = renderer.bounds;
+                    bool isFullyContained = true;
 
-                // Mark the position as occupied
-                occupiedBounds.Add(bounds);
+                    // Calculate the corners of the bounds
+                    Vector3[] corners = new Vector3[4];
+                    corners[0] = bounds.min;
+                    corners[1] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+                    corners[2] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
+                    corners[3] = bounds.max;
+
+                    foreach (Vector3 corner in corners)
+                    {
+                        Vector3Int cellPosition = tilemap.WorldToCell(corner);
+                        if (cellPosition.x < 0 || cellPosition.y < 0 || cellPosition.x >= width || cellPosition.y >= height)
+                        {
+                            isFullyContained = false;
+                            break;
+                        }
+
+                        BiomePreset nearbyBiome = GetBiome(heightMap[cellPosition.x, cellPosition.y], moistureMap[cellPosition.x, cellPosition.y], heatMap[cellPosition.x, cellPosition.y]);
+                        if (nearbyBiome != currentBiome)
+                        {
+                            isFullyContained = false;
+                            break;
+                        }
+                    }
+
+                    if (!isFullyContained)
+                    {
+                        Destroy(obj);
+                        continue; // Skip spawning if the bounding box is not fully contained within the intended biome
+                    }
+
+                    // Check if the position is already occupied by considering the object's size
+                    bool overlaps = false;
+                    foreach (var occupied in occupiedBounds)
+                    {
+                        if (bounds.Intersects(occupied))
+                        {
+                            overlaps = true;
+                            break;
+                        }
+                    }
+
+                    if (overlaps)
+                    {
+                        Destroy(obj);
+                        continue; // Skip spawning if the position is already occupied
+                    }
+
+                    // Mark the position as occupied
+                    occupiedBounds.Add(bounds);
+                }
             }
         }
     }
@@ -365,7 +283,7 @@ void GenerateOceanColliders()
     Transform existingOceanColliders = transform.Find("OceanColliders");
     if (existingOceanColliders != null)
     {
-        Destroy(existingOceanColliders.gameObject);
+        DestroyImmediate(existingOceanColliders.gameObject);
     }
 
     GameObject oceanCollidersParent = new GameObject("OceanColliders");
@@ -470,6 +388,7 @@ int CalculateDistanceFromBiomeEdge(int x, int y, BiomePreset biome)
 
     return distance;
 }
+
 
     BiomePreset GetBiome(float height, float moisture, float heat)
 {

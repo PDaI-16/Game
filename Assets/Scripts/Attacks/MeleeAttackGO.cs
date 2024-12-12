@@ -9,6 +9,9 @@ public class MeleeAttackGO : MonoBehaviour
     [SerializeField] public BoxCollider2D hitbox;
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
+    private float skillDamageBonus = 0f;
+    [SerializeField] private float critChance = 0.1f; // Default crit chance (10%)
+    private float critMultiplier = 2f; // 2x damage for crits
 
     [SerializeField] private AnimationState previousState;
 
@@ -24,6 +27,18 @@ public class MeleeAttackGO : MonoBehaviour
         }
     }
 
+    public void SetSkillDamageBonus(float bonus)
+    {
+        skillDamageBonus = bonus;
+        Debug.Log($"Skill damage bonus updated to: {skillDamageBonus}");
+    }
+    public void SetCritChance(float bonusCritChance)
+    {
+        critChance += bonusCritChance;
+        // Ensure the crit chance doesn't exceed 100% (1.0f)
+        critChance = Mathf.Min(critChance, 1f);
+        Debug.Log($"Critical chance updated to: {critChance * 100}%");
+    }
 
     public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
     {
@@ -31,13 +46,12 @@ public class MeleeAttackGO : MonoBehaviour
         currentWeaponGameObject = currentWeaponObject;
         currentWeaponObject.SetActive(false);
 
+        damage = totalDamage;
 
         FlipMeleeAttack(playerAnimationState);
         ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(gameObject.transform, currentCamera);
 
-
         meleeAttackAnimator.Play("Melee attack");
-        Debug.Log("Melee attack with damage of: " + totalDamage);
 
     }
 
@@ -98,24 +112,35 @@ public class MeleeAttackGO : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Melee weapon hit something");
         if (collision.CompareTag("Enemy"))
         {
-            // Get the enemy's script that contains the health variable
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             if (enemy != null)
             {
-                // Reduce the enemy's health
-                enemy.TakeDamage(damage);
-                Debug.Log("Enemy health reduced. Current health: " + enemy.health);
+                // Calculate total damage
+                float totalDamage = damage + skillDamageBonus;
+
+                // Determine if this attack is a critical hit
+                if (IsCriticalHit())
+                {
+                    totalDamage *= critMultiplier;  // Apply critical hit damage multiplier
+                    Debug.Log("Critical hit! Damage doubled.");
+                }
+
+                // Apply the damage to the enemy
+                Debug.LogWarning("Total damage at melee: "+totalDamage);
+                enemy.TakeDamage(totalDamage);
+                Debug.Log($"Enemy health reduced. Current health: {enemy.health}");
             }
             else
             {
                 Debug.LogWarning("Enemy script not found on the collided object.");
             }
         }
-
-
     }
-
+    // Method to check if the hit is a critical hit (10% chance)
+    private bool IsCriticalHit()
+    {
+        return Random.value < critChance; // Random.value gives a float between 0 and 1
+    }
 }

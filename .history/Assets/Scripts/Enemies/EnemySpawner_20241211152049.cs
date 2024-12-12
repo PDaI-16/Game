@@ -69,24 +69,9 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
 
-/*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
+        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");
 
         currentEnemyCount++;
-    }
-
-    public void DestroyAllEnemies()
-    {
-        // Find all the MeleeEnemy objects in the scene
-        GameObject[] meleeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        // Loop through each MeleeEnemy object and destroy it
-        foreach (GameObject enemy in meleeEnemies)
-        {
-            Destroy(enemy);
-        }
-
-        // Reset the current enemy count to 0
-        currentEnemyCount = 0;
     }
 
     private void SpawnRangedEnemyToRandomLocation(float levelMultiplier)
@@ -133,7 +118,7 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
 
-/*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
+        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");
 
         currentEnemyCount++;
     }
