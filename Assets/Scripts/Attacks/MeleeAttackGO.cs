@@ -8,9 +8,7 @@ public class MeleeAttackGO : MonoBehaviour
     [SerializeField] public Animator meleeAttackAnimator;
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
-    private float skillDamageBonus = 0f;
-    [SerializeField] private float critChance = 0.1f; // Default crit chance (10%)
-    private float critMultiplier = 2f; // 2x damage for crits
+    
 
     [SerializeField] private AnimationState previousState;
     private Transform parentTransform;
@@ -26,19 +24,6 @@ public class MeleeAttackGO : MonoBehaviour
     private void Update()
     {
         transform.position = parentTransform.position;
-    }
-
-    public void SetSkillDamageBonus(float bonus)
-    {
-        skillDamageBonus = bonus;
-        Debug.Log($"Skill damage bonus updated to: {skillDamageBonus}");
-    }
-    public void SetCritChance(float bonusCritChance)
-    {
-        critChance += bonusCritChance;
-        // Ensure the crit chance doesn't exceed 100% (1.0f)
-        critChance = Mathf.Min(critChance, 1f);
-        Debug.Log($"Critical chance updated to: {critChance * 100}%");
     }
 
     public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera, Transform playerTransform)
@@ -123,16 +108,9 @@ public class MeleeAttackGO : MonoBehaviour
             if (enemy != null)
             {
                 // Calculate total damage
-                float totalDamage = damage + skillDamageBonus;
+                float totalDamage = damage;
 
-                // Determine if this attack is a critical hit
-                if (IsCriticalHit())
-                {
-                    totalDamage *= critMultiplier;  // Apply critical hit damage multiplier
-                    Debug.Log("Critical hit! Damage doubled.");
-                }
 
-                // Apply the damage to the enemy
                 Debug.LogWarning("Total damage at melee: "+totalDamage);
                 enemy.TakeDamage(totalDamage);
                 Debug.Log($"Enemy health reduced. Current health: {enemy.health}");
@@ -142,10 +120,5 @@ public class MeleeAttackGO : MonoBehaviour
                 Debug.LogWarning("Enemy script not found on the collided object.");
             }
         }
-    }
-    // Method to check if the hit is a critical hit (10% chance)
-    private bool IsCriticalHit()
-    {
-        return Random.value < critChance; // Random.value gives a float between 0 and 1
     }
 }

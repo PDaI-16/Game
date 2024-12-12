@@ -10,18 +10,19 @@ using UnityEngine.Rendering;
 using UnityEngine.XR;
 using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
+using Random = UnityEngine.Random;
 
 
 public enum AnimationState
 {
-    player_idle_up, 
-    player_idle_right, 
-    player_idle_down,  
-    player_idle_left, 
-    player_walk_up, 
-    player_walk_right, 
-    player_walk_down, 
-    player_walk_left 
+    player_idle_up,
+    player_idle_right,
+    player_idle_down,
+    player_idle_left,
+    player_walk_up,
+    player_walk_right,
+    player_walk_down,
+    player_walk_left
 }
 
 
@@ -38,11 +39,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ProjectileAttackGO projectileAttackGO;
     [SerializeField] private GameObject meleeAttackPrefab;
 
+    private float meleeDamageBonus = 0f;
+    private float rangedDamageBonus = 0f;
+    private float magicDamageBonus = 0f;
+    [SerializeField] private float critChance = 0.1f; // Default crit chance (10%)
+
     // Weapon and Attack
     [SerializeField] GameObject WeaponPrefab;
-/*    [SerializeField] private SpriteRenderer weaponSpriteRenderer;*/
-/*    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
-    [SerializeField] private BoxCollider2D meleeAttackHitbox;*/
+    /*    [SerializeField] private SpriteRenderer weaponSpriteRenderer;*/
+    /*    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
+        [SerializeField] private BoxCollider2D meleeAttackHitbox;*/
 
     private GameObject rangedArm = null;
     private Transform rangedArmTransform = null;
@@ -96,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     private float attackCooldownTimer = 1.0f;
     [SerializeField] private float attackCooldownTime = 1.0f;
-   
+
     private bool canAttack = true;
 
 
@@ -126,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetMovementSpeed(float newMovementSpeed)
     {
-        movementSpeed = (int)Mathf.Max(0, newMovementSpeed); 
+        movementSpeed = (int)Mathf.Max(0, newMovementSpeed);
     }
     public float GetMovementSpeed()
     {
@@ -169,11 +175,38 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("No weapons equipped");
         }
 
-        
+
 
         PlayerInputs();
         CheckIfShouldDie();
 
+    }
+
+    public void SetMeleeDamageBonus(float meleeBonus)
+    {
+        meleeDamageBonus += meleeBonus;
+        Debug.Log($"Skill damage bonus updated to: {meleeDamageBonus}");
+    }
+    public void SetRangedDamageBonus(float rangedBonus)
+    {
+        rangedDamageBonus += rangedBonus;
+        Debug.Log($"Skill damage bonus updated to: {rangedDamageBonus}");
+    }
+    public void SetMagicDamageBonus(float magicBonus)
+    {
+        magicDamageBonus += magicBonus;
+        Debug.Log($"Skill damage bonus updated to: {magicDamageBonus}");
+    }
+    public void SetCritChance(float bonusCritChance)
+    {
+        critChance += bonusCritChance;
+        // Ensure the crit chance doesn't exceed 100% (1.0f)
+        critChance = Mathf.Min(critChance, 1f);
+        Debug.Log($"Critical chance updated to: {critChance * 100}%");
+    }
+    private bool IsCriticalHit()
+    {
+        return Random.value < critChance;
     }
 
     public void UpdateAttackStats()
@@ -184,19 +217,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-
         attackCooldownTime = 1.0f / currentWeaponData.AttackSpeed;
+
         if (currentHatData != null)
         {
-
             // If equipped hat is the same category then add its benefits
             if (currentWeaponData.Category == currentHatData.Category)
             {
-                attackCooldownTime = 1.0f / (currentWeaponData.AttackSpeed+currentHatData.AttackSpeedMultiplier) ;
+                attackCooldownTime = 1.0f / (currentWeaponData.AttackSpeed + currentHatData.AttackSpeedMultiplier);
             }
         }
 
-       
         // Default values based on weapon data
         currentTotalDamage = currentWeaponData.Damage;
         currentTotalAttackSpeed = currentWeaponData.AttackSpeed;
@@ -208,6 +239,7 @@ public class PlayerController : MonoBehaviour
             currentTotalAttackSpeed += currentHatData.AttackSpeedMultiplier;
         }
     }
+
 
     private void StartAttackCooldown()
     {
@@ -243,71 +275,96 @@ public class PlayerController : MonoBehaviour
         PlayerAttack();
     }
 
-    void PlayerAttack()
+void PlayerAttack()
+{
+    if (!canAttack)
     {
+        //Debug.Log("Attack on cooldown.");
+        return;
+    }
 
-        if (canAttack == false)
+    if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
+    {
+        if (currentWeaponData != null)
         {
-            Debug.Log("Attack on cooldown.");
-            return;
+            float totalDamage = currentTotalDamage;
+
+            // Apply bonus damage based on weapon type
+            switch (currentWeaponData.Category)
+            {
+                case ItemCategory.Melee:
+                    totalDamage += meleeDamageBonus; // Additional melee bonus
+                    break;
+
+                case ItemCategory.Ranged:
+                    totalDamage += rangedDamageBonus; // Additional ranged bonus
+                    break;
+                case ItemCategory.Magic:
+                    totalDamage +=  magicDamageBonus; // Additional ranged bonus
+                    break;
+            }
+
+            // Check for critical hit
+            if (IsCriticalHit())
+            {
+                float criticalHitMultiplier = 1.5f; // Example multiplier
+                totalDamage *= criticalHitMultiplier;
+                Debug.Log("Critical Hit! Damage multiplied.");
+            }
+
+            // Weapon category logic
+            switch (currentWeaponData.Category)
+            {
+                case ItemCategory.Melee:
+                    if (meleeAttackPrefab != null)
+                    {
+                        GameObject meleeAttackClone = Instantiate(
+                            meleeAttackPrefab,
+                            transform.position,
+                            Quaternion.identity
+                        );
+
+                        if (meleeAttackClone != null)
+                        {
+                            meleeAttackClone.GetComponent<MeleeAttackGO>()
+                                .Attack(totalDamage, currentAnimationState, currentWeaponObject, currentCamera, transform);
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Melee attack prefab or script not found.");
+                    }
+                    break;
+
+                case ItemCategory.Magic:
+                case ItemCategory.Ranged:
+                    if (projectileAttackGO != null)
+                    {
+                        projectileAttackGO.ProjectileAttack(
+                            currentWeaponData.Category,
+                            10.0f, // Projectile speed
+                            totalDamage,
+                            currentCamera,
+                            currentAnimationState
+                        );
+                    }
+                    else
+                    {
+                        Debug.Log("ProjectileAttackGO script not found.");
+                    }
+                    break;
+            }
+
+            Debug.LogWarning("Attack with total damage of " + totalDamage);
+            StartAttackCooldown();
         }
-
-        if (Input.GetMouseButtonDown(0)) // Left mouse button (M1)
+        else
         {
-            if (currentWeaponData != null)
-            {
-                switch (currentWeaponData.Category)
-                {
-                    case ItemCategory.Melee:
-                        if (meleeAttackPrefab != null)
-                        {
-
-                            GameObject meleeAttackClone = Instantiate(
-                                meleeAttackPrefab,
-                                transform.position,
-                                Quaternion.identity
-                            );
-
-                            if (meleeAttackClone != null)
-                            {
-                                meleeAttackClone.GetComponent<MeleeAttackGO>().Attack(currentTotalDamage, currentAnimationState, currentWeaponObject, currentCamera, transform);
-                            }
-
-                        }
-                        else
-                        {
-                            Debug.Log("Melee attack go script or hitbox not found by PlayerAttack");
-                        }
-                        break;
-
-                    case ItemCategory.Magic:
-                    case ItemCategory.Ranged:
-                        
-                        if (projectileAttackGO != null)
-                        {
-                            projectileAttackGO.ProjectileAttack(currentWeaponData.Category, 10.0f, currentTotalDamage, currentCamera, currentAnimationState);
-                        }
-
-                        else
-                        {
-                            Debug.Log("ProjectileAttackGo script not found by playerController");
-                        }
-
-                        break;
-                }
-
-                Debug.LogWarning("Attack with total damage of "+currentTotalDamage);
-                StartAttackCooldown();
-            }
-            else
-            {
-                Debug.Log("No weapon equiped - PlayerAttack");
-            }
-
-
-            
+            Debug.Log("No weapon equipped - PlayerAttack");
         }
     }
+}
+
 
     public Weapon GetCurrentWeaponData()
     {
@@ -420,25 +477,26 @@ public class PlayerController : MonoBehaviour
 
         // Convert radians to degrees
         float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
-/*
-        print("Mouse angle in degrees: " + angleInDegrees);*/
+        /*
+                print("Mouse angle in degrees: " + angleInDegrees);*/
 
 
-        if(angleInDegrees > -45 && angleInDegrees < 45){
+        if (angleInDegrees > -45 && angleInDegrees < 45)
+        {
             //print("UP");
             newAnimationState = _isMoving ? AnimationState.player_walk_up : AnimationState.player_idle_up;
         }
-        else if(angleInDegrees > 45 && angleInDegrees < 135)
+        else if (angleInDegrees > 45 && angleInDegrees < 135)
         {
             //print("RIGHT");
             newAnimationState = _isMoving ? AnimationState.player_walk_right : AnimationState.player_idle_right;
         }
-        else if(angleInDegrees < -45 && angleInDegrees > -135)
+        else if (angleInDegrees < -45 && angleInDegrees > -135)
         {
             //print("LEFT");
             newAnimationState = _isMoving ? AnimationState.player_walk_left : AnimationState.player_idle_left;
         }
-        else if(angleInDegrees > 135 || angleInDegrees < -135)
+        else if (angleInDegrees > 135 || angleInDegrees < -135)
         {
             //print("DOWN");
             newAnimationState = _isMoving ? AnimationState.player_walk_down : AnimationState.player_idle_down;
@@ -455,7 +513,7 @@ public class PlayerController : MonoBehaviour
         }
 
         previousStateRanged = animationState;
-            
+
 
         if (rangedArmTransform != null)
         {
@@ -474,7 +532,7 @@ public class PlayerController : MonoBehaviour
 
                 case AnimationState.player_walk_right:
                 case AnimationState.player_idle_right:
-                    newRangedWeaponPosition = new Vector3 (0.45f, 0, 0);
+                    newRangedWeaponPosition = new Vector3(0.45f, 0, 0);
                     break;
 
 
@@ -489,7 +547,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            
+
             rangedArmTransform.transform.localPosition = newRangedWeaponPosition;
         }
         else
@@ -542,7 +600,7 @@ public class PlayerController : MonoBehaviour
                 rangedArmSortingGroup.sortingLayerName = "PlayerWeapon";
                 break;
 
-    
+
 
             default:
                 weaponArmSortingGroup.sortingLayerName = "PlayerWeapon"; // Default sorting order
@@ -553,7 +611,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateIsMoving()
     {
-        if(_movementInput.x == 0 && _movementInput.y == 0)
+        if (_movementInput.x == 0 && _movementInput.y == 0)
         {
             _isMoving = false;
         }

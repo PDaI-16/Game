@@ -13,7 +13,9 @@ public class SkillTree : MonoBehaviour
         public bool isUnlocked = false; // Whether the skill is unlocked or not
         public ItemCategory requiredClass; // The player class required for this skill (optional)
         public bool isSpecial = false; // Indicates if the skill is a special skill
-        public float damageBonus = 0f;   // Bonus to damage
+        public float meleeDamageBonus = 0f;   // Bonus to damage
+        public float rangedDamageBonus = 0f;   // Bonus to damage
+        public float magicDamageBonus = 0f;   // Bonus to damage
         public float healthBonus = 0f;   // Bonus to health
         public float defenseBonus = 0f;  // Bonus to defense
         public int speedBonus = 0;
@@ -229,25 +231,28 @@ public class SkillTree : MonoBehaviour
     }
     void ApplyStatBonuses(Skill skill)
     {
-        MeleeAttackGO meleeAttackGO = FindFirstObjectByType<MeleeAttackGO>();
-        if (meleeAttackGO == null)
+
+        if (skill.meleeDamageBonus > 0f)
         {
-            Debug.LogWarning("MeleeAttackGO not found in the scene. Damage bonus will not be applied.");
+            playerController.SetMeleeDamageBonus(skill.meleeDamageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.meleeDamageBonus}");
         }
-        else
+        if (skill.rangedDamageBonus > 0f)
         {
-            if (skill.damageBonus > 0f)
-            {
-                meleeAttackGO.SetSkillDamageBonus(skill.damageBonus);
-                Debug.Log($"Damage bonus from skill applied: {skill.damageBonus}");
-            }
-            // Apply critical chance bonus if skill has a crit chance bonus
-            if (skill.critChanceBonus > 0f)
-            {
-                // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
-                meleeAttackGO.SetCritChance(skill.critChanceBonus);
-                Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
-            }
+            playerController.SetRangedDamageBonus(skill.rangedDamageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.rangedDamageBonus}");
+        }
+        if (skill.magicDamageBonus > 0f)
+        {
+            playerController.SetMagicDamageBonus(skill.magicDamageBonus);
+            Debug.Log($"Damage bonus from skill applied: {skill.magicDamageBonus}");
+        }
+        // Apply critical chance bonus if skill has a crit chance bonus
+        if (skill.critChanceBonus > 0f)
+        {
+            // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
+            playerController.SetCritChance(skill.critChanceBonus);
+            Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
         }
         // If the skill provides a health bonus, apply it to the player's health using the setter
         if (skill.healthBonus > 0f)
