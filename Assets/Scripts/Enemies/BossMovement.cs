@@ -22,6 +22,7 @@ public class BossMovement : MonoBehaviour
     private bool canAttack = true;         // Flag to track if the boss can attack again
 
     private EnemyStats enemyStats;         // Reference to the EnemyStats component
+    private RangedAttack rangedAttack; // Add this to your boss script
 
     private void Start()
     {
@@ -133,7 +134,17 @@ public class BossMovement : MonoBehaviour
         isInGracePeriod = true;
         graceTimer = attackGraceTime;
 
-        // Add ranged attack logic (e.g., shooting projectiles, casting spells, etc.)
+        // Call the RangedAttack component's Attack method
+        if (rangedAttack != null)
+        {
+            rangedAttack.Attack(); // Calls the Attack() method from RangedAttack script
+        }
+        else
+        {
+            Debug.LogError("RangedAttack component is missing.");
+        }
+
+        // Reset the attack cooldown
         Invoke("ResetAttackCooldown", attackCooldown);
     }
 
@@ -172,5 +183,20 @@ public class BossMovement : MonoBehaviour
     private void ResetAttackCooldown()
     {
         canAttack = true;
+    }
+    public class ProjectileMoveToPlayer : MonoBehaviour
+    {
+        public Transform target; // The target (player)
+        public float projectileSpeed = 10f; // Speed of the projectile
+
+        private void Update()
+        {
+            if (target != null)
+            {
+                // Move the projectile towards the player
+                Vector3 direction = (target.position - transform.position).normalized;
+                transform.position += direction * projectileSpeed * Time.deltaTime;
+            }
+        }
     }
 }

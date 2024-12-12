@@ -530,8 +530,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  aggrostart: 2
-  aggroend: 6
+  aggrostart: 4
+  aggroend: 8
 --- !u!61 &4013313833660098777
 BoxCollider2D:
   m_ObjectHideFlags: 0
