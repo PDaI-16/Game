@@ -36,13 +36,13 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     [SerializeField] private ProjectileAttackGO projectileAttackGO;
-    [SerializeField] private GameObject meleeAttack;
+    [SerializeField] private GameObject meleeAttackPrefab;
 
     // Weapon and Attack
     [SerializeField] GameObject WeaponPrefab;
 /*    [SerializeField] private SpriteRenderer weaponSpriteRenderer;*/
-    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
-    [SerializeField] private BoxCollider2D meleeAttackHitbox;
+/*    [SerializeField] private MeleeAttackGO meleeAttackGOScript;
+    [SerializeField] private BoxCollider2D meleeAttackHitbox;*/
 
     private GameObject rangedArm = null;
     private Transform rangedArmTransform = null;
@@ -121,8 +121,6 @@ public class PlayerController : MonoBehaviour
 
         weaponArmSortingGroup = weaponArm.GetComponent<SortingGroup>();
         rangedArmSortingGroup = rangedArm.GetComponent<SortingGroup>();
-
-        meleeAttackHitbox.gameObject.SetActive(false);
 
     } // Update is called once per frame
 
@@ -261,18 +259,19 @@ public class PlayerController : MonoBehaviour
                 switch (currentWeaponData.Category)
                 {
                     case ItemCategory.Melee:
-                        if (meleeAttackGOScript != null && meleeAttackHitbox != null)
+                        if (meleeAttackPrefab != null)
                         {
-                            try
-                            {
-                                meleeAttackHitbox.gameObject.SetActive(true);
-                                meleeAttackGOScript.Attack(currentTotalDamage, currentAnimationState, currentWeaponObject, currentCamera);
-                            }
-                            catch
-                            {
-                                Debug.Log("Failed to find attack script before activating the script");
-                            }
 
+                            GameObject meleeAttackClone = Instantiate(
+                                meleeAttackPrefab,
+                                transform.position,
+                                Quaternion.identity
+                            );
+
+                            if (meleeAttackClone != null)
+                            {
+                                meleeAttackClone.GetComponent<MeleeAttackGO>().Attack(currentTotalDamage, currentAnimationState, currentWeaponObject, currentCamera, transform);
+                            }
 
                         }
                         else

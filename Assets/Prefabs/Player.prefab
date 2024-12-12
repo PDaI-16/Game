@@ -341,7 +341,7 @@ MonoBehaviour:
   playerRigidbody: {fileID: 4681880649504773632}
   movementSpeed: 3
   projectileAttackGO: {fileID: 73677647858981808}
-  meleeAttack: {fileID: 1078246238509084022}
+  meleeAttackPrefab: {fileID: 3232087911235962119, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   meleeAttackGOScript: {fileID: 6625457365243968257}
   meleeAttackHitbox: {fileID: 4923570406897306325}
@@ -1342,6 +1342,7 @@ MonoBehaviour:
   meleeAttackAnimator: {fileID: 3957297960693800327}
   hitbox: {fileID: 4923570406897306325}
   currentCamera: {fileID: 0}
+  critChance: 0.1
   previousState: 0
 --- !u!95 &3957297960693800327 stripped
 Animator:
