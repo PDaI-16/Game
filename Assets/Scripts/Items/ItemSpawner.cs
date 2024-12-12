@@ -20,6 +20,32 @@ public class ItemSpawner : MonoBehaviour
 
     [SerializeField] private int itemSpawnAmount = 50;
 
+    //Weapons
+
+    private float minDamageWeapon = 3.0f;
+    private float maxDamageWeapon = 10.0f;
+
+    private float minAttackSpeedWeapon = 0.5f;
+    private float maxAttackSpeedWeapon = 1.5f;
+
+    //Hats
+
+    private float minDamageHat = 3.0f;
+    private float maxDamageHat = 30.0f;
+
+    private float minAttackSpeedHat = 0.5f;
+    private float maxAttackSpeedHat = 10.0f;
+
+    private float itemRandomizationSkewFactor = 2.0f;
+
+    // Buffing multiplier to melee weapons
+    private float meleeBuffMultiplier = 2;
+
+
+
+
+
+
     // Called before the first frame update.
     private void Start()
     {
@@ -27,8 +53,8 @@ public class ItemSpawner : MonoBehaviour
         {
             for (int i = 0; i < itemSpawnAmount; i++)
             {
-                SpawnRandomHatToRandomLocation(2.0f);
-                SpawnRandomWeaponToRandomLocation(2.0f);
+                SpawnRandomHatToRandomLocation(1.0f);
+                SpawnRandomWeaponToRandomLocation(1.0f);
             }
         }
         catch (Exception e)
@@ -158,7 +184,6 @@ public class ItemSpawner : MonoBehaviour
         {
             // Initialize the weapon script with the provided weapon data
             weaponScript.Initialize(weapon, isOnGround);
-            Debug.Log("Weapon spawned and initialized successfully!");
         }
         else
         {
@@ -201,8 +226,8 @@ public class ItemSpawner : MonoBehaviour
             randomSprite = spriteList[UnityEngine.Random.Range(0, spriteList.Length)];
         } while (randomSprite == null);
 
-        var damageMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);
-        var attackSpeedMultiplier = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);
+        var damageMultiplier = GetSkewedRandom(minDamageHat * levelMultiplier, maxDamageHat * levelMultiplier, itemRandomizationSkewFactor); // 2f = skew factor
+        var attackSpeedMultiplier = GetSkewedRandom(minAttackSpeedHat * levelMultiplier, maxAttackSpeedHat * levelMultiplier, itemRandomizationSkewFactor);
 
         return new Hat(category, randomSprite, damageMultiplier, attackSpeedMultiplier);
     }
@@ -239,11 +264,47 @@ public class ItemSpawner : MonoBehaviour
         } while (randomSprite == null);
 
         // Define weapon-specific properties like damage, attack speed, or other stats
-        var damage = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);  // Random damage based on level
-        var attackSpeed = UnityEngine.Random.Range(1.0f * levelMultiplier, 3.0f * levelMultiplier);  // Random attack speed based on level
+
+        var damage = GetSkewedRandom(minDamageWeapon * levelMultiplier, maxDamageWeapon * levelMultiplier, itemRandomizationSkewFactor); // 2f = skew factor
+        var attackSpeed = GetSkewedRandom(minAttackSpeedWeapon * levelMultiplier, maxAttackSpeedWeapon * levelMultiplier,itemRandomizationSkewFactor);
 
         // Create and return a new Weapon instance
         return new Weapon(category, randomSprite, damage, attackSpeed);
+    }
+
+    private float GetSkewedRandom(float min, float max, float skewFactor)
+    {
+
+        /*        Range UniformDistribution | Skew Factor = 2
+                        [0.0, 0.1]      10 % 19 %
+
+                        [0.1, 0.2]      10 % 17 %
+
+                        [0.2, 0.3]      10 % 15 %
+
+                        [0.3, 0.4]      10 % 13 %
+
+                        [0.4, 0.5]      10 % 11 %
+
+                        [0.5, 0.6]      10 % 9 %
+
+                        [0.6, 0.7]      10 % 7 %
+
+                        [0.7, 0.8]      10 % 5 %
+
+                        [0.8, 0.9]      10 % 3 %
+
+                        [0.9, 1.0]      10 % 1 %*/
+
+
+        // Generate a random value between 0 and 1 using Unity's Random
+        float t = UnityEngine.Random.Range(0f, 1f);
+
+        // Apply skew (e.g., use a power function to skew towards min)
+        t = Mathf.Pow(t, skewFactor);
+
+        // Map back to the desired range and clamp the result to avoid exceeding max
+        return Mathf.Clamp(min + (max - min) * t, min, max);
     }
 
     // Returns a random spawn position within the bounds of the given GameObject.
