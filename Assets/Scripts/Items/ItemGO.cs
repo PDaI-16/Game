@@ -49,21 +49,21 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 
                     Debug.LogWarning("Score ratio: " + scoreRatio + "maxpossible score: "+ maxScorePossible+" item.ItemScore: "+item.ItemScore);
 
-                    if (scoreRatio > 3f / 4f) // Highest rarity
+                    if (scoreRatio > 4f / 5f) 
                     {
-                        infoText.color = Color.yellow; // Bright color for highest rarity
+                        infoText.color = Color.yellow; 
                     }
-                    else if (scoreRatio > 2f / 3f) // High rarity
+                    else if (scoreRatio > 2f / 3f) 
                     {
-                        infoText.color = Color.red;   // Red for high rarity
+                        infoText.color = Color.red;   
                     }
-                    else if (scoreRatio > 1f / 2f) // Medium rarity
+                    else if (scoreRatio > 1f / 2f) 
                     {
-                        infoText.color = Color.blue;  // Blue for medium rarity
+                        infoText.color = Color.blue; 
                     }
                     else // Lowest rarity
                     {
-                        infoText.color = Color.green; // Green for lowest rarity
+                        infoText.color = Color.green;
                     }
 
                 }
