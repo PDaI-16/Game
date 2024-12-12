@@ -10474,6 +10474,27 @@ MonoBehaviour:
     ItemScore: 3
     Damage: 3
     AttackSpeed: 1
+  defaultMeleeHat:
+    Type: 0
+    Category: 0
+    Sprite: {fileID: 7613330016314061283, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+    ItemScore: 3
+    DamageMultiplier: 3
+    AttackSpeedMultiplier: 1
+  defaultRangedHat:
+    Type: 0
+    Category: 1
+    Sprite: {fileID: -2683581536351381293, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+    ItemScore: 3
+    DamageMultiplier: 3
+    AttackSpeedMultiplier: 1
+  defaultMagicHat:
+    Type: 0
+    Category: 2
+    Sprite: {fileID: -1831940730658185210, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+    ItemScore: 3
+    DamageMultiplier: 3
+    AttackSpeedMultiplier: 1
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []
@@ -10701,23 +10722,23 @@ PrefabInstance:
       objectReference: {fileID: 2064573353}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.8875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00008869171
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
