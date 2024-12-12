@@ -1,17 +1,17 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnterPortal : MonoBehaviour
 {
     public Map map; // Reference to the Map script
-    public BossMovement BossMovement;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) // Ensure the player has the tag "Player"
         {
             // Check for the presence of a BossEnemy
-            BossMovement = Object.FindFirstObjectByType<BossMovement>();
-            if (BossMovement != null)
+            BossMovement bossMovement = Object.FindFirstObjectByType<BossMovement>();
+            if (bossMovement != null)
             {
                 Debug.Log("Cannot enter portal. BossEnemy is still present.");
                 return; // Exit the method if a BossEnemy is found
@@ -26,12 +26,15 @@ public class EnterPortal : MonoBehaviour
             // Print out the biome name
             Debug.Log($"Player spawned in biome: {biomeName}");
 
-            // Load the next level
-            map.LoadNextLevel();
             // Move the player to the new position
             other.transform.position = map.tilemap.CellToWorld(spawnPosition);
 
-            
+            // Load the next level
+            map.LoadNextLevel();
+
+            // Print out the current tile the player spawned on
+            TileBase currentTile = map.tilemap.GetTile(spawnPosition);
+            Debug.Log($"Player spawned on tile: {currentTile?.name ?? "None"}");
         }
     }
 }
