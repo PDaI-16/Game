@@ -313,8 +313,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprites:
+  - {fileID: -6521102930757844761, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 6232736840587744125, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -6470403977555828671, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 3530585542218416079, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -167845198, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
   - {fileID: -8626739113913384763, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
   - {fileID: 631454169, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 964498568, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -1117337788, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 2049670274391578495, guid: 900b2a9b799520040b4871a4f3782ab4, type: 3}
+  - {fileID: -7969841031192195652, guid: 900b2a9b799520040b4871a4f3782ab4, type: 3}
+  - {fileID: -7496040904575381587, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
+  - {fileID: 1481933650, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
+  - {fileID: 1601339786, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
 --- !u!114 &9202778858825752857
 MonoBehaviour:
   m_ObjectHideFlags: 0

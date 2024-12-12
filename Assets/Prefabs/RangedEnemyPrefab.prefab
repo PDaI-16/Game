@@ -654,13 +654,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprites:
-  - {fileID: -8950527101174710116, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
-  - {fileID: -739517968, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
-  - {fileID: 669295861, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
-  - {fileID: -1338531586, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
-  - {fileID: -1338531586, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
-  - {fileID: 2096442648, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 6934754568982029857, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -863634768, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
   - {fileID: -435101905, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 669295861, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -7204684542238261408, guid: f9f140de7e020944180435327a8eb70f, type: 3}
+  - {fileID: 813611542079530029, guid: 900b2a9b799520040b4871a4f3782ab4, type: 3}
+  - {fileID: -739517968, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
+  - {fileID: -8950527101174710116, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
 --- !u!114 &2857638340574844630
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -636,7 +636,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprites:
+  - {fileID: 653307814762880265, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -1112068693, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 1129156110, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 701566711, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: 2118937628, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
+  - {fileID: -1117337788, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
   - {fileID: -4809995429312704572, guid: 900b2a9b799520040b4871a4f3782ab4, type: 3}
-  - {fileID: -1338531586, guid: 5bc598341f7cce24cbc4df0fc63a5641, type: 3}
   - {fileID: 103081977893817172, guid: f9f140de7e020944180435327a8eb70f, type: 3}
+  - {fileID: 5271407777653216311, guid: f9f140de7e020944180435327a8eb70f, type: 3}
   - {fileID: -8338000221923159088, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
+  - {fileID: -3389368454863785477, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
