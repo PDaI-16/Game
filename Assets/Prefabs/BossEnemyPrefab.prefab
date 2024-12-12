@@ -149,7 +149,6 @@ GameObject:
   - component: {fileID: 37831722662285521}
   - component: {fileID: 9202778858825752857}
   - component: {fileID: 3573001223768788511}
-  - component: {fileID: 5746433835764768944}
   m_Layer: 6
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -218,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: -787723785
   m_SortingLayer: 4
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1964000280948088519, guid: bff6eb7e3140d8a46ab50cb04f4c5698, type: 3}
+  m_Sprite: {fileID: -8338000221923159088, guid: 094ba1ef506a8fd44812760683ebb266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -263,17 +262,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0019273758, y: -0.0026803017}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.307, y: 1.6673377}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.307, y: 1.6673377}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.307, y: 1.6673377}
+  m_Size: {x: 1.0013161, y: 1.208394}
   m_EdgeRadius: 0
 --- !u!50 &5296431218086336222
 Rigidbody2D:
@@ -361,6 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeleeEnemyPrefab: {fileID: 5147095794478659403, guid: 7b5da0aae43b64749b7849c58135326b, type: 3}
   RangedEnemyPrefab: {fileID: 5147095794478659403, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
+  projectilePrefab: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
+  firePoint: {fileID: 180086111747175328}
   numberOfMinionsToSummon: 3
   summonRadius: 3
   speed: 2
@@ -370,23 +371,8 @@ MonoBehaviour:
   rangedSafeDistance: 5
   attackCooldown: 2
   attackGraceTime: 1
---- !u!114 &5746433835764768944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2331654952717205789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60abbdc763775be468dd6e7db5ed3474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
-  firePoint: {fileID: 180086111747175328}
-  fireRate: 1
-  projectileSpeed: 20
-  destroyTime: 3
+  projectileSpeed: 10
+  projectileDestroyTime: 5
 --- !u!1 &4271208178071609718
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +577,7 @@ Transform:
   m_GameObject: {fileID: 6655086131513570356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -22.975}
+  m_LocalPosition: {x: 0, y: 0.3, z: -22.975}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
