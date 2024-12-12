@@ -203,31 +203,29 @@ public class SkillTree : MonoBehaviour
 
     void UnlockSkill(Skill skill)
     {
-        if (skill.cost <= playerController.playerData.GetSkillPoints())
+        int availableSkillPoints = playerController.playerData.GetSkillPoints();
+
+        if (skill.cost > availableSkillPoints)
         {
-            if (skill.isUnlocked)
-            {
-                // If the skill is already unlocked, no need to do anything
-                return;
-            }
-
-            // Unlock the skill
-            skill.isUnlocked = true;
-
-            // Apply stat bonuses to the player
-            ApplyStatBonuses(skill);
-
-            // Deduct points only when the skill is first unlocked
-            playerController.playerData.SpendSkillPoints(skill.cost);
-
-            // If it's a special skill, set it as active
-            if (skill.isSpecial)
-            {
-                SetActiveSpecialSkill(skill); // Set the unlocked special skill as active
-            }
-
-            UpdateSkillVisuals();  // Update UI visuals
+            Debug.Log("Not enough skill points to unlock the skill.");
+            return;
         }
+
+        if (skill.isUnlocked)
+        {
+            Debug.Log("Skill already unlocked.");
+            return;
+        }
+
+        // Unlock the skill
+        skill.isUnlocked = true;
+
+        // Deduct points and apply bonuses
+        playerController.playerData.SpendSkillPoints(skill.cost);
+        ApplyStatBonuses(skill);
+
+        // Update visuals
+        UpdateSkillVisuals();
     }
     void ApplyStatBonuses(Skill skill)
     {

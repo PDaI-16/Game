@@ -34,7 +34,7 @@ public class PlayerData
 
     public void SpendSkillPoints(int cost)
     {
-        if (cost < skillPoints)
+        if (cost <= skillPoints)
         {
             skillPoints -= cost;
         }
