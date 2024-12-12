@@ -49,21 +49,25 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 
                     Debug.LogWarning("Score ratio: " + scoreRatio + "maxpossible score: "+ maxScorePossible+" item.ItemScore: "+item.ItemScore);
 
-                    if (scoreRatio > 4f / 5f) 
+                    if (scoreRatio > 9f / 10f)
                     {
-                        infoText.color = Color.yellow; 
+                        infoText.color = Color.yellow; // Legendary (Highest Rarity)
                     }
-                    else if (scoreRatio > 2f / 3f) 
+                    else if (scoreRatio > 7f / 10f)
                     {
-                        infoText.color = Color.red;   
+                        infoText.color = Color.red; // Epic
                     }
-                    else if (scoreRatio > 1f / 2f) 
+                    else if (scoreRatio > 5f / 10f)
                     {
-                        infoText.color = Color.blue; 
+                        infoText.color = Color.blue; // Rare
                     }
-                    else // Lowest rarity
+                    else if (scoreRatio > 3f / 10f)
                     {
-                        infoText.color = Color.green;
+                        infoText.color = Color.green; // Uncommon
+                    }
+                    else // Lowest rarity (Common)
+                    {
+                        infoText.color = Color.gray; // Common
                     }
 
                 }
