@@ -110,6 +110,12 @@ void GenerateMap()
 
 public void LoadNextLevel()
 {
+    if (currentLevel >= 5)
+        {
+            Debug.Log("Game Over! You have completed all levels.");
+            // Add your game over logic here (e.g., show game over screen, stop the game, etc.)
+            return;
+        }
     ResetMap();
 
     EnemySpawner.currentBossEnemyCount = 0;

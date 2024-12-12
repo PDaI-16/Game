@@ -17,6 +17,13 @@ public class EnterPortal : MonoBehaviour
                 return; // Exit the method if a BossEnemy is found
             }
 
+            if (map.currentLevel == 5)
+            {
+                Debug.Log("Game Over! You have defeated the final boss.");
+                // Add your game over logic here (e.g., show game over screen, stop the game, etc.)
+                return;
+            }
+
             Debug.Log("Player entered portal!");
             Debug.Log($"Current level: {map.currentLevel}");
 
