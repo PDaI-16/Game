@@ -569,6 +569,18 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
+    public float GetCoolDownTime()
+    {
+        return attackCooldownTime;
+    }
+
+    public float GetCoolDownTimer()
+    {
+        return attackCooldownTimer;
+    }
+
+
 }
 
 

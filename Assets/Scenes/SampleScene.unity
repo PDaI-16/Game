@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &20391750 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 174318470154876665, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37329633
 GameObject:
   m_ObjectHideFlags: 0
@@ -7237,7 +7232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1313389332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9409,11 +9404,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706433769}
   m_CullTransparentMesh: 1
---- !u!1 &1780365513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4639215031705873722, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1801834491
 GameObject:
   m_ObjectHideFlags: 0
@@ -9504,16 +9494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!1 &1819015878 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 590226229852656973, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1819015879 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8555920414389740247, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-  m_PrefabInstance: {fileID: 2683329362811795667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1837273931
 GameObject:
   m_ObjectHideFlags: 0
@@ -10683,10 +10663,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: rangedArm
-      value: 
-      objectReference: {fileID: 1819015878}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: itemSpawner
       value: 
       objectReference: {fileID: 366607903}
@@ -10695,14 +10671,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: weaponArmMagic
-      value: 
-      objectReference: {fileID: 20391750}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: weaponArmMelee
-      value: 
-      objectReference: {fileID: 1780365513}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: deathScreenPanel
       value: 
       objectReference: {fileID: 479602729}
@@ -10710,10 +10678,18 @@ PrefabInstance:
       propertyPath: inventoryGOScript
       value: 
       objectReference: {fileID: 2064573353}
-    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
-      propertyPath: rangedArmTransform
-      value: 
-      objectReference: {fileID: 1819015879}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
       value: Player
