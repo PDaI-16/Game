@@ -21,14 +21,14 @@ public class Hat : Item
             case ItemCategory.Melee:
                 this.DamageMultiplier = damageMultiplier * meleebuff;
                 this.AttackSpeedMultiplier = attackSpeedMultiplier * meleebuff;
-                this.ItemScore = ((damageMultiplier + attackSpeedMultiplier) / meleebuff); // Ensures that weapon score is normalized according to buff
+                this.ItemScore = damageMultiplier * attackSpeedMultiplier; // Ensures that weapon score is normalized according to buff
                 break;
 
             case ItemCategory.Ranged:
             case ItemCategory.Magic:
                 this.DamageMultiplier = damageMultiplier;
                 this.AttackSpeedMultiplier = attackSpeedMultiplier;
-                this.ItemScore = damageMultiplier + attackSpeedMultiplier;
+                this.ItemScore = damageMultiplier * attackSpeedMultiplier;
                 break;
         }
 

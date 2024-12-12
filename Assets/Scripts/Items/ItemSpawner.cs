@@ -37,11 +37,15 @@ public class ItemSpawner : MonoBehaviour
     private float maxAttackSpeedHat = 1.5f;
 
 
-
-    private float itemRandomizationSkewFactor = 2.0f;
+    // How steep is the rarity curve ->>> bigger = better items more rare
+    private float itemRandomizationSkewFactor = 3.0f;
 
     // Buffing multiplier to melee weapons
     private float meleeStatsBuffMultiplier = 2.0f;
+
+
+    private float currentMaxWeaponScore = 0;
+    private float currentMaxHatScore = 0;
 
 
 
@@ -61,6 +65,25 @@ public class ItemSpawner : MonoBehaviour
         {
             Debug.LogError($"Failed to initialize spawner: {e.Message}");
         }
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    // This for rarity coloring for items on ground
+    public float GetCurrentMaxScoreForItem (ItemType itemType)
+    {
+        switch (itemType)
+        {
+            case ItemType.Weapon:
+                return currentMaxWeaponScore;
+
+            case ItemType.Hat:
+                return currentMaxHatScore;
+        }
+        return 0;
     }
 
     // Spawns a random hat at a random location.
@@ -226,6 +249,9 @@ public class ItemSpawner : MonoBehaviour
             randomSprite = spriteList[UnityEngine.Random.Range(0, spriteList.Length)];
         } while (randomSprite == null);
 
+
+        currentMaxHatScore = (maxDamageHat * levelMultiplier) * (maxAttackSpeedHat * levelMultiplier);
+
         var damageMultiplier = GetSkewedRandom(minDamageHat * levelMultiplier, maxDamageHat * levelMultiplier, itemRandomizationSkewFactor); // 2f = skew factor
         var attackSpeedMultiplier = GetSkewedRandom(minAttackSpeedHat * levelMultiplier, maxAttackSpeedHat * levelMultiplier, itemRandomizationSkewFactor);
 
@@ -264,6 +290,8 @@ public class ItemSpawner : MonoBehaviour
         } while (randomSprite == null);
 
         // Define weapon-specific properties like damage, attack speed, or other stats
+
+        currentMaxWeaponScore = (maxDamageWeapon * levelMultiplier) * (maxAttackSpeedWeapon * levelMultiplier);
 
         var damage = GetSkewedRandom(minDamageWeapon * levelMultiplier, maxDamageWeapon * levelMultiplier, itemRandomizationSkewFactor); // 2f = skew factor
         var attackSpeed = GetSkewedRandom(minAttackSpeedWeapon * levelMultiplier, maxAttackSpeedWeapon * levelMultiplier,itemRandomizationSkewFactor);

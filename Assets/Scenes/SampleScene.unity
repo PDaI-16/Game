@@ -666,7 +666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -430.00003}
+  m_AnchoredPosition: {x: 0, y: -430}
   m_SizeDelta: {x: -1300, y: -950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106048544
@@ -769,7 +769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0005493164, y: -311.00003}
+  m_AnchoredPosition: {x: 0.0005493164, y: -311}
   m_SizeDelta: {x: -1026, y: -972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &123447495
@@ -10530,8 +10530,8 @@ MonoBehaviour:
     Category: 0
     Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
     ItemScore: 3
-    Damage: 3
-    AttackSpeed: 1
+    Damage: 6
+    AttackSpeed: 2
   defaultRangedWeapon:
     Type: 1
     Category: 1
@@ -10550,23 +10550,23 @@ MonoBehaviour:
     Type: 0
     Category: 0
     Sprite: {fileID: 7613330016314061283, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
-    ItemScore: 3
-    DamageMultiplier: 3
+    ItemScore: 0.5
+    DamageMultiplier: 2
     AttackSpeedMultiplier: 1
   defaultRangedHat:
     Type: 0
     Category: 1
     Sprite: {fileID: -2683581536351381293, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
-    ItemScore: 3
-    DamageMultiplier: 3
-    AttackSpeedMultiplier: 1
+    ItemScore: 0.5
+    DamageMultiplier: 1
+    AttackSpeedMultiplier: 0.5
   defaultMagicHat:
     Type: 0
     Category: 2
     Sprite: {fileID: -1831940730658185210, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
-    ItemScore: 3
-    DamageMultiplier: 3
-    AttackSpeedMultiplier: 1
+    ItemScore: 0.5
+    DamageMultiplier: 1
+    AttackSpeedMultiplier: 0.5
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []
@@ -10795,23 +10795,23 @@ PrefabInstance:
       objectReference: {fileID: 2064573353}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.8875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00008869171
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name

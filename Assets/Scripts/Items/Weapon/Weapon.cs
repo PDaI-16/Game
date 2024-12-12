@@ -19,14 +19,14 @@ public class Weapon : Item
             case ItemCategory.Melee:
                 this.Damage = damage*meleebuff;
                 this.AttackSpeed = attackSpeed*meleebuff;
-                this.ItemScore = ((damage + attackSpeed) / meleebuff); // Ensures that weapon score is normalized according to buff
+                this.ItemScore = damage * attackSpeed; // Ensures that weapon score is normalized according to buff
                 break;
 
             case ItemCategory.Ranged:
             case ItemCategory.Magic:
                 this.Damage = damage;
                 this.AttackSpeed = attackSpeed;
-                this.ItemScore = damage + attackSpeed;
+                this.ItemScore = damage * attackSpeed;
                 break;
         }
 
