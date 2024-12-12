@@ -604,8 +604,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.6848984, y: 0}
-  m_SizeDelta: {x: 3.37, y: 0}
+  m_AnchoredPosition: {x: 1.9925003, y: 0.00008869171}
+  m_SizeDelta: {x: 3.9849, y: -1.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4386451707385162218
 CanvasRenderer:
@@ -836,6 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownSlider: {fileID: 1326441529377221833}
   playerController: {fileID: 3142304944509865204}
+  fill: {fileID: 5178996421622339854}
 --- !u!1 &8397205475194489631
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2639332, g: 0.7104133, b: 0.98742133, a: 1}
+  m_Color: {r: 0.040880322, g: 0.67979753, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
