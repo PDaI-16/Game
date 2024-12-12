@@ -49,6 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335a8409d420ef4449c0678ce29593aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeAttackAnimator: {fileID: 1497227447617844726}
+  currentCamera: {fileID: 0}
+  critChance: 0.1
+  previousState: 0
 --- !u!210 &4633842642766187363
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -58,7 +62,7 @@ SortingGroup:
   m_GameObject: {fileID: 3232087911235962119}
   m_Enabled: 1
   m_SortingLayerID: -99619573
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!95 &1497227447617844726
@@ -117,7 +121,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.067129344, y: 0.23206758}
+  m_Offset: {x: -0.015106678, y: 0.68120337}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -127,7 +131,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.7262743, y: 1.470804}
+  m_Size: {x: 2.169084, y: 1.5593657}
   m_EdgeRadius: 0
 --- !u!50 &5090743113764251780
 Rigidbody2D:

@@ -20,7 +20,7 @@ public class EnemyStats : MonoBehaviour
 
     public void Update()
     {
-        if (playerData != null)
+        if (playerData == null)
         {
             playerData = GameObject.Find("Player").GetComponent<PlayerController>().playerData;
         }

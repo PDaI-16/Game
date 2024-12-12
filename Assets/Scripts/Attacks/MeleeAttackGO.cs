@@ -6,7 +6,6 @@ public class MeleeAttackGO : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] public Animator meleeAttackAnimator;
-    [SerializeField] public BoxCollider2D hitbox;
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
     private float skillDamageBonus = 0f;
@@ -14,17 +13,19 @@ public class MeleeAttackGO : MonoBehaviour
     private float critMultiplier = 2f; // 2x damage for crits
 
     [SerializeField] private AnimationState previousState;
+    private Transform parentTransform;
 
     private float damage = 0; 
 
     void Start()
     {
 
-        if (hitbox == null)
-        {
-            Debug.LogError("Hitbox collider2D not found");
-            return;
-        }
+
+    }
+
+    private void Update()
+    {
+        transform.position = parentTransform.position;
     }
 
     public void SetSkillDamageBonus(float bonus)
@@ -40,13 +41,15 @@ public class MeleeAttackGO : MonoBehaviour
         Debug.Log($"Critical chance updated to: {critChance * 100}%");
     }
 
-    public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera)
+    public void Attack(float totalDamage, AnimationState playerAnimationState, GameObject currentWeaponObject, Camera camera, Transform playerTransform)
     {
         currentCamera = camera;
         currentWeaponGameObject = currentWeaponObject;
         currentWeaponObject.SetActive(false);
 
         damage = totalDamage;
+
+        parentTransform = playerTransform;
 
         FlipMeleeAttack(playerAnimationState);
         ObjectRotateAccordingToMouse.RotateObjectForMeleeAttack(gameObject.transform, currentCamera);
@@ -100,12 +103,14 @@ public class MeleeAttackGO : MonoBehaviour
         if (currentWeaponGameObject != null)
         {
             currentWeaponGameObject.gameObject.SetActive(true);
-            hitbox.gameObject.SetActive(false);
+/*            hitbox.gameObject.SetActive(false);*/
         }
         else
         {
             Debug.Log("Current weapongameobject does not exist - deactivatehitbox()");
         }
+
+        Destroy(gameObject);
 
     }
 
