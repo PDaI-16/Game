@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InventoryGO inventoryGOScript;
     [SerializeField] private ItemSpawner itemSpawner;
 
+    [SerializeField] private GameObject damageIndicatorPrefab;
+
 
 
     // Private Variables (Internal state tracking)
@@ -96,8 +98,8 @@ public class PlayerController : MonoBehaviour
     private bool _isMoving;
 
     // Current total attack stats
-    [SerializeField] private float currentTotalDamage = 1;
-    [SerializeField] private float currentTotalAttackSpeed = 1;
+    private float currentTotalDamage = 1;
+    private float currentTotalAttackSpeed = 1;
 
 
     private float attackCooldownTimer = 1.0f;
@@ -110,7 +112,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerData = new PlayerData(MainMenu.playerClass);
+        playerData = new PlayerData(MainMenu.playerClass, transform, damageIndicatorPrefab);
 
 
         _mainCamera = Camera.main;
