@@ -5853,7 +5853,7 @@ MonoBehaviour:
   meleeEnemyPrefab: {fileID: 5147095794478659403, guid: 7b5da0aae43b64749b7849c58135326b, type: 3}
   rangedEnemyPrefab: {fileID: 5147095794478659403, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
   bossEnemyPreFab: {fileID: 2037248298580118833, guid: b5e3bd3da906d0245b551ed4f9ab1021, type: 3}
-  maxEnemies: 20
+  maxEnemies: 25
   maxBossEnemies: 1
   currentBossEnemyCount: 0
   currentEnemyCount: 0

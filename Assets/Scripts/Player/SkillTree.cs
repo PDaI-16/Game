@@ -247,13 +247,16 @@ public class SkillTree : MonoBehaviour
             playerController.SetMagicDamageBonus(skill.magicDamageBonus);
             Debug.Log($"Damage bonus from skill applied: {skill.magicDamageBonus}");
         }
-        // Apply critical chance bonus if skill has a crit chance bonus
         if (skill.critChanceBonus > 0f)
         {
-            // Assuming MeleeAttackGO has a method to set crit chance (similar to SetSkillDamageBonus)
-            playerController.SetCritChance(skill.critChanceBonus);
-            Debug.Log($"Critical chance bonus from skill applied: {skill.critChanceBonus}");
+            // Convert the bonus from percentage to normalized form (divide by 100)
+            float normalizedBonus = skill.critChanceBonus / 100f;
+
+            // Apply the normalized bonus
+            playerController.SetCritChance(normalizedBonus);
+            Debug.Log($"Critical chance bonus from skill applied: {normalizedBonus * 100}%");
         }
+
         // If the skill provides a health bonus, apply it to the player's health using the setter
         if (skill.healthBonus > 0f)
         {
