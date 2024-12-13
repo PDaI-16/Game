@@ -17,6 +17,7 @@ public class Map : MonoBehaviour
     public int maxLevels = 5;     // Total levels to generate
     public bool Randomized = false;
     public EnemySpawner EnemySpawner;
+    public ItemSpawner ItemSpawner;
 
     [Header("Prefabs")]
     public GameObject portalPrefab; // Add this field for the portal prefab
@@ -130,6 +131,7 @@ public void LoadNextLevel()
     GenerateOceanColliders();
 
     EnemySpawner.Start();
+    ItemSpawner.Start();
 
     Debug.Log($"Next level generated! {currentLevel}");
 }
@@ -157,6 +159,7 @@ void ResetMap()
         }
     }
 
+    ItemSpawner.DestroyAllItemsOnGround();
     EnemySpawner.DestroyAllEnemies();
 }
 

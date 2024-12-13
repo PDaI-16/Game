@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4180453264481093199}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: Hat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,6 +318,7 @@ MonoBehaviour:
     DamageMultiplier: 0
     AttackSpeedMultiplier: 0
   infoText: {fileID: 6570523124939518829}
+  onGround: 1
   inventoryGO: {fileID: 0}
 --- !u!61 &4180453264481093199
 BoxCollider2D:

@@ -13,7 +13,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
 
     private UIManager uiManager = null;
 
-    private bool onGround = true;
+    public bool onGround = true;
     private bool isPlayerNear = false;
 
     private GameObject inventory;
