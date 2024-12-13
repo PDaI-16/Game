@@ -45,6 +45,7 @@ public class EnterPortal : MonoBehaviour
                 if (endScreenPanel != null)
                 {
                     endScreenPanel.SetActive(true);
+                    Time.timeScale = 0; // Pause the game
                 }
                 Debug.Log("Game Over! You have defeated the final boss.");
                 // Add your game over logic here (e.g., show game over screen, stop the game, etc.)
