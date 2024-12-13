@@ -7,6 +7,9 @@ public class ItemSlotScript : MonoBehaviour
     [SerializeField] private Sprite equippedSprite;
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Image itemSlotImage;
+    [SerializeField] private Image rarityImage;
+
+    private GameObject itemSpawner = null;
 
     private bool previousCurrentWeaponEqual = false;
     private bool previousCurrentHatEqual = false;
@@ -21,6 +24,7 @@ public class ItemSlotScript : MonoBehaviour
 
     void Start()
     {
+        
     }
 
     void Update()
@@ -82,7 +86,18 @@ public class ItemSlotScript : MonoBehaviour
         SetText("ItemCategoryText", weapondata.Category.ToString());
         SetText("ScoreText", weapondata.ItemScore.ToString("F2"));
         SetImage(weapondata.Sprite);
-        
+
+        itemSpawner = GameObject.Find("ItemSpawner");
+
+        if (itemSpawner != null)
+        {
+            rarityImage.color = itemSpawner.GetComponent<ItemSpawner>().GetRarityColor(weapon.Type, weapon.ItemScore);
+        }
+        else
+        {
+            Debug.LogWarning("ItemSlotScript did not find itemspawner");
+        }
+
     }
 
     public void SetHat(Hat hatdata, PlayerController playerControllerinpanel)
@@ -99,6 +114,16 @@ public class ItemSlotScript : MonoBehaviour
         SetText("ItemCategoryText", hatdata.Category.ToString());
         SetText("ScoreText", hatdata.ItemScore.ToString("F2"));
         SetImage(hatdata.Sprite);
+
+        if (itemSpawner != null)
+        {
+            rarityImage.color = itemSpawner.GetComponent<ItemSpawner>().GetRarityColor(hat.Type, hat.ItemScore);
+        }
+        else
+        {
+            Debug.LogWarning("ItemSlotScript did not find itemspawner");
+        }
+        
 
     }
 
