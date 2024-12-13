@@ -41,7 +41,7 @@ public class ItemSpawner : MonoBehaviour
     private float itemRandomizationSkewFactor = 3.0f;
 
     // Buffing multiplier to melee weapons
-    private float meleeStatsBuffMultiplier = 2.0f;
+    private float meleeStatsBuffMultiplier = 1.3f;
 
 
     private float currentMaxWeaponScore = 0;
@@ -84,6 +84,27 @@ public class ItemSpawner : MonoBehaviour
                 return currentMaxHatScore;
         }
         return 0;
+    }
+
+    public Color GetRarityColor(ItemType itemType, float itemScore)
+    {
+        float scoreRatio = itemType switch
+        {
+            ItemType.Weapon => itemScore / currentMaxWeaponScore,
+            ItemType.Hat => itemScore / currentMaxHatScore,
+            _ => 0f // Default for unsupported types
+        };
+
+        if (scoreRatio > 0.80f)
+            return Color.yellow; // Legendary (Highest Rarity)
+        else if (scoreRatio > 0.60f)
+            return Color.red; // Epic
+        else if (scoreRatio > 0.4f)
+            return Color.blue; // Rare
+        else if (scoreRatio > 0.2f)
+            return Color.green; // Uncommon
+        else
+            return Color.gray; // Common
     }
 
     // Spawns a random hat at a random location.

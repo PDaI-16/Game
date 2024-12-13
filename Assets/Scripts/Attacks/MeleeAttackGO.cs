@@ -8,6 +8,9 @@ public class MeleeAttackGO : MonoBehaviour
     [SerializeField] public Animator meleeAttackAnimator;
     private GameObject currentWeaponGameObject;
     [SerializeField] private Camera currentCamera;
+
+    [SerializeField] private GameObject enemyImpactPrefab;
+    [SerializeField] private GameObject treeImpactPrefab;
     
 
     [SerializeField] private AnimationState previousState;
@@ -111,11 +114,39 @@ public class MeleeAttackGO : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("tree"))
+        {
+            GameObject tree = collision.gameObject;
+            if (tree != null)
+            {
+                Vector3 direction = (transform.position - tree.transform.position).normalized; // Direction towards the transform
+                Vector3 adjustedPosition = tree.transform.position + direction * 1f; // Move prefab closer by offsetDistance
+
+                if (treeImpactPrefab != null)
+                {
+                    GameObject impactClone =
+                    Instantiate(
+                        treeImpactPrefab,
+                        adjustedPosition,
+                        Quaternion.identity
+                    );
+                    if (impactClone != null)
+                    {
+                        impactClone.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+                    }
+
+                }
+            }
+        }
+
         if (collision.CompareTag("Enemy"))
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             if (enemy != null)
             {
+                Vector3 direction = (transform.position - enemy.transform.position).normalized; // Direction towards the transform
+                Vector3 adjustedPosition = enemy.transform.position + direction * 1f; // Move prefab closer by offsetDistance
+
                 // Calculate total damage
                 float totalDamage = damage;
 
@@ -130,6 +161,23 @@ public class MeleeAttackGO : MonoBehaviour
                             Quaternion.identity
                         ); ;
                     damageIndicatorClone.GetComponent<DamageIndicatorGO>().SetDamageText(totalDamage);
+                }
+
+                if (enemyImpactPrefab != null)
+                {
+
+
+                    GameObject impactClone =
+                    Instantiate(
+                        enemyImpactPrefab,
+                        adjustedPosition,
+                        Quaternion.identity
+                    );
+
+                    if (impactClone != null)
+                    {
+                        impactClone.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+                    }
                 }
 
 

@@ -32,13 +32,11 @@ public class UIManager : MonoBehaviour
         // Check for input and handle state transitions
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("Pressed K");
             ChangeState(PanelState.SkillTree);
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Debug.Log("Pressed I");
             ChangeState(PanelState.Inventory);
         }
 
