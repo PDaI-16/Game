@@ -1,11 +1,8 @@
-using System.Diagnostics;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class AttackHandler : MonoBehaviour
 {
     [SerializeField] private GameObject meleeAttackPrefab;
-    private AnimationState playerAnimationState;
     private Vector3 animationPosition = Vector3.zero;
     private Quaternion animationRotation = Quaternion.identity;
     private Vector3 animationScale = Vector3.one;

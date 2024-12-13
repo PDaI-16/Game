@@ -45,6 +45,8 @@ public class Map : MonoBehaviour
         GenerateMap();
         GenerateEnvironmentObjects();
         GenerateOceanColliders();
+        ItemSpawner.Start();
+        EnemySpawner.Start();
     }
 
 void GenerateMap()

@@ -13,7 +13,9 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private PlayerController playerController;
 
-
+    public void Start(){
+    
+    }
     public void StartGame()
     {   
         Time.timeScale = 1;
