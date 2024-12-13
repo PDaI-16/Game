@@ -203,11 +203,12 @@ public class PlayerController : MonoBehaviour
     }
     public void SetCritChance(float bonusCritChance)
     {
+        // Add the bonus to the current critical chance
         critChance += bonusCritChance;
-        // Ensure the crit chance doesn't exceed 100% (1.0f)
         critChance = Mathf.Min(critChance, 1f);
         Debug.Log($"Critical chance updated to: {critChance * 100}%");
     }
+
     private bool IsCriticalHit()
     {
         return Random.value < critChance;
@@ -311,7 +312,7 @@ void PlayerAttack()
             // Check for critical hit
             if (IsCriticalHit())
             {
-                float criticalHitMultiplier = 1.5f; // Example multiplier
+                float criticalHitMultiplier = 2f; // Example multiplier
                 totalDamage *= criticalHitMultiplier;
                 Debug.Log("Critical Hit! Damage multiplied.");
             }

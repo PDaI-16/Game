@@ -641,6 +641,10 @@ MonoBehaviour:
   Damage: 5
   experienceReward: 80
   enemyHealthBar: {fileID: 2305560242365866156}
+  aiMovement: {fileID: 0}
+  rangedMovement: {fileID: 2857638340574844630}
+  bossMovement: {fileID: 0}
+  aggroIncreaseAmount: 1
 --- !u!114 &8470670469590292474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +699,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
   firePoint: {fileID: 2332651347870755457}
-  fireRate: 5
+  fireRate: 2
   projectileSpeed: 10
   destroyTime: 5

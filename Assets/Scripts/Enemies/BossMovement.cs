@@ -6,7 +6,7 @@ public class BossMovement : MonoBehaviour
     public GameObject RangedEnemyPrefab;
     public GameObject projectilePrefab;
     public Transform firePoint;
-    public int numberOfMinionsToSummon = 3;
+    public int numberOfMinionsToSummon = 5;
     public float summonRadius = 5f;
     public float speed = 5f;
     public float aggroStartDistance = 15f;
@@ -26,6 +26,9 @@ public class BossMovement : MonoBehaviour
     private bool canAttack = true;
 
     private EnemyStats enemyStats;
+    private bool canUseSpecialMove = true;
+    private float specialMoveCooldownTime = 60f; 
+
 
 
     private void Start()
@@ -107,7 +110,15 @@ public class BossMovement : MonoBehaviour
             }
             else
             {
-                PerformSpecialMove(); 
+                if (canUseSpecialMove)
+                {
+                    PerformSpecialMove(); // Perform special move only if not on cooldown
+                }
+                else
+                {
+                    Debug.Log("Special Move is on cooldown. Attacking player");
+                    PerformRangedAttack();
+                }
             }
         }
         else
@@ -166,7 +177,7 @@ public class BossMovement : MonoBehaviour
         Vector2 directionToPlayer = displacement.normalized;
 
         // Calculate the angle for rotation
-        float angleOffset = -45f; 
+        float angleOffset = -45f;
         float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg + angleOffset;
 
         // Apply rotation and velocity to the projectile
@@ -188,14 +199,29 @@ public class BossMovement : MonoBehaviour
     // Special move logic
     private void PerformSpecialMove()
     {
+        if (!canUseSpecialMove)
+        {
+            return; 
+        }
+
         Debug.Log("Special Move: Summon Minions!");
         SummonMinions(); // Call the summon minions special attack
 
-        // Prevent immediate re-use of the special move
+        // Set the cooldown
+        canUseSpecialMove = false;
+        Invoke("ResetSpecialMoveCooldown", specialMoveCooldownTime);
+
+        // General attack cooldown handling
         canAttack = false;
         isInGracePeriod = true;
         graceTimer = attackGraceTime;
         Invoke("ResetAttackCooldown", attackCooldown);
+    }
+
+    private void ResetSpecialMoveCooldown()
+    {
+        canUseSpecialMove = true;
+        Debug.Log("Special Move is ready to use again!");
     }
 
     // Summon minions logic
