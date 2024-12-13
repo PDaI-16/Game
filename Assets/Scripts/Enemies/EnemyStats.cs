@@ -17,7 +17,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private BossMovement bossMovement;
 
     // Amount by which aggro range increases when taking damage
-    [SerializeField] private float aggroIncreaseAmount = 10.0f;
+    [SerializeField] private float aggroIncreaseAmount = 12.0f;
 
     void Start()
     {
