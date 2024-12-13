@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour
                 DeactivateAllPanels();
                 break;
         }
-
+        
     }
 
     private void DeactivateAllExludingThis(GameObject usedPanel)

@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject selectPanel;
     public GameObject deathScreenPanel;
+    public GameObject endScreenPanel;
 
     public static ItemCategory playerClass;
 
@@ -14,7 +15,8 @@ public class MainMenu : MonoBehaviour
 
 
     public void StartGame()
-    {
+    {   
+        Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
     }
 
