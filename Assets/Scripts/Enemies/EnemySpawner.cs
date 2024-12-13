@@ -68,10 +68,10 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // Assign random stats based on the level multiplier.
-        enemyStats.maxHealth = UnityEngine.Random.Range(150.0f * levelMultiplier, 200.0f * levelMultiplier);
+        enemyStats.maxHealth = UnityEngine.Random.Range(80.0f * levelMultiplier, 100.0f * levelMultiplier);
         enemyStats.health = enemyStats.maxHealth; // Set current health to max health.
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
-        enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
+        enemyStats.experienceReward = UnityEngine.Random.Range(5, 25);
 
 /*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
         Tilemap tilemap = map.GetComponent<Tilemap>();
@@ -148,10 +148,10 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // Assign random stats based on the level multiplier.
-        enemyStats.maxHealth = UnityEngine.Random.Range(130.0f * levelMultiplier, 180.0f * levelMultiplier);
+        enemyStats.maxHealth = UnityEngine.Random.Range(80.0f * levelMultiplier, 110.0f * levelMultiplier);
         enemyStats.health = enemyStats.maxHealth; // Set current health to max health.
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
-        enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
+        enemyStats.experienceReward = UnityEngine.Random.Range(5, 25);
 
 /*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
 
@@ -211,7 +211,7 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.maxHealth = UnityEngine.Random.Range(500.0f * levelMultiplier, 850.0f * levelMultiplier);
         enemyStats.health = enemyStats.maxHealth; // Set current health to max health
         enemyStats.Damage = UnityEngine.Random.Range(15.0f * levelMultiplier, 30.0f * levelMultiplier);
-        enemyStats.experienceReward = UnityEngine.Random.Range(200, 500);
+        enemyStats.experienceReward = UnityEngine.Random.Range(100, 250);
 
         Tilemap tilemap = map.GetComponent<Tilemap>();
         if (tilemap == null)

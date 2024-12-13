@@ -366,7 +366,7 @@ MonoBehaviour:
   RangedEnemyPrefab: {fileID: 5147095794478659403, guid: 7f60c6ba0c1c9b94d8306ed15aefe596, type: 3}
   projectilePrefab: {fileID: 1224883186540217923, guid: 8c9f94106de69a145995db2358cb4705, type: 3}
   firePoint: {fileID: 180086111747175328}
-  numberOfMinionsToSummon: 3
+  numberOfMinionsToSummon: 5
   summonRadius: 3
   speed: 2
   aggroStartDistance: 6
