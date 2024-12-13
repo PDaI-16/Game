@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using TMPro;
+using Unity.VisualScripting;
 
 /// <summary>
 /// Base class for Item GameObjects, shared functionality for both Hat and Weapon.
@@ -18,6 +19,9 @@ public class ItemGO<T> : MonoBehaviour where T : Item
     private GameObject inventory;
     public InventoryGO inventoryGO;
 
+
+    private ItemSpawner itemSpawner;
+
     /// <summary>
     /// Initializes the ItemGO with the given item data.
     /// </summary>
@@ -33,17 +37,40 @@ public class ItemGO<T> : MonoBehaviour where T : Item
             infoText.text = item.ItemScore.ToString("F2");
 
             // Change color based on Item category
-            switch (item.Category)
+            itemSpawner = GameObject.Find("ItemSpawner").GetComponent<ItemSpawner>();
+
+            if (itemSpawner != null)
             {
-                case ItemCategory.Melee:
-                    infoText.color = Color.red;
-                    break;
-                case ItemCategory.Ranged:
-                    infoText.color = Color.green;
-                    break;
-                case ItemCategory.Magic:
-                    infoText.color = Color.blue;
-                    break;
+                if (item != null)
+                {
+                    float maxScorePossible = itemSpawner.GetCurrentMaxScoreForItem(item.Type);
+
+                    float scoreRatio = item.ItemScore / maxScorePossible;
+
+                    Debug.LogWarning("Score ratio: " + scoreRatio + "maxpossible score: "+ maxScorePossible+" item.ItemScore: "+item.ItemScore);
+
+                    if (scoreRatio > 9f / 10f)
+                    {
+                        infoText.color = Color.yellow; // Legendary (Highest Rarity)
+                    }
+                    else if (scoreRatio > 7f / 10f)
+                    {
+                        infoText.color = Color.red; // Epic
+                    }
+                    else if (scoreRatio > 5f / 10f)
+                    {
+                        infoText.color = Color.blue; // Rare
+                    }
+                    else if (scoreRatio > 3f / 10f)
+                    {
+                        infoText.color = Color.green; // Uncommon
+                    }
+                    else // Lowest rarity (Common)
+                    {
+                        infoText.color = Color.gray; // Common
+                    }
+
+                }
             }
         }
 

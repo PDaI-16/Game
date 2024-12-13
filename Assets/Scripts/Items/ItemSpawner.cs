@@ -20,28 +20,32 @@ public class ItemSpawner : MonoBehaviour
 
     [SerializeField] private int itemSpawnAmount = 50;
 
-    //Weapons
+    //Damage
 
     private float minDamageWeapon = 3.0f;
     private float maxDamageWeapon = 10.0f;
 
+    private float minDamageHat = 3.0f;
+    private float maxDamageHat = 10.0f;
+
+    //Attackspeeds
+
     private float minAttackSpeedWeapon = 0.5f;
     private float maxAttackSpeedWeapon = 1.5f;
 
-    //Hats
-
-    private float minDamageHat = 3.0f;
-    private float maxDamageHat = 30.0f;
-
     private float minAttackSpeedHat = 0.5f;
-    private float maxAttackSpeedHat = 10.0f;
+    private float maxAttackSpeedHat = 1.5f;
 
-    private float itemRandomizationSkewFactor = 2.0f;
+
+    // How steep is the rarity curve ->>> bigger = better items more rare
+    private float itemRandomizationSkewFactor = 3.0f;
 
     // Buffing multiplier to melee weapons
-    private float meleeBuffMultiplier = 2;
+    private float meleeStatsBuffMultiplier = 2.0f;
 
 
+    private float currentMaxWeaponScore = 0;
+    private float currentMaxHatScore = 0;
 
 
 
@@ -61,6 +65,25 @@ public class ItemSpawner : MonoBehaviour
         {
             Debug.LogError($"Failed to initialize spawner: {e.Message}");
         }
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    // This for rarity coloring for items on ground
+    public float GetCurrentMaxScoreForItem (ItemType itemType)
+    {
+        switch (itemType)
+        {
+            case ItemType.Weapon:
+                return currentMaxWeaponScore;
+
+            case ItemType.Hat:
+                return currentMaxHatScore;
+        }
+        return 0;
     }
 
     // Spawns a random hat at a random location.
@@ -226,10 +249,13 @@ public class ItemSpawner : MonoBehaviour
             randomSprite = spriteList[UnityEngine.Random.Range(0, spriteList.Length)];
         } while (randomSprite == null);
 
+
+        currentMaxHatScore = (maxDamageHat * levelMultiplier) * (maxAttackSpeedHat * levelMultiplier);
+
         var damageMultiplier = GetSkewedRandom(minDamageHat * levelMultiplier, maxDamageHat * levelMultiplier, itemRandomizationSkewFactor); // 2f = skew factor
         var attackSpeedMultiplier = GetSkewedRandom(minAttackSpeedHat * levelMultiplier, maxAttackSpeedHat * levelMultiplier, itemRandomizationSkewFactor);
 
-        return new Hat(category, randomSprite, damageMultiplier, attackSpeedMultiplier);
+        return new Hat(category, randomSprite, damageMultiplier, attackSpeedMultiplier, meleeStatsBuffMultiplier);
     }
 
     public Weapon GetRandomWeapon(float levelMultiplier)
@@ -265,11 +291,13 @@ public class ItemSpawner : MonoBehaviour
 
         // Define weapon-specific properties like damage, attack speed, or other stats
 
+        currentMaxWeaponScore = (maxDamageWeapon * levelMultiplier) * (maxAttackSpeedWeapon * levelMultiplier);
+
         var damage = GetSkewedRandom(minDamageWeapon * levelMultiplier, maxDamageWeapon * levelMultiplier, itemRandomizationSkewFactor); // 2f = skew factor
         var attackSpeed = GetSkewedRandom(minAttackSpeedWeapon * levelMultiplier, maxAttackSpeedWeapon * levelMultiplier,itemRandomizationSkewFactor);
 
         // Create and return a new Weapon instance
-        return new Weapon(category, randomSprite, damage, attackSpeed);
+        return new Weapon(category, randomSprite, damage, attackSpeed, meleeStatsBuffMultiplier);
     }
 
     private float GetSkewedRandom(float min, float max, float skewFactor)

@@ -13,6 +13,11 @@ public class MeleeAttackGO : MonoBehaviour
     [SerializeField] private AnimationState previousState;
     private Transform parentTransform;
 
+
+    [SerializeField] private GameObject damageIndicatorPrefab;
+
+    private Vector3 positionAdjust = new Vector3(0, 1.0f, 0);
+
     private float damage = 0; 
 
     void Start()
@@ -114,10 +119,20 @@ public class MeleeAttackGO : MonoBehaviour
                 // Calculate total damage
                 float totalDamage = damage;
 
-
-                Debug.LogWarning("Total damage at melee: "+totalDamage);
                 enemy.TakeDamage(totalDamage);
-                Debug.Log($"Enemy health reduced. Current health: {enemy.health}");
+
+                if (damageIndicatorPrefab != null)
+                {
+                    GameObject damageIndicatorClone =
+                        Instantiate(
+                            damageIndicatorPrefab,
+                            collision.GetComponent<Transform>().position + positionAdjust,
+                            Quaternion.identity
+                        ); ;
+                    damageIndicatorClone.GetComponent<DamageIndicatorGO>().SetDamageText(totalDamage);
+                }
+
+
             }
             else
             {
