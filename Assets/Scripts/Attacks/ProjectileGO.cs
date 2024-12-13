@@ -63,7 +63,13 @@ public class ProjectileGO : MonoBehaviour
                             transform.position+positionAdjust,
                             Quaternion.identity
                         );
-                    damageIndicatorClone.GetComponent<DamageIndicatorGO>().SetDamageText(totalDamage);
+
+
+                    if (damageIndicatorClone != null)
+                    {
+                        damageIndicatorClone.GetComponent<DamageIndicatorGO>().SetDamageText(totalDamage);
+                    }
+                  
 
                     if (enemyImpactPrefab != null)
                     {
