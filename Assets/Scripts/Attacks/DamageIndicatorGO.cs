@@ -20,7 +20,7 @@ public class DamageIndicatorGO : MonoBehaviour
     {
         if (damageText != null)
         {
-            damageText.text = damage.ToString("F2");
+            damageText.text = "-"+damage.ToString("F2");
         }
     }
 

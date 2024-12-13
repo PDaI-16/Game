@@ -25,10 +25,10 @@ public class PlayerData
     private float damageThresholdTime = 1f; // Time window for accumulating damage (1 second)
     private int damageCount = 0; // Counter for number of damages
 
-    public PlayerData(ItemCategory initialClass, Transform selfTransform, GameObject damageIndicator) // InitialClass from mainmenu
+    public PlayerData(ItemCategory initialClass, Transform healthTextTransform, GameObject damageIndicator) // InitialClass from mainmenu
     {
         this.initialPlayerClass = initialClass;
-        this.playerTransform = selfTransform;
+        this.playerTransform = healthTextTransform;
         this.damageIndicatorPrefab = damageIndicator;
     }
 
@@ -168,9 +168,13 @@ public class PlayerData
                 {
                     GameObject damageIndicator = Object.Instantiate(
                         damageIndicatorPrefab,
-                        playerTransform.position + new Vector3(0, 1.0f, 0), // Adjust the position if necessary
+                        playerTransform.position + new Vector3(0, 1.5f, 0), // Adjust the position if necessary
                         Quaternion.identity
                     );
+
+                    damageIndicator.transform.localScale = new Vector3(1.5f,1.5f,0);
+                    damageIndicator.GetComponentInChildren<Canvas>().sortingLayerName = "InventoryUI";
+                    damageIndicator.GetComponentInChildren<Canvas>().sortingOrder = 5;
 
                     // Set the accumulated damage text
                     DamageIndicatorGO damageIndicatorScript = damageIndicator.GetComponent<DamageIndicatorGO>();

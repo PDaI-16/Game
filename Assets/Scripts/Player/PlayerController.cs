@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject damageIndicatorPrefab;
 
+    [SerializeField] private Transform healthText;
+
 
 
     // Private Variables (Internal state tracking)
@@ -112,7 +114,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerData = new PlayerData(MainMenu.playerClass, transform, damageIndicatorPrefab);
+        playerData = new PlayerData(MainMenu.playerClass, healthText, damageIndicatorPrefab);
 
 
         _mainCamera = Camera.main;
