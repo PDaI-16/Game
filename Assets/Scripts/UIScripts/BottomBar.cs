@@ -19,7 +19,8 @@ public class BottomBar : MonoBehaviour
     public Image magicSkillImage;  
 
     public Slider xpBarSlider;  
-    public TextMeshProUGUI xpText;  
+    public TextMeshProUGUI xpText; 
+    public TextMeshProUGUI xpTextRequired;
 
     [SerializeField] private PlayerController playerController; 
 
@@ -158,7 +159,11 @@ public class BottomBar : MonoBehaviour
 
         if (xpText != null)
         {
-            xpText.text = playerController.playerData.GetXP().ToString("F0") + "/" + playerController.playerData.GetXpRequiredForLevelUp().ToString("F0") + "XP";
+            xpText.text = playerController.playerData.GetXP().ToString("F0");
+        }
+        if (xpTextRequired != null)
+        {
+            xpTextRequired.text = playerController.playerData.GetXpRequiredForLevelUp().ToString("F0");
         }
     }
 }

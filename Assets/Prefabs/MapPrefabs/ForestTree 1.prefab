@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8758665091975324284}
+  - {fileID: 3881120192267587178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6961266286571808531
@@ -126,7 +126,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.3, y: 0.3}
   m_Direction: 0
---- !u!1 &3308134228382871548
+--- !u!1 &2873784553159834242
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,8 +134,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8758665091975324284}
-  - component: {fileID: 187516737260143450}
+  - component: {fileID: 3881120192267587178}
+  - component: {fileID: 6674787975749235184}
   m_Layer: 14
   m_Name: ProjectileCollider
   m_TagString: tree
@@ -143,28 +143,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8758665091975324284
+--- !u!4 &3881120192267587178
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308134228382871548}
+  m_GameObject: {fileID: 2873784553159834242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.06310454}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.23600006, z: 0}
+  m_LocalScale: {x: 0.19999999, y: 0.45, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4685272284281766783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &187516737260143450
-CapsuleCollider2D:
+--- !u!60 &6674787975749235184
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308134228382871548}
+  m_GameObject: {fileID: 2873784553159834242}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -192,6 +192,26 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.032173157, y: 0.49334812}
-  m_Size: {x: 1.3365479, y: 1.9866962}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.017023087, y: 0.94703084}
+      - {x: -0.6071206, y: 0.51111096}
+      - {x: -0.9597608, y: 0.20637384}
+      - {x: -1.4491224, y: -0.16965334}
+      - {x: -0.51365095, y: -0.14935309}
+      - {x: -0.5367159, y: -0.7104707}
+      - {x: 0.5707623, y: -0.72577816}
+      - {x: 0.57682806, y: -0.18013771}
+      - {x: 1.6382772, y: -0.18971682}
+      - {x: 0.9384584, y: 0.36342537}
+  m_UseDelaunayMesh: 0
