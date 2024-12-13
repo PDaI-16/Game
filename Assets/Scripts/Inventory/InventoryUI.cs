@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
     private ItemType currentItemType = ItemType.Weapons;
 
     private enum InventorySort { Latest, Oldest, Score};
-    private InventorySort sortStyle = InventorySort.Latest;
+    private InventorySort sortStyle = InventorySort.Score;
 
 
     void Start()

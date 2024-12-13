@@ -43,31 +43,10 @@ public class ItemGO<T> : MonoBehaviour where T : Item
             {
                 if (item != null)
                 {
-                    float maxScorePossible = itemSpawner.GetCurrentMaxScoreForItem(item.Type);
-
-                    float scoreRatio = item.ItemScore / maxScorePossible;
-
-                    Debug.LogWarning("Score ratio: " + scoreRatio + "maxpossible score: "+ maxScorePossible+" item.ItemScore: "+item.ItemScore);
-
-                    if (scoreRatio > 9f / 10f)
+                    Color rarityColor = itemSpawner.GetRarityColor(item.Type, item.ItemScore);
+                    if (rarityColor != null)
                     {
-                        infoText.color = Color.yellow; // Legendary (Highest Rarity)
-                    }
-                    else if (scoreRatio > 7f / 10f)
-                    {
-                        infoText.color = Color.red; // Epic
-                    }
-                    else if (scoreRatio > 5f / 10f)
-                    {
-                        infoText.color = Color.blue; // Rare
-                    }
-                    else if (scoreRatio > 3f / 10f)
-                    {
-                        infoText.color = Color.green; // Uncommon
-                    }
-                    else // Lowest rarity (Common)
-                    {
-                        infoText.color = Color.gray; // Common
+                        infoText.color = rarityColor; // Legendary (Highest Rarity)
                     }
 
                 }
