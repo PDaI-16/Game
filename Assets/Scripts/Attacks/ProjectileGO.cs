@@ -8,6 +8,7 @@ public class ProjectileGO : MonoBehaviour
 
     [SerializeField] private GameObject damageIndicatorPrefab;
     [SerializeField] private GameObject impactPrefab;
+    [SerializeField] private GameObject enemyImpactPrefab;
 
     private Vector3 positionAdjust = new Vector3(0, 0.4f,0);
 
@@ -63,6 +64,16 @@ public class ProjectileGO : MonoBehaviour
                             Quaternion.identity
                         );
                     damageIndicatorClone.GetComponent<DamageIndicatorGO>().SetDamageText(totalDamage);
+
+                    if (enemyImpactPrefab != null)
+                    {
+                        GameObject impactClone =
+                        Instantiate(
+                            enemyImpactPrefab,
+                            transform.position,
+                            Quaternion.identity
+                        );
+                    }
                 }
 
             }

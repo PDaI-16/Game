@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIndicatorPrefab: {fileID: 3446587954367269539, guid: 3e77d6e5e9616b54b9f8130a0493db5c, type: 3}
   impactPrefab: {fileID: 7949409688048797868, guid: b6011333b69e0d64fa87505a2cf9bd58, type: 3}
+  enemyImpactPrefab: {fileID: 7949409688048797868, guid: cd6c0c97835b2c14eaae5938c2fcd84c, type: 3}
 --- !u!212 &5671187553766483245
 SpriteRenderer:
   m_ObjectHideFlags: 0
