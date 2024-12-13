@@ -16,10 +16,20 @@ public class PlayerData
 
     private float maxPossibleHealth = 100;
 
-    public PlayerData(ItemCategory initialClass) // InitialClass from mainmenu
-    {
+    [SerializeField] private Transform playerTransform; // Reference to the player's transform
+    [SerializeField] private GameObject damageIndicatorPrefab; // Reference to the damage indicator prefab
 
+
+    private float accumulatedDamage = 0f; // Variable to accumulate damage
+    private float damageTimer = 0f; // Timer to track time between damages
+    private float damageThresholdTime = 1f; // Time window for accumulating damage (1 second)
+    private int damageCount = 0; // Counter for number of damages
+
+    public PlayerData(ItemCategory initialClass, Transform healthTextTransform, GameObject damageIndicator) // InitialClass from mainmenu
+    {
         this.initialPlayerClass = initialClass;
+        this.playerTransform = healthTextTransform;
+        this.damageIndicatorPrefab = damageIndicator;
     }
 
     public void SetInitialClass(ItemCategory chosenClass)
@@ -34,7 +44,7 @@ public class PlayerData
 
     public void SpendSkillPoints(int cost)
     {
-        if (cost < skillPoints)
+        if (cost <= skillPoints)
         {
             skillPoints -= cost;
         }
@@ -136,20 +146,49 @@ public class PlayerData
     {
         if (health > 0f)
         {
-            // Calculate damage reduction based on defense
-            float damageAfterDefense = damage - defence;
+            // Calculate damage reduction based on defense as a percentage
+            float damageAfterDefense = damage * (1 - (defence / 100f));
+            damageAfterDefense = Mathf.Max(damageAfterDefense, 0f); // Ensure damage isn't negative
 
-            // Ensure that damage is not negative (defense can't heal the player)
-            damageAfterDefense = Mathf.Max(damageAfterDefense, 0f);
+            // Accumulate damage
+            accumulatedDamage += damageAfterDefense;
+            damageCount++;
 
-            // Subtract the reduced damage from the player's health
+            // Subtract damage from health
             health -= damageAfterDefense;
+            Debug.Log($"Player took {damageAfterDefense} damage. Health remaining: {health}");
 
-            // Log the result (optional for debugging)
-            Debug.Log($"Player took {damageAfterDefense} damage after defense. Health remaining: {health}");
+            // Check if the accumulated damage exceeds 10 or the time window has passed
+            damageTimer += Time.deltaTime;
+
+            if (damageCount >= 10 || damageTimer >= damageThresholdTime)
+            {
+                // Spawn the damage indicator with the total accumulated damage
+                if (playerTransform != null && damageIndicatorPrefab != null)
+                {
+                    GameObject damageIndicator = Object.Instantiate(
+                        damageIndicatorPrefab,
+                        playerTransform.position + new Vector3(0, 1.5f, 0), // Adjust the position if necessary
+                        Quaternion.identity
+                    );
+
+                    damageIndicator.transform.localScale = new Vector3(1.5f,1.5f,0);
+                    damageIndicator.GetComponentInChildren<Canvas>().sortingLayerName = "InventoryUI";
+                    damageIndicator.GetComponentInChildren<Canvas>().sortingOrder = 5;
+
+                    // Set the accumulated damage text
+                    DamageIndicatorGO damageIndicatorScript = damageIndicator.GetComponent<DamageIndicatorGO>();
+                    if (damageIndicatorScript != null)
+                    {
+                        damageIndicatorScript.SetDamageText(accumulatedDamage);
+                    }
+                }
+
+                // Reset the damage accumulation
+                accumulatedDamage = 0f;
+                damageCount = 0;
+                damageTimer = 0f;
+            }
         }
     }
-
-
-
 }

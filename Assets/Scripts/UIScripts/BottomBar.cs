@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI; // Keep this for Slider UI components
 using TMPro; // Add this for TextMeshPro
+using NUnit.Framework.Constraints;
+/*using UnityEngine.UIElements;*/
 
 public class BottomBar : MonoBehaviour
 {
@@ -21,8 +23,20 @@ public class BottomBar : MonoBehaviour
 
     [SerializeField] private PlayerController playerController; 
 
-    [SerializeField] private SkillTree skillTree;     
+    [SerializeField] private SkillTree skillTree;
+
+    [SerializeField] private TextMeshProUGUI hpText;
+
+    [SerializeField] private Image hatImage;
+
+    private Hat previousHatData = null;
+    private float previousHealth = 0;  
+
+
+
     public Sprite GUI1_0;  
+
+
 
     void Start()
     {
@@ -40,12 +54,43 @@ public class BottomBar : MonoBehaviour
             UpdateHealthImage();
             UpdateSkillIcons();
             UpdateXPBar();
+            SetCurrenHatImage();
+            UpdateHealthText();
+
         }
         else
         {
             Debug.Log("Player does not exist - Bottom bar");
         }
 
+    }
+
+    private void SetCurrenHatImage()
+    {
+        if (playerController != null)
+        {
+            if (playerController.GetCurrentHatData() != null && hatImage != null)
+            {
+                if (playerController.GetCurrentHatData() != previousHatData) // Update only if sprite has changed
+                {
+                    hatImage.sprite = playerController.GetCurrentHatData().Sprite;
+                    previousHatData = playerController.GetCurrentHatData();
+
+                }
+            }
+        }
+    }
+
+    public void UpdateHealthText()
+    {
+        if (playerController != null)
+        {
+            if (playerController.playerData.GetHealth() != previousHealth)
+            {
+                hpText.text = playerController.playerData.GetHealth().ToString("F0");
+                previousHealth = playerController.playerData.GetHealth();
+            }
+        }
     }
 
     public void UpdateHealthImage()
@@ -113,7 +158,7 @@ public class BottomBar : MonoBehaviour
 
         if (xpText != null)
         {
-            xpText.text = $"{playerController.playerData.GetXP()} / {playerController.playerData.GetXpRequiredForLevelUp()} XP";
+            xpText.text = playerController.playerData.GetXP().ToString("F0") + "/" + playerController.playerData.GetXpRequiredForLevelUp().ToString("F0") + "XP";
         }
     }
 }

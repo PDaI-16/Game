@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: 5}
+  m_AnchoredPosition: {x: -2, y: 11}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37329635
@@ -662,6 +662,8 @@ RectTransform:
   - {fileID: 265923656}
   - {fileID: 653135742}
   - {fileID: 593425678}
+  - {fileID: 1700144140}
+  - {fileID: 2091886173}
   m_Father: {fileID: 1023845510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -690,7 +692,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -1360244950, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -698,7 +700,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.5
 --- !u!222 &106048545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -732,6 +734,8 @@ MonoBehaviour:
   xpText: {fileID: 1410976807}
   playerController: {fileID: 264712827}
   skillTree: {fileID: 1220771557}
+  hpText: {fileID: 1700144141}
+  hatImage: {fileID: 2091886174}
   GUI1_0: {fileID: 8673036059832601084, guid: f8e12dc69c2f07f4c991a33f1abec5ea, type: 3}
 --- !u!1 &123447493
 GameObject:
@@ -1478,7 +1482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 5}
+  m_AnchoredPosition: {x: 89, y: 11}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &265923657
@@ -3039,7 +3043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 450, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593425679
@@ -3253,7 +3257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 180, y: 5}
+  m_AnchoredPosition: {x: 180, y: 11}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653135743
@@ -4928,8 +4932,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -6.8749}
+  m_SizeDelta: {x: 0, y: 13.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960265965
 MonoBehaviour:
@@ -6372,7 +6376,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6383,7 +6389,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 20
     defenseBonus: 0
     speedBonus: 0
@@ -6394,7 +6402,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 15
+    meleeDamageBonus: 15
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6405,7 +6415,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6416,7 +6428,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 10
     speedBonus: 0
@@ -6427,7 +6441,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 15
+    meleeDamageBonus: 15
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6438,7 +6454,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 1
@@ -6449,7 +6467,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6460,7 +6480,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 5
     speedBonus: 0
@@ -6471,7 +6493,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 20
     defenseBonus: 0
     speedBonus: 0
@@ -6482,7 +6506,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 10
+    meleeDamageBonus: 0
+    rangedDamageBonus: 15
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6493,10 +6519,12 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
-    defenseBonus: 5
-    speedBonus: 0
+    defenseBonus: 0
+    speedBonus: 1
     critChanceBonus: 0
   - name: 2b Ranged
     cost: 1
@@ -6504,10 +6532,12 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 15
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
-    speedBonus: 1
+    speedBonus: 0
     critChanceBonus: 0
   - name: 3b Ranged
     cost: 1
@@ -6515,7 +6545,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6526,7 +6558,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6537,7 +6571,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 15
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 15
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6548,7 +6584,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 20
     defenseBonus: 0
     speedBonus: 0
@@ -6559,7 +6597,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6570,7 +6610,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 20
     defenseBonus: 0
     speedBonus: 0
@@ -6581,7 +6623,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 1
@@ -6592,7 +6636,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 15
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 15
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6603,7 +6649,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 1
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6614,7 +6662,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 1
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6625,7 +6675,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6636,7 +6688,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6647,7 +6701,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 1
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6658,7 +6714,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 1
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6669,7 +6727,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6680,7 +6740,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6691,7 +6753,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 1
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6702,7 +6766,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 1
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6713,7 +6779,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6724,7 +6792,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6771,7 +6841,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 0
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6783,7 +6855,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 1
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -6795,7 +6869,9 @@ MonoBehaviour:
     isUnlocked: 0
     requiredClass: 2
     isSpecial: 0
-    damageBonus: 0
+    meleeDamageBonus: 0
+    rangedDamageBonus: 0
+    magicDamageBonus: 0
     healthBonus: 0
     defenseBonus: 0
     speedBonus: 0
@@ -7650,7 +7726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 5}
+  m_AnchoredPosition: {x: -93, y: 11}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351701656
@@ -7673,7 +7749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -5251368837960833440, guid: 4812173f459f0a546aa7c66be54d8228, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8155,8 +8231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 0}
-  m_SizeDelta: {x: 50, y: 40}
+  m_AnchoredPosition: {x: 258.75, y: 21.1}
+  m_SizeDelta: {x: 67.5, y: 82.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410976807
 MonoBehaviour:
@@ -8178,7 +8254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 50 / 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8205,15 +8281,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 1
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -9342,6 +9418,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628204079}
   m_CullTransparentMesh: 1
+--- !u!1 &1700144139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700144140}
+  - component: {fileID: 1700144142}
+  - component: {fileID: 1700144141}
+  m_Layer: 5
+  m_Name: HealthText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1700144140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700144139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 106048543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -170.9, y: 11}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1700144141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700144139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 100
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -0.00011080877, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1700144142
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700144139}
+  m_CullTransparentMesh: 1
 --- !u!1 &1706433769
 GameObject:
   m_ObjectHideFlags: 0
@@ -10015,8 +10227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -4.4600067, y: -6.8749}
+  m_SizeDelta: {x: -18.92, y: 13.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2002655552
 GameObject:
@@ -10458,8 +10670,8 @@ MonoBehaviour:
     Category: 0
     Sprite: {fileID: 257536154, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
     ItemScore: 3
-    Damage: 3
-    AttackSpeed: 1
+    Damage: 6
+    AttackSpeed: 2
   defaultRangedWeapon:
     Type: 1
     Category: 1
@@ -10474,9 +10686,106 @@ MonoBehaviour:
     ItemScore: 3
     Damage: 3
     AttackSpeed: 1
+  defaultMeleeHat:
+    Type: 0
+    Category: 0
+    Sprite: {fileID: 7613330016314061283, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+    ItemScore: 0.5
+    DamageMultiplier: 2
+    AttackSpeedMultiplier: 1
+  defaultRangedHat:
+    Type: 0
+    Category: 1
+    Sprite: {fileID: -2683581536351381293, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+    ItemScore: 0.5
+    DamageMultiplier: 1
+    AttackSpeedMultiplier: 0.5
+  defaultMagicHat:
+    Type: 0
+    Category: 2
+    Sprite: {fileID: -1831940730658185210, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+    ItemScore: 0.5
+    DamageMultiplier: 1
+    AttackSpeedMultiplier: 0.5
   InventoryData:
     hatsInInventory: []
     weaponsInInventory: []
+  playerController: {fileID: 0}
+--- !u!1 &2091886172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091886173}
+  - component: {fileID: 2091886175}
+  - component: {fileID: 2091886174}
+  m_Layer: 5
+  m_Name: HatImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2091886173
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091886172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 106048543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -259, y: -6}
+  m_SizeDelta: {x: 59.14, y: 59.14}
+  m_Pivot: {x: 0.5, y: 0.49999997}
+--- !u!114 &2091886174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091886172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1831940730658185210, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 20
+--- !u!222 &2091886175
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091886172}
+  m_CullTransparentMesh: 1
 --- !u!1 &2095745167
 GameObject:
   m_ObjectHideFlags: 0
@@ -10684,6 +10993,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 1700144140}
+    - target: {fileID: 3142304944509865204, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: itemSpawner
       value: 
       objectReference: {fileID: 366607903}
@@ -10701,15 +11014,23 @@ PrefabInstance:
       objectReference: {fileID: 2064573353}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.8875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00008869171
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.x

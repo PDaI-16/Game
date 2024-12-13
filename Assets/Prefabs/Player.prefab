@@ -338,21 +338,22 @@ MonoBehaviour:
     xp: 0
     skillPoints: 0
     initialPlayerClass: 0
+    playerTransform: {fileID: 0}
+    damageIndicatorPrefab: {fileID: 0}
   playerRigidbody: {fileID: 4681880649504773632}
   movementSpeed: 3
   projectileAttackGO: {fileID: 73677647858981808}
-  meleeAttack: {fileID: 1078246238509084022}
+  meleeAttackPrefab: {fileID: 3232087911235962119, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
+  critChance: 0.1
   WeaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-  meleeAttackGOScript: {fileID: 6625457365243968257}
-  meleeAttackHitbox: {fileID: 4923570406897306325}
   currentCamera: {fileID: 0}
   deathScreenPanel: {fileID: 0}
   inventoryGOScript: {fileID: 0}
   itemSpawner: {fileID: 0}
+  damageIndicatorPrefab: {fileID: 3446587954367269539, guid: 3e77d6e5e9616b54b9f8130a0493db5c, type: 3}
+  healthText: {fileID: 0}
   currentAnimationState: 0
   newAnimationState: 0
-  currentTotalDamage: 1
-  currentTotalAttackSpeed: 1
   attackCooldownTime: 1
 --- !u!95 &1441634743815130511
 Animator:
@@ -1340,17 +1341,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeAttackAnimator: {fileID: 3957297960693800327}
-  hitbox: {fileID: 4923570406897306325}
   currentCamera: {fileID: 0}
   previousState: 0
+  damageIndicatorPrefab: {fileID: 0}
 --- !u!95 &3957297960693800327 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1497227447617844726, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
-  m_PrefabInstance: {fileID: 2462375982874617969}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &4923570406897306325 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7383674523847795364, guid: 2dca555148c414b4ca15dbc6085c6687, type: 3}
   m_PrefabInstance: {fileID: 2462375982874617969}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5525911990882098077 stripped
