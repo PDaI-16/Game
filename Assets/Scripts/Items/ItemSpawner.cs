@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 [Serializable]
@@ -51,7 +52,7 @@ public class ItemSpawner : MonoBehaviour
 
 
     // Called before the first frame update.
-    private void Start()
+    public void Start()
     {
         try
         {
@@ -86,6 +87,31 @@ public class ItemSpawner : MonoBehaviour
         return 0;
     }
 
+    public void DestroyAllItemsOnGround()
+    {
+        // Find all the MeleeEnemy objects in the scene
+        GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+        GameObject[] hats = GameObject.FindGameObjectsWithTag("Hat");
+
+        // Loop through each MeleeEnemy object and destroy it
+        foreach (GameObject weapon in weapons)
+        {
+            if (weapon.GetComponent<WeaponGO>().onGround)
+            {
+                Destroy(weapon);
+            }
+        }
+        foreach (GameObject hat in hats)
+        {
+            if (hat.GetComponent<HatGO>().onGround)
+            {
+                Destroy(hat);
+            }
+        }
+
+
+    }
+
     public Color GetRarityColor(ItemType itemType, float itemScore)
     {
         float scoreRatio = itemType switch
@@ -110,6 +136,8 @@ public class ItemSpawner : MonoBehaviour
     // Spawns a random hat at a random location.
     public void SpawnRandomHatToRandomLocation(float levelMultiplier)
     {
+        Tilemap tilemap = map.GetComponent<Tilemap>();
+
         if (map == null)
         {
             Debug.LogError("Map reference is null. Cannot spawn hats.");
@@ -120,7 +148,32 @@ public class ItemSpawner : MonoBehaviour
         {
             Hat newHat = GetRandomHat(levelMultiplier);  // Get a random hat using the level multiplier
             Vector3 randomLocation = GetRandomSpawnPosition(map);  // Get a random spawn position on the map
-            SpawnHat(newHat, map, randomLocation, true);  // Spawn the hat at the random location
+
+            
+            if (tilemap == null)
+            {
+                Debug.LogError("Tilemap component not found on the map object.");
+                return;
+            }
+
+
+            Vector3Int tilePosition = tilemap.WorldToCell(randomLocation);
+            TileBase currentTile = tilemap.GetTile(tilePosition);
+
+            if (currentTile != null)
+            {
+                Debug.LogWarning(currentTile.name);
+
+                if (currentTile.name == "OceanRule")
+                {
+                    Debug.LogWarning("THIS IS OCEAN GG");
+                }
+                else
+                {
+                    SpawnHat(newHat, map, randomLocation, true);  // Spawn the hat at the random location
+                }
+            }
+           
         }
         catch (Exception e)
         {
@@ -130,6 +183,8 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnRandomWeaponToRandomLocation(float levelMultiplier)
     {
+        Tilemap tilemap = map.GetComponent<Tilemap>();
+
         if (map == null)
         {
             Debug.LogError("Map reference is null. Cannot spawn weapons.");
@@ -140,7 +195,25 @@ public class ItemSpawner : MonoBehaviour
         {
             Weapon newWeapon = GetRandomWeapon(levelMultiplier);  // Get a random weapon using the level multiplier
             Vector3 randomLocation = GetRandomSpawnPosition(map);  // Get a random spawn position on the map
-            SpawnWeapon(newWeapon, map, randomLocation, true);  // Spawn the weapon at the random location
+
+
+            Vector3Int tilePosition = tilemap.WorldToCell(randomLocation);
+            TileBase currentTile = tilemap.GetTile(tilePosition);
+
+            if (currentTile != null)
+            {
+                Debug.LogWarning(currentTile.name);
+
+                if (currentTile.name == "OceanRule")
+                {
+                    Debug.LogWarning("ITEM SPAWNED TO OCEAN GG");
+                }
+                else
+                {
+                    SpawnWeapon(newWeapon, map, randomLocation, true);  // Spawn the weapon at the random location
+                }
+            }
+            
         }
         catch (Exception e)
         {

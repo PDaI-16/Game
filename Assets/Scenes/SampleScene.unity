@@ -1775,6 +1775,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 0}
   selectPanel: {fileID: 0}
   deathScreenPanel: {fileID: 122330930}
+  endScreenPanel: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!114 &282302124
 MonoBehaviour:
@@ -2610,10 +2611,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4315595138000568141, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
-      propertyPath: uiManager
-      value: 
-      objectReference: {fileID: 1884459298}
-    - target: {fileID: 4315595138000568141, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
       propertyPath: inventoryGO
       value: 
       objectReference: {fileID: 2064573353}
@@ -2660,7 +2657,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5433948686313706068, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
 --- !u!1 &464700508
 GameObject:
@@ -6490,6 +6490,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 0}
   selectPanel: {fileID: 0}
   deathScreenPanel: {fileID: 479602729}
+  endScreenPanel: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!114 &1073704625
 MonoBehaviour:
@@ -8448,6 +8449,7 @@ MonoBehaviour:
   contentParent: {fileID: 65105639}
   playerController: {fileID: 264712827}
   sortingDropdown: {fileID: 367176192}
+  uiManager: {fileID: 1884459298}
   inventoryData:
     hatsInInventory: []
     weaponsInInventory: []
@@ -12117,6 +12119,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 382458032690146619, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
+      propertyPath: ItemSpawner
+      value: 
+      objectReference: {fileID: 366607903}
+    - target: {fileID: 382458032690146619, guid: d08f7276d667a9f429c59ae7b2d4374f, type: 3}
       propertyPath: EnemySpawner
       value: 
       objectReference: {fileID: 983346201}
@@ -12259,11 +12265,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.8875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3644494825443750495, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00008869171
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4180048407753474886, guid: fcf6800d0e967444e9c23e860ff699b1, type: 3}
       propertyPath: m_Name
@@ -12380,10 +12386,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2226254317329389678, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
-      propertyPath: uiManager
-      value: 
-      objectReference: {fileID: 1884459298}
-    - target: {fileID: 2226254317329389678, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
       propertyPath: inventoryGO
       value: 
       objectReference: {fileID: 2064573353}
@@ -12438,7 +12440,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 773778168081788672, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

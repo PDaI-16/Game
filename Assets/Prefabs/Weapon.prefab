@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7573175521086044557}
   m_Layer: 10
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
     Damage: 0
     AttackSpeed: 0
   infoText: {fileID: 8856963417719989444}
+  onGround: 1
   inventoryGO: {fileID: 0}
 --- !u!61 &7573175521086044557
 BoxCollider2D:

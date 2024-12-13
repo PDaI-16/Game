@@ -12,6 +12,8 @@ TagManager:
   - MeleeAttackObject
   - HintPanel
   - tree
+  - Weapon
+  - Hat
   layers:
   - Default
   - TransparentFX

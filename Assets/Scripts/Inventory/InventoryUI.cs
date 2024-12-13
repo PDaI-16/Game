@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject contentParent;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TMP_Dropdown sortingDropdown; // Reference to the Dropdown
+    [SerializeField] private UIManager uiManager;
 
 
     private int previousWeaponCount = 0;
@@ -84,7 +85,7 @@ public class InventoryUI : MonoBehaviour
 
     public void CloseInventoryPanel()
     {
-        inventoryPanel.SetActive(false);
+        uiManager.ChangeState(UIManager.PanelState.Inventory);
     }
 
     public void ShowWeapons()
