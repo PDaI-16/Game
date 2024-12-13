@@ -46,7 +46,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
                     Color rarityColor = itemSpawner.GetRarityColor(item.Type, item.ItemScore);
                     if (rarityColor != null)
                     {
-                        infoText.color = rarityColor; // Legendary (Highest Rarity)
+                        infoText.color = rarityColor; 
                     }
 
                 }

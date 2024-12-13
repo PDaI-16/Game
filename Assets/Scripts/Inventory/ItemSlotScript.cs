@@ -91,7 +91,7 @@ public class ItemSlotScript : MonoBehaviour
 
         if (itemSpawner != null)
         {
-            rarityImage.color = itemSpawner.GetComponent<ItemSpawner>().GetRarityColor(weapon.Type, weapon.ItemScore);
+            rarityImage.color = itemSpawner.GetComponent<ItemSpawner>().GetRarityColor(weapondata.Type, weapondata.ItemScore);
         }
         else
         {
@@ -115,9 +115,11 @@ public class ItemSlotScript : MonoBehaviour
         SetText("ScoreText", hatdata.ItemScore.ToString("F2"));
         SetImage(hatdata.Sprite);
 
+        itemSpawner = GameObject.Find("ItemSpawner");
+
         if (itemSpawner != null)
         {
-            rarityImage.color = itemSpawner.GetComponent<ItemSpawner>().GetRarityColor(hat.Type, hat.ItemScore);
+            rarityImage.color = itemSpawner.GetComponent<ItemSpawner>().GetRarityColor(hatdata.Type, hatdata.ItemScore);
         }
         else
         {
