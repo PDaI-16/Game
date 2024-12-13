@@ -110,6 +110,12 @@ void GenerateMap()
 
 public void LoadNextLevel()
 {
+    if (currentLevel >= 5)
+        {
+            Debug.Log("Game Over! You have completed all levels.");
+            // Add your game over logic here (e.g., show game over screen, stop the game, etc.)
+            return;
+        }
     ResetMap();
 
     EnemySpawner.currentBossEnemyCount = 0;
@@ -192,8 +198,9 @@ public (Vector3Int, string) GetRandomSpawnPosition()
                         break;
                 }
 
-                // Ensure the position is not in water
-                if (isFarEnoughFromOcean && heightMap[x, y] >= waterThreshold)
+                // Ensure the position is not in water and not on an OceanRule tile
+                TileBase currentTile = tilemap.GetTile(new Vector3Int(x, y, 0));
+                if (isFarEnoughFromOcean && heightMap[x, y] >= waterThreshold && currentTile != null && currentTile.name != "OceanRule")
                 {
                     spawnPositions.Add((new Vector3Int(x, y, 0), currentBiome.name));
                 }
