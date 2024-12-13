@@ -1,5 +1,7 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
     public int currentBossEnemyCount = 0;
     public int currentEnemyCount = 0;
     public float spawnRadius = 10f;
+
+    private Map maps;
 
     public void Start()
     {
@@ -70,6 +74,15 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.experienceReward = UnityEngine.Random.Range(10, 50);
 
 /*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
+        Tilemap tilemap = map.GetComponent<Tilemap>();
+        if (tilemap == null)
+        {
+            Debug.LogError("Tilemap component not found on the map object.");
+            return;
+        }
+        Vector3Int tilePosition = tilemap.WorldToCell(randomLocation);
+        TileBase currentTile = tilemap.GetTile(tilePosition);
+        Debug.Log($"Melee enemy spawned on tile: {currentTile?.name ?? "None"}");
 
         currentEnemyCount++;
     }
@@ -106,6 +119,13 @@ public class EnemySpawner : MonoBehaviour
         // Get a random spawn location within the map bounds.
         Vector3 randomLocation = GetRandomSpawnPosition(map);
 
+        if (randomLocation == Vector3.zero)
+        {
+            Debug.LogError("Failed to find a suitable spawn position for a Ranged enemy.");
+            return;
+        }
+
+
         // Instantiate the enemy prefab at the random location.
         GameObject rangedEnemyInstance = Instantiate(rangedEnemyPrefab, randomLocation, Quaternion.identity);
 
@@ -135,9 +155,21 @@ public class EnemySpawner : MonoBehaviour
 
 /*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
 
+        Tilemap tilemap = map.GetComponent<Tilemap>();
+        if (tilemap == null)
+        {
+            Debug.LogError("Tilemap component not found on the map object.");
+            return;
+        }
+        Vector3Int tilePosition = tilemap.WorldToCell(randomLocation);
+        TileBase currentTile = tilemap.GetTile(tilePosition);
+        Debug.Log($"Ranged enemy spawned on tile: {currentTile?.name ?? "None"}");
+        // Increase the enemy count for bosses
         currentEnemyCount++;
+
+        
     }
-    private void SpawnBossEnemyToRandomLocation(float levelMultiplier)
+    public void SpawnBossEnemyToRandomLocation(float levelMultiplier)
     {
         if (currentBossEnemyCount >= maxBossEnemies)
         {
@@ -153,6 +185,12 @@ public class EnemySpawner : MonoBehaviour
 
         // Get a random spawn location within the map bounds.
         Vector3 randomLocation = GetRandomSpawnPosition(map);
+
+        if (randomLocation == Vector3.zero)
+        {
+            Debug.LogError("Failed to find a suitable spawn position for the boss enemy.");
+            return;
+        }
 
         // Instantiate the boss enemy prefab.
         GameObject bossEnemyInstance = Instantiate(bossEnemyPreFab, randomLocation, Quaternion.identity);
@@ -175,23 +213,63 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.Damage = UnityEngine.Random.Range(15.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(200, 500);
 
+        Tilemap tilemap = map.GetComponent<Tilemap>();
+        if (tilemap == null)
+        {
+            Debug.LogError("Tilemap component not found on the map object.");
+            return;
+        }
+        Vector3Int tilePosition = tilemap.WorldToCell(randomLocation);
+        TileBase currentTile = tilemap.GetTile(tilePosition);
+        Debug.Log($"Boss spawned on tile: {currentTile?.name ?? "None"}");
         // Increase the enemy count for bosses
         currentBossEnemyCount++;
     }
 
-
-    private Vector3 GetRandomSpawnPosition(GameObject targetMap)
+private Vector3 GetRandomSpawnPosition(GameObject targetMap)
+{
+    if (map == null)
     {
-        var renderer = targetMap.GetComponent<Renderer>();
-        if (renderer == null)
-        {
-            Debug.LogError("Renderer not found on the map object. Cannot determine spawn bounds.");
-            return Vector3.zero;
-        }
+        Debug.LogError("Map reference is not assigned.");
+        return Vector3.zero;
+    }
 
+    var renderer = targetMap.GetComponent<Renderer>();
+    if (renderer == null)
+    {
+        Debug.LogError("Renderer not found on the map object. Cannot determine spawn bounds.");
+        return Vector3.zero;
+    }
+
+    Vector3 randomPosition;
+    TileBase currentTile;
+    int maxAttempts = 100; // Limit the number of attempts to prevent an infinite loop
+    int attempts = 0;
+
+    do
+    {
         float randomX = UnityEngine.Random.Range(renderer.bounds.min.x, renderer.bounds.max.x);
         float randomY = UnityEngine.Random.Range(renderer.bounds.min.y, renderer.bounds.max.y);
+        randomPosition = new Vector3(randomX, randomY, 0);
 
-        return new Vector3(randomX, randomY, 0);
+        Tilemap tilemap = map.GetComponent<Tilemap>();
+        if (tilemap == null)
+        {
+            Debug.LogError("Tilemap component not found on the map object.");
+            return Vector3.zero;
+        }
+        Vector3Int tilePosition = tilemap.WorldToCell(randomPosition);
+        currentTile = tilemap.GetTile(tilePosition);
+
+        attempts++;
+    } while (currentTile != null && currentTile.name == "OceanRule" && attempts < maxAttempts);
+
+    if (attempts >= maxAttempts)
+    {
+        Debug.LogWarning("Failed to find a suitable spawn position after maximum attempts.");
+        return Vector3.zero; // Return zero vector if no suitable positions found
     }
+
+    return randomPosition;
+}
 }
