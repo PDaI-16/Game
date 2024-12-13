@@ -51,8 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeAttackAnimator: {fileID: 1497227447617844726}
   currentCamera: {fileID: 0}
-  critChance: 0.1
   previousState: 0
+  damageIndicatorPrefab: {fileID: 3446587954367269539, guid: 3e77d6e5e9616b54b9f8130a0493db5c, type: 3}
 --- !u!210 &4633842642766187363
 SortingGroup:
   m_ObjectHideFlags: 0
