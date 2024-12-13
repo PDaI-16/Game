@@ -21,15 +21,15 @@ public class EnemySpawner : MonoBehaviour
 
     public void Start()
     {
-        for (int i = 0; i < maxEnemies; i++)
-        {
+            SpawnBossEnemyToRandomLocation(2.0f);
             SpawnMeleeEnemyToRandomLocation(2.0f);
             SpawnRangedEnemyToRandomLocation(2.0f);
-            SpawnBossEnemyToRandomLocation(2.0f);
-        }
+            
     }
 
     private void SpawnMeleeEnemyToRandomLocation(float levelMultiplier)
+    {
+    for (int i = 0; i < 12; i++)
     {
         if (currentEnemyCount >= maxEnemies)
         {
@@ -45,6 +45,12 @@ public class EnemySpawner : MonoBehaviour
 
         // Get a random spawn location within the map bounds.
         Vector3 randomLocation = GetRandomSpawnPosition(map);
+
+        if (randomLocation == Vector3.zero)
+        {
+            Debug.LogError("Failed to find a suitable spawn position for a Melee enemy.");
+            return;
+        }
 
         // Instantiate the enemy prefab at the random location.
         GameObject meleeEnemyInstance = Instantiate(meleeEnemyPrefab, randomLocation, Quaternion.identity);
@@ -73,7 +79,6 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(5, 25);
 
-/*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
         Tilemap tilemap = map.GetComponent<Tilemap>();
         if (tilemap == null)
         {
@@ -86,6 +91,7 @@ public class EnemySpawner : MonoBehaviour
 
         currentEnemyCount++;
     }
+}
 
     public void DestroyAllEnemies()
     {
@@ -103,6 +109,8 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void SpawnRangedEnemyToRandomLocation(float levelMultiplier)
+{
+    for (int i = 0; i < 12; i++)
     {
         if (currentEnemyCount >= maxEnemies)
         {
@@ -112,7 +120,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (map == null || rangedEnemyPrefab == null)
         {
-            Debug.LogError("Map or enemyPrefab is not assigned.");
+            Debug.LogError("Map or rangedEnemyPrefab is not assigned.");
             return;
         }
 
@@ -125,24 +133,14 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-
         // Instantiate the enemy prefab at the random location.
         GameObject rangedEnemyInstance = Instantiate(rangedEnemyPrefab, randomLocation, Quaternion.identity);
 
-        // Find the "RangedEnemy" child within the prefab.
-        Transform rangedEnemyTransform = rangedEnemyInstance.transform.Find("RangedEnemy");
-        if (rangedEnemyTransform == null)
-        {
-            Debug.LogError("The 'MeleeEnemy' GameObject was not found in the prefab.");
-            Destroy(rangedEnemyInstance); // Cleanup the incomplete enemy.
-            return;
-        }
-
-        // Get the EnemyStats component from the "MeleeEnemy" GameObject.
-        EnemyStats enemyStats = rangedEnemyTransform.GetComponent<EnemyStats>();
+        // Access the EnemyStats script on the prefab
+        EnemyStats enemyStats = rangedEnemyInstance.GetComponentInChildren<EnemyStats>();
         if (enemyStats == null)
         {
-            Debug.LogError("The 'RangedEnemy' GameObject is missing the EnemyStats component.");
+            Debug.LogError("EnemyStats component is missing on the ranged enemy prefab.");
             Destroy(rangedEnemyInstance); // Cleanup the incomplete enemy.
             return;
         }
@@ -153,8 +151,6 @@ public class EnemySpawner : MonoBehaviour
         enemyStats.Damage = UnityEngine.Random.Range(10.0f * levelMultiplier, 30.0f * levelMultiplier);
         enemyStats.experienceReward = UnityEngine.Random.Range(5, 25);
 
-/*        Debug.Log($"Spawned enemy with {enemyStats.health} HP, {enemyStats.Damage} Damage, and {enemyStats.experienceReward} XP reward.");*/
-
         Tilemap tilemap = map.GetComponent<Tilemap>();
         if (tilemap == null)
         {
@@ -164,12 +160,12 @@ public class EnemySpawner : MonoBehaviour
         Vector3Int tilePosition = tilemap.WorldToCell(randomLocation);
         TileBase currentTile = tilemap.GetTile(tilePosition);
         Debug.Log($"Ranged enemy spawned on tile: {currentTile?.name ?? "None"}");
-        // Increase the enemy count for bosses
-        currentEnemyCount++;
 
-        
+        currentEnemyCount++;
     }
-    public void SpawnBossEnemyToRandomLocation(float levelMultiplier)
+}
+
+    public void  SpawnBossEnemyToRandomLocation(float levelMultiplier)
     {
         if (currentBossEnemyCount >= maxBossEnemies)
         {
@@ -191,7 +187,6 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("Failed to find a suitable spawn position for the boss enemy.");
             return;
         }
-
         // Instantiate the boss enemy prefab.
         GameObject bossEnemyInstance = Instantiate(bossEnemyPreFab, randomLocation, Quaternion.identity);
 
