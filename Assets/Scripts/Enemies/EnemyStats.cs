@@ -48,17 +48,16 @@ public class EnemyStats : MonoBehaviour
     {
         if (aiMovement != null)
         {
-            aiMovement.aggrostart = aggroIncreaseAmount;
-            aiMovement.aggroend = aggroIncreaseAmount;
-            Debug.Log($"Aggro range increased. New aggro start: {aiMovement.aggrostart}, aggro end: {aiMovement.aggroend}");
+            aiMovement.aggrostart += aggroIncreaseAmount;
+            aiMovement.aggroend += aggroIncreaseAmount;
         }
         if (rangedMovement != null){
-            rangedMovement.aggroStartDistance = aggroIncreaseAmount;
-            rangedMovement.aggroEndDistance = aggroIncreaseAmount;
+            rangedMovement.aggroStartDistance += aggroIncreaseAmount;
+            rangedMovement.aggroEndDistance += aggroIncreaseAmount;
         }
         if (bossMovement != null){
-            bossMovement.aggroStartDistance = aggroIncreaseAmount;
-            bossMovement.aggroEndDistance =  aggroIncreaseAmount;
+            bossMovement.aggroStartDistance += aggroIncreaseAmount;
+            bossMovement.aggroEndDistance +=  aggroIncreaseAmount;
         }
         else
         {
