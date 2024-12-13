@@ -641,6 +641,10 @@ MonoBehaviour:
   Damage: 5
   experienceReward: 80
   enemyHealthBar: {fileID: 2305560242365866156}
+  aiMovement: {fileID: 0}
+  rangedMovement: {fileID: 2857638340574844630}
+  bossMovement: {fileID: 0}
+  aggroIncreaseAmount: 1
 --- !u!114 &8470670469590292474
 MonoBehaviour:
   m_ObjectHideFlags: 0

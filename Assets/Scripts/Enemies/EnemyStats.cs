@@ -11,6 +11,14 @@ public class EnemyStats : MonoBehaviour
     private PlayerData playerData = null;
 
     [SerializeField] private EnemyHealthBar enemyHealthBar;
+
+    [SerializeField] private AIMove aiMovement;
+    [SerializeField] private RangedMovement rangedMovement;
+    [SerializeField] private BossMovement bossMovement;
+
+    // Amount by which aggro range increases when taking damage
+    [SerializeField] private float aggroIncreaseAmount = 10.0f;
+
     void Start()
     {
         health = maxHealth;
@@ -30,8 +38,32 @@ public class EnemyStats : MonoBehaviour
     {
         health -= damage;
         Debug.Log($"Enemy took {damage} damage. Current health: {health}");
+        IncreaseAggroRange();
+
         CheckDeath();
         enemyHealthBar.UpdateHealthBar();
+    }
+
+    private void IncreaseAggroRange()
+    {
+        if (aiMovement != null)
+        {
+            aiMovement.aggrostart = aggroIncreaseAmount;
+            aiMovement.aggroend = aggroIncreaseAmount;
+            Debug.Log($"Aggro range increased. New aggro start: {aiMovement.aggrostart}, aggro end: {aiMovement.aggroend}");
+        }
+        if (rangedMovement != null){
+            rangedMovement.aggroStartDistance = aggroIncreaseAmount;
+            rangedMovement.aggroEndDistance = aggroIncreaseAmount;
+        }
+        if (bossMovement != null){
+            bossMovement.aggroStartDistance = aggroIncreaseAmount;
+            bossMovement.aggroEndDistance =  aggroIncreaseAmount;
+        }
+        else
+        {
+            Debug.LogWarning("AI Movement script not assigned or missing.");
+        }
     }
 
     public void CheckDeath()
@@ -54,13 +86,9 @@ public class EnemyStats : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Enemy is continuously colliding with Player.");
-
-            // Access the player's script
             playerData = other.gameObject.GetComponent<PlayerController>().playerData;
             if (playerData != null)
             {
-                // Continuously apply damage as long as the enemy is colliding with the player
                 playerData.TakeDamage(Damage * Time.deltaTime); // Damage per second
             }
             else
