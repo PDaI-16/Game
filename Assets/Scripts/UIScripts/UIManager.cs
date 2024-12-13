@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PanelState previousState;
 
     // Define the states of the FSM
-    private enum PanelState
+    public enum PanelState
     {
         None,
         SkillTree,
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
     }
 
     // Change the FSM state
-    private void ChangeState(PanelState newState)
+    public void ChangeState(PanelState newState)
     {
 /*        if (newState == previousState)
         {
@@ -85,6 +85,15 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
+        if (skillTreePanel.activeSelf == false && inventoryPanel.activeSelf == false)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+
     }
 
     private void DeactivateAllExludingThis(GameObject usedPanel)
@@ -101,9 +110,11 @@ public class UIManager : MonoBehaviour
 
     private void DeactivateAllPanels()
     {
+
         foreach (var panel in panels)
         {
             panel.SetActive(false);
         }
+        Time.timeScale = 1.0f;
     }
 }
