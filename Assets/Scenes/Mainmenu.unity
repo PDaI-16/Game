@@ -3030,6 +3030,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 383666833}
   selectPanel: {fileID: 1926989348}
   deathScreenPanel: {fileID: 0}
+  endScreenPanel: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!114 &2105970134
 MonoBehaviour:

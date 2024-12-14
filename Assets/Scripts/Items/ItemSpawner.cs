@@ -42,7 +42,7 @@ public class ItemSpawner : MonoBehaviour
     private float itemRandomizationSkewFactor = 3.0f;
 
     // Buffing multiplier to melee weapons
-    private float meleeStatsBuffMultiplier = 1.3f;
+    private float meleeStatsBuffMultiplier = 1.65f;
 
 
     private float currentMaxWeaponScore = 0;
