@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Check for input and handle state transitions
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeState(PanelState.SkillTree);
         }

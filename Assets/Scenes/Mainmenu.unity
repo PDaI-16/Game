@@ -3014,7 +3014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2105970133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3030,6 +3030,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 383666833}
   selectPanel: {fileID: 1926989348}
   deathScreenPanel: {fileID: 0}
+  endScreenPanel: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!114 &2105970134
 MonoBehaviour:
