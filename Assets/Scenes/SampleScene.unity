@@ -2254,36 +2254,40 @@ MonoBehaviour:
   meleeHatSprites:
   - {fileID: -4634720409283538282, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   - {fileID: -1525018531985057102, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
-  - {fileID: 2786292424897580823, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
-  - {fileID: -3649231315931022282, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: -3649231315931022282, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+  - {fileID: -6191123158643633914, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: -35276699701321369, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: -4791226207513538912, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
   rangedHatSprites:
   - {fileID: -2683581536351381293, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   - {fileID: 7613330016314061283, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
-  - {fileID: -3649231315931022282, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
+  - {fileID: 4798577650621671980, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   - {fileID: -3649231315931022282, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: -4038234421547509746, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: 8342553545252336856, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   magicHatSprites:
   - {fileID: -1831940730658185210, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
   - {fileID: -2797532859992406980, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
-  - {fileID: 4798577650621671980, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
-  - {fileID: -2797532859992406980, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: 4798577650621671980, guid: 45917936f3ccb1f45994c9f1db9b013c, type: 3}
+  - {fileID: -2797532859992406980, guid: e0989fc6af1bad848a6b8f8386467120, type: 3}
   hatPrefab: {fileID: 5814705116746937280, guid: 79368c38e7b1bfe46b7514280d1bf15f, type: 3}
   meleeWeaponSprites:
   - {fileID: -2009658034, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: -758129973, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1160843012, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
-  - {fileID: -1412939712, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1362676994, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 195837492, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 1528549045, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 2104852841, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: 2004021625, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   - {fileID: -821610248, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: 1688709396, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
+  - {fileID: -1126870494, guid: 9819772f2b4bd7f438d3d283c96fb061, type: 3}
   rangedWeaponSprites:
   - {fileID: -1953212740387011268, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
   - {fileID: -9163666593600327624, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
   - {fileID: 7709604452557607169, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
   - {fileID: -846485480426014635, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
-  - {fileID: 6355487656406915730, guid: 75aa10025e2da4744a3f2e61ef52afff, type: 3}
   magicWeaponSprites:
   - {fileID: 7326086248900390973, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   - {fileID: -1341226490458307269, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
@@ -2293,6 +2297,9 @@ MonoBehaviour:
   - {fileID: 7112114115918678774, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   - {fileID: 3557011088027698394, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   - {fileID: -7267376149188162782, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 6572943983779065804, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 9064598016285145008, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
+  - {fileID: 4028022972693503830, guid: 5139793b92d446a448c5c3c15ec9cbb2, type: 3}
   weaponPrefab: {fileID: 1550832497689544042, guid: ff6ab38a2d92ba24d86186817c000c8a, type: 3}
   itemSpawnAmount: 50
 --- !u!4 &366607904
@@ -8610,7 +8617,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 15, y: 15}
+  m_Size: {x: 25, y: 15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
