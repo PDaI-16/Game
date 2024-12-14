@@ -15,8 +15,8 @@ public class ProjectileGO : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
-        
+        // Destroy this GameObject after 10 seconds
+        Destroy(gameObject, 10f);
     }
 
     // Update is called once per frame
