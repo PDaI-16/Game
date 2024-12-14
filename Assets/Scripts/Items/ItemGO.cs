@@ -124,7 +124,7 @@ public class ItemGO<T> : MonoBehaviour where T : Item
             }
             else
             {
-                Debug.LogError("Ontriggerexit 2d no ui manager found");
+                Debug.LogWarning("Ontriggerexit 2d no ui manager found");
             }
         }
     }
