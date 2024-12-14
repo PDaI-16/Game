@@ -8,12 +8,14 @@
 
 ## Weapons  
 - Each weapon is randomly selected from a set of weapon sprites, with fully randomized stats.  
-- The maximum possible power multiplier for each weapon is determined by the current level number (similar to the system in Borderlands).  
 - There are three types of weapons: Melee, Ranged, and Magic.
+- Weapons have five different raritites which are color coded (grey, green, blue, red and golden)
 
 
 ## Hats  
 - Hats are generated similarly to weapons but provide the player with passive boosts.
+- Player only gets the added damage and attackspeed from the hat if equipped weapon is the same category.
+- Hats have five different raritites which are color coded (grey, green, blue, red and golden)
 
 
 ## Player  
