@@ -6151,7 +6151,7 @@ GameObject:
   - component: {fileID: 1040651845}
   - component: {fileID: 1040651844}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7265,7 +7265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1220771554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7805,6 +7805,7 @@ MonoBehaviour:
   - {fileID: 1532231636}
   - {fileID: 329952615}
   playerController: {fileID: 264712827}
+  pointsText: {fileID: 2055625129}
   meleeSpecialSkill:
     name: 
     cost: 0
@@ -12045,7 +12046,7 @@ GameObject:
   - component: {fileID: 2055625130}
   - component: {fileID: 2055625129}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PointsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

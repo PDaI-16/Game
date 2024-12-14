@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class SkillTree : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class SkillTree : MonoBehaviour
     public Skill[] skills; // Array of skills in the skill tree
     public Image[] skillImages; // Array of skill images
     public PlayerController playerController; // We are going to get playerdata from playercontroller
+
+    public TextMeshProUGUI pointsText;
+    private float previousPoints = 0;
 
     // Track which special skill is currently active for each class
     public Skill meleeSpecialSkill = null;
@@ -65,6 +69,19 @@ public class SkillTree : MonoBehaviour
         }
 
         UpdateSkillVisuals(); // Update visuals after initializing
+    }
+
+
+    private void PointsTextUpdate()
+    {
+        if (pointsText != null && playerController.playerData != null)
+        {
+            if (playerController.playerData.GetSkillPoints() != previousPoints)
+            {
+                pointsText.text = playerController.playerData.GetSkillPoints().ToString("F0");
+                previousPoints = playerController.playerData.GetSkillPoints();
+            }
+        }
     }
 
     void UnlockFirstSkillBasedOnClass()
@@ -398,6 +415,8 @@ public class SkillTree : MonoBehaviour
 
     void Update()
     {
+        PointsTextUpdate();
+
         // Detect mouse button 1 (left-click) to toggle active special skill
         if (Input.GetMouseButtonDown(0)) // Mouse 1 (left click)
         {
@@ -422,6 +441,7 @@ public class SkillTree : MonoBehaviour
                 }
             }
         }
+
     }
 
     // Helper function to get the skill index based on the clicked object
