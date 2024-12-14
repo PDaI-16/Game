@@ -53,7 +53,11 @@ public class UIManager : MonoBehaviour
 
     public void HideHintPanel()
     {
-        hintPanel.SetActive(false);
+        if (hintPanel != null)
+        {
+            hintPanel.SetActive(false);
+        }
+       
     }
 
     // Change the FSM state
