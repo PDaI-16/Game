@@ -32,3 +32,7 @@
 ## Bosses  
 - Each level has one boss, which is a larger and stronger version of a randomly selected enemy.  
 - Bosses too can be of type melee or ranged, but they can also spawn minions etc.
+
+
+## Tileset credit
+https://opengameart.org/content/dawnlike-16x16-universal-rogue-like-tileset-v181
